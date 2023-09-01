@@ -25,6 +25,10 @@
   <!-- Icon -->
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
+  <!-- slider -->
+  <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
+  <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+
 </head>
 <body> 
 
@@ -48,6 +52,14 @@
     <div class="col-12">
       <h3>Figma Design</h3>
       <p>Experience Unlimited Creativity with Figma: The Collaborative Interface Design Tool Where Limits Don't Apply.</p>
+      <div class="gallery js-flickity"
+  data-flickity-options='{ "wrapAround": true }'>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+</div>
     </div>
     <div class="col-12">
       <h3>Pdfmake Design</h3>
@@ -117,6 +129,38 @@ font-size: 12px;
 font-style: normal;
 font-weight: 200;
 line-height: normal;
+}
+
+
+/* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
 }
 
 </style>
