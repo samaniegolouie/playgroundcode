@@ -13,456 +13,112 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+  <!-- Fonts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;500;600;700;800;900&family=Koulen&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+  <!-- Icon -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
 </head>
 <body> 
 
+<!-- container -->
+<div class="container">
+  <!-- row -->
+  <div class="row mb-5 pb-5">
+    <div class="col-12 text-center">
+       <h1>Playground Work</h1>
+       <p class="text-p1">Where Imagination Meets Play: Creating Dreams, One Swing at a Time!</p>
+    </div>
+    <div class="col-12 text-center">
+      <iconify-icon icon="ph:figma-logo-thin" style="color: white;" width="70" height="70"></iconify-icon>
+      <iconify-icon icon="arcticons:pdf-file" style="color: white;" width="70" height="70"></iconify-icon>
+      <iconify-icon icon="typcn:html5" style="color: white;" width="70" height="70"></iconify-icon>
+    </div>  
+  </div>
+  <!-- /row -->
+  <!-- row -->
+  <div class="row">
+    <div class="col-12">
+      <h3>Figma Design</h3>
+      <p>Experience Unlimited Creativity with Figma: The Collaborative Interface Design Tool Where Limits Don't Apply.</p>
+    </div>
+    <div class="col-12">
+      <h3>Pdfmake Design</h3>
+      <p>Empower Personalization with JavaScript: Customize PDF Order Slips, Notifications, Terms & Policies, Terms, Product Lists, and More.</p>
+    </div>
+    <div class="col-12">
+      <h3>HTML Email Template Design</h3>
+      <p>Personalize Email Formats for Your Clients or Your Own Business and more.</p>
+    </div> 
+  </div>
+  <!-- /row -->
+
+</div>
+  <!-- /container -->
 
-    <div class="container"><!-- container -->
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">TEST 101</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">TEST 102</a>
-            </li>
-           
-          </ul>
 
 
 
-          <div class="tab-content pt-5 px-3" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-2">
-                            <label>Airline</label>
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>                        
-                                    <option value=""></option>                                               
-                                    <option ><img src="Philippine-Airlines-Logo.jpg" /> Philippine Airlines</option>
-                                    <option>Cebu Pacific</option>
-                                    <option>AirAsia Philippines</option>                                               
-                                    <option>Cebgo</option>
-                                    <option>Jeju Air</option>
-                                </select>
-                        </div>
-
-                        <label>Airline</label>   
-                        <select class="vodiapicker">                            
-                            <option value="en" class="test" data-thumbnail="https://airhex.com/images/airline-logos/philippine-airlines.png">Philippine Airlines</option>
-                            <option value="au" data-thumbnail="https://www.logo.wine/a/logo/Cebu_Pacific/Cebu_Pacific-Logo.wine.svg">Cebu Pacific</option>
-                            <option value="uk" data-thumbnail="https://todaywithzen.files.wordpress.com/2015/06/air-asia-logo.png">AirAsia Philippines</option>
-                            <option value="cn" data-thumbnail="https://www.logo.wine/a/logo/Cebgo/Cebgo-Logo.wine.svg">Cebgo</option>
-                            <option value="de" data-thumbnail="https://www.logo.wine/a/logo/Jeju_Air/Jeju_Air-Logo.wine.svg">Jeju Air</option>
-                           
-                      </select>
-                        
-                <div class="lang-select">
-                    <button class="btn-select" value=""></button>
-                    <div class="b">
-                    <ul id="a"></ul>
-                    </div>
-                    </div>
-                     
-
-
-
-
-
-
-
-
-                    </div>
-                    <div class="col">
-                        <div class="mb-2">
-                            <label>Rate Type</label>
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>
-                                    <option value=""></option>                                               
-                                    <option>Publish Rates</option>
-                                    <option>Special Rates</option>
-                                    <option>Open Rate</option>   
-                                </select>
-                         </div>
-
-                        <div class="mb-2">
-                            <label>Commodity</label>
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>
-                                    <option value=""></option>                                               
-                                    <option>GCR</option>
-                                    <option>VCR</option>
-                                    <option>CCR1</option>                                               
-                                    <option>CCR2</option>
-                                    <option>CCR3</option>  
-                                </select>
-                        </div>
-
-                        <div class="mb-2">
-                            <label>Weight</label>
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>
-                                    <option value=""></option>                                               
-                                    <option>10kg - 50kg</option>
-                                    <option>60kg - 99kg</option>
-                                    <option>100kg - 200kg </option>   
-                                </select>
-                        </div>
-
-                        <div class="mb-2 mt-4">
-                            <input type="text"class="form-control   " name="text" id="text"
-                                                    placeholder="Rate" autocomplete="off">
-                        </div>
-
-                    </div>
-
-                    
-                </div>
-
-               
-            </div>
-
-            <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-2">
-                  
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>                        
-                                    <option value="">Airline</option>                                               
-                                    <option >Philippine Airlines</option>
-                                    <option>Cebu Pacific</option>
-                                    <option>AirAsia Philippines</option>                                               
-                                    <option>Cebgo</option>
-                                    <option>Jeju Air</option>
-                                </select>
-                        </div>
-
-                        <div class="mb-2">
-                           
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>
-                                    <option value="">Commodity</option>                                               
-                                    <option>GCR</option>
-                                    <option>VCR</option>
-                                    <option>CCR1</option>                                               
-                                    <option>CCR2</option>
-                                    <option>CCR3</option>  
-                                </select>
-                        </div>
-
-                        <div class="mb-2">
-                            
-                                <select class="form-control form-control-sm" name="booking-type"
-                                id="booking" required>
-                                    <option value="">Weight</option>                                               
-                                    <option>10kg - 50kg</option>
-                                    <option>60kg - 99kg</option>
-                                    <option>100kg - 200kg </option>   
-                                </select>
-                        </div>
-
-                    </div>
-                    <div class="col">
-                        <div class="mb-2">
-                            <div class="div-type-business "> <!-- div-type-business -->
-                                <div class="form-check"> <!-- form-check -->
-                                    <div class="row"> <!-- row -->
-                                        <div class="radio-align-left">
-                                            <label class="form-check-label radio-options"
-                                                for="flexRadioDefault14">
-                                                Publish Rates
-                                            </label>
-                                        </div>
-                                        <div class="col radio-align-right ">
-                                            <input class="form-check-input custom-control-label" type="radio" name="black-box"
-                                                id="flexRadioDefault14">
-                                        </div>
-                                    </div> <!-- row / -->
-                                </div> <!-- form-check / -->
-                            </div>   <!-- div-type-business / -->
-                            
-                         </div>
-                        <div class="mb-2">
-                            <div class="div-type-business "> <!-- div-type-business -->
-                                <div class="form-check"> <!-- form-check -->
-                                    <div class="row"> <!-- row -->
-                                        <div class="radio-align-left">
-                                            <label class="form-check-label radio-options"
-                                                for="flexRadioDefault14">
-                                                Special Rates
-                                            </label>
-                                        </div>
-                                        <div class="col radio-align-right">
-                                            <input class="form-check-input" type="radio" name="black-box"
-                                                id="flexRadioDefault14">
-                                        </div>
-                                    </div> <!-- row / -->
-                                </div> <!-- form-check / -->
-                            </div>   <!-- div-type-business / -->
-                            
-                         </div>
-                        <div class="mb-2">
-                            <div class="div-type-business "> <!-- div-type-business -->
-                                <div class="form-check"> <!-- form-check -->
-                                    <div class="row"> <!-- row -->
-                                        <div class="radio-align-left">
-                                            <label class="form-check-label radio-options"
-                                                for="flexRadioDefault14">
-                                                Open Rate
-                                            </label>
-                                        </div>
-                                        <div class="col radio-align-right">
-                                            <input class="form-check-input" type="radio" name="black-box"
-                                                id="flexRadioDefault14">
-                                        </div>
-                                    </div> <!-- row / -->
-                                </div> <!-- form-check / -->
-                            </div>   <!-- div-type-business / -->
-                            
-                         </div>
-
-                        
-
-                        
-
-                        <div class="mb-2 mt-4">
-                            <input type="text"class="form-control   " name="text" id="text"
-                                                    placeholder="Rate" autocomplete="off">
-                        </div>
-
-                    </div>
-
-                    
-                </div>
-
-               
-            </div>
-            
-          </div>
-
-        
-
-    </div> <!-- container /-->
-
-
-
-
-
-<script>
-//test for getting url value from attr
-// var img1 = $('.test').attr("data-thumbnail");
-// console.log(img1);
-
-
-//***** Dropdown List With ICON Airline Start ****
-//test for iterating over child elements
-var langArray = [];
-$('.vodiapicker option').each(function(){
-  var img = $(this).attr("data-thumbnail");
-  var text = this.innerText;
-  var value = $(this).val();
-  var item = '<li><img src="'+ img +'" alt="" value="'+value+'"/><span>'+ text +'</span></li>';
-  langArray.push(item);
-})
-
-$('#a').html(langArray);
-
-//Set the button value to the first el of the array
-$('.btn-select').html(langArray[0]);
-$('.btn-select').attr('value', 'en');
-
-//change button stuff on click
-$('#a li').click(function(){
-   var img = $(this).find('img').attr("src");
-   var value = $(this).find('img').attr('value');
-   var text = this.innerText;
-   var item = '<li><img src="'+ img +'" alt="" /><span>'+ text +'</span></li>';
-  $('.btn-select').html(item);
-  $('.btn-select').attr('value', value);
-  $(".b").toggle();
-  //console.log(value);
-});
-
-$(".btn-select").click(function(){
-        $(".b").toggle();
-    });
-
-//check local storage for the lang
-var sessionLang = localStorage.getItem('lang');
-if (sessionLang){
-  //find an item with value of sessionLang
-  var langIndex = langArray.indexOf(sessionLang);
-  $('.btn-select').html(langArray[langIndex]);
-  $('.btn-select').attr('value', sessionLang);
-} else {
-   var langIndex = langArray.indexOf('ch');
-  console.log(langIndex);
-  $('.btn-select').html(langArray[langIndex]);
-  //$('.btn-select').attr('value', 'en');
-}
-
-
-//***** Dropdown List With ICON Airline End ****
-
-
-</script>
-
-
-
-
-<style>
-
-.custom-control-label::before
- { background-color: darkorange; }
-
-.vodiapicker{
-  display: none; 
-}
-
-#a{
-  padding-left: 0px;
-}
-
-#a img, .btn-select img{
-  width: 32px;
-  
-}
-
-#a li{
-  list-style: none;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-#a li:hover{
- background-color: #F4F3F3;
-}
-
-#a li img{
-  margin: 5px;
-}
-
-#a li span, .btn-select li span{
-  margin-left: 30px;
-}
-
-/* item list */
-
-.b{
-  display: none;
-  width: 100%;
-  max-width: 350px;
-  box-shadow: 0 6px 12px rgba(0,0,0,.175);
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 5px;
-  
-}
-
-.open{
-  display: show !important;
-}
-
-.btn-select{
-  margin-top: 10px;
-  width: 100%;
-  max-width: 350px;
-  height: 34px;
-  border-radius: 5px;
-  background-color: #fff;
-  border: 1px solid #ccc;
- 
-}
-.btn-select li{
-  list-style: none;
-  float: left;
-  padding-bottom: 0px;
-}
-
-.btn-select:hover li{
-  margin-left: 0px;
-}
-
-.btn-select:hover{
-  background-color: #F4F3F3;
-  border: 1px solid transparent;
-  box-shadow: inset 0 0px 0px 1px #ccc;
-  
-  
-}
-
-.btn-select:focus{
-   outline:none;
-}
-
-.lang-select{
-  margin-left: 0px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container{
-    margin-top: 50px;
-}
-.radio-align-right {
-  text-align: right;
-}
-
-.radio-align-left {
-  text-align: left;
-}
-.form-check {
-  position: relative;
-  display: block;
-  padding-left: 1.25rem;
-}
-.radio-options {
-  color: #1f1f1f;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  cursor: pointer;
-}
-.div-type-business {
-  width: 100%;
-  height: 30PX;
-  border: 1px solid #CED4DA;
-  padding-top: 2px;
-  border-radius: 3px;
-  margin-bottom: 9PX;
-  background-color: white;
-}
-.form-check-input[disabled]~.form-check-label,
-.form-check-input:disabled~.form-check-label {
-  color: #6c757d;
-}
-
-.form-check-label {
-  margin-bottom: 0;
-}
-
-</style>
 
 
 
 
 
 </body>
+
+
+<style>
+body{
+  background: #0D1117;
+}  
+.container{
+  padding-top: 80px;
+  width: 1440px;
+}
+h1{
+color: #FFF;
+font-family: Koulen;
+font-size: 70px;
+font-style: normal;
+font-weight: 400;
+line-height: 105.664%; /* 73.965px */
+text-transform: uppercase;
+}
+h3{
+color: #FFF;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+p{
+color: #FFF;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.text-p1{
+margin-top: -15px;  
+color: #FFF;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 200;
+line-height: normal;
+}
+
+</style>
+
 </html>
