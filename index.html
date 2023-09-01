@@ -142,7 +142,7 @@ line-height: normal;
 body { font-family: sans-serif; }
 
 .gallery {
-  background: #EEE;
+  background: transparent;
 }
 
 .gallery-cell {
@@ -160,8 +160,19 @@ body { font-family: sans-serif; }
   content: counter(gallery-cell);
   line-height: 200px;
   font-size: 80px;
-  color: white;
+  color: transparent;
 }
+.flickity-page-dots .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 8px;
+    background: #e6e6e6;
+    border-radius: 50%;
+    opacity: 0.25;
+    cursor: pointer;
+}
+
 
 </style>
 
