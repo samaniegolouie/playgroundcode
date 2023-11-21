@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF HWB</title>
+    <!-- CSS only -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+
+</head>
+<style>
+#pdfV {
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+}
+</style>
+<body>
+    <div id="iframeContainer">
+        <iframe src="" frameborder="0" id="pdfV"></iframe>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, magnam!</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="build/pdfmake.min.js"></script>
+    <script src="build/vfs_fonts.js"></script>
+
+    <script> $(document).ready(function() {
+        var docDefinition = {
+            pageSize: 'A4',
+            pageMargins: [25, 443, 25, 150],
+            header: [{
+                    fillColor: '#0A4462',
+                    margin: [0, -5, 0, 0],
+                    table: {
+                        widths: ["65%", "35%"],
+                        headerRows: 1,
+                        body: [
+                            [{
+                                margin: [10, 40, -5, 0],
+                                border: [false, false, false, false],
+                                table: {
+                                    widths: ["*", "*"],
+                                    body: [
+                                        [{
+                                            image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAASCAYAAAAE7bMcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJoSURBVHgBvVjRcdswDKV6/a9G4Ab1BlUnSDawNnA7QdUJmg2cDdJOoGYCORPImcDKBAgQUQkEAyKp+PLuYEnUAwjAIAm7cBcAAJR4IfEoQ1EUB5eJYMMHOwe0MbxD/4j6xxxlD3NUGboVSotyEjboeU+2E2zUwYZEj7LN8EHT36f4sDoJyPsFcZysQHC8NJzXgvGGjT+J+ptYMNlJQM7OmKyF86pQbeLYncLrDBs9jOUe+xIsH+jZXywJgX8SE1eCU0uO8l4G79l7qpJGcJoFn3vFB6nfxoLKScKN4HuD90Pwrti7TgRQGjZaLQi8v030oUmKbUUSOs0xg8urYW/Mt13QLwPfw7xSzuwu6HNuo/E+uXzwTeY+wv3H7itFn/DgDNAxSUfdJDQWksEr5++SPl6ObEjdID+7DChle4yoaO9nNmRPgXPUePnmdPx0Yy/A8eSWQUmegv+iEbKS8EGoUKwl8hslq4lyRuAcWctB6eLKiMpXdj+I6wsgpZmZQ/rgI3zuo1o1a/YEXr5XES5fg4+KPuGaP2Ci6yIAH7+Ld9PeMBhzzBASXLEhtZ1fk4TZZmedJmFtezZ0Rx8hCO7MDowjElGz+4Phw3ahmuSy+q+yVhyR8tjpgfUAgXMN72iWAmdnHaUw/l4A4UNMn/cZGxh7iK2VhKl11cQHHdkITY60kN42twqvC5LSNjcZ+q9tM5x3vJWWhCX4iBOgTF47u6LaBBs9pHeElg8bUQUczeoksKzeGhPfQPpP6c6wQUGWEX1aem2OPpuvJx8LdyHAmO38PzTe9EmXbNDOP+TagMw/VYK/xBueAQdoafTlhSHlAAAAAElFTkSuQmCC',
+                                            width: 86.95,
+                                            height: 18,
+                                            border: [false, false, false, false],
+                                        }, ],
+                                    ]
+                                }
+                            }, {
+                                margin: [0, 10, 13, 5],
+                                border: [false, false, false, false],
+                                table: {
+                                    widths: ["*"],
+                                    body: [
+                                        [{
+                                            text: "Boss Cargo Express Freight Services Inc",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            alignment: "right"
+                                        }, ],
+                                        [{
+                                            text: "2nd Floor Unit F, Jade Villa 2",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "right"
+                                        }, ],
+                                        [{
+                                            text: "0556 Quirino Avenue, Tambo",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "right"
+                                        }, ],
+                                        [{
+                                            text: "Parañaque City 1701, Philippines",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "right"
+                                        }, ],
+                                        [{
+                                            text: "Tel No: (02)8887 2369 / 8881 1948",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "right"
+                                        }, ],
+                                        [{
+                                            text: "info@bosscargo.express",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "right"
+                                        }, ],
+                                        [{
+                                            text: "www.bosscargo.express",
+                                            color: '#fff',
+                                            fontSize: 8,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "right"
+                                        }, ],
+                                    ]
+                                }
+                            }]
+                        ]
+                    }
+                }, {
+                    margin: [-25, 0, -25, 0],
+                    table: {
+                        widths: ["70%", "30%"],
+                        headerRows: 1,
+                        body: [
+                            [{
+                                margin: [-5, -3, -5, 0],
+                                border: [false, false, false, false],
+                                table: {
+                                    widths: ["*", "*"],
+                                    body: [
+                                        [{
+                                            text: 'DVO2201078', /// ------- TN NUMBER $TNumber
+                                            fontSize: 22,
+                                            bold: true,
+                                            margin: [-14, 30, 0, 0],
+                                            color: '#00A996',
+                                            alignment: 'center',
+                                            border: [false, false, false, false],
+                                        }, ],
+                                    ]
+                                }
+                            }, {
+                                margin: [-5, 10, -5, 0],
+                                border: [false, false, false, false],
+                                table: {
+                                    widths: ["*", "*"],
+                                    body: [
+                                        [{
+                                            text: "HBW",
+                                            color: '#000',
+                                            fontSize: 8.5,
+                                            bold: false,
+                                            border: [false, false, false, false],
+                                        }, {
+                                            text: "88920", ///----- HWB NUMBER
+                                            fontSize: 8.5,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                        }, ],
+                                        [{
+                                            text: "DATE",
+                                            color: '#000',
+                                            fontSize: 8.5,
+                                            bold: false,
+                                            border: [false, false, false, false],
+                                        }, {
+                                            text: "July 29, 2022", ///----- DATE TODAY
+                                            fontSize: 8.5,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                        }, ],
+                                        [{
+                                            text: "ORIGIN",
+                                            color: '#000',
+                                            fontSize: 8.5,
+                                            bold: false,
+                                            border: [false, false, false, false],
+                                        }, {
+                                            text: "DVO", ///----- ORIGIN  $origin
+                                            fontSize: 8.5,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                        }, ],
+                                        [{
+                                            text: "DESTINATION",
+                                            color: '#000',
+                                            fontSize: 8.5,
+                                            bold: false,
+                                            border: [false, false, false, false],
+                                        }, {
+                                            text: "MNL", ///----- DESTINATION  $destination
+                                            fontSize: 8.5,
+                                            bold: true,
+                                            border: [false, false, false, false],
+                                        }, ],
+                                    ]
+                                }
+                            }]
+                        ]
+                    }
+                }, {
+                    margin: [10, 10, 10, 0],
+                    table: {
+                        widths: ["49.9%", ".1%", "49.9%"],
+                        headerRows: 1,
+                        body: [
+                            [{
+                                // //Shippers Information
+                                margin: [-5, -3, -5, 0],
+                                table: {
+                                    widths: ["5%", "*"],
+                                    body: [
+                                        [{
+                                            text: "1",
+                                            fillColor: '#00A996',
+                                            color: '#FFFFFF',
+                                            fontSize: 12,
+                                            bold: true,
+                                            alignment: 'center'
+                                        }, {
+                                            fontSize: 10,
+                                            text: "Shipper's Information",
+                                        }, ],
+                                        [{
+                                            text: "COMPANY NAME",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "Republic Courier Service Inc Republic", ///----- ORGIN $orgin_company
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                        [{
+                                            text: "CONTACT PERSON",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "Alvin Gerardo Lagarto", ///----- ORGIN $orgin_company $orgin_cp
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                        [{
+                                            text: "CONTACT NUMBER",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "091548765425", ///----- ORGIN $orgin_company $orgin_cp
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                        [{
+                                            text: "ADDRESS",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "Apartment C Lot 6 N/a Sta Agueda Avenue Pascor Drive Brgy Sto. Nino Paranaque 1704 Apartment C Lot 6 N/a Sta Agueda Avenue Pascor Drive.", ///----- ORGIN $orgin_address
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                    ]
+                                }
+                            }, {
+                                text: "",
+                                border: [false, false, false, false],
+                            }, {
+                                // //Shippers Information
+                                margin: [-5, -3, -5, 0],
+                                table: {
+                                    widths: ["5%", "*"],
+                                    body: [
+                                        [{
+                                            text: "2",
+                                            fillColor: '#00A996',
+                                            color: '#FFFFFF',
+                                            fontSize: 12,
+                                            bold: true,
+                                            alignment: 'center'
+                                        }, {
+                                            fontSize: 10,
+                                            text: "Receiver's Information",
+                                        }, ],
+                                        [{
+                                            text: "COMPANY NAME",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "Republic Courier Service Inc Republic", ///----- DESTINATION $orgin_company
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                        [{
+                                            text: "CONTACT PERSON",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "Alvin Gerardo Lagarto", ///----- DESTINATION $orgin_company $orgin_cp
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                        [{
+                                            text: "CONTACT NUMBER",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "091548765425", ///----- DESTINATION $orgin_company $orgin_cp
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                        [{
+                                            text: "ADDRESS",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "Apartment C Lot 6 N/a Sta Agueda Avenue Pascor Drive Brgy Sto. Nino Paranaque 1704 Apartment C Lot 6 N/a Sta Agueda Avenue Pascor Drive. ", ///----- DESTINATION $orgin_address
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, -4, 0, 0]
+                                        }],
+                                    ]
+                                }
+                            }]
+                        ]
+                    }
+                }, {
+                    margin: [10, 10, 10, 0],
+                    table: {
+                        widths: ["57%", "*"],
+                        headerRows: 1,
+                        body: [
+                            [{
+                                // //Shippers Details
+                                margin: [-5, -3, -5, 0],
+                                table: {
+                                    widths: ["5%", "*"],
+                                    body: [
+                                        [{
+                                            text: "3",
+                                            fillColor: '#00A996',
+                                            color: '#FFFFFF',
+                                            fontSize: 12,
+                                            bold: true,
+                                            alignment: 'center'
+                                        }, {
+                                            fontSize: 10,
+                                            text: "Shipment Details",
+                                        }, ],
+                                        [{
+                                            text: "Consumable/Documents ", ///----- SHIPMENT DETAILS $ship_details
+                                            colSpan: 2,
+                                            style: {
+                                                bold: true,
+                                                fontSize: 9
+                                            },
+                                            border: [false, false, false, false],
+                                        }],
+                                        [{
+                                            text: "This is to certify that the shipment is properly described and in good condition.",
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, false, false, false],
+                                            margin: [0, 20, 0, 0]
+                                        }],
+                                        [{
+                                            text: "Declared Value      ₱10000.00", ///----- SHIPMENT DETAILS $$declaredValue                                    
+                                            colSpan: 2,
+                                            style: {
+                                                bold: false,
+                                                fontSize: 8
+                                            },
+                                            border: [false, true, false, false],
+                                            margin: [0, 0, 0, 0]
+                                        }],
+                                    ]
+                                }
+                            }, {
+                                fillColor: '#dedede',
+                                table: {
+                                    widths: ["*", "*"],
+                                    body: [
+                                        [{
+                                            text: "It is agreed that goods described herein are accepted in apparent good order and condition (except as noted) for carriage SUBJECT TO THE CONDITIONS OF CONTRACT ON THE REVERSE HEREOF. ALL GOODS MAY BE CARRIED BY ANY OTHER MEANS INCLUDING ROAD OR ANY OTHER CARRIER UNLESS SPECIFIC CONTRARY INSTRUCTIONS ARE GIVEN HEREOF BY THE SHIPPER, AND THE SHIPPER AGREES THAT THE SHIPMENT MAY BE CARRIED VIA INTERMEDIATE STOPPING PLACES WHICH THE CARRIER DEEMS APPROPRIATE. THE SHIPPER'S ATTENTION IS DRAWN TO THE NOTICE CONCERNING CARRIER'S LIMITATION OF LIABILITY. Shipper may increase such limitation of liability by declaring a higher value for carriage and paying a supplemental charge if required. ",
+                                            colSpan: 2,
+                                            border: [false, false, false, false],
+                                            fontSize: 6,
+                                            alignment: 'justify',
+                                        }, ],
+                                    ]
+                                }
+                            }]
+                        ]
+                    }
+                },
+            ],
+            footer: function(currentPage, pageCount) {
+                return [
+                {
+                    // margin: [10, 10, 10, 0],  
+                    margin: [430, -250, 10, 0],
+                    table: {
+                        widths: ["*"],
+                        headerRows: 1,
+                        body: [
+                            [{
+                                margin: [-5, -3, -5, -3],
+                                table: {
+                                    widths: ["10%", "*"],
+                                    body: [
+                                        [{
+                                            text: "7",
+                                            fillColor: '#00A996',
+                                            color: '#FFFFFF',
+                                            fontSize: 12,
+                                            bold: true,
+                                            alignment: 'center'
+                                        }, {
+                                            fontSize: 10,
+                                            text: "Charges",
+                                        }, ],
+                                    ]
+                                }
+                            }],
+                            [{
+                                margin: [0, 0, 0, 0],
+                                table: {
+                                    widths: ["*", "*"],
+                                    headerRows: 1,
+                                    body: [
+                                        [{
+                                            colSpan: 2,
+                                            border: [false, false, false, false],
+                                            margin: [-10, 0, 0, 0],
+                                            table: {
+                                                widths: ["55%", "53%"],
+                                                body: [
+                                                    [{
+                                                        text: "Freigth Charge",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "68,170.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Valuation",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 5],
+                                                    }, ],
+                                                    [{
+                                                        text: "Insurance",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "AWB Fee",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "100.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Permit",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Handling",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Pickup",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Delivery / ODA",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "2,000.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Crafting",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Packing",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Fuel Surcharge",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "1,170.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Others",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Others Nvat ",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "0.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "Sub Total",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 3],
+                                                    }, {
+                                                        text: "72,229.00",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 3],
+                                                    }, ],
+                                                    [{
+                                                        text: "12% VAT",
+                                                        fontSize: 8,
+                                                        bold: false,
+                                                        border: [false, false, false, false],
+                                                        margin: [10, 0, 0, 5],
+                                                    }, {
+                                                        text: "8,667.48",
+                                                        fontSize: 8,
+                                                        border: [false, false, false, false],
+                                                        bold: true,
+                                                        margin: [10, 0, 0, 5],
+                                                    }, ],
+                                                    [{
+                                                        text: "Total Amount",
+                                                        fontSize: 10,
+                                                        bold: false,
+                                                        border: [false, true, false, false],
+                                                        margin: [0, 5, 0, 0],
+                                                    }, {
+                                                        fontSize: 10,
+                                                        border: [false, true, false, false],
+                                                        text: "₱ 80,896.48",
+                                                        bold: true,
+                                                        margin: [0, 5, 0, 0],
+                                                    }, ],
+                                                ]
+                                            }
+                                        }]
+                                    ]
+                                }
+                            }, ]
+                        ]
+                    }
+                }, 
+                {
+                    margin: [10, -73, 0, 0],
+                    table: {
+                        widths: ['2%', '10%', '15%', '.1%', '2%', '11%', '11%', '14%'],
+                        headerRows: 2,
+                        // keepWithHeaderRows: 1,
+                        body: [
+                            [{
+                                text: '5',
+                                fillColor: '#00A996',
+                                color: '#FFFFFF',
+                                fontSize: 10,
+                                alignment: 'center'
+                            }, {
+                                text: 'Chargeable Weight',
+                                fontSize: 9,
+                                colSpan: 2,
+                            }, {
+                                text: '',
+                            }, {
+                                text: '',
+                                border: [false, false, false, false],
+                            }, {
+                                text: '6',
+                                fillColor: '#00A996',
+                                color: '#FFFFFF',
+                                fontSize: 10,
+                                alignment: 'center'
+                            }, {
+                                text: 'Freight Mode',
+                                fontSize: 9,
+                                alignment: 'center'
+                            }, {
+                                text: 'Service Mode',
+                                fontSize: 9,
+                                alignment: 'center'
+                            }, {
+                                text: 'Payment Mode',
+                                fontSize: 9,
+                                alignment: 'center'
+                            }],
+                            [{
+                                text: 'Total Actual Weight ',
+                                fontSize: 7.2,
+                                border: [true, false, true, false],
+                                margin: [0, 3, 0, 0],
+                                alignment: 'center',
+                                colSpan: 2,
+                            }, {
+                                text: ''
+                            }, {
+                                text: 'Total Chargeable Weight',
+                                fontSize: 7.2,
+                                border: [false, false, true, false],
+                                margin: [0, 3, 0, 0],
+                                alignment: 'center '
+                                 
+                            }, {
+                                text: '',
+                                border: [false, false, false, false],
+                            }, {
+                                text: '',
+                                border: [true, false, false, false],
+                                colSpan: 2,
+                            }, {
+                                text: '',
+                            }, {
+                                text: '',
+                                border: [true, false, false, false]
+                            }, {
+                                text: '',
+                                border: [true, false, true, false]
+                            }],
+                            [{
+                                text: '152.30 ',
+                                fontSize: 9,
+                                bold: true,
+                                border: [true, false, true, true],
+                                alignment: 'center',
+                                colSpan: 2,
+                            }, {
+                                text: ''
+                            }, {
+                                text: '253.30',
+                                fontSize: 9,
+                                bold: true,
+                                border: [false, false, true, true],
+                                alignment: 'center'
+                            }, {
+                                text: '',
+                                border: [false, false, false, false],
+                            }, {
+                                text: 'LAND',
+                                fontSize: 8,
+                                bold: true,
+                                alignment: 'center',
+                                margin: [0, -5, 0, 0],
+                                border: [true, false, true, true],
+                                colSpan: 2,
+                            }, {
+                                text: '',
+                            }, {
+                                text: 'DOOR TO PORT',
+                                fontSize: 8,
+                                bold: true,
+                                margin: [0, -5, 0, 0],
+                                border: [false, false, true, true],
+                                alignment: 'center'
+                            }, {
+                                //   text: 'E-PAYMENT )\n \n7DAYS',
+                                text: 'E-PAYMENT (G-CASH, PAYMAYA ETC..)\n \nACCOMMODATION (7DAYS)',
+                                fontSize: 6.5,
+                                bold: true,
+                                margin: [0, -13, 0, 0],
+                                border: [false, false, true, true],
+                                alignment: 'center'
+                            }],
+                        ]
+                    }
+                }, 
+                {
+                    margin: [10, 20, 0, 0],
+                    table: {
+                        widths: ['10%', '22%', '5%', '1%', '30%'],
+                        headerRows: 2,
+                        // keepWithHeaderRows: 1,
+                        body: [
+                            [{
+                                text: "Shipper's Signature Over Printed Name",
+                                fontSize: 8,
+                                alignment: 'center',
+                                border: [false, true, false, false],
+                                colSpan: 2,
+                            }, {
+                                text: '',
+                            }, {
+                                text: '',
+                                border: [false, false, false, false],
+                            }, {
+                                text: "Consignee's Signature Over Printed Name",
+                                fontSize: 8,
+                                alignment: 'center',
+                                border: [false, true, false, false],
+                                colSpan: 2,
+                            }, {
+                                text: '',
+                            }, ],
+                            [{
+                                text: 'By signing on this document I agree to the terms and conditions at the back of the back of the non-negotiable waybill',
+                                fontSize: 6,
+                                margin: [0, -3, 0, 0],
+                                alignment: 'center',
+                                border: [false, false, false, false],
+                                colSpan: 2,
+                            }, {
+                                text: ''
+                            }, {
+                                text: '',
+                                border: [false, false, false, false],
+                            }, {
+                                text: 'Received accompanying shipment in good order and condition',
+                                fontSize: 6,
+                                alignment: 'center',
+                                border: [false, false, false, false],
+                                margin: [30, -3, 30, 5],
+                                colSpan: 2,
+                            }, {
+                                text: ''
+                            }],
+                            [
+                            {
+                                text:"SHIPPER'S COPY",
+                                fontSize: 7,
+                                italics: true,
+                                border: [false, false, false, false],
+                            },
+                            {
+                                colSpan: 4,
+                                text: 'Page '+ currentPage.toString() + ' of ' + pageCount,
+                                style:{
+                                    fontSize: 6,
+                                    italics: true,
+                                },
+                                alignment:'center',
+                                margin:[90,0,0,0],
+                                border: [false, false, false, false],
+                            },
+                         
+                        ]
+                        ]
+                    }
+                }, 
+                {
+                                margin: [450, -24, 0, 5],
+                                fillColor: '#FFF',
+                                border: [false, false, false, false],
+                                table: {
+                                    widths: ["*"],
+                                    body: [                                     
+                                        [{
+                                            text: "Gilbert Trian Loteria", //$Encodeby
+                                            color: '#000',
+                                            fontSize: 7.5,
+                                            bold: false,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "center"
+                                        },
+                                     ], 
+                                        [{
+                                            text: "Processed by",
+                                            color: '#000',
+                                            fontSize: 6.5,
+                                            italics: true,
+                                            border: [false, false, false, false],
+                                            margin: [0, -3, 0, 0],
+                                            alignment: "center"
+                                        },
+                                     ], 
+                                        
+                                        
+                                        
+                                     
+                                    ]
+                                }
+                            },
+            ]
+            },
+            content: [{
+                margin: [-15, 0, 0, 0],
+                table: {
+                    widths: ['2%', '13.2%', '13.2%', '13.2%', '13.2%', '15%'],
+                    headerRows: 2,
+                    // keepWithHeaderRows: 1,
+                    body: [
+                        [{
+                            text: '4',
+                            fillColor: '#00A996',
+                            color:'#fff',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: 'Dimensions',
+                            fontSize: 9,
+                            colSpan: 5,
+                        }, {
+                            text: '',
+                        }, {
+                            text: '',
+                        }, {
+                            text: '',
+                        }, {
+                            text: '',
+                        }, ],
+                        [{
+                            text: 'Pieces',
+                            fillColor: '#DEDEDE',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'
+                        }, {
+                            text: '',                        
+                        }, {
+                            text: 'Length',
+                            fillColor: '#DEDEDE',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: 'Weight',
+                            fillColor: '#DEDEDE',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: 'Height',
+                            fillColor: '#DEDEDE',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: 'Volume Weight',
+                            fillColor: '#DEDEDE',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                           
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        [{
+                            text: '1',
+                            fontSize: 9,
+                            colSpan: 2,
+                            alignment: 'center'                            
+                        }, {
+                            text: '',
+                        }, {
+                            text: '22',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '33',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '44',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, {
+                            text: '55',
+                            fontSize: 9,
+                            alignment: 'center'
+                        }, ],
+                        
+                    ]
+                }
+            }, ],
+            styles: {
+                section: {
+                    fontSize: 9,
+                    color: '#FFFFFF',
+                    fillColor: '#2361AE',
+                    margin: [-40, -40, 0, 0],
+                },
+                tableHeader: {
+                    bold: true,
+                    fontSize: 13,
+                    color: 'black'
+                }
+            },
+        }
+        pdfMake.createPdf(docDefinition).getDataUrl().then((dataUrl) => {
+            $('#pdfV').attr('src', dataUrl)
+        }, err => {
+            console.error(err);
+        });
+    }) </script>
+
+</body>
+</html>
