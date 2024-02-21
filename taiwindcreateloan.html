@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Table</title>
+<!-- Include Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+<h2 class="text-2xl mb-4">Table</h2>
+<table id="myTable" class="w-full mb-8">
+  <thead>
+    <tr>
+      <th class="px-4 py-2">Loan types</th>
+      <th class="px-4 py-2">Reference No.</th>
+      <th class="px-4 py-2">Amortization Amount </th>
+      <th class="px-4 py-2">Start Date Deduction</th>
+      <th class="px-4 py-2">End  Date Deduction</th>
+      <th class="px-4 py-2">Bimonthly</th>
+      <th class="px-4 py-2">Action</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    <!-- Table rows will be dynamically added here -->
+  </tbody>
+</table>
+
+<!-- Button to add new row -->
+<button onclick="addNewRow()" class="px-4 py-2 bg-blue-500 text-white rounded mb-4">Add New Row</button>
+
+<script>
+function addNewRow() {
+    var tableBody = document.getElementById("tableBody");
+
+    var newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <td>
+        <select class="dropdownField px-4 py-2 border border-gray-300 rounded">
+          <option value="">Select</option>
+          <option value="SSS">SSS</option>
+          <option value="Pagibig">Pag-ibig</option>
+          <option value="Philhealth">Philhealth</option>
+          <option value="CompanyLoan">Company Loan</option>       
+        </select>
+      </td>
+      <td><input type="text" class="field1 px-4 py-2 border border-gray-300 rounded"></td>
+      <td><input type="text" class="amount px-4 py-2 border border-gray-300 rounded"></td>
+      <td><input type="date" class="date1 px-4 py-2 border border-gray-300 rounded"></td>
+      <td><input type="date" class="date2 px-4 py-2 border border-gray-300 rounded"></td>
+      <td><input type="number" class="number px-4 py-2 border border-gray-300 rounded" min="0"></td>
+      <td><button onclick="removeRow(this)" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button></td>
+    `;
+    tableBody.appendChild(newRow);
+}
+
+function removeRow(button) {
+    var row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+}
+</script>
+
+</body>
+</html>
