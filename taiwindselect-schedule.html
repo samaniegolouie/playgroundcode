@@ -3,73 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automatic Computation with Moment.js</title>
+<title>Tables</title>
 <!-- Include Tailwind CSS -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<!-- Include moment.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </head>
 <body class="bg-gray-100 p-8">
 
-<label for="numberField" class="block">Number (Hours):</label>
-<input type="number" id="numberField" onchange="computeTimeEnds()" class="block border border-gray-300 rounded px-4 py-2 mb-4">
-
-<table id="timeTable" class="w-full mb-8">
+<h2 class="text-2xl mb-4">Table 1</h2>
+<table id="table1" class="w-full mb-8">
   <thead>
     <tr>
-      <th class="px-4 py-2">Time Start</th>
-      <th class="px-4 py-2">Time End</th>
-      <th class="px-4 py-2">Action</th> <!-- New column for remove button -->
+      <th class="px-4 py-2">Time</th>
+      <th class="px-4 py-2">Action</th>
     </tr>
   </thead>
-  <tbody id="tableBody">
+  <tbody>
     <tr>
-      <td><input type="time" class="timeStartField px-4 py-2 border border-gray-300 rounded" onchange="computeTimeEnds()"></td>
-      <td><input type="text" class="timeEndField px-4 py-2 border border-gray-300 rounded" readonly></td>
-      <td><button onclick="removeTimeStartRow(this)" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button></td>
+      <td>6am - 3pm</td>
+      <td><button onclick="addToTable2('', '6am - 3pm')" class="addButton px-4 py-2 bg-blue-500 text-white rounded">Add</button></td>
+    </tr>
+    <tr>
+      <td>8am - 5pm</td>
+      <td><button onclick="addToTable2('', '8am - 5pm')" class="addButton px-4 py-2 bg-blue-500 text-white rounded">Add</button></td>
+    </tr>
+    <tr>
+      <td>9am - 6pm</td>
+      <td><button onclick="addToTable2('', '9am - 6pm')" class="addButton px-4 py-2 bg-blue-500 text-white rounded">Add</button></td>
     </tr>
   </tbody>
 </table>
 
-<!-- Additional rows can be added dynamically -->
-<button onclick="addTimeStartRow()" class="px-4 py-2 bg-blue-500 text-white rounded mb-4">Add Time Start Row</button>
+<h2 class="text-2xl mb-4">Table 2</h2>
+<table id="table2" class="w-full mb-8">
+  <thead>
+    <tr>
+      <th class="px-4 py-2">Day</th>
+      <th class="px-4 py-2">Time</th>
+      <th class="px-4 py-2">Action</th>
+    </tr>
+  </thead>
+  <tbody id="table2Body">
+    <!-- Table 2 rows will be dynamically added here -->
+  </tbody>
+</table>
 
 <script>
-function computeTimeEnds() {
-    var numberHours = parseInt(document.getElementById("numberField").value, 10);
-    var timeStartFields = document.querySelectorAll(".timeStartField");
-    var timeEndFields = document.querySelectorAll(".timeEndField");
+function addToTable2(day, time) {
+    var table2Body = document.getElementById("table2Body");
 
-    timeStartFields.forEach(function(timeStartField, index) {
-        var timeStart = timeStartField.value;
-
-        // Use moment.js to handle time calculations
-        var startTime = moment(timeStart, "HH:mm");
-        var endTime = startTime.clone().add(numberHours, 'hours');
-
-        // Format the end time to 12-hour format with AM/PM designation
-        var formattedEndTime = endTime.format("h:mm A");
-
-        // Display the time end
-        timeEndFields[index].value = formattedEndTime;
-    });
-}
-
-function addTimeStartRow() {
-    var tableBody = document.getElementById("tableBody");
-
+    // Creating a new row with a placeholder for day selection
     var newRow = document.createElement("tr");
     newRow.innerHTML = `
-      <td><input type="time" class="timeStartField px-4 py-2 border border-gray-300 rounded" onchange="computeTimeEnds()"></td>
-      <td><input type="text" class="timeEndField px-4 py-2 border border-gray-300 rounded" readonly></td>
-      <td><button onclick="removeTimeStartRow(this)" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button></td>
+      <td>
+        <select class="dropdownField px-4 py-2 border border-gray-300 rounded" onchange="checkDuplicateDay(this)">
+          <option value="">Select a day</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+      </td>
+      <td>${time}</td>
+      <td><button onclick="removeFromTable2(this)" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button></td>
     `;
-    tableBody.appendChild(newRow);
+    table2Body.appendChild(newRow);
+    checkTable2RowCount();
 }
 
-function removeTimeStartRow(button) {
-    var row = button.parentNode.parentNode;
-    row.parentNode.removeChild(row);
+function removeFromTable2(element) {
+    var row = element.parentNode.parentNode; // Get the <tr> of the "Remove" button
+    row.parentNode.removeChild(row); // Remove the <tr> from the table
+    checkTable2RowCount(); // Update "Add" buttons based on the new row count
+}
+
+function checkTable2RowCount() {
+    const rows = document.getElementById("table2Body").rows.length;
+    const addButtons = document.querySelectorAll('.addButton');
+    if (rows >= 6) {
+        addButtons.forEach(button => {
+            button.disabled = true;
+        });
+    } else {
+        addButtons.forEach(button => {
+            button.disabled = false;
+        });
+    }
+}
+
+function checkDuplicateDay(selectedDropdown) {
+    const selectedDay = selectedDropdown.value;
+    const dropdowns = document.querySelectorAll('.dropdownField');
+    
+    let duplicateCount = 0;
+    dropdowns.forEach(dropdown => {
+        if (dropdown.value === selectedDay) {
+            duplicateCount += 1;
+        }
+    });
+
+    if (duplicateCount > 1) { // Found a duplicate
+        alert("This day has already been selected. Please select a different day.");
+        selectedDropdown.value = ""; // Reset the current selection to the placeholder
+    }
 }
 </script>
 
