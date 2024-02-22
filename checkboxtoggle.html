@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Toggle</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Additional styling */
+    .toggle-checkbox {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%; /* Make it circular */
+      border: 2px solid #4F46E5; /* Border color */
+      outline: none;
+      cursor: pointer;
+      margin-right: 8px; /* Add some space between the checkbox and labels */
+    }
+    .toggle-checkbox:checked {
+      background-color: #4F46E5; /* Background color when checked */
+    }
+    .toggle-label {
+      display: none;
+    }
+    .toggle:checked + .toggle-label.open {
+      display: inline;
+    }
+    .toggle:not(:checked) + .toggle-label.closed {
+      display: inline;
+    }
+  </style>
+</head>
+<body class="p-4">
+  <!-- Checkbox -->
+  <input type="checkbox" id="toggle" class="toggle-checkbox">
+  <!-- Label -->
+  <label for="toggle" class="toggle-label open text-green-500">Daily Pay</label>
+  <label for="toggle" class="toggle-label closed text-red-500">Monthly Pay</label>
+
+  <script>
+    // JavaScript to toggle label text
+    const checkbox = document.getElementById('toggle');
+    const labelOpen = document.querySelector('.text-green-500');
+    const labelClose = document.querySelector('.text-red-500');
+
+    // Function to update label text
+    function updateLabel() {
+      if (checkbox.checked) {
+        labelOpen.style.display = 'inline';
+        labelClose.style.display = 'none';
+      } else {
+        labelOpen.style.display = 'none';
+        labelClose.style.display = 'inline';
+      }
+    }
+
+    // Call the function initially
+    updateLabel();
+
+    // Add event listener for checkbox change
+    checkbox.addEventListener('change', updateLabel);
+  </script>
+</body>
+</html>
