@@ -6,6 +6,26 @@
 <title>Dynamic Table</title>
 <!-- Include Tailwind CSS -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  /* Additional styles for responsiveness */
+  @media (max-width: 640px) {
+    .accordion-content {
+      display: none;
+    }
+    .accordion-header {
+      cursor: pointer;
+    }
+    .accordion-content.active {
+      display: table-row-group;
+    }
+    .accordion-content td {
+      display: table-cell;
+    }
+    .accordion-content.expanded {
+      display: table-row;
+    }
+  }
+</style>
 </head>
 <body class="bg-gray-100 p-8">
 
@@ -15,9 +35,9 @@
     <tr>
       <th class="px-4 py-2">Loan types</th>
       <th class="px-4 py-2">Reference No.</th>
-      <th class="px-4 py-2">Amortization Amount </th>
+      <th class="px-4 py-2">Amortization Amount</th>
       <th class="px-4 py-2">Start Date Deduction</th>
-      <th class="px-4 py-2">End  Date Deduction</th>
+      <th class="px-4 py-2">End Date Deduction</th>
       <th class="px-4 py-2">Bimonthly</th>
       <th class="px-4 py-2">Action</th>
     </tr>
@@ -59,6 +79,27 @@ function removeRow(button) {
     var row = button.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }
+
+// Toggle accordion content for mobile view
+document.addEventListener('DOMContentLoaded', function () {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function () {
+      const contentRow = this.closest('tr').nextElementSibling;
+      if (contentRow.classList.contains('active')) {
+        contentRow.classList.remove('active');
+        setTimeout(() => {
+          contentRow.classList.remove('expanded');
+        }, 300);
+      } else {
+        contentRow.classList.add('expanded');
+        setTimeout(() => {
+          contentRow.classList.add('active');
+        }, 10);
+      }
+    });
+  });
+});
 </script>
 
 </body>
