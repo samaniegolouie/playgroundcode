@@ -1,194 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- Include Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /*
-        Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-        */
-        @media only screen and (max-width: 760px),
-        (min-device-width: 768px) and (max-device-width: 1024px) {
-            /* Force table to not be like tables anymore */
-            table,
-            thead,
-            tbody,
-            th,
-            td,
-            tr {
-                display: block;
-            }
-
-            /* Hide table headers (but not display: none;, for accessibility) */
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-
-            tr {
-                margin: 0 0 1rem 0;
-            }
-
-            tr:nth-child(odd) {
-                background: #ccc;
-            }
-
-            td {
-                /* Behave like a "row" */
-                border: none;
-                border-bottom: 1px solid #eee;
-                position: relative;
-                padding-left: 50%;
-            }
-
-            td:before {
-                /* Now like a table header */
-                position: absolute;
-                /* Top/left values mimic padding */
-                top: 0;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-            }
-
-            /*
-            Label the data
-            You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-            */
-            td:nth-of-type(1):before {
-                content: "Loan types";
-            }
-
-            td:nth-of-type(2):before {
-                content: "Reference No.";
-            }
-
-            td:nth-of-type(3):before {
-                content: "Amortization Amount";
-            }
-
-            td:nth-of-type(4):before {
-                content: "Start Date Deduction";
-            }
-
-            td:nth-of-type(5):before {
-                content: "End Date Deduction";
-            }
-
-            td:nth-of-type(6):before {
-                content: "Bimonthly";
-            }
-
-            td:nth-of-type(7):before {
-                content: "Action";
-            }
-
-        }
-
-        @media only screen and (max-width: 760px) {
-            tr td:not(:first-child) {
-                display: none;
-            }
-
-            td:nth-of-type(1):before {
-                content: " + Loan types";
-            }
-
-            .plus::before {
-                content: '+  Loan types' !important;
-            }
-
-            .minus::before {
-                content: '- Loan types' !important;
-            }
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            $('tr').click(function () {
-                var th = $(this);
-                th.find('td:not(:first-child)').toggle();
-                th.find('td:first-child').toggleClass('minus plus');
-            });
-        });
-
-        // Function to add new row
-        function addNewRow() {
-            var newRow = `
-                <tr role="row">
-                    <td role="cell">
-                        <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4">
-                    </td>
-                    <td role="cell">
-                        <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4">
-                    </td>
-                    <td role="cell">
-                        <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4">
-                    </td>
-                    <td role="cell">
-                        <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4">
-                    </td>
-                    <td role="cell">
-                        <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4">
-                    </td>
-                    <td role="cell">
-                        <input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4">
-                    </td>
-                    <td role="cell">
-                        <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="removeRow(this)">Remove</button>
-                    </td>
-                </tr>`;
-            $('tbody').append(newRow);
-            $('tr').click(function () {
-                var th = $(this);
-                th.find('td:not(:first-child)').toggle();
-                th.find('td:first-child').toggleClass('minus plus');
-            });
-        }
-
-        // Function to remove row
-        function removeRow(button) {
-            $(button).closest('tr').remove();
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Table</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+</style>
 </head>
-
 <body>
-    <div class="container mx-auto">
-        <table role="table" class="w-full">
-            <thead role="rowgroup" class="hidden md:table-header-group">
-                <tr role="row">
-                    <th role="columnheader">Loan types</th>
-                    <th role="columnheader">Reference No.</th>
-                    <th role="columnheader">Amortization Amount</th>
-                    <th role="columnheader">Start Date Deduction</th>
-                    <th role="columnheader">End Date Deduction</th>
-                    <th role="columnheader">Bimonthly</th>
-                    <th role="columnheader">Action</th>
-                </tr>
-            </thead>
-            <tbody role="rowgroup">
-                <tr role="row">
-                    <td role="cell"><input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4"></td>
-                    <td role="cell"><input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4"></td>
-                    <td role="cell"><input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4"></td>
-                    <td role="cell"><input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4"></td>
-                    <td role="cell"><input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4"></td>
-                    <td role="cell"><input type="text" class="w-full border border-gray-300 rounded-md py-2 px-4"></td>
-                    <td role="cell"><button class="bg-red-500 text-white px-4 py-2 rounded" onclick="removeRow(this)">Remove</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <button onclick="addNewRow()" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Add New Row</button>
-    </div>
-</body>
 
+<table id="myTable">
+  <thead>
+    <tr>
+      <th>ORIGIN</th>
+      <th>DESTINATION</th>
+      <th>FUEL SURCHARGE</th>
+      <th>PERMIT</th>
+      <th>PICK</th>
+      <th>Action</th> <!-- Added new column for remove button -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Rows will be added dynamically here -->
+    <tr>
+        <td>
+            <select class="originSelect">
+                <!-- Options will be added dynamically -->              
+            </select>
+        </td>
+        <td>
+            <select class="destinationSelect">
+                <!-- Options will be added dynamically -->              
+            </select>
+        </td>
+        <td><input type="text" value=""></td>
+        <td><input type="text" value=""></td>
+        <td><input type="text" value=""></td>
+        <td><button onclick="removeRow(this.parentNode.parentNode)">Remove</button></td>
+      </tr>
+  </tbody>
+</table>
+
+<button onclick="addRow()">Add Row</button>
+
+<script>
+
+// Global variable for select options
+var locations = ["ABR","BCD","CRK","MNL","CEB","USU","BSO","BXU","CGY","CYP","CRM","CBO","MPH","DVO","DPL","DGT","GES","ILO","KLO","LAO","LGP","MBT","WNP","OZC","PPS","RXS","SUG","TBH",
+"TAC","TAG","TDG","ZAM","TUG","BUL","BTN","PAM","TAR","CAB","ZMB","DAP","SFE","OLG","BAG","STG","CAU","VIG","CVT","BTG",
+"LAG","MRQ","LCN","SJI","CAL","PAG","ATQ","APR","BAT","SOR","CDN","CLP","ENI","ISB","LGN","NVZ","SLN","SFP","QUI","RZL","SWL","VRC",
+"IBA","EUQ","CGM","IGN","IAO","TWT","CYZ"];
+
+// Function to add options to select element
+function addOptions(selectElement) {
+  for (var j = 0; j < locations.length; j++) {
+    var option = document.createElement("option");
+    option.value = locations[j].toLowerCase();
+    option.text = locations[j];
+    selectElement.appendChild(option);
+  }
+}
+// Call the addOptions function for the select elements in the first row
+addOptions(document.querySelector("#myTable .originSelect"));
+addOptions(document.querySelector("#myTable .destinationSelect"));
+
+function addRow() {
+  var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+  var newRow = table.insertRow();
+
+  // Create and add select element for origin
+  var originCell = newRow.insertCell(0);
+  var originSelect = document.createElement("select");
+  originSelect.classList.add("originSelect");
+  addOptions(originSelect); // Add options to the select element
+  originCell.appendChild(originSelect);
+  
+  // Create and add select element for destination
+  var destinationCell = newRow.insertCell(1);
+  var destinationSelect = document.createElement("select");
+  destinationSelect.classList.add("destinationSelect");
+  addOptions(destinationSelect); // Add options to the select element
+  destinationCell.appendChild(destinationSelect);
+  
+  // Insert cells for other columns and set input fields
+  for (var i = 2; i < 5; i++) {
+    var cell = newRow.insertCell(i);
+    var input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Enter text";
+    cell.appendChild(input);
+  }
+  
+  // Copy values from the first row's columns 4 and 5 to the new row
+//   newRow.cells[2].querySelector('input').value = document.querySelector("#myTable tbody tr:first-child td:nth-child(3) input").value;
+  newRow.cells[3].querySelector('input').value = document.querySelector("#myTable tbody tr:first-child td:nth-child(4) input").value;
+  newRow.cells[4].querySelector('input').value = document.querySelector("#myTable tbody tr:first-child td:nth-child(5) input").value;
+  
+  // Add remove button
+  var removeCell = newRow.insertCell(5);
+  var removeButton = document.createElement("button");
+  removeButton.innerHTML = "Remove";
+  removeButton.onclick = function() {
+    removeRow(newRow);
+  };
+  removeCell.appendChild(removeButton);
+}
+
+function removeRow(row) {
+  row.parentNode.removeChild(row);
+}
+</script>
+
+</body>
 </html>
