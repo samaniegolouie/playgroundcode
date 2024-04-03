@@ -17,7 +17,7 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        let camera, scene, renderer, sphere, particles;
+        let camera, scene, renderer, particles;
         const mouse = new THREE.Vector2();
 
         init();
@@ -29,21 +29,18 @@
 
             scene = new THREE.Scene();
 
-            const geometry = new THREE.SphereGeometry(400, 32, 32);
-            const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
-            sphere = new THREE.Mesh(geometry, material);
-
-            scene.add(sphere);
-
             particles = new Array();
 
             const particleCount = 1000;
             for (let i = 0; i < particleCount; i++) {
-                const particle = new THREE.Vector3(
-                    Math.random() * 2000 - 1000,
-                    Math.random() * 2000 - 1000,
-                    Math.random() * 2000 - 1000
-                );
+                const phi = Math.acos(-1 + (2 * i) / particleCount);
+                const theta = Math.sqrt(particleCount * Math.PI) * phi;
+
+                const particle = new THREE.Vector3();
+                particle.x = 800 * Math.cos(theta) * Math.sin(phi);
+                particle.y = 800 * Math.sin(theta) * Math.sin(phi);
+                particle.z = 800 * Math.cos(phi);
+
                 particles.push(particle);
             }
 
