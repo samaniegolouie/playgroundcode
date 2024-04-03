@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Suggestions</title>
+</head>
+<body>
+    <label for="origin">Origin:</label>
+    <select id="origin"></select><br><br>
+    <label for="destination">Destination:</label>
+    <select id="destination"></select><br><br>
+    <button onclick="calculateRoutes()">Calculate Routes</button><br><br>
+    <div id="routeList"></div>
+
+    <script>
+        async function populateDropdowns() {
+            const locations = await getLocations();
+
+            const originDropdown = document.getElementById('origin');
+            const destinationDropdown = document.getElementById('destination');
+
+            locations.forEach(location => {
+                const option = document.createElement('option');
+                option.value = location.display_name;
+                option.text = location.display_name;
+                originDropdown.appendChild(option.cloneNode(true));
+                destinationDropdown.appendChild(option.cloneNode(true));
+            });
+        }
+
+        async function calculateRoutes() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+
+            const distance = await getDistance(origin, destination);
+
+            if (distance === null) {
+                alert('Error: Unable to calculate the distance.');
+                return;
+            }
+
+            const routeList = document.getElementById('routeList');
+            routeList.innerHTML = `
+                <h3>Route Suggestions</h3>
+                <table>
+                    <tr>
+                        <th>Mode of Transport</th>
+                        <th>Distance (km)</th>
+                    </tr>
+                    <tr>
+                        <td>Land</td>
+                        <td>${distance.land.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Sea</td>
+                        <td>${distance.sea.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Air</td>
+                        <td>${distance.air.toFixed(2)}</td>
+                    </tr>
+                </table>
+            `;
+        }
+
+        async function getLocations() {
+            // Fetch locations from the Nominatim API
+            // In this example, let's return some mock data for demonstration purposes
+            return [
+                { display_name: 'Manila, Metro Manila' },
+                { display_name: 'Cebu City, Cebu' },
+                { display_name: 'Davao City, Davao del Sur' }
+                // Add more locations as needed
+            ];
+        }
+
+        async function getDistance(origin, destination) {
+            // Simulate getting the distance based on the selected origin and destination
+            // In this example, let's return some mock data for demonstration purposes
+            return {
+                land: Math.random() * 1000, // Random distance for land route
+                sea: Math.random() * 1000, // Random distance for sea route
+                air: Math.random() * 1000 // Random distance for air route
+            };
+        }
+
+        populateDropdowns();
+    </script>
+</body>
+</html>

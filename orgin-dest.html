@@ -13,6 +13,9 @@
     <label for="destination">Destination:</label>
     <select id="destination">
         <option value="Bacolod, Negros Occidental">Bacolod, Negros Occidental</option>
+        <option value="Cebu, Philippines">Cebu, Philippines</option>
+        <option value="Davao City, DR,Philippines">Davao City, DR,Philippines</option>
+        
     </select><br><br>
     <button onclick="calculateRoutes()">Calculate Routes</button><br><br>
     <div id="routeList"></div>
@@ -30,14 +33,12 @@
                 return;
             }
 
-            const drivingDistance = await calculateDrivingDistance(originCoords, destinationCoords);
-            const airplaneDistance = calculateAirplaneDistance(originCoords, destinationCoords);
+            const distance = calculateDistance(originCoords, destinationCoords);
 
             const routeList = document.getElementById('routeList');
             routeList.innerHTML = `
                 <h3>Route</h3>
-                <p>Driving Distance: ${drivingDistance.toFixed(2)} km</p>
-                <p>Airplane Distance: ${airplaneDistance.toFixed(2)} km</p>
+                <p>Distance: ${distance.toFixed(2)} km</p>
             `;
         }
 
@@ -59,40 +60,21 @@
             }
         }
 
-        async function calculateDrivingDistance(originCoords, destinationCoords) {
-            const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=YOUR_API_KEY&start=${originCoords.lat},${originCoords.lon}&end=${destinationCoords.lat},${destinationCoords.lon}`;
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.error) {
-                    throw new Error(data.error.message);
-                }
-
-                return data.routes[0].summary.distance / 1000; // Convert meters to kilometers
-            } catch (error) {
-                console.error('Error fetching driving distance:', error);
-                return null;
-            }
-        }
-
-        function calculateAirplaneDistance(originCoords, destinationCoords) {
+        function calculateDistance(originCoords, destinationCoords) {
             const R = 6371; // Radius of the Earth in km
             const lat1 = originCoords.lat * Math.PI / 180;
             const lat2 = destinationCoords.lat * Math.PI / 180;
             const lon1 = originCoords.lon * Math.PI / 180;
             const lon2 = destinationCoords.lon * Math.PI / 180;
 
+            const dlat = lat2 - lat1;
             const dlon = lon2 - lon1;
 
-            const y = Math.sqrt(
-                Math.pow(Math.cos(lat2) * Math.sin(dlon), 2) +
-                Math.pow(Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dlon), 2)
-            );
-            const x = Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(dlon);
+            const a = Math.sin(dlat / 2) * Math.sin(dlat / 2) +
+                      Math.cos(lat1) * Math.cos(lat2) *
+                      Math.sin(dlon / 2) * Math.sin(dlon / 2);
 
-            const c = Math.atan2(y, x);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
             return R * c;
         }
