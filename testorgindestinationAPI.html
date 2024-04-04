@@ -3,69 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Route Suggestions</title>
+    <title>Route Suggestions</title>
 </head>
 <body>
     <label for="origin">Origin:</label>
-    <input type="text" id="originInput" placeholder="Enter origin">
-    <br><br>
+    <select id="origin">
+        <option value="Las Piñas, Metro Manila">Las Piñas, Metro Manila</option>
+    </select><br><br>
     <label for="destination">Destination:</label>
-    <input type="text" id="destinationInput" placeholder="Enter destination">
-    <br><br>
+    <select id="destination">
+        <option value="Bacolod, Negros Occidental">Bacolod, Negros Occidental</option>
+        <option value="Cebu, Philippines">Cebu, Philippines</option>
+        <option value="Davao City, DR,Philippines">Davao City, DR,Philippines</option>
+        
+    </select><br><br>
     <button onclick="calculateRoutes()">Calculate Routes</button><br><br>
     <div id="routeList"></div>
 
     <script>
         async function calculateRoutes() {
-            const originInput = document.getElementById('originInput').value;
-            const destinationInput = document.getElementById('destinationInput').value;
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
 
-            const originCoords = await getCoordinates(originInput);
-            const destinationCoords = await getCoordinates(destinationInput);
+            const originCoords = await getCoordinates(origin);
+            const destinationCoords = await getCoordinates(destination);
 
             if (!originCoords || !destinationCoords) {
                 alert('Error: Unable to find coordinates for origin or destination.');
                 return;
             }
 
-            const apiKey = '5b3ce3597851110001cf62488c0a6607fdd24930ad5f6fcecc9859ab'; // Replace with your OpenRouteService API key
-            const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${originCoords.lat},${originCoords.lon}&end=${destinationCoords.lat},${destinationCoords.lon}`;
+            const distance = calculateDistance(originCoords, destinationCoords);
 
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (response.ok && data.features && data.features.length > 0) {
-                    const distance = data.features[0].properties.summary.distance / 1000; // Distance in meters, convert to km
-                    const duration = data.features[0].properties.summary.duration / 60; // Duration in seconds, convert to minutes
-                    const routeList = document.getElementById('routeList');
-                    routeList.innerHTML = `
-                        <h3>Route</h3>
-                        <p>Distance: ${distance.toFixed(2)} km</p>
-                        <p>Duration: ${duration.toFixed(2)} minutes</p>
-                    `;
-                } else {
-                    alert('Error: Unable to calculate route.');
-                }
-            } catch (error) {
-                console.error('Error fetching route:', error);
-                alert('Error: Unable to fetch route.');
-            }
+            const routeList = document.getElementById('routeList');
+            routeList.innerHTML = `
+                <h3>Route</h3>
+                <p>Distance: ${distance.toFixed(2)} km</p>
+            `;
         }
 
         async function getCoordinates(location) {
-            const apiKey = '5b3ce3597851110001cf62488c0a6607fdd24930ad5f6fcecc9859ab'; // Replace with your OpenRouteService API key
-            const url = `https://api.openrouteservice.org/geocode/search?api_key=${apiKey}&text=${encodeURIComponent(location)}`;
+            const url = `https://nominatim.openstreetmap.org/search.php?q=${location}&format=json&limit=1`;
 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
 
-                if (response.ok && data.features && data.features.length > 0) {
-                    return {
-                        lat: data.features[0].geometry.coordinates[1],
-                        lon: data.features[0].geometry.coordinates[0]
-                    };
+                if (data.length > 0) {
+                    return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
                 } else {
                     return null;
                 }
@@ -73,6 +58,25 @@
                 console.error('Error fetching coordinates:', error);
                 return null;
             }
+        }
+
+        function calculateDistance(originCoords, destinationCoords) {
+            const R = 6371; // Radius of the Earth in km
+            const lat1 = originCoords.lat * Math.PI / 180;
+            const lat2 = destinationCoords.lat * Math.PI / 180;
+            const lon1 = originCoords.lon * Math.PI / 180;
+            const lon2 = destinationCoords.lon * Math.PI / 180;
+
+            const dlat = lat2 - lat1;
+            const dlon = lon2 - lon1;
+
+            const a = Math.sin(dlat / 2) * Math.sin(dlat / 2) +
+                      Math.cos(lat1) * Math.cos(lat2) *
+                      Math.sin(dlon / 2) * Math.sin(dlon / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return R * c;
         }
     </script>
 </body>
