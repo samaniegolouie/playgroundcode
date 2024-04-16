@@ -38,9 +38,9 @@
                 <p>Distance: ${distance.toFixed(2)} km</p>
             `;
         }
-
+ 
         async function getCoordinates(location) {
-            const url = `https://nominatim.openstreetmap.org/search.php?q=${location}&format=json&limit=1`;
+            const url = `https://nominatim.openstreetmap.org/search.php?q=${location}&format=json`;
 
             try {
                 const response = await fetch(url);
