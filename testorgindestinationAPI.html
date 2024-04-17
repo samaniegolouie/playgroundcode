@@ -16,6 +16,7 @@
     </select><br><br>
     <button onclick="calculateRoutes()">Calculate Routes</button><br><br>
     <div id="routeList"></div>
+    <div id="ratesDisplay"></div> <!-- Add a div for displaying rates -->
 
     <script>
         async function calculateRoutes() {
@@ -37,6 +38,8 @@
                 <h3>Route</h3>
                 <p>Distance: ${distance.toFixed(2)} km</p>
             `;
+
+            displayRate(destination); // Call function to display rate for the selected destination
         }
  
         async function getCoordinates(location) {
@@ -68,8 +71,8 @@
                 if (data.length > 0) {
                     data.forEach(option => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = option.location; // Assuming value is provided by API
-                        optionElement.textContent = option.location; // Assuming label is provided by API
+                        optionElement.value = option.location;
+                        optionElement.textContent = option.location;
                         originDropdown.appendChild(optionElement);
                     });
                 } else {
@@ -91,8 +94,8 @@
                 if (data.length > 0) {
                     data.forEach(option => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = option.location; // Assuming value is provided by API
-                        optionElement.textContent = option.location; // Assuming label is provided by API
+                        optionElement.value = option.location;
+                        optionElement.textContent = option.location;
                         destinationDropdown.appendChild(optionElement);
                     });
                 } else {
@@ -103,8 +106,28 @@
             }
         }
 
-        populateOriginDropdown(); // Call function to populate origin dropdown when page loads
-        populateDestinationDropdown(); // Call function to populate destination dropdown when page loads
+        function displayRate(location) {
+            const url = 'https://660d18973a0766e85dbf8c03.mockapi.io/locationtest';
+            const ratesDisplay = document.getElementById('ratesDisplay');
+
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const selectedLocation = data.find(item => item.location === location);
+                if (selectedLocation) {
+                    ratesDisplay.innerHTML = `<p>Rate for ${location}: ${selectedLocation.rates}</p>`;
+                } else {
+                    ratesDisplay.innerHTML = `<p>No rate found for ${location}</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching rates:', error);
+                ratesDisplay.innerHTML = `<p>Error fetching rates</p>`;
+            });
+        }
+
+        populateOriginDropdown();
+        populateDestinationDropdown();
 
         function calculateDistance(originCoords, destinationCoords) {
             const R = 6371; // Radius of the Earth in km
