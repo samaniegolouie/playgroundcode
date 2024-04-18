@@ -36,10 +36,11 @@
             const routeList = document.getElementById('routeList');
             routeList.innerHTML = `
                 <h3>Route</h3>
-                <p>Distance: ${distance.toFixed(2)} km</p>
+                <p id="distance">Distance: ${distance.toFixed(2)} km</p>
             `;
 
             displayRate(destination); // Call function to display rate for the selected destination
+            calculateTotal(); // Calculate total and display in text fields
         }
  
         async function getCoordinates(location) {
@@ -115,8 +116,10 @@
             .then(data => {
                 const selectedLocation = data.find(item => item.location === location);
                 if (selectedLocation) {
-                    ratesDisplay.innerHTML = `<p>Rate for ${location}: ${selectedLocation.rates}</p>`;
-                } else {
+                    ratesDisplay.innerHTML = `<p id="rate">Rate for ${selectedLocation.rates}</p>`;                    
+                }
+                                
+                else {
                     ratesDisplay.innerHTML = `<p>No rate found for ${location}</p>`;
                 }
             })
@@ -147,6 +150,36 @@
 
             return R * c;
         }
+
+        // Function to calculate total and display in text fields
+        function calculateTotal() {
+            const distance = parseFloat(document.getElementById('distance').innerText.split(' ')[1]);
+            const rate = parseFloat(document.getElementById('rate').innerText.split(' ')[2]);
+
+            if (!isNaN(distance) && !isNaN(rate)) {
+                const total = distance * rate;
+                document.getElementById('total').value = total.toFixed(2);
+
+                // Additional text fields
+                document.getElementById('textField2').value = (total * 2).toFixed(2);
+                document.getElementById('textField3').value = (total * 3).toFixed(2);
+                document.getElementById('textField4').value = (total * 4).toFixed(2);
+                document.getElementById('textField5').value = (total * 5).toFixed(2);
+                document.getElementById('textField6').value = (total * 6).toFixed(2);
+            } else {
+                console.error('Error: Distance or rate is not a number.');
+            }
+        }
     </script>
+    
+    <!-- Text field to display total -->
+    <input type="text" id="total" readonly>
+
+    <!-- Additional text fields -->
+    <input type="text" id="textField2" readonly>
+    <input type="text" id="textField3" readonly>
+    <input type="text" id="textField4" readonly>
+    <input type="text" id="textField5" readonly>
+    <input type="text" id="textField6" readonly>
 </body>
 </html>
