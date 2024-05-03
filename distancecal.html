@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Calculation</title>
+</head>
+<body>
+    <h1>Distance Calculation</h1>
+    <div>
+        <label for="startLocation">Select start location:</label>
+        <select id="startLocation"></select>
+        <label for="endLocation">Select end location:</label>
+        <select id="endLocation"></select>
+        <button onclick="calculateDistance()">Calculate Distance</button>
+    </div>
+    <div id="results"></div>
+
+    <script>
+        async function fetchLocations() {
+            try {
+                const response = await fetch('https://66345a689bb0df2359a14977.mockapi.io/map2');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching locations:', error);
+            }
+        }
+
+        async function populateDropdowns() {
+            const locations = await fetchLocations();
+            const startLocationSelect = document.getElementById("startLocation");
+            const endLocationSelect = document.getElementById("endLocation");
+
+            locations.forEach((location, index) => {
+                const option = document.createElement("option");
+                option.value = index;
+                option.text = location.name;
+                startLocationSelect.appendChild(option.cloneNode(true));
+                endLocationSelect.appendChild(option);
+            });
+        }
+
+        async function calculateDistance() {
+            const startLocationIndex = document.getElementById("startLocation").value;
+            const endLocationIndex = document.getElementById("endLocation").value;
+
+            const locations = await fetchLocations();
+            const startLocation = locations[startLocationIndex];
+            const endLocation = locations[endLocationIndex];
+
+            const distance = calculateDistanceBetweenLocations(startLocation, endLocation);
+
+            document.getElementById('results').innerHTML = `<p>Distance between ${startLocation.name} and ${endLocation.name}: ${distance.toFixed(2)} km</p>`;
+        }
+
+        function calculateDistanceBetweenLocations(startLocation, endLocation) {
+            const R = 6371; // Radius of the Earth in km
+            const dLat = deg2rad(endLocation.latitude - startLocation.latitude);
+            const dLon = deg2rad(endLocation.longitude - startLocation.longitude);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(deg2rad(startLocation.latitude)) * Math.cos(deg2rad(endLocation.latitude)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c; // Distance in km
+            return distance;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+
+        // Populate dropdowns with locations when the page loads
+        window.onload = populateDropdowns;
+    </script>
+</body>
+</html>
