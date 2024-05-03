@@ -6,8 +6,7 @@
     <title>Route Suggestions</title>
 </head>
 <body>
-    <h1>Land Freight Using KM 4w sample only </h1>
-
+    <h1>Daikin test L300</h1>
     <label for="origin">Origin:</label>
     <select id="origin">
        
@@ -18,7 +17,7 @@
     </select><br><br>
     <button onclick="calculateRoutes()">Calculate Routes</button><br><br>
     <div id="routeList"></div>
-    <div id="ratesDisplay"></div> <!-- Add a div for displaying rates -->
+    <div id="ratesDisplay"></div> <!-- Add a div for displaying ratess -->
 
     <script>
         async function calculateRoutes() {
@@ -41,7 +40,7 @@
                 <p id="distance">Distance: ${distance.toFixed(2)} km</p>
             `;
 
-            displayRate(destination); // Call function to display rate for the selected destination
+            displayrates(destination); // Call function to display rates for the selected destination
         }
 
         async function getCoordinates(location) {
@@ -64,7 +63,7 @@
 
         async function populateOriginDropdown() {
             const originDropdown = document.getElementById('origin');
-            const url = 'https://660d18973a0766e85dbf8c03.mockapi.io/locationtest';
+            const url = 'https://6634ad029bb0df2359a25437.mockapi.io/maprates';
 
             try {
                 const response = await fetch(url);
@@ -73,8 +72,8 @@
                 if (data.length > 0) {
                     data.forEach(option => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = option.location;
-                        optionElement.textContent = option.location;
+                        optionElement.value = option.name;
+                        optionElement.textContent = option.name;
                         originDropdown.appendChild(optionElement);
                     });
                 } else {
@@ -87,7 +86,7 @@
 
         async function populateDestinationDropdown() {
             const destinationDropdown = document.getElementById('destination');
-            const url = 'https://660d18973a0766e85dbf8c03.mockapi.io/locationtest';
+            const url = 'https://6634ad029bb0df2359a25437.mockapi.io/maprates';
 
             try {
                 const response = await fetch(url);
@@ -96,8 +95,8 @@
                 if (data.length > 0) {
                     data.forEach(option => {
                         const optionElement = document.createElement('option');
-                        optionElement.value = option.location;
-                        optionElement.textContent = option.location;
+                        optionElement.value = option.name;
+                        optionElement.textContent = option.name;
                         destinationDropdown.appendChild(optionElement);
                     });
                 } else {
@@ -108,24 +107,24 @@
             }
         }
 
-        function displayRate(location) {
-            const url = 'https://660d18973a0766e85dbf8c03.mockapi.io/locationtest';
+        function displayrates(name) {
+            const url = 'https://6634ad029bb0df2359a25437.mockapi.io/maprates';
             const ratesDisplay = document.getElementById('ratesDisplay');
 
             fetch(url)
             .then(response => response.json())
             .then(data => {
-                const selectedLocation = data.find(item => item.location === location);
+                const selectedLocation = data.find(item => item.name === name);
                 if (selectedLocation) {
-                    ratesDisplay.innerHTML = `<p id="rate">Rate for ${selectedLocation.rates}</p>`;
+                    ratesDisplay.innerHTML = `<p id="rates">rates for ${selectedLocation.rates}</p>`;
                     calculateTotal(); // Call function to calculate total and display in text fields
                 } else {
-                    ratesDisplay.innerHTML = `<p>No rate found for ${location}</p>`;
+                    ratesDisplay.innerHTML = `<p>No rates found for ${name}</p>`;
                 }
             })
             .catch(error => {
                 console.error('Error fetching rates:', error);
-                ratesDisplay.innerHTML = `<p>Error fetching rates</p>`;
+                ratesDisplay.innerHTML = `<p>Error fetching ratess</p>`;
             });
         }
 
@@ -154,10 +153,11 @@
        // Function to calculate total and display in text fields
 function calculateTotal() {
     const distance = parseFloat(document.getElementById('distance').innerText.split(' ')[1]);
-    const rate = parseFloat(document.getElementById('rate').innerText.split(' ')[2]);
+    const rates = parseFloat(document.getElementById('rates').innerText.split(' ')[2]);
 
-    if (!isNaN(distance) && !isNaN(rate)) {
-        const total = distance * rate;
+    if (!isNaN(distance) && !isNaN(rates)) {
+        // const total = distance * rates;
+        const total = 1 * rates;
         document.getElementById('total').value = total.toFixed(2) ;
 
       // Show the total text field
@@ -174,23 +174,23 @@ function calculateTotal() {
         // Show the label tag of the text field
         document.getElementById('labelrates').classList.remove('hidden');
     } else {
-        console.error('Error: Distance or rate is not a number.');
+        console.error('Error: Distance or rates is not a number.');
     }
 }
     </script>
     
     <!-- Text field to display total (initially hidden) -->
     <label id="labelrates" class="hidden"> total</label>
-<input type="text" id="total" class="hidden" readonly> <br>
+<input type="text" id="total" class="hidden" > <br>
 
     <!-- Additional text fields -->
 
 
-<input type="text" id="textField2" class="hidden" readonly > <br>
-<input type="text" id="textField3" class="hidden" readonly> <br>
-<input type="text" id="textField4" class="hidden" readonly> <br>
-<input type="text" id="textField5" class="hidden" readonly> <br>
-<input type="text" id="textField6" class="hidden" readonly> <br>
+<input type="text" id="textField2" class="hidden"  > <br>
+<input type="text" id="textField3" class="hidden" > <br>
+<input type="text" id="textField4" class="hidden" > <br>
+<input type="text" id="textField5" class="hidden" > <br>
+<input type="text" id="textField6" class="hidden" > <br>
 </body>
 
 <style>
