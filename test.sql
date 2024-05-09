@@ -92,3 +92,98 @@ VALUES
 
 
 
+tbl_bce_clients[icon: home] {
+  id int(11) NOT NULL,
+  client_name varchar(200) NOT NULL,
+  client_primary_contact varchar(200) NOT NULL,
+  client_email varchar(200) NOT NULL,
+  client_contact_no varchar(11) NOT NULL,
+  client_bsn_type varchar(100) NOT NULL,
+  client_other_bsn_type text NOT NULL,
+  client_org_type varchar(200) NOT NULL,
+  client_remarks text NOT 
+  client_office_address text NOT NULL,
+  client_billing_address text NOT NULL,
+  reg_sec_date_registered date DEFAULT NULL,
+  reg_sec_registered_no varchar(200) DEFAULT NULL,
+  date_started_operations date DEFAULT NULL,
+  reg_dti_date_registered date DEFAULT NULL,
+  reg_dti_registered_no varchar(200) DEFAULT NULL,
+  reg_auth_capital varchar(2000) DEFAULT NULL,
+  reg_mayor_date_registered date DEFAULT NULL,
+  reg_mayor_registered_no varchar(200) DEFAULT NULL,
+  tin_number varchar(25) DEFAULT NULL,
+  val_status varchar(100) DEFAULT NULL,
+  val_status_remarks text DEFAULT NULL,
+  val_account_type varchar(100) DEFAULT NULL,
+  val_account_by int(11) DEFAULT NULL,
+  val_term_type varchar(100) DEFAULT NULL,
+  val_terms varchar(100) DEFAULT NULL,
+  val_validated_by varchar(100) DEFAULT NULL,
+  val_date_validated datetime DEFAULT NULL,
+  prev_bsn_name text DEFAULT NULL,
+  prev_date_change datetime DEFAULT NULL,
+  client_created_by int(11) DEFAULT NULL,
+  client_date_created datetime DEFAULT NULL,
+  client_type varchar(20) DEFAULT NULL,
+  client_status varchar(100) DEFAULT NULL
+}
+
+
+
+tbl_client_addones  [icon: users, color: blue]{ 
+  id int(11) NOT NULL,
+  client_id int(11) NOT NULL,
+  fuel_surcharge float(10,2) NOT NULL,
+  permit float(10,2) NOT NULL,
+  pickup float(10,2) NOT NULL,
+  crating float(10,2) NOT NULL,
+  waybill_fee float(10,2) NOT NULL,
+  handling float(10,2) NOT NULL,
+  packing float(10,2) NOT NULL,
+  others float(10,2) NOT NULL
+}
+
+
+  tbl_locations [icon: users, color: blue]{ 
+  id int(11) NOT NULL,
+  city varchar(100) NOT NULL,
+  province varchar(100) NOT NULL,
+  island varchar(100) NOT NULL,
+  IATA varchar(20) NOT NULL,
+  upload_batch int(11) NOT NULL
+  }
+
+
+  tbl_rates [icon: users, color: yellow]{ 
+  id int(11) NOT NULL,
+  charge_type varchar(50) NOT NULL,
+  charge_code varchar(100) NOT NULL,
+  client_id int(11) NOT NULL,
+  serv_mode_id int(11) NOT NULL,
+  org_id int(11) NOT NULL,
+  dest_id int(11) NOT NULL,
+  status varchar(20) NOT NULL
+  }
+
+  tbl_rates_meta [icon: users, color: red]{ 
+  id int(11) NOT NULL,
+  rates_id int(11) NOT NULL,
+  classification varchar(50) NOT NULL,
+  ranges varchar(50) NOT NULL,
+  rates float(100,2) NOT NULL
+  }
+
+  tbl_service_mode [icon: users, color: green]{ 
+  id int(11) NOT NULL,
+  code int(11) NOT NULL,
+  name varchar(50) NOT NULL
+  }
+
+
+
+  tbl_service_mode [icon: users, color: orange]{ 
+  `id` int(11) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `name` varchar(100) NOT NULL
+  }
