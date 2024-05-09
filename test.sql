@@ -83,3 +83,12 @@ VALUES
 ('NCR', 'TAGU', 'Taguig'),
 ('NCR', 'PAS', 'Pasay'),
 ('NCR', 'MKT', 'Makati');
+
+
+INSERT INTO tbl_bce_rates (client_id, service_mode, service_type, transport_mode, origin, destination, break_weight_id, created_at, approved_at, expired_at, batch, status, charge_id)
+VALUES
+(210433, 'DOOR TO DOOR', 'REGULAR', 'LAND', 'MNL', 'CEB', 174, '2023-05-24 01:38:37', '2023-05-24 01:38:37', '2024-05-24 01:38:37', 15, 'active', 1),
+(210433, 'DOOR TO DOOR', 'REGULAR', 'LAND', 'MNL', 'DVO', 175, '2023-05-24 01:38:37', '2023-05-24 01:38:37', '2024-05-24 01:38:37', 15, 'active', 1);
+
+
+
