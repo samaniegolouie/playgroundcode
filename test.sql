@@ -187,3 +187,82 @@ tbl_client_addones  [icon: users, color: blue]{
   `code` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ======================================================================
+
+  0  DOOR TO DOOR   AIR   MNL   ILO   1-5        380.00     5.00   150.00   0.00   150.00   0.00   0.00   3000.00   0.00
+0  DOOR TO DOOR   AIR   MNL   VRC   6-49       49.40      5.00   150.00   0.00   150.00   0.00   0.00   3000.00   0.00
+0  DOOR TO DOOR   AIR   MNL   TAC   50-249     45.60      5.00   150.00   0.00   150.00   0.00   0.00   3000.00   0.00
+0  DOOR TO DOOR   AIR   MNL   MBT   250-999    39.90      5.00   150.00   0.00   150.00   0.00   0.00   3000.00   0.00    
+0  DOOR TO DOOR   AIR   ILO   MNL   1000       32.30      5.00   150.00   0.00   150.00   0.00   0.00   3000.00   0.00    
+
+
+
+0  DOOR TO DOOR   SEA  MNL   ILO  20      59000.00     0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00    
+0  DOOR TO DOOR   SEA  MNL   VRC  20     66000.00     0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00 
+0  PORT TO PORT   LAND-10W   VRC   MNL    20-30    14000.00
+0  PORT TO PORT   INTERISLAND-6W-RORO   MNL   BCD    700-1400    22400.00
+0  PORT TO PORT   INTERISLAND-10W-RORO   MNL   CEB    1200-2400    38400.00
+
+
+
+tbl_bce_clients  
+tbl_service_mode = serv_mode_id{
+                     1:D2D 
+                     2:P2P 
+                     3:P2D 
+                     4:D2P
+                     5:OPN 
+                   }
+tbl_rates
+tbl_locations
+
+
+
+
+
+tbl_bce_clients.client_id     tbl_service_mode.serv_mode_id     tbl_rates.charge_code   tbl_locations.orgin_id   tbl_locations.dest_id     WEIGHT BREAK     RATES         FUEL SURCHARGE   INSURANCE    VALUATION   AWB FEE   PERMIT   HANDLING    PICKUP      ODA        CRATING    PACKING 
+
+
+
+
+
+
+Companyname  PORT TO PORT   LAND-KM-4W       BCD     BCD           16km        16-30          7,322.00       0.00             0.00         0.00        0.00      0.00    0.00        0.00        3500.00     0.00        0.00 
+0  PORT TO PORT   LAND-KM-4W       BCD     BCD           16km        16-30          3500.00       0.00             0.00         0.00        0.00      0.00    0.00        0.00            0.00     0.00        0.00 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
