@@ -234,7 +234,7 @@ tbl_locations
 
 
 
-tbl_bce_clients.client_id     tbl_service_mode.serv_mode_id     tbl_rates.charge_code   tbl_locations.orgin_id   tbl_locations.dest_id     WEIGHT BREAK     RATES         FUEL SURCHARGE   INSURANCE    VALUATION   AWB FEE   PERMIT   HANDLING    PICKUP      ODA        CRATING    PACKING 
+tbl_bce_clients.client_id     tbl_service_mode.serv_mode_id     tbl_rates.charge_code   tbl_locations.rgion_id   tbl_locations.dest_id     WEIGHT BREAK     RATES         FUEL SURCHARGE   INSURANCE    VALUATION   AWB FEE   PERMIT   HANDLING    PICKUP      ODA        CRATING    PACKING 
 
 
 
@@ -248,6 +248,52 @@ Companyname  PORT TO PORT   LAND-KM-4W       BCD     BCD           16km        1
 
 
 
+COMPANYNAME  ORIGN   DESTINATION   SERVICE MODE    CHARGE CODE   CHARGE TYPE  CLASSIFICATION    WEIGHT BREAK     RATES     FUEL SURCHARGE   INSURANCE    VALUATION    AWB-FEE   PERMIT  HANDLING   PICKUP  ODA   CRATING   PACKING 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-L001    trucking       L300               1-3         2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-L001    trucking       L300               8-10        3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-L001    trucking       L300               13-18         3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-L001    trucking       L300               22-28         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-L001    trucking       L300               35-45         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LODA001    trucking       L300               1-20         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CEB         PORT TO PORT    Moses-LODA001    trucking       L300               21-30         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LINT001    trucking       L300               700-1400         2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BTN         PORT TO PORT    Moses-LINT001    trucking       L300               1200-2400        3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CDO         PORT TO PORT    Moses-LINT001    trucking       L300               1400-2800         3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CEB         PORT TO PORT    Moses-LINT001    trucking       L300               810-1620         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      DVO         PORT TO PORT    Moses-LINT001    trucking       L300               1500-3000         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LKM001    trucking       L300               1-15         2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LKM001    trucking       L300               16-30        3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LKM001    trucking       L300               31-45         3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LKM001    trucking       L300               46-60         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LKM001    trucking       L300               61-80         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LCBM001    trucking       4W               6        2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LCBM001    trucking       6W               14        3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LCBM001    trucking       6WF               28        3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LCBM001    trucking       10W               54        6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+
+
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-AR001    kilo                              1-5         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-AR001    kilo                              6-49         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-AR001    kilo                              50-249         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-AR001    kilo                              250-999         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-AR001    kilo                              1000         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         DOOR TO DOOR    Moses-AE001    kilo                              1-5         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         DOOR TO DOOR    Moses-AE001    kilo                              6-49         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         DOOR TO DOOR    Moses-AE001    kilo                              50-249          10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         DOOR TO DOOR    Moses-AE001    kilo                              250-999        10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         DOOR TO DOOR    Moses-AE001    kilo                              1000        10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-SFCL001    CBM                      20        2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-SFCL001    CBM                     40       3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CEB         PORT TO PORT    Moses-SFCL001    CBM                     20        3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CEB         PORT TO PORT    Moses-SFCL001    CBM                     40         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+
+
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-SLCL001    CBM                     20         2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-SLCL001    CBM                     40       3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CEB         PORT TO PORT    Moses-SLCL001    CBM                     20         3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      CEB         PORT TO PORT    Moses-SLCL001    CBM                     40         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
 
 
 
