@@ -257,7 +257,7 @@ Moses Inc.    MNL      BCD         PORT TO PORT    Moses-L001    trucking       
 Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LODA001    trucking       L300               1-20         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
 Moses Inc.    MNL      CEB         PORT TO PORT    Moses-LODA001    trucking       L300               21-30         10262.03        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
 
-Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LINT001    trucking       L300               700-1400         2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
+Moses Inc.    MNL      BCD         PORT TO PORT    Moses-LINT001    truckings       L300               700-1400         2554.82        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
 Moses Inc.    MNL      BTN         PORT TO PORT    Moses-LINT001    trucking       L300               1200-2400        3085.78        50.0          10.0        0.00        150.00    100.00  0.00      0.00    0.00  0.00      0.00 
 Moses Inc.    MNL      CDO         PORT TO PORT    Moses-LINT001    trucking       L300               1400-2800         3970.22        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
 Moses Inc.    MNL      CEB         PORT TO PORT    Moses-LINT001    trucking       L300               810-1620         6885.88        50.0          10.0        0.00        150.00    100.00  0.00       0.00    0.00  0.00      0.00 
