@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Excel File Preview</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
+        .container { text-align: center; }
+        .drop-area { border: 2px dashed #ccc; border-radius: 10px; padding: 20px; background-color: #fff; margin: 20px; }
+        .drop-area p { margin: 0; font-size: 18px; color: #333; }
+        .preview { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        .submit-button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drag and Drop Excel File Preview</h1>
+        <div id="drop-area" class="drop-area">
+            <p>Drag and drop an Excel file here</p>
+        </div>
+        <div id="preview" class="preview"></div>
+        <button id="submit-button" class="submit-button">Submit</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropArea = document.getElementById('drop-area');
+            const preview = document.getElementById('preview');
+            const submitButton = document.getElementById('submit-button');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+            });
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false);
+            });
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false);
+            });
+            dropArea.addEventListener('drop', handleDrop, false);
+            
+            function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFiles(files);
+            }
+            
+            function handleFiles(files) {
+                [...files].forEach(file => {
+                    if (file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.type === "application/vnd.ms-excel") {
+                        readFile(file);
+                    } else {
+                        alert("Please drop an Excel file.");
+                    }
+                });
+            }
+            
+            function readFile(file) {
+                const reader = new FileReader();
+                reader.readAsBinaryString(file);
+                reader.onload = (e) => {
+                    const data = e.target.result;
+                    const workbook = XLSX.read(data, { type: 'binary' });
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    const html = XLSX.utils.sheet_to_html(worksheet);
+                    preview.innerHTML = html;
+                    submitButton.style.display = 'block'; // Show the submit button after preview is generated
+                };
+                reader.onerror = (e) => {
+                    console.error("File could not be read! Code " + e.target.error.code);
+                };
+            }
+
+            submitButton.addEventListener('click', () => {
+                alert('Data submitted!');
+                // Add your form submission logic here
+            });
+
+            submitButton.style.display = 'none'; // Hide the submit button initially
+        });
+    </script>
+</body>
+</html>
