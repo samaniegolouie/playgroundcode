@@ -1,65 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop Excel File Preview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
-        .container { text-align: center; }
-        .drop-area { border: 2px dashed #ccc; border-radius: 10px; padding: 20px; background-color: #fff; margin: 20px; }
-        .drop-area p { margin: 0; font-size: 18px; color: #333; }
-        .preview { margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        .submit-button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+        .border-line {
+            border: 1.5px dashed rgb(0, 0, 0);
+        }
+
+        .choose-file-button {
+            flex-shrink: 0;
+            background-color: rgb(0, 0, 0);
+            border: 1px solid rgb(0, 0, 0);
+            color: white;
+            border-radius: 3px;
+            padding: 8px 15px;
+            margin-right: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .file-message {
+            font-size: small;
+            font-weight: 300;
+            line-height: 1.4;
+            white-space: nowrap;
+            color: rgb(0, 0, 0);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .mt-100 {
+            margin-top: 100px;
+        }
+        
+        .preview {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Drag and Drop Excel File Preview</h1>
-        <div id="drop-area" class="drop-area">
-            <p>Drag and drop an Excel file here</p>
+        <div class="row">
+            <div class="col-md-12 border-line p-5">
+                <span class="choose-file-button">Choose files</span>
+                <span class="file-message text-black">or drag and drop files here</span>
+                <input class="file-input" type="file" multiple accept=".xls,.xlsx,.xlsm,.xlsb">
+            </div>
         </div>
         <div id="preview" class="preview"></div>
-        <button id="submit-button" class="submit-button">Submit</button>
+        <button id="submit-button" class="submit-button btn btn-primary">Submit</button>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const dropArea = document.getElementById('drop-area');
-            const preview = document.getElementById('preview');
-            const submitButton = document.getElementById('submit-button');
-            
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropArea.addEventListener(eventName, preventDefaults, false);
+        $(document).ready(function () {
+            $('.border-line').on('dragover', function (e) {
+                e.preventDefault();
+                $(this).addClass('border-primary');
             });
-            ['dragenter', 'dragover'].forEach(eventName => {
-                dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false);
+
+            $('.border-line').on('dragleave', function () {
+                $(this).removeClass('border-primary');
             });
-            ['dragleave', 'drop'].forEach(eventName => {
-                dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false);
-            });
-            dropArea.addEventListener('drop', handleDrop, false);
-            
-            function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
-            
-            function handleDrop(e) {
-                const dt = e.dataTransfer;
-                const files = dt.files;
+
+            $('.border-line').on('drop', function (e) {
+                e.preventDefault();
+                $(this).removeClass('border-primary');
+                var files = e.originalEvent.dataTransfer.files;
                 handleFiles(files);
-            }
-            
+            });
+
+            $(document).on('change', '.file-input', function () {
+                var files = $(this)[0].files;
+                handleFiles(files);
+            });
+
             function handleFiles(files) {
-                [...files].forEach(file => {
-                    if (file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.type === "application/vnd.ms-excel") {
-                        readFile(file);
-                    } else {
-                        alert("Please drop an Excel file.");
+                var fileNames = [];
+                var validFiles = [];
+                for (var i = 0; i < files.length; i++) {
+                    if (validateFile(files[i])) {
+                        validFiles.push(files[i]);
+                        fileNames.push(files[i].name);
                     }
-                });
+                }
+                if (fileNames.length > 0) {
+                    $('.file-message').text(fileNames.join(', '));
+                    if (validFiles.length > 0) {
+                        readFile(validFiles[0]);
+                    }
+                } else {
+                    $('.file-message').text('Please drop a valid Excel file.');
+                }
             }
-            
+
+            function validateFile(file) {
+                const validTypes = [
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "application/vnd.ms-excel",
+                    "application/vnd.ms-excel.sheet.macroEnabled.12",
+                    "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+                ];
+                return validTypes.includes(file.type);
+            }
+
             function readFile(file) {
                 const reader = new FileReader();
                 reader.readAsBinaryString(file);
@@ -69,21 +147,22 @@
                     const firstSheetName = workbook.SheetNames[0];
                     const worksheet = workbook.Sheets[firstSheetName];
                     const html = XLSX.utils.sheet_to_html(worksheet);
-                    preview.innerHTML = html;
-                    submitButton.style.display = 'block'; // Show the submit button after preview is generated
+                    $('#preview').html(html);
+                    $('#submit-button').show();
                 };
                 reader.onerror = (e) => {
                     console.error("File could not be read! Code " + e.target.error.code);
                 };
             }
 
-            submitButton.addEventListener('click', () => {
+            $('#submit-button').on('click', function () {
                 alert('Data submitted!');
                 // Add your form submission logic here
             });
 
-            submitButton.style.display = 'none'; // Hide the submit button initially
+            $('#submit-button').hide(); // Hide the submit button initially
         });
     </script>
 </body>
+
 </html>
