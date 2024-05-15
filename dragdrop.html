@@ -47,6 +47,11 @@
         .mt-100 {
             margin-top: 100px;
         }
+
+        .invalid-file {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -55,18 +60,52 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12  border-line p-5">
-
                 <span class="choose-file-button">Choose files</span>
                 <span class="file-message text-black">or drag and drop files here</span>
                 <input class="file-input" type="file" multiple>
-
+               <div class="invalid-file-message"></div> <!-- Added to display invalid file message -->
             </div>
-
         </div>
     </div>
 
     <script>
         $(document).ready(function () {
+            const validFileTypes = [
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ];
+
+            function isValidFileType(file) {
+                return validFileTypes.includes(file.type);
+            }
+
+            function handleFiles(files) {
+                var fileNames = [];
+                var invalidFiles = [];
+
+                for (var i = 0; i < files.length; i++) {
+                    if (isValidFileType(files[i])) {
+                        fileNames.push(files[i].name);
+                    } else {
+                        invalidFiles.push(files[i].name);
+                    }
+                }
+
+                if (fileNames.length > 0) {
+                    if (fileNames.length === 1) {
+                        $('.file-message').text(fileNames[0]);
+                    } else {
+                        $('.file-message').text(fileNames.length + ' files selected');
+                    }
+                }
+
+                if (invalidFiles.length > 0) {
+                    $('.invalid-file-message').text('Invalid file(s): ' + invalidFiles.join(', ')).addClass('invalid-file');
+                } else {
+                    $('.invalid-file-message').text('').removeClass('invalid-file');
+                }
+            }
+
             $('.border-line').on('dragover', function (e) {
                 e.preventDefault();
                 $(this).addClass('border-primary');
@@ -80,26 +119,12 @@
                 e.preventDefault();
                 $(this).removeClass('border-primary');
                 var files = e.originalEvent.dataTransfer.files;
-                var fileNames = [];
-                for (var i = 0; i < files.length; i++) {
-                    fileNames.push(files[i].name);
-                }
-                if (fileNames.length === 1) {
-                    $('.file-message').text(fileNames[0]);
-                } else {
-                    $('.file-message').text(fileNames.length + ' files selected');
-                }
+                handleFiles(files);
             });
 
             $(document).on('change', '.file-input', function () {
-                var filesCount = $(this)[0].files.length;
-                var textbox = $(this).prev();
-                if (filesCount === 1) {
-                    var fileName = $(this).val().split('\\').pop();
-                    textbox.text(fileName);
-                } else {
-                    textbox.text(filesCount + ' files selected');
-                }
+                var files = $(this)[0].files;
+                handleFiles(files);
             });
         });
     </script>
