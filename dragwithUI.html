@@ -146,14 +146,14 @@
                 const tableBody = $('#data-table tbody');
                 tableBody.empty(); // Clear any existing rows
 
-                for (let i = 1; i < data.length; i++) { // Skip the header row
+                for (let i = 0; i < data.length; i++) { // Skip the header row
                     const row = data[i];
                     const origin = row[0]; // Assuming 'origin' is in the first column
                     const destination = row[1]; // Assuming 'destination' is in the second column
                     const chargeCode = row[2]; // Assuming 'destination' is in the second column
                     
                     // Stop processing if 'Add ons' is found in either column
-                    if (origin === "Add ons" || destination === "fee") {
+                    if (origin === "Add ons" || destination === "fee" || chargeCode === "") {
                         break;
                     }
                     
