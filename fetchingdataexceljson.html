@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Preview</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Data Preview</h1>
+    <button onclick="fetchData()">Fetch Data</button>
+    <div id="tablesContainer"></div>
+
+    <script>
+        function fetchData() {
+            fetch('https://6634ad029bb0df2359a25437.mockapi.io/maprates')
+                .then(response => response.json())
+                .then(data => {
+                    displayTable(data);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+        
+
+        function displayTable(data) {
+            const container = document.getElementById('tablesContainer');
+            container.innerHTML = '';
+            
+
+
+
+            // Extract unique Weight_Breaks values
+            const weightBreaksSet = new Set();
+            data.forEach(row => weightBreaksSet.add(row.Weight_Breaks));
+            const weightBreaksArray = Array.from(weightBreaksSet);
+            
+                
+
+            // Define the headers
+            const headers = ['Origin', 'Destination', 'Service Type', ...weightBreaksArray, 'Trucking Type', '', ''];
+
+            // Create a table element
+            const table = document.createElement('table');
+
+            // Create and append the header row
+            const headerRow = document.createElement('tr');
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+            
+                        // Duplicate header row with static values
+            const duplicateHeaderRow = headerRow.cloneNode(true);
+            duplicateHeaderRow.querySelectorAll('th').forEach((th, index) => {
+                if (index === headers.length - 1) { // Static value for the last column
+                    th.textContent = 'Static Action';
+                } else {
+                    // Set other columns to their static values
+                    switch (index) {
+                        case 0:
+                            th.textContent = '';
+                            break;
+                        case 1:
+                            th.textContent = '';
+                            break;
+                        case 2:
+                            th.textContent = '';
+                            break;
+                        case 3:
+                            th.textContent = 'WEIGHT BREAKS';
+                            break;
+                        // Add cases for other columns as needed
+                        default:
+                            th.textContent = '';
+                    }
+                }
+            });
+            table.appendChild(duplicateHeaderRow);
+            
+        
+
+            
+            // Create a map to store rows grouped by unique identifiers (excluding Weight_Breaks)
+            const groupedData = {};
+
+            data.forEach(row => {
+                const key = `${row.Origin}-${row.Destination}-${row.TypesRates}-${row.Classifications}`;
+                if (!groupedData[key]) {
+                    groupedData[key] = {
+                        Origin: row.Origin,
+                        Destination: row.Destination,
+                        TypesRates: row.TypesRates,
+                        Classifications: row.Classifications,
+                        IDs: new Set(),
+                        Weight_Breaks: {}
+                    };
+                    weightBreaksArray.forEach(wb => groupedData[key].Weight_Breaks[wb] = '');
+                }
+                groupedData[key].IDs.add(row.id);
+                groupedData[key].Weight_Breaks[row.Weight_Breaks] = row.Weight_Breaks;
+            });
+
+            // Create and append the data rows
+            Object.values(groupedData).forEach(group => {
+                const dataRow = document.createElement('tr');
+                
+                const originCell = document.createElement('td');
+                originCell.textContent = group.Origin;
+                dataRow.appendChild(originCell);
+
+                const destinationCell = document.createElement('td');
+                destinationCell.textContent = group.Destination;
+                dataRow.appendChild(destinationCell);
+
+                const typesRatesCell = document.createElement('td');
+                typesRatesCell.textContent = group.TypesRates;
+                dataRow.appendChild(typesRatesCell);
+
+                weightBreaksArray.forEach(wb => {
+                    const weightBreaksCell = document.createElement('td');
+                    weightBreaksCell.textContent = group.Weight_Breaks[wb];
+                    dataRow.appendChild(weightBreaksCell);
+                });
+
+                const classificationsCell = document.createElement('td');
+                classificationsCell.textContent = group.Classifications;
+                dataRow.appendChild(classificationsCell);
+
+                const idsCell = document.createElement('td');
+                idsCell.textContent = Array.from(group.IDs).join(', ');
+                dataRow.appendChild(idsCell);
+
+                // Add static data for action column
+                const actionCell = document.createElement('td');
+                actionCell.textContent = 'Dynamic Action';
+                dataRow.appendChild(actionCell);
+
+                table.appendChild(dataRow);
+            });
+
+            // Append the table to the container
+            container.appendChild(table);
+        }
+    </script>
+</body>
+</html>
