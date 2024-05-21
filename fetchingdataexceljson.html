@@ -47,54 +47,59 @@
             data.forEach(row => weightBreaksSet.add(row.Weight_Breaks));
             const weightBreaksArray = Array.from(weightBreaksSet);
             
+             // Extract unique Rates values
+             const RatesSet = new Set();
+            data.forEach(row => RatesSet.add(row.Rates));
+            const RatesArray = Array.from(RatesSet);
                 
 
             // Define the headers
-            const headers = ['Origin', 'Destination', 'Service Type', ...weightBreaksArray, 'Trucking Type', '', ''];
+            // const headers = ['Origin', 'Destination', 'Service Type', ...weightBreaksArray, 'Trucking Type', ''];
+            const headers = ['Origin', 'Destination', 'Service Type', ...weightBreaksArray, 'Trucking Type', ...RatesArray,'Id'];
+            const headers_only = ['Origin', 'Destination', 'Service Type', 'Trucking Type', 'Rates','Id'];
 
             // Create a table element
             const table = document.createElement('table');
 
             // Create and append the header row
             const headerRow = document.createElement('tr');
-            headers.forEach(header => {
+            headers.forEach((header, index) => {
                 const th = document.createElement('th');
                 th.textContent = header;
+                
                 headerRow.appendChild(th);
             });
             table.appendChild(headerRow);
             
-                        // Duplicate header row with static values
+            // Duplicate header row with static values
             const duplicateHeaderRow = headerRow.cloneNode(true);
-            duplicateHeaderRow.querySelectorAll('th').forEach((th, index) => {
-                if (index === headers.length - 1) { // Static value for the last column
-                    th.textContent = 'Static Action';
+            headerRow.querySelectorAll('th').forEach((th, index) => {
+                if (index === 3) {
+                    th.textContent = 'WEIGHT BREAKS';
                 } else {
-                    // Set other columns to their static values
-                    switch (index) {
-                        case 0:
-                            th.textContent = '';
-                            break;
-                        case 1:
-                            th.textContent = '';
-                            break;
-                        case 2:
-                            th.textContent = '';
-                            break;
-                        case 3:
-                            th.textContent = 'WEIGHT BREAKS';
-                            break;
-                        // Add cases for other columns as needed
-                        default:
-                            th.textContent = '';
+                    if(!headers_only.includes(th.textContent)) {
+                        th.textContent = '';
                     }
                 }
-            });
-            table.appendChild(duplicateHeaderRow);
+            })
+            // table.appendChild(duplicateHeaderRow);
             
         
 
-            
+             // Duplicate header row with static values
+            //  const duplicateHeaderRow = headerRow.cloneNode(true);
+            // headerRow.querySelectorAll('th').forEach((th, index) => {
+            //     if (index === 3) {
+            //         th.textContent = 'WEIGHT BREAKS';
+            //     } else if (index === 5) {
+            //         th.textContent = 'WEIGHT BREAKS';
+            //     } else {
+            //         if(!headers_only.includes(th.textContent)) {
+            //             th.textContent = '';
+            //         }
+            //     }
+            // })
+       
             // Create a map to store rows grouped by unique identifiers (excluding Weight_Breaks)
             const groupedData = {};
 
@@ -106,13 +111,18 @@
                         Destination: row.Destination,
                         TypesRates: row.TypesRates,
                         Classifications: row.Classifications,
+                        // Rates: row.Rates,
+                      
                         IDs: new Set(),
-                        Weight_Breaks: {}
+                        Weight_Breaks: {},
+                        Rates: {}
                     };
                     weightBreaksArray.forEach(wb => groupedData[key].Weight_Breaks[wb] = '');
+                    RatesArray.forEach(rates => groupedData[key].Rates[rates] = '');
                 }
                 groupedData[key].IDs.add(row.id);
                 groupedData[key].Weight_Breaks[row.Weight_Breaks] = row.Weight_Breaks;
+                groupedData[key].Rates[row.Rates] = row.Rates;
             });
 
             // Create and append the data rows
@@ -141,14 +151,20 @@
                 classificationsCell.textContent = group.Classifications;
                 dataRow.appendChild(classificationsCell);
 
+                RatesArray.forEach(wb => {
+                    const RatesCell = document.createElement('td');
+                    RatesCell.textContent = group.Rates[wb];
+                    dataRow.appendChild(RatesCell);
+                });
+
                 const idsCell = document.createElement('td');
                 idsCell.textContent = Array.from(group.IDs).join(', ');
                 dataRow.appendChild(idsCell);
 
-                // Add static data for action column
-                const actionCell = document.createElement('td');
-                actionCell.textContent = 'Dynamic Action';
-                dataRow.appendChild(actionCell);
+                // // Add static data for action column
+                // const actionCell = document.createElement('td');
+                // actionCell.textContent = 'Dynamic Action';
+                // dataRow.appendChild(actionCell);
 
                 table.appendChild(dataRow);
             });
