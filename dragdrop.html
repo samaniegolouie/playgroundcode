@@ -61,6 +61,10 @@
             margin-right: 10px;
            
         }
+        .submit-button {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -71,6 +75,7 @@
                     <span class="file-message text-black">or drag and drop files here</span>
                     <span class="invalid-file-message"></span>                
                 <input class="file-input" type="file" multiple>
+                <button class="submit-button btn btn-primary">Submit</button> <!-- Submit button -->
             </div>
         </div>
     </div>
@@ -103,6 +108,9 @@
                 var message = '';
                 if (fileNames.length > 0) {
                     message = fileNames.length === 1 ? fileNames[0] : fileNames.length + ' files selected';
+                    $('.submit-button').show(); // Show the submit button when there are valid files
+                } else {
+                    $('.submit-button').hide(); // Hide the submit button when there are no valid files
                 }
                 
                 if (invalidFiles.length > 0) {
