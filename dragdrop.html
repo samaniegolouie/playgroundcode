@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,18 +51,27 @@
             color: red;
             font-weight: bold;
         }
+
+        .message-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .file-message, .invalid-file-message {
+            margin-right: 10px;
+        }
     </style>
 </head>
-
 <body>
-
     <div class="container">
         <div class="row">
-            <div class="col-md-12  border-line p-5">
+            <div class="col-md-12 border-line p-5">
                 <span class="choose-file-button">Choose files</span>
-                <span class="file-message text-black">or drag and drop files here</span>
+                <div class="message-wrapper">
+                    <span class="file-message text-black">or drag and drop files here</span>
+                    <span class="invalid-file-message"></span>
+                </div>
                 <input class="file-input" type="file" multiple>
-               <div class="invalid-file-message"></div> <!-- Added to display invalid file message -->
             </div>
         </div>
     </div>
@@ -91,19 +99,20 @@
                     }
                 }
 
+                var message = '';
                 if (fileNames.length > 0) {
-                    if (fileNames.length === 1) {
-                        $('.file-message').text(fileNames[0]);
-                    } else {
-                        $('.file-message').text(fileNames.length + ' files selected');
-                    }
+                    message = fileNames.length === 1 ? fileNames[0] : fileNames.length + ' files selected';
+                }
+                
+                if (invalidFiles.length > 0) {
+                    message += (message ? ' | ' : '') + 'Invalid file(s): ' + invalidFiles.join(', ');
+                    $('.invalid-file-message').addClass('invalid-file');
+                } else {
+                    $('.invalid-file-message').removeClass('invalid-file');
                 }
 
-                if (invalidFiles.length > 0) {
-                    $('.invalid-file-message').text('Invalid file(s): ' + invalidFiles.join(', ')).addClass('invalid-file');
-                } else {
-                    $('.invalid-file-message').text('').removeClass('invalid-file');
-                }
+                $('.file-message').text(message);
+                $('.invalid-file-message').text('');
             }
 
             $('.border-line').on('dragover', function (e) {
@@ -129,5 +138,4 @@
         });
     </script>
 </body>
-
 </html>
