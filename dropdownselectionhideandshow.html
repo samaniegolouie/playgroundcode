@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Organization Chart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-xl-3 col-md-6">
+            <label> <span style="font-weight: 500; color:#0E0D23 ;">Organization Type</span> </label>
+            <div class="div-type-business">
+                <div class="form-group">
+                    <select class="form-control" id="organization-type">
+                        <option value="default">Select Organization Type</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="special-account">Special Account</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!----SEC REGISTRATION DETAILS---->
+            <div class="col-xl-12 col-md-12 old_account">
+                <div class="mb-2">
+                    <label> <span style="font-weight: 500; color:#0E0D23 ;">SEC Registration Details</span> </label>
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="sec-reg-date" id="sec-date-reg" placeholder="Date Registered" onfocus="(this.type = 'date')" autocomplete="off">
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="sec-reg-no" id="sec-reg-no" placeholder="Registration Number" autocomplete="off">
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="sec-ops-date" id="sec-operation-date" placeholder="Date Started Operations" onfocus="(this.type = 'date')" autocomplete="off">
+                </div>
+            </div>
+
+            <!----DTI REGISTRATION DETAILS---->
+            <div class="col-xl-3 col-md-12 new_account" hidden>
+                <div class="mb-2">
+                    <label> <span style="font-weight: 500; color:#0E0D23 ;">DTI Registration Details</span> </label>
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="dti-reg-date" id="dti-reg-date" placeholder="Date Registered" onfocus="(this.type = 'date')" autocomplete="off">
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="dti-reg-no" id="dti-reg-no" placeholder="Registration Number" autocomplete="off">
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="dti-auth-capital" id="dti-auth-capital" placeholder="Registered/Authorized Capital" autocomplete="off">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            $('#organization-type').change(function() {
+                if ($(this).val() === 'special-account') {
+                    $('.old_account').attr('hidden', true);
+                    $('.new_account').attr('hidden', false);
+                } else {
+                    $('.old_account').attr('hidden', false);
+                    $('.new_account').attr('hidden', true);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
