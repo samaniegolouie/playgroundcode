@@ -1,0 +1,317 @@
+[
+    {
+      "Origin": "Manila",
+      "Destination": "Muntinlupa",
+      "TypesRates": "KILO",
+      "Weight_Breaks": "1-5",
+      "Classifications": "",
+      "Rates": "200",
+      "id": "1"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Muntinlupa",
+      "TypesRates": "KILO",
+      "Weight_Breaks": "6-49",
+      "Classifications": "",
+      "Rates": "30",
+      "id": "2"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Muntinlupa",
+      "TypesRates": "KILO",
+      "Weight_Breaks": "50-249",
+      "Classifications": "",
+      "Rates": "28.50",
+      "id": "3"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Muntinlupa",
+      "TypesRates": "KILO",
+      "Weight_Breaks": "250-999",
+      "Classifications": "",
+      "Rates": "26.50",
+      "id": "4"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Muntinlupa",
+      "TypesRates": "KILO",
+      "Weight_Breaks": "1000",
+      "Classifications": "",
+      "Rates": "24",
+      "id": "5"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Cebu",
+      "TypesRates": "CBM",
+      "Weight_Breaks": "20",
+      "Classifications": "",
+      "Rates": "59,000",
+      "id": "6"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Cebu",
+      "TypesRates": "CBM",
+      "Weight_Breaks": "40",
+      "Classifications": "",
+      "Rates": "126,000",
+      "id": "7"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Kalibo",
+      "TypesRates": "LAND-CBM",
+      "Weight_Breaks": "1-6",
+      "Classifications": "4w",
+      "Rates": "23,400",
+      "id": "8"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Kalibo",
+      "TypesRates": "LAND-CBM",
+      "Weight_Breaks": "7-14",
+      "Classifications": "6w",
+      "Rates": "54,600",
+      "id": "9"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Kalibo",
+      "TypesRates": "LAND-CBM",
+      "Weight_Breaks": "15-28",
+      "Classifications": "6wf",
+      "Rates": "109,200",
+      "id": "10"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "Kalibo",
+      "TypesRates": "LAND-CBM",
+      "Weight_Breaks": "29-54",
+      "Classifications": "10w",
+      "Rates": "210,600",
+      "id": "11"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "1-15",
+      "Classifications": "4w",
+      "Rates": "7319",
+      "id": "12"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "16-30",
+      "Classifications": "4w",
+      "Rates": "9519",
+      "id": "13"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "31-45",
+      "Classifications": "4w",
+      "Rates": "11807",
+      "id": "14"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "46-60",
+      "Classifications": "4w",
+      "Rates": "13449",
+      "id": "15"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "1-15",
+      "Classifications": "6w",
+      "Rates": "7800",
+      "id": "16"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "16-30",
+      "Classifications": "6w",
+      "Rates": "9980",
+      "id": "17"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "31-45",
+      "Classifications": "6w",
+      "Rates": "12263",
+      "id": "18"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "46-60",
+      "Classifications": "6w",
+      "Rates": "13907",
+      "id": "19"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "1-15",
+      "Classifications": "6WF",
+      "Rates": "13096",
+      "id": "20"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "16-30",
+      "Classifications": "6WF",
+      "Rates": "15795",
+      "id": "21"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "31-45",
+      "Classifications": "6WF",
+      "Rates": "18732",
+      "id": "22"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "46-60",
+      "Classifications": "6WF",
+      "Rates": "20316",
+      "id": "23"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "1-15",
+      "Classifications": "10W",
+      "Rates": "15023",
+      "id": "24"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "16-30",
+      "Classifications": "10W",
+      "Rates": "18041",
+      "id": "25"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "31-45",
+      "Classifications": "10W",
+      "Rates": "21021",
+      "id": "26"
+    },
+    {
+      "Origin": "",
+      "Destination": "",
+      "TypesRates": "TRUCKING",
+      "Weight_Breaks": "46-60",
+      "Classifications": "10W",
+      "Rates": "22598",
+      "id": "27"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "1-20",
+      "Classifications": "4w",
+      "Rates": "4550",
+      "id": "28"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "1-20",
+      "Classifications": "6w",
+      "Rates": "6500",
+      "id": "29"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "1-20",
+      "Classifications": "6WF",
+      "Rates": "7150",
+      "id": "30"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "1-20",
+      "Classifications": "10W",
+      "Rates": "7800",
+      "id": "31"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "20-30",
+      "Classifications": "4W",
+      "Rates": "9100",
+      "id": "32"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "20-30",
+      "Classifications": "6W",
+      "Rates": "13000",
+      "id": "33"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "20-30",
+      "Classifications": "6WF",
+      "Rates": "14300",
+      "id": "34"
+    },
+    {
+      "Origin": "Manila",
+      "Destination": "BACOLOD",
+      "TypesRates": "TRUCKING-ODA",
+      "Weight_Breaks": "20-30",
+      "Classifications": "10W",
+      "Rates": "15600",
+      "id": "35"
+    }
+  ]
