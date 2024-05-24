@@ -116,6 +116,8 @@
             };
             reader.readAsArrayBuffer(file);
         }
+
+/////////////////////// previewContainer   function  //////////////////////
         function displayTabs(sheetNames) {
             const previewContainer = document.getElementById('previewContainer');
             previewContainer.innerHTML = '';
@@ -155,6 +157,11 @@
             });
             tabContent.appendChild(table);
         }
+
+//////////////////////////previewContainer///////////////////////////////////
+
+
+
         function setActiveTab(index) {
             const tabButtons = document.querySelectorAll('.tabButton');
             tabButtons.forEach((button, i) => {
