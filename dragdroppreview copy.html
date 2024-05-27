@@ -134,6 +134,11 @@
             function handleFiles(files) {
                 var fileNames = [];
                 var validFiles = [];
+                if (files.length > 1) {
+                    $('.file-message').text('Please drop only one file.');
+                    clearPreview();
+                    return; // Exit function if more than one file is dropped
+                }
                 for (var i = 0; i < files.length; i++) {
                     if (validateFile(files[i])) {
                         validFiles.push(files[i]);
