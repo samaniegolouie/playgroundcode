@@ -4,23 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Route Suggestions</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Additional styling -->
+    <style>
+        #map {
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Land Freight Using KM 4w sample only and API Distance</h1>
 
     <label for="origin">Origin:</label>
-    <select id="origin">
-       
-    </select><br><br>
+    <select id="origin"></select><br><br>
     <label for="destination">Destination:</label>
-    <select id="destination">
-       
-    </select><br><br>
+    <select id="destination"></select><br><br>
     <button onclick="calculateRoutes()">Calculate Routes</button><br><br>
     <div id="routeList"></div>
-    <div id="ratesDisplay"></div> <!-- Add a div for displaying rates -->
+    <div id="ratesDisplay"></div>
+    <label id="labelrates" class="hidden">Total</label>
+    <input type="text" id="total" class="hidden" readonly><br>
+
+    <!-- Additional text fields -->
+    <input type="text" id="textField2" class="hidden" readonly><br>
+    <input type="text" id="textField3" class="hidden" readonly><br>
+    <input type="text" id="textField4" class="hidden" readonly><br>
+    <input type="text" id="textField5" class="hidden" readonly><br>
+    <input type="text" id="textField6" class="hidden" readonly><br>
+
+    <!-- Leaflet Map -->
+    <div id="map"></div>
+
+    <!-- Include Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <script>
+        let map;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            map = L.map('map').setView([0, 0], 2); // Set initial map view
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        });
+
         async function calculateRoutes() {
             const origin = document.getElementById('origin').value;
             const destination = document.getElementById('destination').value;
@@ -42,6 +75,28 @@
             `;
 
             displayRate(destination); // Call function to display rate for the selected destination
+
+            // Clear previous markers and polylines (if any)
+            map.eachLayer(layer => {
+                if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            // Add markers for origin and destination
+            const originMarker = L.marker([originCoords.lat, originCoords.lon]).addTo(map).bindPopup('Origin');
+            const destinationMarker = L.marker([destinationCoords.lat, destinationCoords.lon]).addTo(map).bindPopup('Destination');
+
+            // Draw a line from origin to destination
+            const latlngs = [
+                [originCoords.lat, originCoords.lon],
+                [destinationCoords.lat, destinationCoords.lon]
+            ];
+            const polyline = L.polyline(latlngs, { color: 'blue' }).addTo(map);
+
+            // Fit map bounds to show both markers and the polyline
+            const bounds = L.latLngBounds(latlngs);
+            map.fitBounds(bounds);
         }
 
         async function getCoordinates(location) {
@@ -151,51 +206,31 @@
             return R * c;
         }
 
-       // Function to calculate total and display in text fields
-function calculateTotal() {
-    const distance = parseFloat(document.getElementById('distance').innerText.split(' ')[1]);
-    const rate = parseFloat(document.getElementById('rate').innerText.split(' ')[2]);
+        // Function to calculate total and display in text fields
+        function calculateTotal() {
+            const distance = parseFloat(document.getElementById('distance').innerText.split(' ')[1]);
+            const rate = parseFloat(document.getElementById('rate').innerText.split(' ')[2]);
 
-    if (!isNaN(distance) && !isNaN(rate)) {
-        const total = distance * rate;
-        document.getElementById('total').value = total.toFixed(2) ;
+            if (!isNaN(distance) && !isNaN(rate)) {
+                const total = distance * rate;
+                document.getElementById('total').value = total.toFixed(2);
 
-      // Show the total text field
-        document.getElementById('total').classList.remove('hidden');
-       
+                // Show the total text field
+                document.getElementById('total').classList.remove('hidden');
 
-        // Show additional text fields
-        document.getElementById('textField2').classList.remove('hidden');
-        document.getElementById('textField3').classList.remove('hidden');
-        document.getElementById('textField4').classList.remove('hidden');
-        document.getElementById('textField5').classList.remove('hidden');
-        document.getElementById('textField6').classList.remove('hidden');
+                // Show additional text fields
+                document.getElementById('textField2').classList.remove('hidden');
+                document.getElementById('textField3').classList.remove('hidden');
+                document.getElementById('textField4').classList.remove('hidden');
+                document.getElementById('textField5').classList.remove('hidden');
+                document.getElementById('textField6').classList.remove('hidden');
 
-        // Show the label tag of the text field
-        document.getElementById('labelrates').classList.remove('hidden');
-    } else {
-        console.error('Error: Distance or rate is not a number.');
-    }
-}
+                // Show the label tag of the text field
+                document.getElementById('labelrates').classList.remove('hidden');
+            } else {
+                console.error('Error: Distance or rate is not a number.');
+            }
+        }
     </script>
-    
-    <!-- Text field to display total (initially hidden) -->
-    <label id="labelrates" class="hidden"> total</label>
-<input type="text" id="total" class="hidden" readonly> <br>
-
-    <!-- Additional text fields -->
-
-
-<input type="text" id="textField2" class="hidden" readonly > <br>
-<input type="text" id="textField3" class="hidden" readonly> <br>
-<input type="text" id="textField4" class="hidden" readonly> <br>
-<input type="text" id="textField5" class="hidden" readonly> <br>
-<input type="text" id="textField6" class="hidden" readonly> <br>
 </body>
-
-<style>
-.hidden {
-    display: none;
-}
- </style>
 </html>
