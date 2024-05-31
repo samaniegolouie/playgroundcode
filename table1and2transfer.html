@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Data Transfer with Counter and Total</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .table-container div {
+            width: 45%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        #counter {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <div>
+                <h3>Table 1</h3>
+                <table id="table1" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Data 1</th>
+                            <th>Data 2</th>
+                            <th>Data 3</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sample 1</td>
+                            <td>Data A</td>
+                            <td>₱3,048.91</td>
+                            <td><button class="transfer-btn">Transfer</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sample 2</td>
+                            <td>Data B</td>
+                            <td>₱3,048.91</td>
+                            <td><button class="transfer-btn">Transfer</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sample 3</td>
+                            <td>Data C</td>
+                            <td>₱3,048.91</td>
+                            <td><button class="transfer-btn">Transfer</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>Table 2</h3>
+                <div id="counter">Rows Transferred: 0</div>
+                <table id="table2" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Data 1</th>
+                            <th>Data 2</th>
+                            <th>Data 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total</td>
+                            <td id="total-value">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let transferCount = 0;
+            let totalValue = 0;
+            const transferButtons = document.querySelectorAll('.transfer-btn');
+            const counterElement = document.getElementById('counter');
+            const totalValueElement = document.getElementById('total-value');
+
+            transferButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const row = this.closest('tr');
+                    const data1 = row.children[0].textContent;
+                    const data2 = row.children[1].textContent;
+                    const data3String = row.children[2].textContent;
+                    const data3 = parseFloat(data3String.replace(/[₱,]/g, ''));
+
+                    const table2 = document.getElementById('table2').getElementsByTagName('tbody')[0];
+                    const newRow = table2.insertRow();
+                    newRow.insertCell(0).textContent = data1;
+                    newRow.insertCell(1).textContent = data2;
+                    newRow.insertCell(2).textContent = data3.toFixed(2);
+
+                    // Update total value
+                    totalValue += data3;
+                    totalValueElement.textContent = `₱${totalValue.toFixed(2)}`;
+
+                    // Increment and update the transfer count
+                    transferCount++;
+                    counterElement.textContent = `Rows Transferred: ${transferCount}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
