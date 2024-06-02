@@ -187,8 +187,6 @@
                 const previewContainer = document.getElementById('previewContainer');
                 previewContainer.innerHTML = '';
 
-                const tabButtons = []; // Array to store tab button elements
-
                 sheetNames.forEach((sheetName, index) => {
                     const tabButton = document.createElement('button');
                     tabButton.classList.add('tabButton');
@@ -197,7 +195,6 @@
                         setActiveTab(index); // Pass the index
                     });
                     previewContainer.appendChild(tabButton);
-                    tabButtons.push(tabButton); // Store tab button element
                 });
 
                 sheetNames.forEach((sheetName, index) => {
@@ -237,10 +234,8 @@
                         cellElement.textContent = cell;
                         tr.appendChild(cellElement);
 
-                        // Update specific cells based on database response
-                        // if (sheetName !== "TRUCKING" && sheetName !== "ADDONS") {
-                        if (sheetName) {
-                            updateCellBasedOnDatabase(cellElement, sheetName, rowIndex, colIndex);
+                        if (rowIndex > 0 && sheetName && !isNaN(cell)) { // Only update numerical values
+                            updateCellBasedOnDatabase(cellElement, sheetName, cell);
                         }
                     });
                     table.appendChild(tr);
@@ -248,73 +243,37 @@
                 tabContent.appendChild(table);
             }
 
-            function updateCellBasedOnDatabase(cellElement, sheetName, rowIndex, colIndex) {
-                fetchDataFromDatabase(sheetName, rowIndex, colIndex).then(data => {
-                    cellElement.textContent = data;
+            function updateCellBasedOnDatabase(cellElement, sheetName, cellValue) {
+                fetchDataFromDatabase(sheetName, cellValue).then(data => {
+                    if (data !== null) {
+                        cellElement.textContent = data;
+                    }
                 }).catch(error => {
                     console.error('Error fetching data from database:', error);
                 });
             }
 
- function fetchDataFromDatabase(sheetName, rowIndex, colIndex) {
-    return fetch('https://66544dee1c6af63f46775254.mockapi.io/date')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            function fetchDataFromDatabase(sheetName, cellValue) {
+           return fetch('https://66544dee1c6af63f46775254.mockapi.io/date')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const idToCityMap = {};
+                        data.forEach(entry => {
+                            idToCityMap[entry.id] = entry.city;
+                        });
+
+                        return idToCityMap[cellValue] || null;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
+                        return null;
+                    });
             }
-            return response.json();
-        })
-        .then(data => {
-            // Define a mapping of sheet names to data
-            const dataMap = {
-                "KILO": [
-                    // Create an array with empty strings for the first two columns
-           
-                    [],
-                    [],
-                    // Push the desired rows from the data into the array
-                    // Make it Loop concept base on the map and Loop if the data and break
-                    [data[6].city],// add function for throwing 1st row data in excell file example the value in the excel is 1  replace this [data[6].city] to this part [data[1].city] make it dynamic
-                    [data[6].city],
-                    [data[6].city],
-                    [data[6].city]
-                ],
-                "LAND-CBM": [
-                    // Create an array with empty strings for the first two columns
-                    [],
-                    [],
-                    // Push the desired rows from the data into the array
-       // Make it Loop concept base on the map and Loop if the data and break
-                    [data[6].city], 
-                     [data[6].city],
-                    [data[6].city],
-                    [data[6].city]
-                
-                 
-                ],
-                // Add more sheets and corresponding data as needed
-            };
-            
-            // Check if the sheet name exists in the data map
-            if (dataMap.hasOwnProperty(sheetName)) {
-                const rowData = dataMap[sheetName][rowIndex];
-                if (rowData && rowData[colIndex]) {
-                    return rowData[colIndex];
-                } else {
-                    throw new Error('No data found for the specified row and column index');
-                }
-            } else {
-                throw new Error('No data found for the specified sheet name');
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data from database:', error);
-            // Handle errors here
-        });
-}
-
-
-
 
             function clearPreview() {
                 const previewContainer = document.getElementById('previewContainer');
