@@ -243,15 +243,25 @@
             tabContent.appendChild(table);
         }
 
+        // function updateCellBasedOnDatabase(cellElement, sheetName, cellValue) {
+        //     fetchDataFromDatabase(sheetName, cellValue).then(data => {
+        //         if (data) {
+        //             cellElement.textContent = data;
+        //         }
+        //     }).catch(error => {
+        //         console.error('Error fetching data from database:', error);
+        //     });
+        // }
         function updateCellBasedOnDatabase(cellElement, sheetName, cellValue) {
-            fetchDataFromDatabase(sheetName, cellValue).then(data => {
-                if (data) {
-                    cellElement.textContent = data;
-                }
-            }).catch(error => {
-                console.error('Error fetching data from database:', error);
-            });
+    fetchDataFromDatabase(sheetName, cellValue).then(data => {
+        if (data !== null) {
+            cellElement.textContent = data;
         }
+    }).catch(error => {
+        console.error('Error fetching data from database:', error);
+    });
+}
+
 
         function fetchDataFromDatabase(sheetName, cellValue) {
             return fetch('https://66544dee1c6af63f46775254.mockapi.io/date')
@@ -266,7 +276,8 @@
                     const dataMap = {
                         "KILO": data,
                         "CBM": data,
-                        "LAND-CBM": data
+                        "LAND-CBM": data,
+                        "TRUCKING-ODA": data,
                     };
 
                     // Check if the sheet name exists in the data map
