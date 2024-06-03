@@ -114,203 +114,234 @@
         <button id="submit-button" class="submit-button btn btn-primary">Submit</button>
     </div>
     <script>
-    $(document).ready(function () {
-        var workbook;
+        $(document).ready(function () {
+            var workbook;
+            var existingData = {};
+            var idToCityMap = {};
+            var servicemode = {};
 
-        $('.border-line').on('dragover', function (e) {
-            e.preventDefault();
-            $(this).addClass('border-primary');
-        });
+            // Fetch the data from the database on page load
+            fetchDataFromDatabase();
+            fetchServiceModeDatabase();
 
-        $('.border-line').on('dragleave', function () {
-            $(this).removeClass('border-primary');
-        });
+            $('.border-line').on('dragover', function (e) {
+                e.preventDefault();
+                $(this).addClass('border-primary');
+            });
 
-        $('.border-line').on('drop', function (e) {
-            e.preventDefault();
-            $(this).removeClass('border-primary');
-            var files = e.originalEvent.dataTransfer.files;
-            handleFiles(files);
-        });
+            $('.border-line').on('dragleave', function () {
+                $(this).removeClass('border-primary');
+            });
 
-        $(document).on('change', '.file-input', function () {
-            var files = $(this)[0].files;
-            handleFiles(files);
-        });
+            $('.border-line').on('drop', function (e) {
+                e.preventDefault();
+                $(this).removeClass('border-primary');
+                var files = e.originalEvent.dataTransfer.files;
+                handleFiles(files);
+            });
 
-        function handleFiles(files) {
-            var fileNames = [];
-            var validFiles = [];
-            if (files.length > 1) {
-                $('.file-message').text('Please drop only one file.');
-                clearPreview();
-                return; // Exit function if more than one file is dropped
-            }
-            for (var i = 0; i < files.length; i++) {
-                if (validateFile(files[i])) {
-                    validFiles.push(files[i]);
-                    fileNames.push(files[i].name);
+            $(document).on('change', '.file-input', function () {
+                var files = $(this)[0].files;
+                handleFiles(files);
+            });
+
+            function handleFiles(files) {
+                var fileNames = [];
+                var validFiles = [];
+                if (files.length > 1) {
+                    $('.file-message').text('Please drop only one file.');
+                    clearPreview();
+                    return; // Exit function if more than one file is dropped
+                }
+                for (var i = 0; i < files.length; i++) {
+                    if (validateFile(files[i])) {
+                        validFiles.push(files[i]);
+                        fileNames.push(files[i].name);
+                    }
+                }
+                if (fileNames.length > 0) {
+                    $('.file-message').text(fileNames.join(', '));
+                    if (validFiles.length > 0) {
+                        readFile(validFiles[0]);
+                    }
+                } else {
+                    $('.file-message').text('Please drop a valid Excel file.');
+                    clearPreview();
                 }
             }
-            if (fileNames.length > 0) {
-                $('.file-message').text(fileNames.join(', '));
-                if (validFiles.length > 0) {
-                    readFile(validFiles[0]);
-                }
-            } else {
-                $('.file-message').text('Please drop a valid Excel file.');
-                clearPreview();
+
+            function validateFile(file) {
+                const validTypes = [
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "application/vnd.ms-excel",
+                    "application/vnd.ms-excel.sheet.macroEnabled.12",
+                    "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+                ];
+                return validTypes.includes(file.type);
             }
-        }
 
-        function validateFile(file) {
-            const validTypes = [
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                "application/vnd.ms-excel",
-                "application/vnd.ms-excel.sheet.macroEnabled.12",
-                "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
-            ];
-            return validTypes.includes(file.type);
-        }
+            function readFile(file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const data = new Uint8Array(event.target.result);
+                    workbook = XLSX.read(data, { type: 'array', cellStyles: true });
+                    processSheets(workbook.SheetNames);
+                };
+                reader.readAsArrayBuffer(file);
+            }
 
-        function readFile(file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                const data = new Uint8Array(event.target.result);
-                workbook = XLSX.read(data, { type: 'array', cellStyles: true });
-                displayTabs(workbook.SheetNames);
-            };
-            reader.readAsArrayBuffer(file);
-        }
-
-        function displayTabs(sheetNames) {
-            const previewContainer = document.getElementById('previewContainer');
-            previewContainer.innerHTML = '';
-
-            sheetNames.forEach((sheetName, index) => {
-                const tabButton = document.createElement('button');
-                tabButton.classList.add('tabButton');
-                tabButton.textContent = sheetName;
-                tabButton.addEventListener('click', () => {
-                    setActiveTab(index); // Pass the index
-                });
-                previewContainer.appendChild(tabButton);
-            });
-
-            sheetNames.forEach((sheetName, index) => {
-                const tabContent = document.createElement('div');
-                tabContent.classList.add('tab', 'table-responsive');
-                tabContent.setAttribute('id', `tab-${index}`);
-                tabContent.style.display = 'none'; // Initially hide all tabs
-                previewContainer.appendChild(tabContent);
-                displaySheet(workbook.Sheets[sheetName], tabContent, sheetName); // Pass the sheet name
-            });
-
-            setActiveTab(0); // Set first tab active initially
-            $('#submit-button').show(); // Show the submit button after file is processed
-        }
-
-        function setActiveTab(activeIndex) {
-            const tabButtons = document.querySelectorAll('.tabButton');
-            const tabs = document.querySelectorAll('.tab');
-
-            tabButtons.forEach((button, index) => {
-                button.classList.toggle('active', index === activeIndex);
-            });
-
-            tabs.forEach((tab, index) => {
-                tab.style.display = index === activeIndex ? 'block' : 'none';
-            });
-        }
-
-        function displaySheet(sheet, tabContent, sheetName) {
-            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-            const table = document.createElement('table');
-            table.classList.add('table', 'table-bordered');
-            jsonData.forEach((row, rowIndex) => {
-                const tr = document.createElement('tr');
-                row.forEach((cell, colIndex) => {
-                    const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
-                    cellElement.textContent = cell;
-                    tr.appendChild(cellElement);
-
-                    if (rowIndex > 0 && sheetName) {
-                        updateCellBasedOnDatabase(cellElement, sheetName, cell);
+            function processSheets(sheetNames) {
+                sheetNames.forEach(sheetName => {
+                    if (sheetName === "ADDONS") {
+                        const newSheet = workbook.Sheets[sheetName];
+                        mergeAddonsSheet(newSheet);
+                    } else if (!existingData[sheetName]) {
+                        existingData[sheetName] = workbook.Sheets[sheetName];
                     }
                 });
-                table.appendChild(tr);
-            });
-            tabContent.appendChild(table);
-        }
+                displayTabs(Object.keys(existingData));
+            }
 
-        // function updateCellBasedOnDatabase(cellElement, sheetName, cellValue) {
-        //     fetchDataFromDatabase(sheetName, cellValue).then(data => {
-        //         if (data) {
-        //             cellElement.textContent = data;
-        //         }
-        //     }).catch(error => {
-        //         console.error('Error fetching data from database:', error);
-        //     });
-        // }
-        function updateCellBasedOnDatabase(cellElement, sheetName, cellValue) {
-    fetchDataFromDatabase(sheetName, cellValue).then(data => {
-        if (data !== null) {
-            cellElement.textContent = data;
-        }
-    }).catch(error => {
-        console.error('Error fetching data from database:', error);
-    });
-}
-
-
-        function fetchDataFromDatabase(sheetName, cellValue) {
-            return fetch('https://66544dee1c6af63f46775254.mockapi.io/date')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
+            function mergeAddonsSheet(newSheet) {
+                const newSheetJson = XLSX.utils.sheet_to_json(newSheet, { header: 1 });
+                const addonsData = existingData["ADDONS"] ? XLSX.utils.sheet_to_json(existingData["ADDONS"], { header: 1 }) : [];
+                
+                newSheetJson.forEach((row, rowIndex) => {
+                    if (rowIndex > 0) { // Skip header row
+                        addonsData.push(row);
                     }
-                    return response.json();
-                })
-                .then(data => {
-                    // Define a mapping of sheet names to data
-                    const dataMap = {
-                        "KILO": data,
-                        "CBM": data,
-                        "LAND-CBM": data,
-                        "TRUCKING-ODA": data,
-                        "Sheet1": data
-                    };
-
-                    // Check if the sheet name exists in the data map
-                    if (dataMap.hasOwnProperty(sheetName)) {
-                        const mappedData = dataMap[sheetName];
-                        // Find the item in the mapped data based on the cell value
-                        const item = mappedData.find(item => item.id == cellValue);
-                        return item ? item.city : null;
-                    } else {
-                        throw new Error('No data found for the specified sheet name');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data from database:', error);
-                    // Handle errors here
-                    return null;
                 });
-        }
 
-        function clearPreview() {
-            const previewContainer = document.getElementById('previewContainer');
-            previewContainer.innerHTML = '';
-            $('#submit-button').hide(); // Hide the submit button if no valid file is present
-        }
+                const mergedSheet = XLSX.utils.json_to_sheet(addonsData, { skipHeader: true });
+                existingData["ADDONS"] = mergedSheet;
+            }
 
-        $('#submit-button').on('click', function () {
-            alert('Data submitted!');
-            // Add your form submission logic here
+            function displayTabs(sheetNames) {
+                const previewContainer = document.getElementById('previewContainer');
+                previewContainer.innerHTML = '';
+
+                sheetNames.forEach((sheetName, index) => {
+                    const tabButton = document.createElement('button');
+                    tabButton.classList.add('tabButton');
+                    tabButton.textContent = sheetName;
+                    tabButton.addEventListener('click', () => {
+                        setActiveTab(index); // Pass the index
+                    });
+                    previewContainer.appendChild(tabButton);
+                });
+
+                sheetNames.forEach((sheetName, index) => {
+                    const tabContent = document.createElement('div');
+                    tabContent.classList.add('tab', 'table-responsive');
+                    tabContent.setAttribute('id', `tab-${index}`);
+                    tabContent.style.display = 'none'; // Initially hide all tabs
+                    previewContainer.appendChild(tabContent);
+                    displaySheet(existingData[sheetName], tabContent, sheetName); // Pass the sheet name
+                });
+
+                setActiveTab(0); // Set first tab active initially
+                $('#submit-button').show(); // Show the submit button after file is processed
+            }
+
+            function setActiveTab(activeIndex) {
+                const tabButtons = document.querySelectorAll('.tabButton');
+                const tabs = document.querySelectorAll('.tab');
+
+                tabButtons.forEach((button, index) => {
+                    button.classList.toggle('active', index === activeIndex);
+                });
+
+                tabs.forEach((tab, index) => {
+                    tab.style.display = index === activeIndex ? 'block' : 'none';
+                });
+            }
+
+            function displaySheet(sheet, tabContent, sheetName) {
+                const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                const table = document.createElement('table');
+                table.classList.add('table', 'table-bordered');
+                jsonData.forEach((row, rowIndex) => {
+                    const tr = document.createElement('tr');
+                    row.forEach((cell, colIndex) => {
+                        const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        cellElement.textContent = cell;
+                        tr.appendChild(cellElement);
+
+                        if (rowIndex > 0 && sheetName !== "ADDONS" && !isNaN(cell) && colIndex <= 1) { // Only update numerical values
+                            const updatedValue = getUpdatedValueFromMap(cell);
+                            if (updatedValue !== null) {
+                                cellElement.textContent = updatedValue;
+                            }
+                        }
+                        if (rowIndex > 0 && sheetName !== "ADDONS" && !isNaN(cell) && colIndex == 2) { // Only update numerical values
+                            const updatedValue = getUpdatedServiceModeFromMap(cell);
+                            if (updatedValue !== null) {
+                                cellElement.textContent = updatedValue;
+                            }
+                        }
+                    });
+                    table.appendChild(tr);
+                });
+                tabContent.appendChild(table);
+            }
+
+            function getUpdatedValueFromMap(cellValue) {
+                return idToCityMap[cellValue] || null;
+            }
+
+            function getUpdatedServiceModeFromMap(cellValue) {
+                return servicemode[cellValue] || null;
+            }
+
+            function fetchDataFromDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype.php`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.forEach(entry => {
+                            idToCityMap[entry.id] = entry.city;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
+                    });
+            }
+
+            function fetchServiceModeDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype2.php`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.forEach(entry => {
+                            servicemode[entry.id] = entry.name;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
+                    });
+            }
+
+            function clearPreview() {
+                const previewContainer = document.getElementById('previewContainer');
+                previewContainer.innerHTML = '';
+                $('#submit-button').hide(); // Hide the submit button if no valid file is present
+            }
+
+            $('#submit-button').on('click', function () {
+                alert('Data submitted!');
+                // Add your form submission logic here
+            });
+
+            $('#submit-button').hide(); // Hide the submit button initially
         });
-
-        $('#submit-button').hide(); // Hide the submit button initially
-    });
     </script>
 </body>
 
