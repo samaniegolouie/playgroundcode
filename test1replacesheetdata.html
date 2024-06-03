@@ -116,6 +116,16 @@
     <script>
         $(document).ready(function () {
             var workbook;
+            var idToCityMap = {};
+            var servicemode ={};
+
+            let locs;
+
+            // Fetch the data from the database on page load
+            fetchDataFromDatabase();
+            fetchServiceModeDatabase();
+
+console.log (servicemode)
 
             $('.border-line').on('dragover', function (e) {
                 e.preventDefault();
@@ -234,27 +244,35 @@
                         cellElement.textContent = cell;
                         tr.appendChild(cellElement);
 
-                        if (rowIndex > 0 && sheetName && !isNaN(cell)) { // Only update numerical values
-                            updateCellBasedOnDatabase(cellElement, sheetName, cell);
+                        if (rowIndex > 0 && sheetName && !isNaN(cell) && colIndex <= 1) { // Only update numerical values
+                            const updatedValue = getUpdatedValueFromMap(cell);
+                            if (updatedValue !== null) {
+                                cellElement.textContent = updatedValue;
+                            }
                         }
+                        if (rowIndex > 0 && sheetName && !isNaN(cell) && colIndex == 2) { // Only update numerical values
+                            const updatedValue = getUpdatedServiceModeFromMap(cell);
+                            if (updatedValue !== null) {
+                                cellElement.textContent = updatedValue;
+                            }
+                        }
+
+
                     });
                     table.appendChild(tr);
                 });
                 tabContent.appendChild(table);
             }
 
-            function updateCellBasedOnDatabase(cellElement, sheetName, cellValue) {
-                fetchDataFromDatabase(sheetName, cellValue).then(data => {
-                    if (data !== null) {
-                        cellElement.textContent = data;
-                    }
-                }).catch(error => {
-                    console.error('Error fetching data from database:', error);
-                });
+            function getUpdatedValueFromMap(cellValue) {
+                return idToCityMap[cellValue] || null;
+            }
+            function getUpdatedServiceModeFromMap(cellValue) {
+                return servicemode[cellValue] || null;
             }
 
-            function fetchDataFromDatabase(sheetName, cellValue) {
-           return fetch('https://66544dee1c6af63f46775254.mockapi.io/date')
+            function fetchDataFromDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype.php`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -262,16 +280,32 @@
                         return response.json();
                     })
                     .then(data => {
-                        const idToCityMap = {};
                         data.forEach(entry => {
                             idToCityMap[entry.id] = entry.city;
                         });
-
-                        return idToCityMap[cellValue] || null;
                     })
                     .catch(error => {
                         console.error('Error fetching data from database:', error);
-                        return null;
+                    });
+            }
+
+            
+            function fetchServiceModeDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype2.php`)
+                // fetch(`https://65f442a1f54db27bc02132c7.mockapi.io/user`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.forEach(entry => {
+                            servicemode[entry.id] = entry.name;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
                     });
             }
 

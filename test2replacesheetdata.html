@@ -116,6 +116,13 @@
     <script>
         $(document).ready(function () {
             var workbook;
+            var existingData = {};
+            var idToCityMap = {};
+            var servicemode = {};
+
+            // Fetch the data from the database on page load
+            fetchDataFromDatabase();
+            fetchServiceModeDatabase();
 
             $('.border-line').on('dragover', function (e) {
                 e.preventDefault();
@@ -178,16 +185,23 @@
                 reader.onload = function (event) {
                     const data = new Uint8Array(event.target.result);
                     workbook = XLSX.read(data, { type: 'array', cellStyles: true });
-                    displayTabs(workbook.SheetNames);
+                    addOrUpdateSheets(workbook.SheetNames);
                 };
                 reader.readAsArrayBuffer(file);
+            }
+
+            function addOrUpdateSheets(sheetNames) {
+                sheetNames.forEach(sheetName => {
+                    if (!existingData[sheetName]) {
+                        existingData[sheetName] = workbook.Sheets[sheetName];
+                        displayTabs(Object.keys(existingData));
+                    }
+                });
             }
 
             function displayTabs(sheetNames) {
                 const previewContainer = document.getElementById('previewContainer');
                 previewContainer.innerHTML = '';
-
-                const tabButtons = []; // Array to store tab button elements
 
                 sheetNames.forEach((sheetName, index) => {
                     const tabButton = document.createElement('button');
@@ -197,7 +211,6 @@
                         setActiveTab(index); // Pass the index
                     });
                     previewContainer.appendChild(tabButton);
-                    tabButtons.push(tabButton); // Store tab button element
                 });
 
                 sheetNames.forEach((sheetName, index) => {
@@ -206,7 +219,7 @@
                     tabContent.setAttribute('id', `tab-${index}`);
                     tabContent.style.display = 'none'; // Initially hide all tabs
                     previewContainer.appendChild(tabContent);
-                    displaySheet(workbook.Sheets[sheetName], tabContent, sheetName); // Pass the sheet name
+                    displaySheet(existingData[sheetName], tabContent, sheetName); // Pass the sheet name
                 });
 
                 setActiveTab(0); // Set first tab active initially
@@ -237,66 +250,69 @@
                         cellElement.textContent = cell;
                         tr.appendChild(cellElement);
 
-                        // Update specific cells based on database response
-                        // if (sheetName !== "TRUCKING" && sheetName !== "ADDONS") {
-                        if (sheetName) {
-                            updateCellBasedOnDatabase(cellElement, sheetName, rowIndex, colIndex);
+                        if (rowIndex > 0 && sheetName && !isNaN(cell) && colIndex <= 1) { // Only update numerical values
+                            const updatedValue = getUpdatedValueFromMap(cell);
+                            if (updatedValue !== null) {
+                                cellElement.textContent = updatedValue;
+                            }
                         }
+                        if (rowIndex > 0 && sheetName && !isNaN(cell) && colIndex == 2) { // Only update numerical values
+                            const updatedValue = getUpdatedServiceModeFromMap(cell);
+                            if (updatedValue !== null) {
+                                cellElement.textContent = updatedValue;
+                            }
+                        }
+
+
                     });
                     table.appendChild(tr);
                 });
                 tabContent.appendChild(table);
             }
 
-            function updateCellBasedOnDatabase(cellElement, sheetName, rowIndex, colIndex) {
-                fetchDataFromDatabase(sheetName, rowIndex, colIndex).then(data => {
-                    cellElement.textContent = data;
-                }).catch(error => {
-                    console.error('Error fetching data from database:', error);
-                });
+            function getUpdatedValueFromMap(cellValue) {
+                return idToCityMap[cellValue] || null;
+            }
+            function getUpdatedServiceModeFromMap(cellValue) {
+                return servicemode[cellValue] || null;
             }
 
- function fetchDataFromDatabase(sheetName, rowIndex, colIndex) {
-    return fetch('https://66544dee1c6af63f46775254.mockapi.io/date')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            function fetchDataFromDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype.php`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.forEach(entry => {
+                            idToCityMap[entry.id] = entry.city;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
+                    });
             }
-            return response.json();
-        })
-        .then(data => {
-            // Initialize an empty array to store the row data
-            const rowData = [];
 
-            // Loop through the data to find matching rows based on sheetName and rowIndex
-            data.forEach(item => {
-                if (item.IATA === sheetName) {
-                    // Push the desired data into the rowData array
-                    rowData.push(item.city);
-                }
-            });
-
-            // Check if rowData contains the desired data
-            if (rowData.length > 0) {
-                // Check if the rowData array has the required index
-                if (rowData[rowIndex]) {
-                    return rowData[rowIndex];
-                } else {
-                    throw new Error('No data found for the specified row index');
-                }
-            } else {
-                throw new Error('No data found for the specified sheet name');
+            
+            function fetchServiceModeDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype2.php`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.forEach(entry => {
+                            servicemode[entry.id] = entry.name;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
+                    });
             }
-        })
-        .catch(error => {
-            console.error('Error fetching data from database:', error);
-            // Handle errors here
-        });
-}
-
-
-
-
 
             function clearPreview() {
                 const previewContainer = document.getElementById('previewContainer');
