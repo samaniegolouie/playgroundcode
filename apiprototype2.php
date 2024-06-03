@@ -5,7 +5,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "05022024_db_rates4";
-// $dbname = "u263324926_prototypes";
 
 // Create a connection to MySQL database
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,7 +22,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // Handle HTTP GET request to fetch all users
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $sql = "SELECT * FROM tbl_locations";
+    $sql = "SELECT * FROM tbl_service_mode";
     $result = $conn->query($sql);
 
     $users = array();
