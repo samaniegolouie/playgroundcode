@@ -304,6 +304,7 @@
                     .then(data => {
                         data.forEach(entry => {
                             idToCityMap[entry.id] = entry.city;
+                            
                         });
                     })
                     .catch(error => {
