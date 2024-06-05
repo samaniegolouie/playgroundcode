@@ -122,7 +122,6 @@
 
             // Fetch the data from the database on page load
             fetchDataFromDatabase();
-            fetchServiceModeDatabase();
 
             $('.border-line').on('dragover', function (e) {
                 e.preventDefault();
@@ -293,44 +292,34 @@
                 return servicemode[cellValue] || null;
             }
 
+            
             function fetchDataFromDatabase() {
-                fetch(`http://localhost/playgroundcode/apiprototype2.php`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        data.forEach(entry => {
-                            idToCityMap[entry.id] = entry.city;
-                            
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data from database:', error);
-                    });
+    fetch(`http://localhost/playgroundcode/apiprototype2.php`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.json();
+        })
+        .then(data => {
+            data.tbl_locations.forEach(entry => {
+                idToCityMap[entry.tbl_locations.id] = entry.tbl_locations.city;
+            });
 
-            // function fetchServiceModeDatabase() {
-            //     fetch(`http://localhost/playgroundcode/apiprototype2.php`)
-            //         .then(response => {
-            //             if (!response.ok) {
-            //                 throw new Error('Network response was not ok');
-            //             }
-            //             return response.json();
-            //         })
-            //         .then(data => {
-            //             data.forEach(entry => {
-            //                 servicemode[entry.id] = entry.name;
-            //             });
-            //         })
-            //         .catch(error => {
-            //             console.error('Error fetching data from database:', error);
-            //         });
-            // }
+            // Loop through tbl_service_mode and populate servicemode object
+            data.tbl_service_mode.forEach(entry => {
+                // Check if the id is 5, if yes then skip
+                if(entry.tbl_service_mode.id !== "5") {
+                    servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data from database:', error);
+        });
+}
 
-            function clearPreview() {
+               function clearPreview() {
                 const previewContainer = document.getElementById('previewContainer');
                 previewContainer.innerHTML = '';
                 $('#submit-button').hide(); // Hide the submit button if no valid file is present

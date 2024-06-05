@@ -1,318 +1,318 @@
 [
     {
-      "Origin": "Manila",
-      "Destination": "Muntinlupa",
-      "TypesRates": "KILO",
-      "Weight_Breaks": "1-5",
-      "Classifications": "",
-      "Rates": "200",
-      "id": "1"
+      -Origin-: -Manila
+      -Destination-: -Muntinlupa
+      -TypesRates-: -KILO
+      -Weight_Breaks-: -1-5
+      -Classifications-: -
+      -Rates-: -200
+      1-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Muntinlupa",
-      "TypesRates": "KILO",
-      "Weight_Breaks": "6-49",
-      "Classifications": "",
-      "Rates": "30",
-      "id": "2"
+      -Origin-: -Manila
+      -Destination-: -Muntinlupa
+      -TypesRates-: -KILO
+      -Weight_Breaks-: -6-49
+      -Classifications-: -
+      -Rates-: -30
+      2-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Muntinlupa",
-      "TypesRates": "KILO",
-      "Weight_Breaks": "50-249",
-      "Classifications": "",
-      "Rates": "28.50",
-      "id": "3"
+      -Origin-: -Manila
+      -Destination-: -Muntinlupa
+      -TypesRates-: -KILO
+      -Weight_Breaks-: -50-249
+      -Classifications-: -
+      -Rates-: -28.50
+      3-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Muntinlupa",
-      "TypesRates": "KILO",
-      "Weight_Breaks": "250-999",
-      "Classifications": "",
-      "Rates": "26.50",
-      "id": "4"
+      -Origin-: -Manila
+      -Destination-: -Muntinlupa
+      -TypesRates-: -KILO
+      -Weight_Breaks-: -250-999
+      -Classifications-: -
+      -Rates-: -26.50
+      4-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Muntinlupa",
-      "TypesRates": "KILO",
-      "Weight_Breaks": "1000",
-      "Classifications": "",
-      "Rates": "24",
-      "id": "5"
+      -Origin-: -Manila
+      -Destination-: -Muntinlupa
+      -TypesRates-: -KILO
+      -Weight_Breaks-: -1000
+      -Classifications-: -
+      -Rates-: -24
+      5-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Cebu",
-      "TypesRates": "CBM",
-      "Weight_Breaks": "20",
-      "Classifications": "",
-      "Rates": "59,000",
-      "id": "6"
+      -Origin-: -Manila
+      -Destination-: -Cebu
+      -TypesRates-: -CBM
+      -Weight_Breaks-: -20
+      -Classifications-: -
+      -Rates-: -59,000
+      6-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Cebu",
-      "TypesRates": "CBM",
-      "Weight_Breaks": "40",
-      "Classifications": "",
-      "Rates": "126,000",
-      "id": "7"
+      -Origin-: -Manila
+      -Destination-: -Cebu
+      -TypesRates-: -CBM
+      -Weight_Breaks-: -40
+      -Classifications-: -
+      -Rates-: -126,000
+      7-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Kalibo",
-      "TypesRates": "LAND-CBM",
-      "Weight_Breaks": "1-6",
-      "Classifications": "4w",
-      "Rates": "23,400",
-      "id": "8"
+      -Origin-: -Manila
+      -Destination-: -Kalibo
+      -TypesRates-: -LAND-CBM
+      -Weight_Breaks-: -1-6
+      -Classifications-: -4w
+      -Rates-: -23,400
+      8-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Kalibo",
-      "TypesRates": "LAND-CBM",
-      "Weight_Breaks": "7-14",
-      "Classifications": "6w",
-      "Rates": "54,600",
-      "id": "9"
+      -Origin-: -Manila
+      -Destination-: -Kalibo
+      -TypesRates-: -LAND-CBM
+      -Weight_Breaks-: -7-14
+      -Classifications-: -6w
+      -Rates-: -54,600
+      9-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Kalibo",
-      "TypesRates": "LAND-CBM",
-      "Weight_Breaks": "15-28",
-      "Classifications": "6wf",
-      "Rates": "109,200",
-      "id": "10"
+      -Origin-: -Manila
+      -Destination-: -Kalibo
+      -TypesRates-: -LAND-CBM
+      -Weight_Breaks-: -15-28
+      -Classifications-: -6wf
+      -Rates-: -109,200
+      10-
     },
     {
-      "Origin": "Manila",
-      "Destination": "Kalibo",
-      "TypesRates": "LAND-CBM",
-      "Weight_Breaks": "29-54",
-      "Classifications": "10w",
-      "Rates": "210,600",
-      "id": "11"
+      -Origin-: -Manila
+      -Destination-: -Kalibo
+      -TypesRates-: -LAND-CBM
+      -Weight_Breaks-: -29-54
+      -Classifications-: -10w
+      -Rates-: -210,600
+      11-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "1-15",
-      "Classifications": "4w",
-      "Rates": "7319",
-      "id": "12"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -1-15
+      -Classifications-: -4w
+      -Rates-: -7319
+      12-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "16-30",
-      "Classifications": "4w",
-      "Rates": "9519",
-      "id": "13"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -16-30
+      -Classifications-: -4w
+      -Rates-: -9519
+      13-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "31-45",
-      "Classifications": "4w",
-      "Rates": "11807",
-      "id": "14"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -31-45
+      -Classifications-: -4w
+      -Rates-: -11807
+      14-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "46-60",
-      "Classifications": "4w",
-      "Rates": "13449",
-      "id": "15"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -46-60
+      -Classifications-: -4w
+      -Rates-: -13449
+      15-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "1-15",
-      "Classifications": "6w",
-      "Rates": "7800",
-      "id": "16"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -1-15
+      -Classifications-: -6w
+      -Rates-: -7800
+      16-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "16-30",
-      "Classifications": "6w",
-      "Rates": "9980",
-      "id": "17"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -16-30
+      -Classifications-: -6w
+      -Rates-: -9980
+      17-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "31-45",
-      "Classifications": "6w",
-      "Rates": "12263",
-      "id": "18"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -31-45
+      -Classifications-: -6w
+      -Rates-: -12263
+      18-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "46-60",
-      "Classifications": "6w",
-      "Rates": "13907",
-      "id": "19"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -46-60
+      -Classifications-: -6w
+      -Rates-: -13907
+      19-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "1-15",
-      "Classifications": "6WF",
-      "Rates": "13096",
-      "id": "20"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -1-15
+      -Classifications-: -6WF
+      -Rates-: -13096
+      20-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "16-30",
-      "Classifications": "6WF",
-      "Rates": "15795",
-      "id": "21"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -16-30
+      -Classifications-: -6WF
+      -Rates-: -15795
+      21-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "31-45",
-      "Classifications": "6WF",
-      "Rates": "18732",
-      "id": "22"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -31-45
+      -Classifications-: -6WF
+      -Rates-: -18732
+      22-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "46-60",
-      "Classifications": "6WF",
-      "Rates": "20316",
-      "id": "23"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -46-60
+      -Classifications-: -6WF
+      -Rates-: -20316
+      23-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "1-15",
-      "Classifications": "10W",
-      "Rates": "15023",
-      "id": "24"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -1-15
+      -Classifications-: -10W
+      -Rates-: -15023
+      24-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "16-30",
-      "Classifications": "10W",
-      "Rates": "18041",
-      "id": "25"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -16-30
+      -Classifications-: -10W
+      -Rates-: -18041
+      25-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "31-45",
-      "Classifications": "10W",
-      "Rates": "21021",
-      "id": "26"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -31-45
+      -Classifications-: -10W
+      -Rates-: -21021
+      26-
     },
     {
-      "Origin": "",
-      "Destination": "",
-      "TypesRates": "TRUCKING",
-      "Weight_Breaks": "46-60",
-      "Classifications": "10W",
-      "Rates": "22598",
-      "id": "27"
+      -Origin-: -
+      -Destination-: -
+      -TypesRates-: -TRUCKING
+      -Weight_Breaks-: -46-60
+      -Classifications-: -10W
+      -Rates-: -22598
+      27-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "1-20",
-      "Classifications": "4w",
-      "Rates": "4550",
-      "id": "28"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -1-20
+      -Classifications-: -4w
+      -Rates-: -4550
+      28-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "1-20",
-      "Classifications": "6w",
-      "Rates": "6500",
-      "id": "29"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -1-20
+      -Classifications-: -6w
+      -Rates-: -6500
+      29-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "1-20",
-      "Classifications": "6WF",
-      "Rates": "7150",
-      "id": "30"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -1-20
+      -Classifications-: -6WF
+      -Rates-: -7150
+      30-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "1-20",
-      "Classifications": "10W",
-      "Rates": "7800",
-      "id": "31"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -1-20
+      -Classifications-: -10W
+      -Rates-: -7800
+      31-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "20-30",
-      "Classifications": "4W",
-      "Rates": "9100",
-      "id": "32"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -20-30
+      -Classifications-: -4W
+      -Rates-: -9100
+      32-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "20-30",
-      "Classifications": "6W",
-      "Rates": "13000",
-      "id": "33"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -20-30
+      -Classifications-: -6W
+      -Rates-: -13000
+      33-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "20-30",
-      "Classifications": "6WF",
-      "Rates": "14300",
-      "id": "34"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -20-30
+      -Classifications-: -6WF
+      -Rates-: -14300
+      34-
     },
     {
-      "Origin": "Manila",
-      "Destination": "BACOLOD",
-      "TypesRates": "TRUCKING-ODA",
-      "Weight_Breaks": "20-30",
-      "Classifications": "10W",
-      "Rates": "15600",
-      "id": "35"
+      -Origin-: -Manila
+      -Destination-: -BACOLOD
+      -TypesRates-: -TRUCKING-ODA
+      -Weight_Breaks-: -20-30
+      -Classifications-: -10W
+      -Rates-: -15600
+      35-
     }
   ]
 
@@ -322,8 +322,8 @@
 =================
 [
   {
-    "Origin": "Manila",
-    "Date": "2024-05-01",
+    -Origin-: -Manila
+    -Date-: -2024-05-01
     
   },
   
@@ -334,312 +334,3584 @@
 --------------------------------------------------
 [
   {
-    "empId": "3eff33ef-ea4f-47de-8142-92f81b01c59e",
-    "empName": "Rochelle Rippin",
-    "empEmail": "Sydnee.Goyette@yahoo.com",
-    "empMobile": "445.804.2121",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1159.jpg",
-    "createAt": "2024-04-01T22:55:31.782Z",
-    "department": "Business Technology",
-    "logDate": "2024-04-02T04:34:32.818Z",
-    "logRemarks": "male",
-    "logIn": "2043-02-05T21:17:03.801Z",
-    "logOut": "2095-03-12T05:40:07.097Z",
-    "logOvertime": "1",
-    "logLate": "5",
-    "logWorkHours": "5",
-    "id": "1"
+    -empId-: -3eff33ef-ea4f-47de-8142-92f81b01c59e
+    -empName-: -Rochelle Rippin
+    -empEmail-: -Sydnee.Goyette@yahoo.com
+    -empMobile-: -445.804.2121
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1159.jpg
+    -createAt-: -2024-04-01T22:55:31.782Z
+    -department-: -Business Technology
+    -logDate-: -2024-04-02T04:34:32.818Z
+    -logRemarks-: -male
+    -logIn-: -2043-02-05T21:17:03.801Z
+    -logOut-: -2095-03-12T05:40:07.097Z
+    -logOvertime-: -1
+    -logLate-: -5
+    -logWorkHours-: -5
+    1-
   },
   {
-    "empId": "2c567423-3f07-477c-bfdf-76cfe2124cab",
-    "empName": "Oscar Breitenberg",
-    "empEmail": "Pablo_Hessel35@gmail.com",
-    "empMobile": "(283) 457-3730 x67686",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1004.jpg",
-    "createAt": "2024-04-01T11:59:16.649Z",
-    "department": "Business Technology",
-    "logDate": "2024-04-02T01:57:56.031Z",
-    "logRemarks": "Cotton",
-    "logIn": "2044-12-29T19:55:57.998Z",
-    "logOut": "2021-01-01T04:51:18.673Z",
-    "logOvertime": "3",
-    "logLate": "8",
-    "logWorkHours": "5",
-    "id": "2"
+    -empId-: -2c567423-3f07-477c-bfdf-76cfe2124cab
+    -empName-: -Oscar Breitenberg
+    -empEmail-: -Pablo_Hessel35@gmail.com
+    -empMobile-: -(283) 457-3730 x67686
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1004.jpg
+    -createAt-: -2024-04-01T11:59:16.649Z
+    -department-: -Business Technology
+    -logDate-: -2024-04-02T01:57:56.031Z
+    -logRemarks-: -Cotton
+    -logIn-: -2044-12-29T19:55:57.998Z
+    -logOut-: -2021-01-01T04:51:18.673Z
+    -logOvertime-: -3
+    -logLate-: -8
+    -logWorkHours-: -5
+    2-
   },
   {
-    "empId": "66252465-547f-4e1f-9cc9-2a970f39a791",
-    "empName": "Philip Pfeffer",
-    "empEmail": "Clare79@gmail.com",
-    "empMobile": "1-267-262-0573 x03391",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/464.jpg",
-    "createAt": "2024-04-01T18:24:17.078Z",
-    "department": "Business Technology",
-    "logDate": "2024-04-01T23:37:01.194Z",
-    "logRemarks": "lux",
-    "logIn": "2019-07-15T04:29:18.546Z",
-    "logOut": "1994-06-19T06:01:44.773Z",
-    "logOvertime": "8",
-    "logLate": "4",
-    "logWorkHours": "2",
-    "id": "3"
+    -empId-: -66252465-547f-4e1f-9cc9-2a970f39a791
+    -empName-: -Philip Pfeffer
+    -empEmail-: -Clare79@gmail.com
+    -empMobile-: -1-267-262-0573 x03391
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/464.jpg
+    -createAt-: -2024-04-01T18:24:17.078Z
+    -department-: -Business Technology
+    -logDate-: -2024-04-01T23:37:01.194Z
+    -logRemarks-: -lux
+    -logIn-: -2019-07-15T04:29:18.546Z
+    -logOut-: -1994-06-19T06:01:44.773Z
+    -logOvertime-: -8
+    -logLate-: -4
+    -logWorkHours-: -2
+    3-
   },
   {
-    "empId": "abdace67-b30c-4c1c-bfa5-1f8534aca9af",
-    "empName": "Joann Reilly",
-    "empEmail": "Vivianne.Wiza46@yahoo.com",
-    "empMobile": "357.606.3535 x7035",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/357.jpg",
-    "createAt": "2024-04-01T22:31:58.043Z",
-    "department": "Sales",
-    "logDate": "2024-04-01T12:48:14.147Z",
-    "logRemarks": "Extended",
-    "logIn": "2057-02-05T00:52:08.269Z",
-    "logOut": "2080-09-07T09:15:35.014Z",
-    "logOvertime": "5",
-    "logLate": "3",
-    "logWorkHours": "1",
-    "id": "4"
+    -empId-: -abdace67-b30c-4c1c-bfa5-1f8534aca9af
+    -empName-: -Joann Reilly
+    -empEmail-: -Vivianne.Wiza46@yahoo.com
+    -empMobile-: -357.606.3535 x7035
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/357.jpg
+    -createAt-: -2024-04-01T22:31:58.043Z
+    -department-: -Sales
+    -logDate-: -2024-04-01T12:48:14.147Z
+    -logRemarks-: -Extended
+    -logIn-: -2057-02-05T00:52:08.269Z
+    -logOut-: -2080-09-07T09:15:35.014Z
+    -logOvertime-: -5
+    -logLate-: -3
+    -logWorkHours-: -1
+    4-
   },
   {
-    "empId": "b8d1de27-d2b9-42eb-b0fa-055f68ce58d2",
-    "empName": "Joseph Shields",
-    "empEmail": "Clyde_Zulauf62@hotmail.com",
-    "empMobile": "797-734-7669 x0999",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1060.jpg",
-    "createAt": "2024-04-01T22:04:17.522Z",
-    "department": "Sales",
-    "logDate": "2024-04-02T03:03:48.862Z",
-    "logRemarks": "City",
-    "logIn": "2033-07-08T12:36:15.280Z",
-    "logOut": "2019-05-21T19:26:01.946Z",
-    "logOvertime": "5",
-    "logLate": "2",
-    "logWorkHours": "3",
-    "id": "5"
+    -empId-: -b8d1de27-d2b9-42eb-b0fa-055f68ce58d2
+    -empName-: -Joseph Shields
+    -empEmail-: -Clyde_Zulauf62@hotmail.com
+    -empMobile-: -797-734-7669 x0999
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1060.jpg
+    -createAt-: -2024-04-01T22:04:17.522Z
+    -department-: -Sales
+    -logDate-: -2024-04-02T03:03:48.862Z
+    -logRemarks-: -City
+    -logIn-: -2033-07-08T12:36:15.280Z
+    -logOut-: -2019-05-21T19:26:01.946Z
+    -logOvertime-: -5
+    -logLate-: -2
+    -logWorkHours-: -3
+    5-
   },
   {
-    "empId": "7eea894f-e769-498f-9de6-ec1f368cc0b4",
-    "empName": "Fernando Casper",
-    "empEmail": "Rupert.Greenholt@hotmail.com",
-    "empMobile": "983-776-2736 x9065",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1052.jpg",
-    "createAt": "2024-04-01T22:53:48.923Z",
-    "department": "Sales",
-    "logDate": "2024-04-01T20:14:12.845Z",
-    "logRemarks": "Assistant",
-    "logIn": "2081-05-29T14:51:02.817Z",
-    "logOut": "2094-02-09T23:01:21.431Z",
-    "logOvertime": "5",
-    "logLate": "9",
-    "logWorkHours": "2",
-    "id": "6"
+    -empId-: -7eea894f-e769-498f-9de6-ec1f368cc0b4
+    -empName-: -Fernando Casper
+    -empEmail-: -Rupert.Greenholt@hotmail.com
+    -empMobile-: -983-776-2736 x9065
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1052.jpg
+    -createAt-: -2024-04-01T22:53:48.923Z
+    -department-: -Sales
+    -logDate-: -2024-04-01T20:14:12.845Z
+    -logRemarks-: -Assistant
+    -logIn-: -2081-05-29T14:51:02.817Z
+    -logOut-: -2094-02-09T23:01:21.431Z
+    -logOvertime-: -5
+    -logLate-: -9
+    -logWorkHours-: -2
+    6-
   },
   {
-    "empId": "ad8d1751-f46a-45f1-8a9e-c08cf64c73b5",
-    "empName": "Tanya Fisher I",
-    "empEmail": "Scottie_Doyle@yahoo.com",
-    "empMobile": "1-965-809-5728",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/830.jpg",
-    "createAt": "2024-04-01T18:52:31.340Z",
-    "department": "Sales",
-    "logDate": "2024-04-01T12:47:03.318Z",
-    "logRemarks": "Lakes",
-    "logIn": "2052-11-03T10:19:55.058Z",
-    "logOut": "2032-07-26T09:43:55.079Z",
-    "logOvertime": "1",
-    "logLate": "1",
-    "logWorkHours": "4",
-    "id": "7"
+    -empId-: -ad8d1751-f46a-45f1-8a9e-c08cf64c73b5
+    -empName-: -Tanya Fisher I
+    -empEmail-: -Scottie_Doyle@yahoo.com
+    -empMobile-: -1-965-809-5728
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/830.jpg
+    -createAt-: -2024-04-01T18:52:31.340Z
+    -department-: -Sales
+    -logDate-: -2024-04-01T12:47:03.318Z
+    -logRemarks-: -Lakes
+    -logIn-: -2052-11-03T10:19:55.058Z
+    -logOut-: -2032-07-26T09:43:55.079Z
+    -logOvertime-: -1
+    -logLate-: -1
+    -logWorkHours-: -4
+    7-
   },
   {
-    "empId": "fe0ff171-7d44-4ff3-8243-622c1dd6f901",
-    "empName": "Curtis Jacobi",
-    "empEmail": "Lyda69@gmail.com",
-    "empMobile": "445.532.0271",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1235.jpg",
-    "createAt": "2024-04-01T16:32:40.137Z",
-    "department": "Customer Service",
-    "logDate": "2024-04-02T03:03:31.490Z",
-    "logRemarks": "maroon",
-    "logIn": "1998-03-01T17:45:41.982Z",
-    "logOut": "2088-11-03T18:48:51.819Z",
-    "logOvertime": "5",
-    "logLate": "9",
-    "logWorkHours": "5",
-    "id": "8"
+    -empId-: -fe0ff171-7d44-4ff3-8243-622c1dd6f901
+    -empName-: -Curtis Jacobi
+    -empEmail-: -Lyda69@gmail.com
+    -empMobile-: -445.532.0271
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1235.jpg
+    -createAt-: -2024-04-01T16:32:40.137Z
+    -department-: -Customer Service
+    -logDate-: -2024-04-02T03:03:31.490Z
+    -logRemarks-: -maroon
+    -logIn-: -1998-03-01T17:45:41.982Z
+    -logOut-: -2088-11-03T18:48:51.819Z
+    -logOvertime-: -5
+    -logLate-: -9
+    -logWorkHours-: -5
+    8-
   },
   {
-    "empId": "3daa5b4f-7f7a-481f-a97c-214b12d97ce0",
-    "empName": "Miss Karl Schimmel",
-    "empEmail": "Chyna39@yahoo.com",
-    "empMobile": "(631) 390-9956 x467",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/404.jpg",
-    "createAt": "2024-04-02T03:07:25.373Z",
-    "department": "Customer Service",
-    "logDate": "2024-04-01T19:05:44.583Z",
-    "logRemarks": "online",
-    "logIn": "2010-07-17T19:33:36.825Z",
-    "logOut": "2056-01-11T20:03:29.244Z",
-    "logOvertime": "6",
-    "logLate": "4",
-    "logWorkHours": "8",
-    "id": "9"
+    -empId-: -3daa5b4f-7f7a-481f-a97c-214b12d97ce0
+    -empName-: -Miss Karl Schimmel
+    -empEmail-: -Chyna39@yahoo.com
+    -empMobile-: -(631) 390-9956 x467
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/404.jpg
+    -createAt-: -2024-04-02T03:07:25.373Z
+    -department-: -Customer Service
+    -logDate-: -2024-04-01T19:05:44.583Z
+    -logRemarks-: -online
+    -logIn-: -2010-07-17T19:33:36.825Z
+    -logOut-: -2056-01-11T20:03:29.244Z
+    -logOvertime-: -6
+    -logLate-: -4
+    -logWorkHours-: -8
+    9-
   },
   {
-    "empId": "25a017b8-910a-42b1-88b6-bf5f94ced4f8",
-    "empName": "Sonia Parisian",
-    "empEmail": "Raphaelle56@hotmail.com",
-    "empMobile": "1-280-467-4270 x034",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/63.jpg",
-    "createAt": "2024-04-01T20:22:14.133Z",
-    "department": "Operation",
-    "logDate": "2024-04-02T06:03:35.242Z",
-    "logRemarks": "kelvin",
-    "logIn": "2078-11-16T20:49:15.069Z",
-    "logOut": "2018-09-13T03:44:32.961Z",
-    "logOvertime": "7",
-    "logLate": "1",
-    "logWorkHours": "1",
-    "id": "10"
+    -empId-: -25a017b8-910a-42b1-88b6-bf5f94ced4f8
+    -empName-: -Sonia Parisian
+    -empEmail-: -Raphaelle56@hotmail.com
+    -empMobile-: -1-280-467-4270 x034
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/63.jpg
+    -createAt-: -2024-04-01T20:22:14.133Z
+    -department-: -Operation
+    -logDate-: -2024-04-02T06:03:35.242Z
+    -logRemarks-: -kelvin
+    -logIn-: -2078-11-16T20:49:15.069Z
+    -logOut-: -2018-09-13T03:44:32.961Z
+    -logOvertime-: -7
+    -logLate-: -1
+    -logWorkHours-: -1
+    10-
   },
   {
-    "empId": "68b6a00c-879a-4d30-a1d0-369c11f11c57",
-    "empName": "Willie Lehner",
-    "empEmail": "Heloise.Rodriguez@hotmail.com",
-    "empMobile": "1-543-239-2765 x410",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/204.jpg",
-    "createAt": "2024-04-01T09:32:48.071Z",
-    "department": "Operation",
-    "logDate": "2024-04-01T15:19:23.904Z",
-    "logRemarks": "embrace",
-    "logIn": "2091-02-18T16:56:12.464Z",
-    "logOut": "2065-01-21T13:47:53.017Z",
-    "logOvertime": "5",
-    "logLate": "4",
-    "logWorkHours": "6",
-    "id": "11"
+    -empId-: -68b6a00c-879a-4d30-a1d0-369c11f11c57
+    -empName-: -Willie Lehner
+    -empEmail-: -Heloise.Rodriguez@hotmail.com
+    -empMobile-: -1-543-239-2765 x410
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/204.jpg
+    -createAt-: -2024-04-01T09:32:48.071Z
+    -department-: -Operation
+    -logDate-: -2024-04-01T15:19:23.904Z
+    -logRemarks-: -embrace
+    -logIn-: -2091-02-18T16:56:12.464Z
+    -logOut-: -2065-01-21T13:47:53.017Z
+    -logOvertime-: -5
+    -logLate-: -4
+    -logWorkHours-: -6
+    11-
   },
   {
-    "empId": "d8692cba-9a94-48a7-bc87-d4b8de4bd0f4",
-    "empName": "Maureen Runolfsson",
-    "empEmail": "Noe_Koss59@yahoo.com",
-    "empMobile": "(975) 597-3768 x87573",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/38.jpg",
-    "createAt": "2024-04-01T21:06:33.759Z",
-    "department": "Operation",
-    "logDate": "2024-04-02T03:37:49.566Z",
-    "logRemarks": "Polestar",
-    "logIn": "2082-09-18T21:54:03.385Z",
-    "logOut": "2072-12-29T23:49:45.345Z",
-    "logOvertime": "4",
-    "logLate": "5",
-    "logWorkHours": "9",
-    "id": "12"
+    -empId-: -d8692cba-9a94-48a7-bc87-d4b8de4bd0f4
+    -empName-: -Maureen Runolfsson
+    -empEmail-: -Noe_Koss59@yahoo.com
+    -empMobile-: -(975) 597-3768 x87573
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/38.jpg
+    -createAt-: -2024-04-01T21:06:33.759Z
+    -department-: -Operation
+    -logDate-: -2024-04-02T03:37:49.566Z
+    -logRemarks-: -Polestar
+    -logIn-: -2082-09-18T21:54:03.385Z
+    -logOut-: -2072-12-29T23:49:45.345Z
+    -logOvertime-: -4
+    -logLate-: -5
+    -logWorkHours-: -9
+    12-
   },
   {
-    "empId": "d6282dbf-ece0-4a6c-a22c-0915734b0607",
-    "empName": "Alan Kris",
-    "empEmail": "Saige.Kertzmann@gmail.com",
-    "empMobile": "719.982.8574 x9048",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1039.jpg",
-    "createAt": "2024-04-02T03:46:24.777Z",
-    "department": "Human Resources",
-    "logDate": "2024-04-01T20:24:16.890Z",
-    "logRemarks": "Web",
-    "logIn": "2092-02-25T18:01:22.747Z",
-    "logOut": "2025-12-08T06:09:27.184Z",
-    "logOvertime": "9",
-    "logLate": "1",
-    "logWorkHours": "3",
-    "id": "13"
+    -empId-: -d6282dbf-ece0-4a6c-a22c-0915734b0607
+    -empName-: -Alan Kris
+    -empEmail-: -Saige.Kertzmann@gmail.com
+    -empMobile-: -719.982.8574 x9048
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1039.jpg
+    -createAt-: -2024-04-02T03:46:24.777Z
+    -department-: -Human Resources
+    -logDate-: -2024-04-01T20:24:16.890Z
+    -logRemarks-: -Web
+    -logIn-: -2092-02-25T18:01:22.747Z
+    -logOut-: -2025-12-08T06:09:27.184Z
+    -logOvertime-: -9
+    -logLate-: -1
+    -logWorkHours-: -3
+    13-
   },
   {
-    "empId": "68220725-5f4c-4104-9709-9747a56e28ef",
-    "empName": "Dr. Terrence Prohaska IV",
-    "empEmail": "Destini23@gmail.com",
-    "empMobile": "919-500-2876 x40517",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/976.jpg",
-    "createAt": "2024-04-02T04:34:38.256Z",
-    "department": "Human Resources",
-    "logDate": "2024-04-02T05:08:21.772Z",
-    "logRemarks": "Mouse",
-    "logIn": "2080-10-17T05:06:30.323Z",
-    "logOut": "2046-04-16T13:12:26.450Z",
-    "logOvertime": "6",
-    "logLate": "1",
-    "logWorkHours": "6",
-    "id": "14"
+    -empId-: -68220725-5f4c-4104-9709-9747a56e28ef
+    -empName-: -Dr. Terrence Prohaska IV
+    -empEmail-: -Destini23@gmail.com
+    -empMobile-: -919-500-2876 x40517
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/976.jpg
+    -createAt-: -2024-04-02T04:34:38.256Z
+    -department-: -Human Resources
+    -logDate-: -2024-04-02T05:08:21.772Z
+    -logRemarks-: -Mouse
+    -logIn-: -2080-10-17T05:06:30.323Z
+    -logOut-: -2046-04-16T13:12:26.450Z
+    -logOvertime-: -6
+    -logLate-: -1
+    -logWorkHours-: -6
+    14-
   },
   {
-    "empId": "84d7f975-69a7-4aab-ab4a-8141fc4f6bbc",
-    "empName": "Linda VonRueden V",
-    "empEmail": "Aimee24@gmail.com",
-    "empMobile": "1-309-693-0230",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/320.jpg",
-    "createAt": "2024-04-02T06:33:37.014Z",
-    "department": "Human Resources",
-    "logDate": "2024-04-02T00:15:23.337Z",
-    "logRemarks": "logistical",
-    "logIn": "2003-01-09T06:58:58.307Z",
-    "logOut": "2075-02-02T17:50:37.466Z",
-    "logOvertime": "8",
-    "logLate": "5",
-    "logWorkHours": "2",
-    "id": "15"
+    -empId-: -84d7f975-69a7-4aab-ab4a-8141fc4f6bbc
+    -empName-: -Linda VonRueden V
+    -empEmail-: -Aimee24@gmail.com
+    -empMobile-: -1-309-693-0230
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/320.jpg
+    -createAt-: -2024-04-02T06:33:37.014Z
+    -department-: -Human Resources
+    -logDate-: -2024-04-02T00:15:23.337Z
+    -logRemarks-: -logistical
+    -logIn-: -2003-01-09T06:58:58.307Z
+    -logOut-: -2075-02-02T17:50:37.466Z
+    -logOvertime-: -8
+    -logLate-: -5
+    -logWorkHours-: -2
+    15-
   },
   {
-    "empId": "791d1a40-a0d6-41e1-b8c8-c44058d84ab3",
-    "empName": "Nicolas Greenfelder",
-    "empEmail": "Rossie_Bauch24@hotmail.com",
-    "empMobile": "388.855.9794",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/760.jpg",
-    "createAt": "2024-04-01T10:28:10.224Z",
-    "department": "Finance",
-    "logDate": "2024-04-01T15:09:28.102Z",
-    "logRemarks": "Rock",
-    "logIn": "2090-08-11T21:55:15.558Z",
-    "logOut": "2076-09-20T07:24:53.616Z",
-    "logOvertime": "6",
-    "logLate": "9",
-    "logWorkHours": "9",
-    "id": "16"
+    -empId-: -791d1a40-a0d6-41e1-b8c8-c44058d84ab3
+    -empName-: -Nicolas Greenfelder
+    -empEmail-: -Rossie_Bauch24@hotmail.com
+    -empMobile-: -388.855.9794
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/760.jpg
+    -createAt-: -2024-04-01T10:28:10.224Z
+    -department-: -Finance
+    -logDate-: -2024-04-01T15:09:28.102Z
+    -logRemarks-: -Rock
+    -logIn-: -2090-08-11T21:55:15.558Z
+    -logOut-: -2076-09-20T07:24:53.616Z
+    -logOvertime-: -6
+    -logLate-: -9
+    -logWorkHours-: -9
+    16-
   },
   {
-    "empId": "799cc26d-dc01-474b-a257-cf8af0fa0094",
-    "empName": "Doyle Runolfsson",
-    "empEmail": "Jacinto65@hotmail.com",
-    "empMobile": "(423) 707-0904 x4547",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/487.jpg",
-    "createAt": "2024-04-01T11:36:48.159Z",
-    "department": "Finance",
-    "logDate": "2024-04-01T17:05:50.256Z",
-    "logRemarks": "male",
-    "logIn": "1993-05-29T17:57:07.014Z",
-    "logOut": "2021-06-11T11:42:17.309Z",
-    "logOvertime": "3",
-    "logLate": "2",
-    "logWorkHours": "6",
-    "id": "17"
+    -empId-: -799cc26d-dc01-474b-a257-cf8af0fa0094
+    -empName-: -Doyle Runolfsson
+    -empEmail-: -Jacinto65@hotmail.com
+    -empMobile-: -(423) 707-0904 x4547
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/487.jpg
+    -createAt-: -2024-04-01T11:36:48.159Z
+    -department-: -Finance
+    -logDate-: -2024-04-01T17:05:50.256Z
+    -logRemarks-: -male
+    -logIn-: -1993-05-29T17:57:07.014Z
+    -logOut-: -2021-06-11T11:42:17.309Z
+    -logOvertime-: -3
+    -logLate-: -2
+    -logWorkHours-: -6
+    17-
   },
   {
-    "empId": "1ceaac33-d556-4589-8fc9-c881c372db1d",
-    "empName": "Lisa Ullrich",
-    "empEmail": "Jayce_Smitham70@hotmail.com",
-    "empMobile": "277.941.2209",
-    "empAvatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/28.jpg",
-    "createAt": "2024-04-01T15:06:21.709Z",
-    "department": "Finance",
-    "logDate": "2024-04-02T08:56:01.504Z",
-    "logRemarks": "deposit",
-    "logIn": "2071-10-05T20:54:41.934Z",
-    "logOut": "2080-10-24T11:44:00.175Z",
-    "logOvertime": "8",
-    "logLate": "4",
-    "logWorkHours": "2",
-    "id": "18"
+    -empId-: -1ceaac33-d556-4589-8fc9-c881c372db1d
+    -empName-: -Lisa Ullrich
+    -empEmail-: -Jayce_Smitham70@hotmail.com
+    -empMobile-: -277.941.2209
+    -empAvatar-: -https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/28.jpg
+    -createAt-: -2024-04-01T15:06:21.709Z
+    -department-: -Finance
+    -logDate-: -2024-04-02T08:56:01.504Z
+    -logRemarks-: -deposit
+    -logIn-: -2071-10-05T20:54:41.934Z
+    -logOut-: -2080-10-24T11:44:00.175Z
+    -logOvertime-: -8
+    -logLate-: -4
+    -logWorkHours-: -2
+    18-
   }
 ]
 
 
 
+==================================================================================
+
+
+        1-Bangued Abra Luzon
+   
+        2-Boliney Abra Luzon
+   
+        3-Bucay Abra Luzon
+   
+        4-Bucloc Abra Luzon
+   
+        5-Daguioman Abra Luzon
+   
+        6-Danglas Abra Luzon
+   
+        7-Dolores Abra Luzon
+   
+        8-La Paz Abra Luzon
+   
+        9-Lacub Abra Luzon
+   
+        10-Lagangilang Abra Luzon
+   
+        11-Lagayan Abra Luzon
+   
+        12-Langiden Abra Luzon
+   
+        13-Licuan-Baay Abra Luzon
+   
+        14-Luba Abra Luzon
+   
+        15-Malibcong Abra Luzon
+   
+        16-Manabo Abra Luzon
+   
+        17-Penarrubia Abra Luzon
+   
+        18-Pidigan Abra Luzon
+   
+        19-Pilar Abra Luzon
+   
+        20-Sallapadan Abra Luzon
+   
+        21-San Isidro Abra Luzon
+   
+        22-San Juan Abra Luzon
+   
+        23-San Quintin Abra Luzon
+   
+        24-Tayum Abra Luzon
+   
+        25-Tineg Abra Luzon
+   
+        26-Tubo Abra Luzon
+   
+        27-Villaviciosa Abra Luzon
+   
+        28-Buenavista Agusan del Norte Luzon
+   
+        29-Butuan Agusan del Norte Luzon
+   
+        30-Cabadbaran Agusan del Norte Luzon
+   
+        31-Carmen Agusan del Norte Luzon
+   
+        32-Jabonga Agusan del Norte Luzon
+   
+        33-Kitcharao Agusan del Norte Luzon
+   
+        34-Las Nieves Agusan del Norte Luzon
+   
+        35-Magallanes Agusan del Norte Luzon
+   
+        36-Nasipit Agusan del Norte Luzon
+   
+        37-Remedios T. Romualdez Agusan del Norte Luzon
+   
+        38-Santiago Agusan del Norte Luzon
+   
+        39-Tubay Agusan del Norte Luzon
+   
+        40-Bayugan Agusan del Sur Luzon
+   
+        41-Bunawan Agusan del Sur Luzon
+   
+        42-Esperanza Agusan del Sur Luzon
+   
+        43-La Paz Agusan del Sur Luzon
+   
+        44-Loreto Agusan del Sur Luzon
+   
+        45-Prosperidad Agusan del Sur Luzon
+   
+        46-Rosario Agusan del Sur Luzon
+   
+        47-San Francisco Agusan del Sur Luzon
+   
+        48-San Luis Agusan del Sur Luzon
+   
+        49-Santa Josefa Agusan del Sur Luzon
+   
+        50-Sibagat Agusan del Sur Luzon
+   
+        51-Talacogon Agusan del Sur Luzon
+   
+        52-Trento Agusan del Sur Luzon
+   
+        53-Veruela Agusan del Sur Luzon
+   
+        54-Altavas Aklan Visayas
+   
+        55-Balete Aklan Visayas
+   
+        56-Banga Aklan Visayas
+   
+        57-Batan Aklan Visayas
+   
+        58-Buruanga Aklan Visayas
+   
+        59-Ibajay Aklan Visayas
+   
+        60-Kalibo Aklan Visayas
+   
+        61-Lezo Aklan Visayas
+   
+        62-Libacao Aklan Visayas
+   
+        63-Madalag Aklan Visayas
+   
+        64-Makato Aklan Visayas
+   
+        65-Malay Aklan Visayas
+   
+        66-Malinao Aklan Visayas
+   
+        67-Nabas Aklan Visayas
+   
+        68-New Washington Aklan Visayas
+   
+        69-Numancia Aklan Visayas
+   
+        70-Tangalan Aklan Visayas
+   
+        71-Bacacay Albay Luzon
+   
+        72-Camalig Albay Luzon
+   
+        73-Daraga Albay Luzon
+   
+        74-Guinobatan Albay Luzon
+   
+        75-Jovellar Albay Luzon
+   
+        76-Legazpi Albay Luzon
+   
+        77-Libon Albay Luzon
+   
+        78-Ligao Albay Luzon
+   
+        79-Malilipot Albay Luzon
+   
+        80-Malinao Albay Luzon
+   
+        81-Manito Albay Luzon
+   
+        82-Oas Albay Luzon
+   
+        83-Pio Duran Albay Luzon
+   
+        84-Polangui Albay Luzon
+   
+        85-Rapu-Rapu Albay Luzon
+   
+        86-Santo Domingo Albay Luzon
+   
+        87-Tabaco Albay Luzon
+   
+        88-Tiwi Albay Luzon
+   
+        89-Anini-y Antique Visayas
+   
+        90-Barbaza Antique Visayas
+   
+        91-Belison Antique Visayas
+   
+        92-Bugasong Antique Visayas
+   
+        93-Caluya Antique Visayas
+   
+        94-Culasi Antique Visayas
+   
+        95-Hamtic Antique Visayas
+   
+        96-Laua-an Antique Visayas
+   
+        97-Libertad Antique Visayas
+   
+        98-Pandan Antique Visayas
+   
+        99-Patnongon Antique Visayas
+   
+        100-San Jose de Buenavista Antique Visayas
+   
+        101-San Remigio Antique Visayas
+   
+        102-Sebaste Antique Visayas
+   
+        103-Sibalom Antique Visayas
+   
+        104-Tibiao Antique Visayas
+   
+        105-Tobias Fornier Antique Visayas
+   
+        106-Valderrama Antique Visayas
+   
+        107-Calanasan Apayao Luzon
+   
+        108-Conner Apayao Luzon
+   
+        109-Flora Apayao Luzon
+   
+        110-Kabugao Apayao Luzon
+   
+        111-Luna Apayao Luzon
+   
+        112-Pudtol Apayao Luzon
+   
+        113-Santa Marcela Apayao Luzon
+   
+        114-Baler Aurora Luzon
+   
+        115-Casiguran Aurora Luzon
+   
+        116-Dilasag Aurora Luzon
+   
+        117-Dinalungan Aurora Luzon
+   
+        118-Dingalan Aurora Luzon
+   
+        119-Dipaculao Aurora Luzon
+   
+        120-Maria Aurora Aurora Luzon
+   
+        121-San Luis Aurora Luzon
+   
+        122-Akbar Basilan Mindanao
+   
+        123-Al-Barka Basilan Mindanao
+   
+        124-Hadji Mohammad Ajul Basilan Mindanao
+   
+        125-Hadji Muhtamad Basilan Mindanao
+   
+        126-Isabela Basilan Mindanao
+   
+        127-Lamitan Basilan Mindanao
+   
+        128-Lantawan Basilan Mindanao
+   
+        129-Maluso Basilan Mindanao
+   
+        130-Sumisip Basilan Mindanao
+   
+        131-Tabuan-Lasa Basilan Mindanao
+   
+        132-Tipo-Tipo Basilan Mindanao
+   
+        133-Tuburan Basilan Mindanao
+   
+        134-Ungkaya Pukan Basilan Mindanao
+   
+        135-Abucay Bataan Luzon
+   
+        136-Bagac Bataan Luzon
+   
+        137-Balanga Bataan Luzon
+   
+        138-Dinalupihan Bataan Luzon
+   
+        139-Hermosa Bataan Luzon
+   
+        140-Limay Bataan Luzon
+   
+        141-Mariveles Bataan Luzon
+   
+        142-Morong Bataan Luzon
+   
+        143-Orani Bataan Luzon
+   
+        144-Orion Bataan Luzon
+   
+        145-Pilar Bataan Luzon
+   
+        146-Samal Bataan Luzon
+   
+        147-Basco Batanes Luzon
+   
+        148-Itbayat Batanes Luzon
+   
+        149-Ivana Batanes Luzon
+   
+        150-Mahatao Batanes Luzon
+   
+        151-Sabtang Batanes Luzon
+   
+        152-Uyugan Batanes Luzon
+   
+        153-Agoncillo Batangas Luzon
+   
+        154-Alitagtag Batangas Luzon
+   
+        155-Balayan Batangas Luzon
+   
+        156-Balete Batangas Luzon
+   
+        157-Batangas City Batangas Luzon
+   
+        158-Bauan Batangas Luzon
+   
+        159-Calaca Batangas Luzon
+   
+        160-Calatagan Batangas Luzon
+   
+        161-Cuenca Batangas Luzon
+   
+        162-Ibaan Batangas Luzon
+   
+        163-Laurel Batangas Luzon
+   
+        164-Lemery Batangas Luzon
+   
+        165-Lian Batangas Luzon
+   
+        166-Lipa Batangas Luzon
+   
+        167-Lobo Batangas Luzon
+   
+        168-Mabini Batangas Luzon
+   
+        169-Malvar Batangas Luzon
+   
+        170-Mataasnakahoy Batangas Luzon
+   
+        171-Nasugbu Batangas Luzon
+   
+        172-Padre Garcia Batangas Luzon
+   
+        173-Rosario Batangas Luzon
+   
+        174-San Jose Batangas Luzon
+   
+        175-San Juan Batangas Luzon
+   
+        176-San Luis Batangas Luzon
+   
+        177-San Nicolas Batangas Luzon
+   
+        178-San Pascual Batangas Luzon
+   
+        179-Santa Teresita Batangas Luzon
+   
+        180-Santo Tomas Batangas Luzon
+   
+        181-Taal Batangas Luzon
+   
+        182-Talisay Batangas Luzon
+   
+        183-Tanauan Batangas Luzon
+   
+        184-Taysan Batangas Luzon
+   
+        185-Tingloy Batangas Luzon
+   
+        186-Tuy Batangas Luzon
+   
+        187-Atok Benguet Luzon
+   
+        188-Baguio Benguet Luzon
+   
+        189-Bakun Benguet Luzon
+   
+        190-Bokod Benguet Luzon
+   
+        191-Buguias Benguet Luzon
+   
+        192-Itogon Benguet Luzon
+   
+        193-Kabayan Benguet Luzon
+   
+        194-Kapangan Benguet Luzon
+   
+        195-Kibungan Benguet Luzon
+   
+        196-La Trinidad Benguet Luzon
+   
+        197-Mankayan Benguet Luzon
+   
+        198-Sablan Benguet Luzon
+   
+        199-Tuba Benguet Luzon
+   
+        200-Tublay Benguet Luzon
+   
+        201-Almeria Biliran Visayas
+   
+        202-Biliran Biliran Visayas
+   
+        203-Cabucgayan Biliran Visayas
+   
+        204-Caibiran Biliran Visayas
+   
+        205-Culaba Biliran Visayas
+   
+        206-Kawayan Biliran Visayas
+   
+        207-Maripipi Biliran Visayas
+   
+        208-Naval Biliran Visayas
+   
+        209-Alburquerque Bohol Visayas
+   
+        210-Alicia Bohol Visayas
+   
+        211-Anda Bohol Visayas
+   
+        212-Antequera Bohol Visayas
+   
+        213-Baclayon Bohol Visayas
+   
+        214-Balilihan Bohol Visayas
+   
+        215-Batuan Bohol Visayas
+   
+        216-Bien Unido Bohol Visayas
+   
+        217-Bilar Bohol Visayas
+   
+        218-Buenavista Bohol Visayas
+   
+        219-Calape Bohol Visayas
+   
+        220-Candijay Bohol Visayas
+   
+        221-Carmen Bohol Visayas
+   
+        222-Catigbian Bohol Visayas
+   
+        223-Clarin Bohol Visayas
+   
+        224-Corella Bohol Visayas
+   
+        225-Cortes Bohol Visayas
+   
+        226-Dagohoy Bohol Visayas
+   
+        227-Danao Bohol Visayas
+   
+        228-Dauis Bohol Visayas
+   
+        229-Dimiao Bohol Visayas
+   
+        230-Duero Bohol Visayas
+   
+        231-Garcia Hernandez Bohol Visayas
+   
+        232-Getafe Bohol Visayas
+   
+        233-Guindulman Bohol Visayas
+   
+        234-Inabanga Bohol Visayas
+   
+        235-Jagna Bohol Visayas
+   
+        236-Lila Bohol Visayas
+   
+        237-Loay Bohol Visayas
+   
+        238-Loboc Bohol Visayas
+   
+        239-Loon Bohol Visayas
+   
+        240-Mabini Bohol Visayas
+   
+        241-Maribojoc Bohol Visayas
+   
+        242-Panglao Bohol Visayas
+   
+        243-Pilar Bohol Visayas
+   
+        244-President Carlos P. Garcia Bohol Visayas
+   
+        245-Sagbayan Bohol Visayas
+   
+        246-San Isidro Bohol Visayas
+   
+        247-San Miguel Bohol Visayas
+   
+        248-Sevilla Bohol Visayas
+   
+        249-Sierra Bullones Bohol Visayas
+   
+        250-Sikatuna Bohol Visayas
+   
+        251-Tagbilaran Bohol Visayas
+   
+        252-Talibon Bohol Visayas
+   
+        253-Trinidad Bohol Visayas
+   
+        254-Tubigon Bohol Visayas
+   
+        255-Ubay Bohol Visayas
+   
+        256-Valencia Bohol Visayas
+   
+        257-Baungon Bukidnon Mindanao
+   
+        258-Cabanglasan Bukidnon Mindanao
+   
+        259-Damulog Bukidnon Mindanao
+   
+        260-Dangcagan Bukidnon Mindanao
+   
+        261-Don Carlos Bukidnon Mindanao
+   
+        262-Impasugong Bukidnon Mindanao
+   
+        263-Kadingilan Bukidnon Mindanao
+   
+        264-Kalilangan Bukidnon Mindanao
+   
+        265-Kibawe Bukidnon Mindanao
+   
+        266-Kitaotao Bukidnon Mindanao
+   
+        267-Lantapan Bukidnon Mindanao
+   
+        268-Libona Bukidnon Mindanao
+   
+        269-Malaybalay Bukidnon Mindanao
+   
+        270-Malitbog Bukidnon Mindanao
+   
+        271-Manolo Fortich Bukidnon Mindanao
+   
+        272-Maramag Bukidnon Mindanao
+   
+        273-Pangantucan Bukidnon Mindanao
+   
+        274-Quezon Bukidnon Mindanao
+   
+        275-San Fernando Bukidnon Mindanao
+   
+        276-Sumilao Bukidnon Mindanao
+   
+        277-Talakag Bukidnon Mindanao
+   
+        278-Valencia Bukidnon Mindanao
+   
+        279-Angat Bulacan Luzon
+   
+        280-Balagtas Bulacan Luzon
+   
+        281-Baliwag Bulacan Luzon
+   
+        282-Bocaue Bulacan Luzon
+   
+        283-Bulakan Bulacan Luzon
+   
+        284-Bustos Bulacan Luzon
+   
+        285-Calumpit Bulacan Luzon
+   
+        286-Do?a Remedios Trinidad Bulacan Luzon
+   
+        287-Guiguinto Bulacan Luzon
+   
+        288-Hagonoy Bulacan Luzon
+   
+        289-Malolos Bulacan Luzon
+   
+        290-Marilao Bulacan Luzon
+   
+        291-Meycauayan Bulacan Luzon
+   
+        292-Norzagaray Bulacan Luzon
+   
+        293-Obando Bulacan Luzon
+   
+        294-Pandi Bulacan Luzon
+   
+        295-Paombong Bulacan Luzon
+   
+        296-Plaridel Bulacan Luzon
+   
+        297-Pulilan Bulacan Luzon
+   
+        298-San Ildefonso Bulacan Luzon
+   
+        299-San Jose del Monte Bulacan Luzon
+   
+        300-San Miguel Bulacan Luzon
+   
+        401-San Rafael Bulacan Luzon
+   
+        402-Santa Maria Bulacan Luzon
+   
+        403-Abulug Cagayan Mindanao
+   
+        404-Alcala Cagayan Mindanao
+   
+        405-Allacapan Cagayan Mindanao
+   
+        406-Amulung Cagayan Mindanao
+   
+        407-Aparri Cagayan Mindanao
+   
+        408-Baggao Cagayan Mindanao
+   
+        409-Ballesteros Cagayan Mindanao
+   
+        410-Buguey Cagayan Mindanao
+   
+        411-Calayan Cagayan Mindanao
+   
+        412-Camalaniugan Cagayan Mindanao
+   
+        413-Claveria Cagayan Mindanao
+   
+        414-Enrile Cagayan Mindanao
+   
+        415-Gattaran Cagayan Mindanao
+   
+        416-Gonzaga Cagayan Mindanao
+   
+        417-Iguig Cagayan Mindanao
+   
+        418-Lal-lo Cagayan Mindanao
+   
+        419-Lasam Cagayan Mindanao
+   
+        420-Pamplona Cagayan Mindanao
+   
+        421-Penablanca Cagayan Mindanao
+   
+        422-Piat Cagayan Mindanao
+   
+        423-Rizal Cagayan Mindanao
+   
+        424-Sanchez-Mira Cagayan Mindanao
+   
+        425-Santa Ana Cagayan Mindanao
+   
+        426-Santa Praxedes Cagayan Mindanao
+   
+        427-Santa Teresita Cagayan Mindanao
+   
+        428-Santo Nino Cagayan Mindanao
+   
+        429-Solana Cagayan Mindanao
+   
+        430-Tuao Cagayan Mindanao
+   
+        431-Tuguegarao Cagayan Mindanao
+   
+        432-Basud Camarines Norte Luzon
+   
+        433-Capalonga Camarines Norte Luzon
+   
+        434-Daet Camarines Norte Luzon
+   
+        435-Jose Panganiban Camarines Norte Luzon
+   
+        436-Labo Camarines Norte Luzon
+   
+        437-Mercedes Camarines Norte Luzon
+   
+        438-Paracale Camarines Norte Luzon
+   
+        439-San Lorenzo Ruiz Camarines Norte Luzon
+   
+        440-San Vicente Camarines Norte Luzon
+   
+        441-Santa Elena Camarines Norte Luzon
+   
+        442-Talisay Camarines Norte Luzon
+   
+        443-Vinzons Camarines Norte Luzon
+   
+        444-Baao Camarines Sur Luzon
+   
+        445-Balatan Camarines Sur Luzon
+   
+        446-Bato Camarines Sur Luzon
+   
+        447-Bombon Camarines Sur Luzon
+   
+        448-Buhi Camarines Sur Luzon
+   
+        449-Bula Camarines Sur Luzon
+   
+        450-Cabusao Camarines Sur Luzon
+   
+        451-Calabanga Camarines Sur Luzon
+   
+        452-Camaligan Camarines Sur Luzon
+   
+        453-Canaman Camarines Sur Luzon
+   
+        454-Caramoan Camarines Sur Luzon
+   
+        455-Del Gallego Camarines Sur Luzon
+   
+        456-Gainza Camarines Sur Luzon
+   
+        457-Garchitorena Camarines Sur Luzon
+   
+        458-Goa Camarines Sur Luzon
+   
+        459-Iriga Camarines Sur Luzon
+   
+        460-Lagonoy Camarines Sur Luzon
+   
+        461-Libmanan Camarines Sur Luzon
+   
+        462-Lupi Camarines Sur Luzon
+   
+        463-Magarao Camarines Sur Luzon
+   
+        464-Milaor Camarines Sur Luzon
+   
+        465-Minalabac Camarines Sur Luzon
+   
+        466-Nabua Camarines Sur Luzon
+   
+        467-Naga Camarines Sur Luzon
+   
+        468-Ocampo Camarines Sur Luzon
+   
+        469-Pamplona Camarines Sur Luzon
+   
+        470-Pasacao Camarines Sur Luzon
+   
+        471-Pili Camarines Sur Luzon
+   
+        472-Presentacion Camarines Sur Luzon
+   
+        473-Ragay Camarines Sur Luzon
+   
+        474-Sagnay Camarines Sur Luzon
+   
+        475-San Fernando Camarines Sur Luzon
+   
+        476-San Jose Camarines Sur Luzon
+   
+        477-Sipocot Camarines Sur Luzon
+   
+        478-Siruma Camarines Sur Luzon
+   
+        479-Tigaon Camarines Sur Luzon
+   
+        480-Tinambac Camarines Sur Luzon
+   
+        481-Catarman Camiguin Mindanao
+   
+        482-Guinsiliban Camiguin Mindanao
+   
+        483-Mahinog Camiguin Mindanao
+   
+        484-Mambajao Camiguin Mindanao
+   
+        485-Sagay Camiguin Mindanao
+   
+        486-Cuartero Capiz Visayas
+   
+        487-Dao Capiz Visayas
+   
+        488-Dumalag Capiz Visayas
+   
+        489-Dumarao Capiz Visayas
+   
+        490-Ivisan Capiz Visayas
+   
+        491-Jamindan Capiz Visayas
+   
+        492-Ma-ayon Capiz Visayas
+   
+        493-Mambusao Capiz Visayas
+   
+        494-Panay Capiz Visayas
+   
+        495-Panitan Capiz Visayas
+   
+        496-Pilar Capiz Visayas
+   
+        497-Pontevedra Capiz Visayas
+   
+        498-President Roxas Capiz Visayas
+   
+        499-Roxas Capiz Visayas
+   
+        500-Sapian Capiz Visayas
+   
+        501-Sigma Capiz Visayas
+   
+        502-Tapaz Capiz Visayas
+   
+        503-Bagamanoc Catanduanes Luzon
+   
+        504-Baras Catanduanes Luzon
+   
+        505-Bato Catanduanes Luzon
+   
+        506-Caramoran Catanduanes Luzon
+   
+        507-Gigmoto Catanduanes Luzon
+   
+        508-Pandan Catanduanes Luzon
+   
+        509-Panganiban Catanduanes Luzon
+   
+        510-San Andres Catanduanes Luzon
+   
+        511-San Miguel Catanduanes Luzon
+   
+        512-Viga Catanduanes Luzon
+   
+        513-Virac Catanduanes Luzon
+   
+        514-Alfonso Cavite Luzon
+   
+        515-Amadeo Cavite Luzon
+   
+        516-Bacoor Cavite Luzon
+   
+        517-Carmona Cavite Luzon
+   
+        518-Cavite City Cavite Luzon
+   
+        519-Dasmarinas Cavite Luzon
+   
+        520-General Emilio Aguinaldo Cavite Luzon
+   
+        521-General Mariano Alvarez Cavite Luzon
+   
+        522-General Trias Cavite Luzon
+   
+        523-Imus Cavite Luzon
+   
+        524-Indang Cavite Luzon
+   
+        525-Kawit Cavite Luzon
+   
+        526-Magallanes Cavite Luzon
+   
+        527-Maragondon Cavite Luzon
+   
+        528-Mendez Cavite Luzon
+   
+        529-Naic Cavite Luzon
+   
+        530-Noveleta Cavite Luzon
+   
+        531-Rosario Cavite Luzon
+   
+        532-Silang Cavite Luzon
+   
+        533-Tagaytay Cavite Luzon
+   
+        534-Tanza Cavite Luzon
+   
+        535-Ternate Cavite Luzon
+   
+        536-Trece Martires Cavite Luzon
+   
+        537-Alcantara Cebu Visayas
+   
+        538-Alcoy Cebu Visayas
+   
+        539-Alegria Cebu Visayas
+   
+        540-Aloguinsan Cebu Visayas
+   
+        541-Argao Cebu Visayas
+   
+        542-Asturias Cebu Visayas
+   
+        543-Badian Cebu Visayas
+   
+        544-Balamban Cebu Visayas
+   
+        545-Bantayan Cebu Visayas
+   
+        546-Barili Cebu Visayas
+   
+        547-Bogo Cebu Visayas
+   
+        548-Boljoon Cebu Visayas
+   
+        549-Borbon Cebu Visayas
+   
+        550-Carcar Cebu Visayas
+   
+        551-Carmen Cebu Visayas
+   
+        552-Catmon Cebu Visayas
+   
+        553-Cebu City Cebu Visayas
+   
+        554-Compostela Cebu Visayas
+   
+        555-Consolacion Cebu Visayas
+   
+        556-Cordova Cebu Visayas
+   
+        557-Daanbantayan Cebu Visayas
+   
+        558-Dalaguete Cebu Visayas
+   
+        559-Danao Cebu Visayas
+   
+        560-Dumanjug Cebu Visayas
+   
+        561-Ginatilan Cebu Visayas
+   
+        562-Lapu-Lapu Cebu Visayas
+   
+        563-Liloan Cebu Visayas
+   
+        564-Madridejos Cebu Visayas
+   
+        565-Malabuyoc Cebu Visayas
+   
+        566-Mandaue Cebu Visayas
+   
+        567-Medellin Cebu Visayas
+   
+        568-Minglanilla Cebu Visayas
+   
+        569-Moalboal Cebu Visayas
+   
+        570-Naga Cebu Visayas
+   
+        571-Oslob Cebu Visayas
+   
+        572-Pilar Cebu Visayas
+   
+        573-PinaMunicipalitygajan Cebu Visayas
+   
+        574-Poro Cebu Visayas
+   
+        575-Ronda Cebu Visayas
+   
+        576-Samboan Cebu Visayas
+   
+        577-San Fernando Cebu Visayas
+   
+        578-San Francisco Cebu Visayas
+   
+        579-San Remigio Cebu Visayas
+   
+        580-Santa Fe Cebu Visayas
+   
+        581-Santander Cebu Visayas
+   
+        582-Sibonga Cebu Visayas
+   
+        583-Sogod Cebu Visayas
+   
+        584-Tabogon Cebu Visayas
+   
+        585-Tabuelan Cebu Visayas
+   
+        586-Talisay Cebu Visayas
+   
+        587-Toledo Cebu Visayas
+   
+        588-Tuburan Cebu Visayas
+   
+        589-Tudela Cebu Visayas
+   
+        590-Alamada Cotabato Mindanao
+   
+        591-Aleosan Cotabato Mindanao
+   
+        592-Antipas Cotabato Mindanao
+   
+        593-Arakan Cotabato Mindanao
+   
+        594-Banisilan Cotabato Mindanao
+   
+        595-Carmen Cotabato Mindanao
+   
+        596-Kabacan Cotabato Mindanao
+   
+        597-Kidapawan Cotabato Mindanao
+   
+        598-Libungan Cotabato Mindanao
+   
+        599-M'lang Cotabato Mindanao
+   
+        600-Magpet Cotabato Mindanao
+   
+        601-Makilala Cotabato Mindanao
+   
+        602-Matalam Cotabato Mindanao
+   
+        603-Midsayap Cotabato Mindanao
+   
+        604-Pigcawayan Cotabato Mindanao
+   
+        605-Pikit Cotabato Mindanao
+   
+        606-President Roxas Cotabato Mindanao
+   
+        607-Tulunan Cotabato Mindanao
+   
+        608-Compostela Davao de Oro Mindanao
+   
+        609-Laak Davao de Oro Mindanao
+   
+        610-Mabini Davao de Oro Mindanao
+   
+        611-Maco Davao de Oro Mindanao
+   
+        612-Maragusan Davao de Oro Mindanao
+   
+        613-Mawab Davao de Oro Mindanao
+   
+        614-Monkayo Davao de Oro Mindanao
+   
+        615-Montevista Davao de Oro Mindanao
+   
+        616-Nabunturan Davao de Oro Mindanao
+   
+        617-New Bataan Davao de Oro Mindanao
+   
+        618-Pantukan Davao de Oro Mindanao
+   
+        619-Asuncion Davao del Norte Mindanao
+   
+        620-Braulio E. Dujali Davao del Norte Mindanao
+   
+        621-Carmen Davao del Norte Mindanao
+   
+        622-Kapalong Davao del Norte Mindanao
+   
+        623-New Corella Davao del Norte Mindanao
+   
+        624-Panabo Davao del Norte Mindanao
+   
+        625-Samal Davao del Norte Mindanao
+   
+        626-San Isidro Davao del Norte Mindanao
+   
+        627-Santo Tomas Davao del Norte Mindanao
+   
+        628-Tagum Davao del Norte Mindanao
+   
+        629-Talaingod Davao del Norte Mindanao
+   
+        630-Bansalan Davao del Sur Mindanao
+   
+        631-Davao City Davao del Sur Mindanao
+   
+        632-Digos Davao del Sur Mindanao
+   
+        633-Hagonoy Davao del Sur Mindanao
+   
+        634-Kiblawan Davao del Sur Mindanao
+   
+        635-Magsaysay Davao del Sur Mindanao
+   
+        636-Malalag Davao del Sur Mindanao
+   
+        637-Matanao Davao del Sur Mindanao
+   
+        638-Padada Davao del Sur Mindanao
+   
+        639-Santa Cruz Davao del Sur Mindanao
+   
+        640-Sulop Davao del Sur Mindanao
+   
+        641-Don Marcelino Davao Mindanao
+   
+        642-Jose Abad Santos Davao Mindanao
+   
+        643-Malita Davao Mindanao
+   
+        644-Santa Maria Davao Mindanao
+   
+        645-Sarangani Davao Mindanao
+   
+        646-Baganga Davao Oriental Mindanao
+   
+        647-Banaybanay Davao Oriental Mindanao
+   
+        648-Boston Davao Oriental Mindanao
+   
+        649-Caraga Davao Oriental Mindanao
+   
+        650-Cateel Davao Oriental Mindanao
+   
+        651-Governor Generoso Davao Oriental Mindanao
+   
+        652-Lupon Davao Oriental Mindanao
+   
+        653-Manay Davao Oriental Mindanao
+   
+        654-Mati Davao Oriental Mindanao
+   
+        655-San Isidro Davao Oriental Mindanao
+   
+        656-Tarragona Davao Oriental Mindanao
+   
+        657-Basilisa Dinagat Islands Visayas
+   
+        658-Cagdianao Dinagat Islands Visayas
+   
+        659-Dinagat Dinagat Islands Visayas
+   
+        660-Libjo Dinagat Islands Visayas
+   
+        661-Loreto Dinagat Islands Visayas
+   
+        662-San Jose Dinagat Islands Visayas
+   
+        663-Tubajon Dinagat Islands Visayas
+   
+        664-Arteche Eastern Samar Visayas
+   
+        665-Balangiga Eastern Samar Visayas
+   
+        666-Balangkayan Eastern Samar Visayas
+   
+        667-Borongan Eastern Samar Visayas
+   
+        668-Can-avid Eastern Samar Visayas
+   
+        669-Dolores Eastern Samar Visayas
+   
+        670-General MacArthur Eastern Samar Visayas
+   
+        671-Giporlos Eastern Samar Visayas
+   
+        672-Guiuan Eastern Samar Visayas
+   
+        673-Hernani Eastern Samar Visayas
+   
+        674-Jipapad Eastern Samar Visayas
+   
+        675-Lawaan Eastern Samar Visayas
+   
+        676-Llorente Eastern Samar Visayas
+   
+        677-Maslog Eastern Samar Visayas
+   
+        678-Maydolong Eastern Samar Visayas
+   
+        679-Mercedes Eastern Samar Visayas
+   
+        680-Oras Eastern Samar Visayas
+   
+        681-Quinapondan Eastern Samar Visayas
+   
+        682-Salcedo Eastern Samar Visayas
+   
+        683-San Julian Eastern Samar Visayas
+   
+        684-San Policarpo Eastern Samar Visayas
+   
+        685-Sulat Eastern Samar Visayas
+   
+        686-Taft Eastern Samar Visayas
+   
+        687-Buenavista Guimaras Visayas
+   
+        688-Jordan Guimaras Visayas
+   
+        689-Nueva Valencia Guimaras Visayas
+   
+        690-San Lorenzo Guimaras Visayas
+   
+        691-Sibunag Guimaras Visayas
+   
+        692-Aguinaldo Ifugao Luzon
+   
+        693-Alfonso Lista Ifugao Luzon
+   
+        694-Asipulo Ifugao Luzon
+   
+        695-Banaue Ifugao Luzon
+   
+        696-Hingyon Ifugao Luzon
+   
+        697-Hungduan Ifugao Luzon
+   
+        698-Kiangan Ifugao Luzon
+   
+        699-Lagawe Ifugao Luzon
+   
+        700-Lamut Ifugao Luzon
+   
+        701-Mayoyao Ifugao Luzon
+   
+        702-Tinoc Ifugao Luzon
+   
+        703-Adams Ilocos Norte Luzon
+   
+        704-Bacarra Ilocos Norte Luzon
+   
+        705-Badoc Ilocos Norte Luzon
+   
+        706-Bangui Ilocos Norte Luzon
+   
+        707-Banna Ilocos Norte Luzon
+   
+        708-Batac Ilocos Norte Luzon
+   
+        709-Burgos Ilocos Norte Luzon
+   
+        710-Carasi Ilocos Norte Luzon
+   
+        711-Currimao Ilocos Norte Luzon
+   
+        712-Dingras Ilocos Norte Luzon
+   
+        713-Dumalneg Ilocos Norte Luzon
+   
+        714-Laoag Ilocos Norte Luzon
+   
+        715-Marcos Ilocos Norte Luzon
+   
+        716-Nueva Era Ilocos Norte Luzon
+   
+        717-Pagudpud Ilocos Norte Luzon
+   
+        718-Paoay Ilocos Norte Luzon
+   
+        719-Pasuquin Ilocos Norte Luzon
+   
+        720-Piddig Ilocos Norte Luzon
+   
+        721-Pinili Ilocos Norte Luzon
+   
+        722-San Nicolas Ilocos Norte Luzon
+   
+        723-Sarrat Ilocos Norte Luzon
+   
+        724-Solsona Ilocos Norte Luzon
+   
+        725-Vintar Ilocos Norte Luzon
+   
+        726-Alilem Ilocos Sur Luzon
+   
+        727-Banayoyo Ilocos Sur Luzon
+   
+        728-Bantay Ilocos Sur Luzon
+   
+        729-Burgos Ilocos Sur Luzon
+   
+        730-Cabugao Ilocos Sur Luzon
+   
+        731-Candon Ilocos Sur Luzon
+   
+        732-Caoayan Ilocos Sur Luzon
+   
+        733-Cervantes Ilocos Sur Luzon
+   
+        734-Galimuyod Ilocos Sur Luzon
+   
+        735-Gregorio del Pilar Ilocos Sur Luzon
+   
+        736-Lidlidda Ilocos Sur Luzon
+   
+        737-Magsingal Ilocos Sur Luzon
+   
+        738-Nagbukel Ilocos Sur Luzon
+   
+        739-Narvacan Ilocos Sur Luzon
+   
+        740-Quirino Ilocos Sur Luzon
+   
+        741-Salcedo Ilocos Sur Luzon
+   
+        742-San Emilio Ilocos Sur Luzon
+   
+        743-San Esteban Ilocos Sur Luzon
+   
+        744-San Ildefonso Ilocos Sur Luzon
+   
+        745-San Juan Ilocos Sur Luzon
+   
+        746-San Vicente Ilocos Sur Luzon
+   
+        747-Santa Ilocos Sur Luzon
+   
+        748-Santa Catalina Ilocos Sur Luzon
+   
+        749-Santa Cruz Ilocos Sur Luzon
+   
+        750-Santa Lucia Ilocos Sur Luzon
+   
+        751-Santa Maria Ilocos Sur Luzon
+   
+        752-Santiago Ilocos Sur Luzon
+   
+        753-Santo Domingo Ilocos Sur Luzon
+   
+        754-Sigay Ilocos Sur Luzon
+   
+        755-Sinait Ilocos Sur Luzon
+   
+        756-Sugpon Ilocos Sur Luzon
+   
+        757-Suyo Ilocos Sur Luzon
+   
+        758-Tagudin Ilocos Sur Luzon
+   
+        759-Vigan Ilocos Sur Luzon
+   
+        760-Ajuy Iloilo Visayas
+   
+        761-Alimodian Iloilo Visayas
+   
+        762-Anilao Iloilo Visayas
+   
+        763-Badiangan Iloilo Visayas
+   
+        764-Balasan Iloilo Visayas
+   
+        765-Banate Iloilo Visayas
+   
+        766-Barotac Nuevo Iloilo Visayas
+   
+        767-Barotac Viejo Iloilo Visayas
+   
+        768-Batad Iloilo Visayas
+   
+        769-Bingawan Iloilo Visayas
+   
+        770-Cabatuan Iloilo Visayas
+   
+        771-Calinog Iloilo Visayas
+   
+        772-Carles Iloilo Visayas
+   
+        773-Concepcion Iloilo Visayas
+   
+        774-Dingle Iloilo Visayas
+   
+        775-Duenas Iloilo Visayas
+   
+        776-Dumangas Iloilo Visayas
+   
+        777-Estancia Iloilo Visayas
+   
+        778-Guimbal Iloilo Visayas
+   
+        779-Igbaras Iloilo Visayas
+   
+        780-Iloilo City Iloilo Visayas
+   
+        781-Janiuay Iloilo Visayas
+   
+        782-Lambunao Iloilo Visayas
+   
+        783-Leganes Iloilo Visayas
+   
+        784-Lemery Iloilo Visayas
+   
+        785-Leon Iloilo Visayas
+   
+        786-Maasin Iloilo Visayas
+   
+        787-Miagao Iloilo Visayas
+   
+        788-Mina Iloilo Visayas
+   
+        789-New Lucena Iloilo Visayas
+   
+        790-Oton Iloilo Visayas
+   
+        791-Passi Iloilo Visayas
+   
+        792-Pavia Iloilo Visayas
+   
+        793-Pototan Iloilo Visayas
+   
+        794-San Dionisio Iloilo Visayas
+   
+        795-San Enrique Iloilo Visayas
+   
+        796-San Joaquin Iloilo Visayas
+   
+        797-San Miguel Iloilo Visayas
+   
+        798-San Rafael Iloilo Visayas
+   
+        799-Santa Barbara Iloilo Visayas
+   
+        800-Sara Iloilo Visayas
+   
+        801-Tigbauan Iloilo Visayas
+   
+        802-Tubungan Iloilo Visayas
+   
+        803-Zarraga Iloilo Visayas
+   
+        804-Alicia Isabela Luzon
+   
+        805-Angadanan Isabela Luzon
+   
+        806-Aurora Isabela Luzon
+   
+        807-Benito Soliven Isabela Luzon
+   
+        808-Burgos Isabela Luzon
+   
+        809-Cabagan Isabela Luzon
+   
+        810-Cabatuan Isabela Luzon
+   
+        811-Cauayan Isabela Luzon
+   
+        812-Cordon Isabela Luzon
+   
+        813-Delfin Albano Isabela Luzon
+   
+        814-Dinapigue Isabela Luzon
+   
+        815-Divilacan Isabela Luzon
+   
+        816-Echague Isabela Luzon
+   
+        817-Gamu Isabela Luzon
+   
+        818-Ilagan Isabela Luzon
+   
+        819-Jones Isabela Luzon
+   
+        820-Luna Isabela Luzon
+   
+        821-Maconacon Isabela Luzon
+   
+        822-Mallig Isabela Luzon
+   
+        823-Naguilian Isabela Luzon
+   
+        824-Palanan Isabela Luzon
+   
+        825-Quezon Isabela Luzon
+   
+        826-Quirino Isabela Luzon
+   
+        827-Ramon Isabela Luzon
+   
+        828-Reina Mercedes Isabela Luzon
+   
+        829-Roxas Isabela Luzon
+   
+        830-San Agustin Isabela Luzon
+   
+        831-San Guillermo Isabela Luzon
+   
+        832-San Isidro Isabela Luzon
+   
+        833-San Manuel Isabela Luzon
+   
+        834-San Mariano Isabela Luzon
+   
+        835-San Mateo Isabela Luzon
+   
+        836-San Pablo Isabela Luzon
+   
+        837-Santa Maria Isabela Luzon
+   
+        838-Santiago Isabela Luzon
+   
+        839-Santo Tomas Isabela Luzon
+   
+        840-Tumauini Isabela Luzon
+   
+        841-BalbalanKalingaLuzon
+   
+        842-LubuaganKalingaLuzon
+   
+        843-PasilKalingaLuzon
+   
+        844-PinukpukKalingaLuzon
+   
+        845-RizalKalingaLuzon
+   
+        846-TabukKalingaLuzon
+   
+        847-TanudanKalingaLuzon
+   
+        848-TinglayanKalingaLuzon
+   
+        849-AgooLa UnionLuzon
+   
+        850-AringayLa UnionLuzon
+   
+        851-BacnotanLa UnionLuzon
+   
+        852-BagulinLa UnionLuzon
+   
+        853-BalaoanLa UnionLuzon
+   
+        854-BangarLa UnionLuzon
+   
+        855-BauangLa UnionLuzon
+   
+        856-BurgosLa UnionLuzon
+   
+        857-CabaLa UnionLuzon
+   
+        858-LunaLa UnionLuzon
+   
+        859-NaguilianLa UnionLuzon
+   
+        860-PugoLa UnionLuzon
+   
+        861-RosarioLa UnionLuzon
+   
+        862-San FernandoLa UnionLuzon
+   
+        863-San GabrielLa UnionLuzon
+   
+        864-San JuanLa UnionLuzon
+   
+        865-Santo TomasLa UnionLuzon
+   
+        866-SantolLa UnionLuzon
+   
+        867-SudipenLa UnionLuzon
+   
+        868-TubaoLa UnionLuzon
+   
+        869-AlaminosLagunaLuzon
+   
+        870-BayLagunaLuzon
+   
+        871-BinanLagunaLuzon
+   
+        872-CabuyaoLagunaLuzon
+   
+        873-CalambaLagunaLuzon
+   
+        874-CalauanLagunaLuzon
+   
+        875-CavintiLagunaLuzon
+   
+        876-FamyLagunaLuzon
+   
+        877-KalayaanLagunaLuzon
+   
+        878-LiliwLagunaLuzon
+   
+        879-Los BanosLagunaLuzon
+   
+        880-LuisianaLagunaLuzon
+   
+        881-LumbanLagunaLuzon
+   
+        882-MabitacLagunaLuzon
+   
+        883-MagdalenaLagunaLuzon
+   
+        884-MajayjayLagunaLuzon
+   
+        885-NagcarlanLagunaLuzon
+   
+        886-PaeteLagunaLuzon
+   
+        887-PagsanjanLagunaLuzon
+   
+        888-PakilLagunaLuzon
+   
+        889-PangilLagunaLuzon
+   
+        890-PilaLagunaLuzon
+   
+        891-RizalLagunaLuzon
+   
+        892-San PabloLagunaLuzon
+   
+        893-San PedroLagunaLuzon
+   
+        894-Santa CruzLagunaLuzon
+   
+        895-Santa MariaLagunaLuzon
+   
+        896-Santa RosaLagunaLuzon
+   
+        897-SiniloanLagunaLuzon
+   
+        898-VictoriaLagunaLuzon
+   
+        899-BacolodLanao del NorteMindanao
+   
+        900-Balo-iLanao del NorteMindanao
+   
+        901-BaroyLanao del NorteMindanao
+   
+        902-IliganLanao del NorteMindanao
+   
+        903-KapataganLanao del NorteMindanao
+   
+        904-KauswaganLanao del NorteMindanao
+   
+        905-KolambuganLanao del NorteMindanao
+   
+        906-LalaLanao del NorteMindanao
+   
+        907-LinamonLanao del NorteMindanao
+   
+        908-MagsaysayLanao del NorteMindanao
+   
+        909-MaigoLanao del NorteMindanao
+   
+        910-MatungaoLanao del NorteMindanao
+   
+        911-MunicipalityaiLanao del NorteMindanao
+   
+        912-NununganLanao del NorteMindanao
+   
+        913-Pantao RagatLanao del NorteMindanao
+   
+        914-PantarLanao del NorteMindanao
+   
+        915-Poona PiagapoLanao del NorteMindanao
+   
+        916-SalvadorLanao del NorteMindanao
+   
+        917-SapadLanao del NorteMindanao
+   
+        918-Sultan Naga DimaporoLanao del NorteMindanao
+   
+        919-TagoloanLanao del NorteMindanao
+   
+        920-TangcalLanao del NorteMindanao
+   
+        921-TubodLanao del NorteMindanao
+   
+        922-Amai ManabilangLanao del SurMindanao
+   
+        923-Bacolod-KalawiLanao del SurMindanao
+   
+        924-BalabaganLanao del SurMindanao
+   
+        925-BalindongLanao del SurMindanao
+   
+        926-BayangLanao del SurMindanao
+   
+        927-BinidayanLanao del SurMindanao
+   
+        928-Buadiposo-BuntongLanao del SurMindanao
+   
+        929-BubongLanao del SurMindanao
+   
+        930-ButigLanao del SurMindanao
+   
+        931-CalanogasLanao del SurMindanao
+   
+        932-Ditsaan-RamainLanao del SurMindanao
+   
+        933-GanassiLanao del SurMindanao
+   
+        934-KapaiLanao del SurMindanao
+   
+        935-KapataganLanao del SurMindanao
+   
+        936-Lumba-BayabaoLanao del SurMindanao
+   
+        937-Lumbaca-UnayanLanao del SurMindanao
+   
+        938-LumbatanLanao del SurMindanao
+   
+        939-LumbayanagueLanao del SurMindanao
+   
+        940-MadalumLanao del SurMindanao
+   
+        941-MadambaLanao del SurMindanao
+   
+        942-MaguingLanao del SurMindanao
+   
+        943-MalabangLanao del SurMindanao
+   
+        944-MarantaoLanao del SurMindanao
+   
+        945-MarawiLanao del SurMindanao
+   
+        946-MarogongLanao del SurMindanao
+   
+        947-MasiuLanao del SurMindanao
+   
+        948-MulondoLanao del SurMindanao
+   
+        949-PagayawanLanao del SurMindanao
+   
+        950-PiagapoLanao del SurMindanao
+   
+        951-PicongLanao del SurMindanao
+   
+        952-Poona BayabaoLanao del SurMindanao
+   
+        953-PualasLanao del SurMindanao
+   
+        954-SaguiaranLanao del SurMindanao
+   
+        955-Sultan DumalondongLanao del SurMindanao
+   
+        956-Tagoloan IILanao del SurMindanao
+   
+        957-TamparanLanao del SurMindanao
+   
+        958-TarakaLanao del SurMindanao
+   
+        959-TubaranLanao del SurMindanao
+   
+        960-TugayaLanao del SurMindanao
+   
+        961-WaoLanao del SurMindanao
+   
+        962-AbuyogLeyteVisayas
+   
+        963-AlangalangLeyteVisayas
+   
+        964-AlbueraLeyteVisayas
+   
+        965-BabatngonLeyteVisayas
+   
+        966-BarugoLeyteVisayas
+   
+        967-BatoLeyteVisayas
+   
+        968-BaybayLeyteVisayas
+   
+        969-BurauenLeyteVisayas
+   
+        970-CalubianLeyteVisayas
+   
+        971-CapoocanLeyteVisayas
+   
+        972-CarigaraLeyteVisayas
+   
+        973-DagamiLeyteVisayas
+   
+        974-DulagLeyteVisayas
+   
+        975-HilongosLeyteVisayas
+   
+        976-HindangLeyteVisayas
+   
+        977-InopacanLeyteVisayas
+   
+        978-IsabelLeyteVisayas
+   
+        979-JaroLeyteVisayas
+   
+        980-JavierLeyteVisayas
+   
+        981-JulitaLeyteVisayas
+   
+        982-KanangaLeyteVisayas
+   
+        983-La PazLeyteVisayas
+   
+        984-LeyteLeyteVisayas
+   
+        985-MacArthurLeyteVisayas
+   
+        986-MahaplagLeyteVisayas
+   
+        987-Matag-obLeyteVisayas
+   
+        988-MatalomLeyteVisayas
+   
+        989-MayorgaLeyteVisayas
+   
+        990-MeridaLeyteVisayas
+   
+        991-OrmocLeyteVisayas
+   
+        992-PaloLeyteVisayas
+   
+        993-PalomponLeyteVisayas
+   
+        994-PastranaLeyteVisayas
+   
+        995-San IsidroLeyteVisayas
+   
+        996-San MiguelLeyteVisayas
+   
+        997-Santa FeLeyteVisayas
+   
+        998-TabangoLeyteVisayas
+   
+        999-TabontabonLeyteVisayas
+   
+        1000-TaclobanLeyteVisayas
+   
+        1001-TanauanLeyteVisayas
+   
+        1002-TolosaLeyteVisayas
+   
+        1003-TungaLeyteVisayas
+   
+        1004-VillabaLeyteVisayas
+   
+        1005-AmpatuanMaguindanaoMindanao
+   
+        1006-BariraMaguindanaoMindanao
+   
+        1007-BuldonMaguindanaoMindanao
+   
+        1008-BuluanMaguindanaoMindanao
+   
+        1009-Cotabato CityMaguindanaoMindanao
+   
+        1010-Datu Abdullah SangkiMaguindanaoMindanao
+   
+        1011-Datu Anggal MidtimbangMaguindanaoMindanao
+   
+        1012-Datu Blah T. SinsuatMaguindanaoMindanao
+   
+        1013-Datu Hoffer AmpatuanMaguindanaoMindanao
+   
+        1014-Datu MontawalMaguindanaoMindanao
+   
+        1015-Datu Odin SinsuatMaguindanaoMindanao
+   
+        1016-Datu PaglasMaguindanaoMindanao
+   
+        1017-Datu PiangMaguindanaoMindanao
+   
+        1018-Datu SaliboMaguindanaoMindanao
+   
+        1019-Datu Saudi-AmpatuanMaguindanaoMindanao
+   
+        1020-Datu UnsayMaguindanaoMindanao
+   
+        1021-General Salipada K. PendatunMaguindanaoMindanao
+   
+        1022-GuindulunganMaguindanaoMindanao
+   
+        1023-KabuntalanMaguindanaoMindanao
+   
+        1024-MamasapanoMaguindanaoMindanao
+   
+        1025-MangudadatuMaguindanaoMindanao
+   
+        1026-MatanogMaguindanaoMindanao
+   
+        1027-Northern KabuntalanMaguindanaoMindanao
+   
+        1028-PagalunganMaguindanaoMindanao
+   
+        1029-PaglatMaguindanaoMindanao
+   
+        1030-PandagMaguindanaoMindanao
+   
+        1031-ParangMaguindanaoMindanao
+   
+        1032-Rajah BuayanMaguindanaoMindanao
+   
+        1033-Shariff AguakMaguindanaoMindanao
+   
+        1034-Shariff Saydona MustaphaMaguindanaoMindanao
+   
+        1035-South UpiMaguindanaoMindanao
+   
+        1036-Sultan KudaratMaguindanaoMindanao
+   
+        1037-Sultan MasturaMaguindanaoMindanao
+   
+        1038-Sultan sa BarongisMaguindanaoMindanao
+   
+        1039-Sultan SumagkaMaguindanaoMindanao
+   
+        1040-TalayanMaguindanaoMindanao
+   
+        1041-UpiMaguindanaoMindanao
+   
+        1042-BoacMarinduqueLuzon
+   
+        1043-BuenavistaMarinduqueLuzon
+   
+        1044-GasanMarinduqueLuzon
+   
+        1045-MogpogMarinduqueLuzon
+   
+        1046-Santa CruzMarinduqueLuzon
+   
+        1047-TorrijosMarinduqueLuzon
+   
+        1048-AroroyMasbateVisayas
+   
+        1049-BalenoMasbateVisayas
+   
+        1050-BaludMasbateVisayas
+   
+        1051-BatuanMasbateVisayas
+   
+        1052-CatainganMasbateVisayas
+   
+        1053-CawayanMasbateVisayas
+   
+        1054-ClaveriaMasbateVisayas
+   
+        1055-DimasalangMasbateVisayas
+   
+        1056-EsperanzaMasbateVisayas
+   
+        1057-MandaonMasbateVisayas
+   
+        1058-Masbate CityMasbateVisayas
+   
+        1059-MilagrosMasbateVisayas
+   
+        1060-MoboMasbateVisayas
+   
+        1061-MonrealMasbateVisayas
+   
+        1062-PalanasMasbateVisayas
+   
+        1063-Pio V. CorpuzMasbateVisayas
+   
+        1064-PlacerMasbateVisayas
+   
+        1065-San FernandoMasbateVisayas
+   
+        1066-San JacintoMasbateVisayas
+   
+        1067-San PascualMasbateVisayas
+   
+        1068-UsonMasbateVisayas
+   
+        1069-CaloocanMetro ManilaLuzon
+   
+        1070-Las PinasMetro ManilaLuzon
+   
+        1071-MakatiMetro ManilaLuzon
+   
+        1072-MalabonMetro ManilaLuzon
+   
+        1073-MandaluyongMetro ManilaLuzon
+   
+        1074-ManilaMetro ManilaLuzon
+   
+        1075-MarikinaMetro ManilaLuzon
+   
+        1076-MuntinlupaMetro ManilaLuzon
+   
+        1077-NavotasMetro ManilaLuzon
+   
+        1078-ParanaqueMetro ManilaLuzon
+   
+        1079-PasayMetro ManilaLuzon
+   
+        1080-PasigMetro ManilaLuzon
+   
+        1081-PaterosMetro ManilaLuzon
+   
+        1082-Quezon CityMetro ManilaLuzon
+   
+        1083-San JuanMetro ManilaLuzon
+   
+        1084-TaguigMetro ManilaLuzon
+   
+        1085-ValenzuelaMetro ManilaLuzon
+   
+        1086-AloranMisamis OrientalMindanao
+   
+        1087-BaliangaoMisamis OrientalMindanao
+   
+        1088-BonifacioMisamis OrientalMindanao
+   
+        1089-CalambaMisamis OrientalMindanao
+   
+        1090-ClarinMisamis OrientalMindanao
+   
+        1091-ConcepcionMisamis OrientalMindanao
+   
+        1092-Don Victoriano ChiongbianMisamis OrientalMindanao
+   
+        1093-JimenezMisamis OrientalMindanao
+   
+        1094-Lopez JaenaMisamis OrientalMindanao
+   
+        1095-OroquietaMisamis OrientalMindanao
+   
+        1096-OzamizMisamis OrientalMindanao
+   
+        1097-PanaonMisamis OrientalMindanao
+   
+        1098-PlaridelMisamis OrientalMindanao
+   
+        1099-Sapang DalagaMisamis OrientalMindanao
+   
+        1100-SinacabanMisamis OrientalMindanao
+   
+        1101-TangubMisamis OrientalMindanao
+   
+        1102-TudelaMisamis OrientalMindanao
+   
+        1103-AlubijidMisamis OrientalMindanao
+   
+        1104-BalingasagMisamis OrientalMindanao
+   
+        1105-BalingoanMisamis OrientalMindanao
+   
+        1106-BinuanganMisamis OrientalMindanao
+   
+        1107-Cagayan de OroMisamis OrientalMindanao
+   
+        1108-ClaveriaMisamis OrientalMindanao
+   
+        1109-El SalvadorMisamis OrientalMindanao
+   
+        1110-GingoogMisamis OrientalMindanao
+   
+        1111-GitagumMisamis OrientalMindanao
+   
+        1112-InitaoMisamis OrientalMindanao
+   
+        1113-JasaanMisamis OrientalMindanao
+   
+        1114-KinoguitanMisamis OrientalMindanao
+   
+        1115-LagonglongMisamis OrientalMindanao
+   
+        1116-LaguindinganMisamis OrientalMindanao
+   
+        1117-LibertadMisamis OrientalMindanao
+   
+        1118-LugaitMisamis OrientalMindanao
+   
+        1119-MagsaysayMisamis OrientalMindanao
+   
+        1120-ManticaoMisamis OrientalMindanao
+   
+        1121-MedinaMisamis OrientalMindanao
+   
+        1122-NaawanMisamis OrientalMindanao
+   
+        1123-OpolMisamis OrientalMindanao
+   
+        1124-SalayMisamis OrientalMindanao
+   
+        1125-SugbongcogonMisamis OrientalMindanao
+   
+        1126-TagoloanMisamis OrientalMindanao
+   
+        1127-TalisayanMisamis OrientalMindanao
+   
+        1128-VillanuevaMisamis OrientalMindanao
+   
+        1129-BarligMountain ProvinceLuzon
+   
+        1130-BaukoMountain ProvinceLuzon
+   
+        1131-BesaoMountain ProvinceLuzon
+   
+        1132-BontocMountain ProvinceLuzon
+   
+        1133-NatoninMountain ProvinceLuzon
+   
+        1134-ParacelisMountain ProvinceLuzon
+   
+        1135-SabanganMountain ProvinceLuzon
+   
+        1136-SadangaMountain ProvinceLuzon
+   
+        1137-SagadaMountain ProvinceLuzon
+   
+        1138-TadianMountain ProvinceLuzon
+   
+        1139-BacolodNegros OrientalVisayas
+   
+        1140-BagoNegros OrientalVisayas
+   
+        1141-BinalbaganNegros OrientalVisayas
+   
+        1142-CadizNegros OrientalVisayas
+   
+        1143-CalatravaNegros OrientalVisayas
+   
+        1144-CandoniNegros OrientalVisayas
+   
+        1145-CauayanNegros OrientalVisayas
+   
+        1146-Enrique B. MagalonaNegros OrientalVisayas
+   
+        1147-EscalanteNegros OrientalVisayas
+   
+        1148-HimamaylanNegros OrientalVisayas
+   
+        1149-HinigaranNegros OrientalVisayas
+   
+        1150-Hinoba-anNegros OrientalVisayas
+   
+        1151-IlogNegros OrientalVisayas
+   
+        1152-IsabelaNegros OrientalVisayas
+   
+        1153-KabankalanNegros OrientalVisayas
+   
+        1154-La CarlotaNegros OrientalVisayas
+   
+        1155-La CastellanaNegros OrientalVisayas
+   
+        1156-ManaplaNegros OrientalVisayas
+   
+        1157-Moises PadillaNegros OrientalVisayas
+   
+        1158-MurciaNegros OrientalVisayas
+   
+        1159-PontevedraNegros OrientalVisayas
+   
+        1160-PulupandanNegros OrientalVisayas
+   
+        1161-SagayNegros OrientalVisayas
+   
+        1162-Salvador BenedictoNegros OrientalVisayas
+   
+        1163-San CarlosNegros OrientalVisayas
+   
+        1164-San EnriqueNegros OrientalVisayas
+   
+        1165-SilayNegros OrientalVisayas
+   
+        1166-SipalayNegros OrientalVisayas
+   
+        1167-TalisayNegros OrientalVisayas
+   
+        1168-TobosoNegros OrientalVisayas
+   
+        1169-ValladolidNegros OrientalVisayas
+   
+        1170-VictoriasNegros OrientalVisayas
+   
+        1171-AmlanNegros OrientalVisayas
+   
+        1172-AyungonNegros OrientalVisayas
+   
+        1173-BacongNegros OrientalVisayas
+   
+        1174-BaisNegros OrientalVisayas
+   
+        1175-BasayNegros OrientalVisayas
+   
+        1176-BayawanNegros OrientalVisayas
+   
+        1177-BindoyNegros OrientalVisayas
+   
+        1178-CanlaonNegros OrientalVisayas
+   
+        1179-DauinNegros OrientalVisayas
+   
+        1180-DumagueteNegros OrientalVisayas
+   
+        1181-GuihulnganNegros OrientalVisayas
+   
+        1182-JimalaludNegros OrientalVisayas
+   
+        1183-La LibertadNegros OrientalVisayas
+   
+        1184-MabinayNegros OrientalVisayas
+   
+        1185-ManjuyodNegros OrientalVisayas
+   
+        1186-PamplonaNegros OrientalVisayas
+   
+        1187-San JoseNegros OrientalVisayas
+   
+        1188-Santa CatalinaNegros OrientalVisayas
+   
+        1189-SiatonNegros OrientalVisayas
+   
+        1190-SibulanNegros OrientalVisayas
+   
+        1191-TanjayNegros OrientalVisayas
+   
+        1192-TayasanNegros OrientalVisayas
+   
+        1193-ValenciaNegros OrientalVisayas
+   
+        1194-VallehermosoNegros OrientalVisayas
+   
+        1195-ZamboanguitaNegros OrientalVisayas
+   
+        1196-AllenNorthern SamarVisayas
+   
+        1197-BiriNorthern SamarVisayas
+   
+        1198-BobonNorthern SamarVisayas
+   
+        1199-CapulNorthern SamarVisayas
+   
+        1200-CatarmanNorthern SamarVisayas
+   
+        1201-CatubigNorthern SamarVisayas
+   
+        1202-GamayNorthern SamarVisayas
+   
+        1203-LaoangNorthern SamarVisayas
+   
+        1204-LapinigNorthern SamarVisayas
+   
+        1205-Las NavasNorthern SamarVisayas
+   
+        1206-LavezaresNorthern SamarVisayas
+   
+        1207-Lope de VegaNorthern SamarVisayas
+   
+        1208-MapanasNorthern SamarVisayas
+   
+        1209-MondragonNorthern SamarVisayas
+   
+        1210-PalapagNorthern SamarVisayas
+   
+        1211-PambujanNorthern SamarVisayas
+   
+        1212-RosarioNorthern SamarVisayas
+   
+        1213-San AntonioNorthern SamarVisayas
+   
+        1214-San IsidroNorthern SamarVisayas
+   
+        1215-San JoseNorthern SamarVisayas
+   
+        1216-San RoqueNorthern SamarVisayas
+   
+        1217-San VicenteNorthern SamarVisayas
+   
+        1218-Silvino LobosNorthern SamarVisayas
+   
+        1219-VictoriaNorthern SamarVisayas
+   
+        1220-AliagaNueva EcijaLuzon
+   
+        1221-BongabonNueva EcijaLuzon
+   
+        1222-CabanatuanNueva EcijaLuzon
+   
+        1223-CabiaoNueva EcijaLuzon
+   
+        1224-CarranglanNueva EcijaLuzon
+   
+        1225-CuyapoNueva EcijaLuzon
+   
+        1226-GabaldonNueva EcijaLuzon
+   
+        1227-GapanNueva EcijaLuzon
+   
+        1228-General Mamerto NatividadNueva EcijaLuzon
+   
+        1229-General TinioNueva EcijaLuzon
+   
+        1230-GuimbaNueva EcijaLuzon
+   
+        1231-JaenNueva EcijaLuzon
+   
+        1232-LaurNueva EcijaLuzon
+   
+        1233-LicabNueva EcijaLuzon
+   
+        1234-LlaneraNueva EcijaLuzon
+   
+        1235-LupaoNueva EcijaLuzon
+   
+        1236-MunozNueva EcijaLuzon
+   
+        1237-NampicuanNueva EcijaLuzon
+   
+        1238-PalayanNueva EcijaLuzon
+   
+        1239-PantabanganNueva EcijaLuzon
+   
+        1240-PenarandaNueva EcijaLuzon
+   
+        1241-QuezonNueva EcijaLuzon
+   
+        1242-RizalNueva EcijaLuzon
+   
+        1243-San AntonioNueva EcijaLuzon
+   
+        1244-San IsidroNueva EcijaLuzon
+   
+        1245-San JoseNueva EcijaLuzon
+   
+        1246-San LeonardoNueva EcijaLuzon
+   
+        1247-Santa RosaNueva EcijaLuzon
+   
+        1248-Santo DomingoNueva EcijaLuzon
+   
+        1249-TalaveraNueva EcijaLuzon
+   
+        1250-TalugtugNueva EcijaLuzon
+   
+        1251-ZaragozaNueva EcijaLuzon
+   
+        1252-Alfonso CastanedaNueva VizcayaLuzon
+   
+        1253-AmbaguioNueva VizcayaLuzon
+   
+        1254-AritaoNueva VizcayaLuzon
+   
+        1255-BagabagNueva VizcayaLuzon
+   
+        1256-BambangNueva VizcayaLuzon
+   
+        1257-BayombongNueva VizcayaLuzon
+   
+        1258-DiadiNueva VizcayaLuzon
+   
+        1259-Dupax del NorteNueva VizcayaLuzon
+   
+        1260-Dupax del SurNueva VizcayaLuzon
+   
+        1261-KasibuNueva VizcayaLuzon
+   
+        1262-KayapaNueva VizcayaLuzon
+   
+        1263-QuezonNueva VizcayaLuzon
+   
+        1264-Santa FeNueva VizcayaLuzon
+   
+        1265-SolanoNueva VizcayaLuzon
+   
+        1266-VillaverdeNueva VizcayaLuzon
+   
+        1267- Abra de IlogOriental MindoroLuzon
+   
+        1268-CalintaanOriental MindoroLuzon
+   
+        1269-LoocOriental MindoroLuzon
+   
+        1270-LubangOriental MindoroLuzon
+   
+        1271-MagsaysayOriental MindoroLuzon
+   
+        1272-MamburaoOriental MindoroLuzon
+   
+        1273-PaluanOriental MindoroLuzon
+   
+        1274-RizalOriental MindoroLuzon
+   
+        1275-SablayanOriental MindoroLuzon
+   
+        1276-San JoseOriental MindoroLuzon
+   
+        1277-Santa CruzOriental MindoroLuzon
+   
+        1278-BacoOriental MindoroLuzon
+   
+        1279-BansudOriental MindoroLuzon
+   
+        1280-BongabongOriental MindoroLuzon
+   
+        1281-BulalacaoOriental MindoroLuzon
+   
+        1282-CalapanOriental MindoroLuzon
+   
+        1283-GloriaOriental MindoroLuzon
+   
+        1284-MansalayOriental MindoroLuzon
+   
+        1285-NaujanOriental MindoroLuzon
+   
+        1286-PinamalayanOriental MindoroLuzon
+   
+        1287-PolaOriental MindoroLuzon
+   
+        1288-Puerto GaleraOriental MindoroLuzon
+   
+        1289-RoxasOriental MindoroLuzon
+   
+        1290-San TeodoroOriental MindoroLuzon
+   
+        1291-SocorroOriental MindoroLuzon
+   
+        1292-VictoriaOriental MindoroLuzon
+   
+        1293-AborlanPalawanLuzon
+   
+        1294-AgutayaPalawanLuzon
+   
+        1295-AraceliPalawanLuzon
+   
+        1296-BalabacPalawanLuzon
+   
+        1297-BatarazaPalawanLuzon
+   
+        1298-Brooke's PointPalawanLuzon
+   
+        1299-BusuangaPalawanLuzon
+   
+        1300-CagayancilloPalawanLuzon
+   
+        1301-CoronPalawanLuzon
+   
+        1302-CulionPalawanLuzon
+   
+        1303-CuyoPalawanLuzon
+   
+        1304-DumaranPalawanLuzon
+   
+        1305-El NidoPalawanLuzon
+   
+        1306-KalayaanPalawanLuzon
+   
+        1307-LinapacanPalawanLuzon
+   
+        1308-MagsaysayPalawanLuzon
+   
+        1309-NarraPalawanLuzon
+   
+        1310-Puerto PrincesaPalawanLuzon
+   
+        1311-QuezonPalawanLuzon
+   
+        1312-RizalPalawanLuzon
+   
+        1313-RoxasPalawanLuzon
+   
+        1314-San VicentePalawanLuzon
+   
+        1315-Sofronio EspanolaPalawanLuzon
+   
+        1316-TaytayPalawanLuzon
+   
+        1317-AngelesPampangaLuzon
+   
+        1318-ApalitPampangaLuzon
+   
+        1319-ArayatPampangaLuzon
+   
+        1320-BacolorPampangaLuzon
+   
+        1321-CandabaPampangaLuzon
+   
+        1322-FloridablancaPampangaLuzon
+   
+        1323-GuaguaPampangaLuzon
+   
+        1324-LubaoPampangaLuzon
+   
+        1325-MabalacatPampangaLuzon
+   
+        1326-MacabebePampangaLuzon
+   
+        1327-MagalangPampangaLuzon
+   
+        1328-MasantolPampangaLuzon
+   
+        1329-MexicoPampangaLuzon
+   
+        1330-MinalinPampangaLuzon
+   
+        1331-PoracPampangaLuzon
+   
+        1332-San FernandoPampangaLuzon
+   
+        1333-San LuisPampangaLuzon
+   
+        1334-San SimonPampangaLuzon
+   
+        1335-Santa AnaPampangaLuzon
+   
+        1336-Santa RitaPampangaLuzon
+   
+        1337-Santo TomasPampangaLuzon
+   
+        1338-SasmuanPampangaLuzon
+   
+        1339-AgnoPangasinanLuzon
+   
+        1340-AguilarPangasinanLuzon
+   
+        1341-AlaminosPangasinanLuzon
+   
+        1342-AlcalaPangasinanLuzon
+   
+        1343-AndaPangasinanLuzon
+   
+        1344-AsinganPangasinanLuzon
+   
+        1345-BalungaoPangasinanLuzon
+   
+        1346-BaniPangasinanLuzon
+   
+        1347-BasistaPangasinanLuzon
+   
+        1348-BautistaPangasinanLuzon
+   
+        1349-BayambangPangasinanLuzon
+   
+        1350-BinalonanPangasinanLuzon
+   
+        1351-BinmaleyPangasinanLuzon
+   
+        1352-BolinaoPangasinanLuzon
+   
+        1353-BugallonPangasinanLuzon
+   
+        1354-BurgosPangasinanLuzon
+   
+        1355-CalasiaoPangasinanLuzon
+   
+        1356-DagupanPangasinanLuzon
+   
+        1357-DasolPangasinanLuzon
+   
+        1358-InfantaPangasinanLuzon
+   
+        1359-L AbradorPangasinanLuzon
+   
+        1360-LaoacPangasinanLuzon
+   
+        1361-LingayenPangasinanLuzon
+   
+        1362-MabiniPangasinanLuzon
+   
+        1363-MalasiquiPangasinanLuzon
+   
+        1364-ManaoagPangasinanLuzon
+   
+        1365-MangaldanPangasinanLuzon
+   
+        1366-MangataremPangasinanLuzon
+   
+        1367-MapandanPangasinanLuzon
+   
+        1368-NatividadPangasinanLuzon
+   
+        1369-PozorrubioPangasinanLuzon
+   
+        1370-RosalesPangasinanLuzon
+   
+        1371-San CarlosPangasinanLuzon
+   
+        1372-San FabianPangasinanLuzon
+   
+        1373-San JacintoPangasinanLuzon
+   
+        1374-San ManuelPangasinanLuzon
+   
+        1375-San NicolasPangasinanLuzon
+   
+        1376-San QuintinPangasinanLuzon
+   
+        1377-Santa BarbaraPangasinanLuzon
+   
+        1378-Santa MariaPangasinanLuzon
+   
+        1379-Santo TomasPangasinanLuzon
+   
+        1380-SisonPangasinanLuzon
+   
+        1381-SualPangasinanLuzon
+   
+        1382-TayugPangasinanLuzon
+   
+        1383-UminganPangasinanLuzon
+   
+        1384-UrbiztondoPangasinanLuzon
+   
+        1385-UrdanetaPangasinanLuzon
+   
+        1386-VillasisPangasinanLuzon
+   
+        1387-AgdanganQuezonLuzon
+   
+        1388-AlabatQuezonLuzon
+   
+        1389-AtimonanQuezonLuzon
+   
+        1390-BuenavistaQuezonLuzon
+   
+        1391-BurdeosQuezonLuzon
+   
+        1392-CalauagQuezonLuzon
+   
+        1393-CandelariaQuezonLuzon
+   
+        1394-CatanauanQuezonLuzon
+   
+        1395-DoloresQuezonLuzon
+   
+        1396-General LunaQuezonLuzon
+   
+        1397-General NakarQuezonLuzon
+   
+        1398-GuinayanganQuezonLuzon
+   
+        1399-GumacaQuezonLuzon
+   
+        1400-InfantaQuezonLuzon
+   
+        1401-JomaligQuezonLuzon
+   
+        1402-LopezQuezonLuzon
+   
+        1403-LucbanQuezonLuzon
+   
+        1404-LucenaQuezonLuzon
+   
+        1405-MacalelonQuezonLuzon
+   
+        1406-MaubanQuezonLuzon
+   
+        1407-MulanayQuezonLuzon
+   
+        1408-Padre BurgosQuezonLuzon
+   
+        1409-PagbilaoQuezonLuzon
+   
+        1410-PanukulanQuezonLuzon
+   
+        1411-PatnanunganQuezonLuzon
+   
+        1412-PerezQuezonLuzon
+   
+        1413-PitogoQuezonLuzon
+   
+        1414-PlaridelQuezonLuzon
+   
+        1415-PolilloQuezonLuzon
+   
+        1416-QuezonQuezonLuzon
+   
+        1417-RealQuezonLuzon
+   
+        1418-SampalocQuezonLuzon
+   
+        1419-San AndresQuezonLuzon
+   
+        1420-San AntonioQuezonLuzon
+   
+        1421-San FranciscoQuezonLuzon
+   
+        1422-San NarcisoQuezonLuzon
+   
+        1423-SariayaQuezonLuzon
+   
+        1424-TagkawayanQuezonLuzon
+   
+        1425-TayabasQuezonLuzon
+   
+        1426-TiaongQuezonLuzon
+   
+        1427-UnisanQuezonLuzon
+   
+        1428-AglipayQuirinoLuzon
+   
+        1429-CabarroguisQuirinoLuzon
+   
+        1430-DiffunQuirinoLuzon
+   
+        1431-MaddelaQuirinoLuzon
+   
+        1432-NagtipunanQuirinoLuzon
+   
+        1433-SagudayQuirinoLuzon
+   
+        1434-AngonoRizalLuzon
+   
+        1435-AntipoloRizalLuzon
+   
+        1436-BarasRizalLuzon
+   
+        1437-BinangonanRizalLuzon
+   
+        1438-CaintaRizalLuzon
+   
+        1439-CardonaRizalLuzon
+   
+        1440-JalajalaRizalLuzon
+   
+        1441-MorongRizalLuzon
+   
+        1442-PilillaRizalLuzon
+   
+        1443-RodriguezRizalLuzon
+   
+        1444-San MateoRizalLuzon
+   
+        1445-TanayRizalLuzon
+   
+        1446-TaytayRizalLuzon
+   
+        1447-TeresaRizalLuzon
+   
+        1448-AlcantaraRomblonVisayas
+   
+        1449-BantonRomblonVisayas
+   
+        1450-CajidiocanRomblonVisayas
+   
+        1451-CalatravaRomblonVisayas
+   
+        1452-ConcepcionRomblonVisayas
+   
+        1453-CorcueraRomblonVisayas
+   
+        1454-FerrolRomblonVisayas
+   
+        1455-LoocRomblonVisayas
+   
+        1456-MagdiwangRomblonVisayas
+   
+        1457-OdionganRomblonVisayas
+   
+        1458-RomblonRomblonVisayas
+   
+        1459-San AgustinRomblonVisayas
+   
+        1460-San AndresRomblonVisayas
+   
+        1461-San FernandoRomblonVisayas
+   
+        1462-San JoseRomblonVisayas
+   
+        1463-Santa FeRomblonVisayas
+   
+        1464-Santa MariaRomblonVisayas
+   
+        1465-AlmagroSamarVisayas
+   
+        1466-BaseySamarVisayas
+   
+        1467-CalbayogSamarVisayas
+   
+        1468-CalbigaSamarVisayas
+   
+        1469-CatbaloganSamarVisayas
+   
+        1470-DaramSamarVisayas
+   
+        1471-GandaraSamarVisayas
+   
+        1472-HinabanganSamarVisayas
+   
+        1473-JiabongSamarVisayas
+   
+        1474-MarabutSamarVisayas
+   
+        1475-MatuguinaoSamarVisayas
+   
+        1476-MotiongSamarVisayas
+   
+        1477-PagsanghanSamarVisayas
+   
+        1478-ParanasSamarVisayas
+   
+        1479-PinabacdaoSamarVisayas
+   
+        1480-San JorgeSamarVisayas
+   
+        1481-San Jose de BuanSamarVisayas
+   
+        1482-San SebastianSamarVisayas
+   
+        1483-Santa MargaritaSamarVisayas
+   
+        1484-Santa RitaSamarVisayas
+   
+        1485-Santo NinoSamarVisayas
+   
+        1486-Tagapul-anSamarVisayas
+   
+        1487-TalaloraSamarVisayas
+   
+        1488-TarangnanSamarVisayas
+   
+        1489-VillarealSamarVisayas
+   
+        1490-ZumarragaSamarVisayas
+   
+        1491-AlabelSaranganiVisayas
+   
+        1492-GlanSaranganiVisayas
+   
+        1493-KiambaSaranganiVisayas
+   
+        1494-MaasimSaranganiVisayas
+   
+        1495-MaitumSaranganiVisayas
+   
+        1496-MalapatanSaranganiVisayas
+   
+        1497-MalungonSaranganiVisayas
+   
+        1498-Enrique VillanuevaSiquijorVisayas
+   
+        1499-LarenaSiquijorVisayas
+   
+        1500-LaziSiquijorVisayas
+   
+        1501-MariaSiquijorVisayas
+   
+        1502-San JuanSiquijorVisayas
+   
+        1503-SiquijorSiquijorVisayas
+   
+        1504-BarcelonaSorsogonLuzon
+   
+        1505-BulanSorsogonLuzon
+   
+        1506-BulusanSorsogonLuzon
+   
+        1507-CasiguranSorsogonLuzon
+   
+        1508-CastillaSorsogonLuzon
+   
+        1509-DonsolSorsogonLuzon
+   
+        1510-GubatSorsogonLuzon
+   
+        1511-IrosinSorsogonLuzon
+   
+        1512-JubanSorsogonLuzon
+   
+        1513-MagallanesSorsogonLuzon
+   
+        1514-MatnogSorsogonLuzon
+   
+        1515-PilarSorsogonLuzon
+   
+        1516-Prieto DiazSorsogonLuzon
+   
+        1517-Santa MagdalenaSorsogonLuzon
+   
+        1518-Sorsogon CitySorsogonLuzon
+   
+        1519-BangaSouth  Cotabato Mindanao
+   
+        1520-General SantosSouth  Cotabato Mindanao
+   
+        1521-KoronadalSouth  Cotabato Mindanao
+   
+        1522-Lake SebuSouth  Cotabato Mindanao
+   
+        1523-NoralaSouth  Cotabato Mindanao
+   
+        1524-PolomolokSouth  Cotabato Mindanao
+   
+        1525-Santo NinoSouth  Cotabato Mindanao
+   
+        1526-SurallahSouth  Cotabato Mindanao
+   
+        1527-T'BoliSouth  Cotabato Mindanao
+   
+        1528-TampakanSouth  Cotabato Mindanao
+   
+        1529-TantanganSouth  Cotabato Mindanao
+   
+        1530-TupiSouth  Cotabato Mindanao
+   
+        1531-AnahawanSouthern LeyteVisayas
+   
+        1532-BontocSouthern LeyteVisayas
+   
+        1533-HinunanganSouthern LeyteVisayas
+   
+        1534-HinundayanSouthern LeyteVisayas
+   
+        1535-LibagonSouthern LeyteVisayas
+   
+        1536-LiloanSouthern LeyteVisayas
+   
+        1537-LimasawaSouthern LeyteVisayas
+   
+        1538-MaasinSouthern LeyteVisayas
+   
+        1539-MacrohonSouthern LeyteVisayas
+   
+        1540-MalitbogSouthern LeyteVisayas
+   
+        1541-Padre BurgosSouthern LeyteVisayas
+   
+        1542-PintuyanSouthern LeyteVisayas
+   
+        1543-Saint BernardSouthern LeyteVisayas
+   
+        1544-San FranciscoSouthern LeyteVisayas
+   
+        1545-San JuanSouthern LeyteVisayas
+   
+        1546-San RicardoSouthern LeyteVisayas
+   
+        1547-SilagoSouthern LeyteVisayas
+   
+        1548-SogodSouthern LeyteVisayas
+   
+        1549-Tomas OppusSouthern LeyteVisayas
+   
+        1550-BagumbayanSultan KudaratMindanao
+   
+        1551-ColumbioSultan KudaratMindanao
+   
+        1552-EsperanzaSultan KudaratMindanao
+   
+        1553-IsulanSultan KudaratMindanao
+   
+        1554-KalamansigSultan KudaratMindanao
+   
+        1555-LambayongSultan KudaratMindanao
+   
+        1556-LebakSultan KudaratMindanao
+   
+        1557-LutayanSultan KudaratMindanao
+   
+        1558-PalimbangSultan KudaratMindanao
+   
+        1559-President QuirinoSultan KudaratMindanao
+   
+        1560-Senator Ninoy AquinoSultan KudaratMindanao
+   
+        1561-TacurongSultan KudaratMindanao
+   
+        1562-BanguinguiSuluMindanao
+   
+        1563-Hadji Panglima TahilSuluMindanao
+   
+        1564-IndananSuluMindanao
+   
+        1565-JoloSuluMindanao
+   
+        1566-Kalingalan CaluangSuluMindanao
+   
+        1567-LugusSuluMindanao
+   
+        1568-LuukSuluMindanao
+   
+        1569-MaimbungSuluMindanao
+   
+        1570-OmarSuluMindanao
+   
+        1571-PanamaoSuluMindanao
+   
+        1572-PandamiSuluMindanao
+   
+        1573-Panglima EstinoSuluMindanao
+   
+        1574-PangutaranSuluMindanao
+   
+        1575-ParangSuluMindanao
+   
+        1576-PataSuluMindanao
+   
+        1577-PatikulSuluMindanao
+   
+        1578-SiasiSuluMindanao
+   
+        1579-TalipaoSuluMindanao
+   
+        1580-TapulSuluMindanao
+   
+        1581-AlegriaSurigao del NorteMindanao
+   
+        1582-BacuagSurigao del NorteMindanao
+   
+        1583-BurgosSurigao del NorteMindanao
+   
+        1584-ClaverSurigao del NorteMindanao
+   
+        1585-DapaSurigao del NorteMindanao
+   
+        1586-Del CarmenSurigao del NorteMindanao
+   
+        1587-General LunaSurigao del NorteMindanao
+   
+        1588-GigaquitSurigao del NorteMindanao
+   
+        1589-MainitSurigao del NorteMindanao
+   
+        1590-MalimonoSurigao del NorteMindanao
+   
+        1591-PilarSurigao del NorteMindanao
+   
+        1592-PlacerSurigao del NorteMindanao
+   
+        1593-San BenitoSurigao del NorteMindanao
+   
+        1594-San FranciscoSurigao del NorteMindanao
+   
+        1595-San IsidroSurigao del NorteMindanao
+   
+        1596-Santa MonicaSurigao del NorteMindanao
+   
+        1597-SisonSurigao del NorteMindanao
+   
+        1598-SocorroSurigao del NorteMindanao
+   
+        1599-Surigao CitySurigao del NorteMindanao
+   
+        1600-Tagana-anSurigao del NorteMindanao
+   
+        1601-TubodSurigao del NorteMindanao
+   
+        1602-BaroboSurigao del SurMindanao
+   
+        1603-BayabasSurigao del SurMindanao
+   
+        1604-BisligSurigao del SurMindanao
+   
+        1605-CagwaitSurigao del SurMindanao
+   
+        1606-CantilanSurigao del SurMindanao
+   
+        1607-CarmenSurigao del SurMindanao
+   
+        1608-CarrascalSurigao del SurMindanao
+   
+        1609-CortesSurigao del SurMindanao
+   
+        1610-HinatuanSurigao del SurMindanao
+   
+        1611-LanuzaSurigao del SurMindanao
+   
+        1612-LiangaSurigao del SurMindanao
+   
+        1613-LingigSurigao del SurMindanao
+   
+        1614-MadridSurigao del SurMindanao
+   
+        1615-MarihatagSurigao del SurMindanao
+   
+        1616-San AgustinSurigao del SurMindanao
+   
+        1617-San MiguelSurigao del SurMindanao
+   
+        1618-TagbinaSurigao del SurMindanao
+   
+        1619-TagoSurigao del SurMindanao
+   
+        1620-TandagSurigao del SurMindanao
+   
+        1621-AnaoTarlacLuzon
+   
+        1622-BambanTarlacLuzon
+   
+        1623-CamilingTarlacLuzon
+   
+        1624-CapasTarlacLuzon
+   
+        1625-ConcepcionTarlacLuzon
+   
+        1626-GeronaTarlacLuzon
+   
+        1627-La PazTarlacLuzon
+   
+        1628-MayantocTarlacLuzon
+   
+        1629-MoncadaTarlacLuzon
+   
+        1630-PaniquiTarlacLuzon
+   
+        1631-PuraTarlacLuzon
+   
+        1632-RamosTarlacLuzon
+   
+        1633-San ClementeTarlacLuzon
+   
+        1634-San JoseTarlacLuzon
+   
+        1635-San ManuelTarlacLuzon
+   
+        1636-Santa IgnaciaTarlacLuzon
+   
+        1637-Tarlac CityTarlacLuzon
+   
+        1638-VictoriaTarlacLuzon
+   
+        1639-BongaoTawi-TawiMindanao
+   
+        1640-LanguyanTawi-TawiMindanao
+   
+        1641-MapunTawi-TawiMindanao
+   
+        1642-Panglima SugalaTawi-TawiMindanao
+   
+        1643-Sapa-SapaTawi-TawiMindanao
+   
+        1644-SibutuTawi-TawiMindanao
+   
+        1645-SiMunicipalityulTawi-TawiMindanao
+   
+        1646-SitangkaiTawi-TawiMindanao
+   
+        1647-South UbianTawi-TawiMindanao
+   
+        1648-TandubasTawi-TawiMindanao
+   
+        1649-Turtle IslandsTawi-TawiMindanao
+   
+        1650-BotolanZambalesLuzon
+   
+        1651-CabanganZambalesLuzon
+   
+        1652-CandelariaZambalesLuzon
+   
+        1653-CastillejosZambalesLuzon
+   
+        1654-IbaZambalesLuzon
+   
+        1655-MasinlocZambalesLuzon
+   
+        1656-OlongapoZambalesLuzon
+   
+        1657-PalauigZambalesLuzon
+   
+        1658-San AntonioZambalesLuzon
+   
+        1659-San FelipeZambalesLuzon
+   
+        1660-San MarcelinoZambalesLuzon
+   
+        1661-San NarcisoZambalesLuzon
+   
+        1662-Santa CruzZambalesLuzon
+   
+        1663-SubicZambalesLuzon
+   
+        1664-BaliguianZamboanga del NorteMindanao
+   
+        1665-DapitanZamboanga del NorteMindanao
+   
+        1666-DipologZamboanga del NorteMindanao
+   
+        1667-GododZamboanga del NorteMindanao
+   
+        1668-GutalacZamboanga del NorteMindanao
+   
+        1669-Jose DalmanZamboanga del NorteMindanao
+   
+        1670-KalawitZamboanga del NorteMindanao
+   
+        1671-KatipunanZamboanga del NorteMindanao
+   
+        1672-La LibertadZamboanga del NorteMindanao
+   
+        1673-LabasonZamboanga del NorteMindanao
+   
+        1674-Leon B. PostigoZamboanga del NorteMindanao
+   
+        1675-LiloyZamboanga del NorteMindanao
+   
+        1676-ManukanZamboanga del NorteMindanao
+   
+        1677-MutiaZamboanga del NorteMindanao
+   
+        1678-PinanZamboanga del NorteMindanao
+   
+        1679-PolancoZamboanga del NorteMindanao
+   
+        1680-RizalZamboanga del NorteMindanao
+   
+        1681-RoxasZamboanga del NorteMindanao
+   
+        1682-SalugZamboanga del NorteMindanao
+   
+        1683-Sergio OsmenaZamboanga del NorteMindanao
+   
+        1684-SiayanZamboanga del NorteMindanao
+   
+        1685-SibucoZamboanga del NorteMindanao
+   
+        1686-SibutadZamboanga del NorteMindanao
+   
+        1687-SindanganZamboanga del NorteMindanao
+   
+        1688-SioconZamboanga del NorteMindanao
+   
+        1689-SirawaiZamboanga del NorteMindanao
+   
+        1690-TampilisanZamboanga del NorteMindanao
+   
+        1691-AuroraZamboanga del SurMindanao
+   
+        1692-BayogZamboanga del SurMindanao
+   
+        1693-DimatalingZamboanga del SurMindanao
+   
+        1694-DinasZamboanga del SurMindanao
+   
+        1695-DumalinaoZamboanga del SurMindanao
+   
+        1696-DumingagZamboanga del SurMindanao
+   
+        1697-GuiposZamboanga del SurMindanao
+   
+        1698-JosefinaZamboanga del SurMindanao
+   
+        1699-KumalarangZamboanga del SurMindanao
+   
+        1700-LabanganZamboanga del SurMindanao
+   
+        1701-LakewoodZamboanga del SurMindanao
+   
+        1702-LapuyanZamboanga del SurMindanao
+   
+        1703-MahayagZamboanga del SurMindanao
+   
+        1704-MargosatubigZamboanga del SurMindanao
+   
+        1705-MidsalipZamboanga del SurMindanao
+   
+        1706-MolaveZamboanga del SurMindanao
+   
+        1707-PagadianZamboanga del SurMindanao
+   
+        1708-PitogoZamboanga del SurMindanao
+   
+        1709-Ramon MagsaysayZamboanga del SurMindanao
+   
+        1710-San MiguelZamboanga del SurMindanao
+   
+        1711-San PabloZamboanga del SurMindanao
+   
+        1712-SominotZamboanga del SurMindanao
+
+        1713-TabinaZamboanga del SurMindanao
+
+        1714-TambuligZamboanga del SurMindanao
+
+        1715-TigbaoZamboanga del SurMindanao
+
+        1716-TukuranZamboanga del SurMindanao
+
+        1717-Vincenzo A. SagunZamboanga del SurMindanao
+ 
+        1718-Zamboanga CityZamboanga del SurMindanao
+
+        1719-AliciaZamboanga SibugayMindanao
+    
+        1720-BuugZamboanga SibugayMindanao
+ 
+        1721-DiplahanZamboanga SibugayMindanao
+   
+        1722-ImeldaZamboanga SibugayMindanao
+    
+        1723-IpilZamboanga SibugayMindanao
+   
+        1724-KabasalanZamboanga SibugayMindanao
+   
+        1725-MabuhayZamboanga SibugayMindanao
+    
+        1726-MalangasZamboanga SibugayMindanao
+   
+        1727-NagaZamboanga SibugayMindanao
+
+        1728-OlutangaZamboanga SibugayMindanao
+
+        1729-PayaoZamboanga SibugayMindanao
+
+        1730-Roseller LimZamboanga SibugayMindanao
+
+        1731-SiayZamboanga SibugayMindanao
+  
+        1732-TalusanZamboanga SibugayMindanao
+
+        1733-TitayZamboanga SibugayMindanao
+
+        1734-TungawanZamboanga SibugayMindanao
+
+ 
