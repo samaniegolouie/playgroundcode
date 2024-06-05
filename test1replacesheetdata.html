@@ -116,16 +116,12 @@
     <script>
         $(document).ready(function () {
             var workbook;
+            var existingData = {};
             var idToCityMap = {};
-            var servicemode ={};
-
-            let locs;
+            var servicemode = {};
 
             // Fetch the data from the database on page load
             fetchDataFromDatabase();
-            fetchServiceModeDatabase();
-
-console.log (servicemode)
 
             $('.border-line').on('dragover', function (e) {
                 e.preventDefault();
@@ -188,9 +184,35 @@ console.log (servicemode)
                 reader.onload = function (event) {
                     const data = new Uint8Array(event.target.result);
                     workbook = XLSX.read(data, { type: 'array', cellStyles: true });
-                    displayTabs(workbook.SheetNames);
+                    processSheets(workbook.SheetNames);
                 };
                 reader.readAsArrayBuffer(file);
+            }
+
+            function processSheets(sheetNames) {
+                sheetNames.forEach(sheetName => {
+                    if (sheetName === "ADDONS") {
+                        const newSheet = workbook.Sheets[sheetName];
+                        mergeAddonsSheet(newSheet);
+                    } else if (!existingData[sheetName]) {
+                        existingData[sheetName] = workbook.Sheets[sheetName];
+                    }
+                });
+                displayTabs(Object.keys(existingData));
+            }
+
+            function mergeAddonsSheet(newSheet) {
+                const newSheetJson = XLSX.utils.sheet_to_json(newSheet, { header: 1 });
+                const addonsData = existingData["ADDONS"] ? XLSX.utils.sheet_to_json(existingData["ADDONS"], { header: 1 }) : [];
+                
+                newSheetJson.forEach((row, rowIndex) => {
+                    if (rowIndex > 0) { // Skip header row
+                        addonsData.push(row);
+                    }
+                });
+
+                const mergedSheet = XLSX.utils.json_to_sheet(addonsData, { skipHeader: true });
+                existingData["ADDONS"] = mergedSheet;
             }
 
             function displayTabs(sheetNames) {
@@ -213,7 +235,7 @@ console.log (servicemode)
                     tabContent.setAttribute('id', `tab-${index}`);
                     tabContent.style.display = 'none'; // Initially hide all tabs
                     previewContainer.appendChild(tabContent);
-                    displaySheet(workbook.Sheets[sheetName], tabContent, sheetName); // Pass the sheet name
+                    displaySheet(existingData[sheetName], tabContent, sheetName); // Pass the sheet name
                 });
 
                 setActiveTab(0); // Set first tab active initially
@@ -244,20 +266,18 @@ console.log (servicemode)
                         cellElement.textContent = cell;
                         tr.appendChild(cellElement);
 
-                        if (rowIndex > 0 && sheetName && !isNaN(cell) && colIndex <= 1) { // Only update numerical values
+                        if (rowIndex > 0 && sheetName !== "ADDONS" && sheetName !== "TRUCKING" && !isNaN(cell) && colIndex <= 1) { // Only update numerical values
                             const updatedValue = getUpdatedValueFromMap(cell);
                             if (updatedValue !== null) {
                                 cellElement.textContent = updatedValue;
                             }
                         }
-                        if (rowIndex > 0 && sheetName && !isNaN(cell) && colIndex == 2) { // Only update numerical values
+                        if (rowIndex > 0 && sheetName !== "ADDONS" && sheetName !== "TRUCKING" && !isNaN(cell) && colIndex == 2) { // Only update numerical values
                             const updatedValue = getUpdatedServiceModeFromMap(cell);
                             if (updatedValue !== null) {
                                 cellElement.textContent = updatedValue;
                             }
                         }
-
-
                     });
                     table.appendChild(tr);
                 });
@@ -267,49 +287,39 @@ console.log (servicemode)
             function getUpdatedValueFromMap(cellValue) {
                 return idToCityMap[cellValue] || null;
             }
+
             function getUpdatedServiceModeFromMap(cellValue) {
                 return servicemode[cellValue] || null;
             }
 
-            function fetchDataFromDatabase() {
-                fetch(`http://localhost/playgroundcode/apiprototype.php`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        data.forEach(entry => {
-                            idToCityMap[entry.id] = entry.city;
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data from database:', error);
-                    });
-            }
-
             
-            function fetchServiceModeDatabase() {
-                fetch(`http://localhost/playgroundcode/apiprototype2.php`)
-                // fetch(`https://65f442a1f54db27bc02132c7.mockapi.io/user`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        data.forEach(entry => {
-                            servicemode[entry.id] = entry.name;
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data from database:', error);
-                    });
+            function fetchDataFromDatabase() {
+    fetch(`http://localhost/playgroundcode/apiprototype2.php`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.json();
+        })
+        .then(data => {
+            data.tbl_locations.forEach(entry => {
+                idToCityMap[entry.tbl_locations.id] = entry.tbl_locations.city;
+            });
 
-            function clearPreview() {
+            // Loop through tbl_service_mode and populate servicemode object
+            data.tbl_service_mode.forEach(entry => {
+                // Check if the id is 5, if yes then skip
+                if(entry.tbl_service_mode.id !== "5") {
+                    servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data from database:', error);
+        });
+}
+
+               function clearPreview() {
                 const previewContainer = document.getElementById('previewContainer');
                 previewContainer.innerHTML = '';
                 $('#submit-button').hide(); // Hide the submit button if no valid file is present
