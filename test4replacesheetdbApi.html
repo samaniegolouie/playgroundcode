@@ -268,7 +268,7 @@
                         cellElement.textContent = cell;
                         tr.appendChild(cellElement);
 
-                        if (rowIndex > 0 && sheetName !== "ADDONS" && sheetName !== "TRUCKING") {
+                        if (rowIndex >= 2 && sheetName !== "ADDONS" && sheetName !== "TRUCKING") { // Start updates from row 3 (index 2)
                             if (colIndex === 1 || colIndex === 0) { // Update values in the first and second columns
                                 const updatedValue = getUpdatedValueFromMap(cell);
                                 if (updatedValue !== null) {
@@ -300,7 +300,8 @@
             }
 
             function getUpdatedServiceModeFromMap(cellValue) {
-                return servicemode[cellValue] || null;
+                const numericalPart = getNumericalPart(cellValue);
+                return servicemode[numericalPart] || null;
             }
 
             function fetchDataFromDatabase() {
@@ -318,10 +319,7 @@
 
                         // Loop through tbl_service_mode and populate servicemode object
                         data.tbl_service_mode.forEach(entry => {
-                            // Check if the id is 5, if yes then skip
-                            if (entry.tbl_service_mode.id !== "5") {
-                                servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
-                            }
+                            servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
                         });
                     })
                     .catch(error => {
