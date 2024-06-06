@@ -105,7 +105,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 border-line p-5">
-                <H1>test 4</H1>
+                <h1>Test 4</h1>
                 <span class="choose-file-button">Choose files</span>
                 <span class="file-message text-black">or drag and drop files here</span>
                 <input class="file-input" type="file" multiple accept=".xls,.xlsx,.xlsm,.xlsb">
@@ -114,6 +114,7 @@
         <div id="previewContainer" class="previewContainer"></div>
         <button id="submit-button" class="submit-button btn btn-primary">Submit</button>
     </div>
+
     <script>
         $(document).ready(function () {
             var workbook;
@@ -205,7 +206,7 @@
             function mergeAddonsSheet(newSheet) {
                 const newSheetJson = XLSX.utils.sheet_to_json(newSheet, { header: 1 });
                 const addonsData = existingData["ADDONS"] ? XLSX.utils.sheet_to_json(existingData["ADDONS"], { header: 1 }) : [];
-                
+
                 newSheetJson.forEach((row, rowIndex) => {
                     if (rowIndex > 0) { // Skip header row
                         addonsData.push(row);
@@ -267,16 +268,17 @@
                         cellElement.textContent = cell;
                         tr.appendChild(cellElement);
 
-                        if (rowIndex > 0 && sheetName !== "ADDONS" && sheetName !== "TRUCKING" && !isNaN(cell) && colIndex <= 1) { // Only update numerical values
-                            const updatedValue = getUpdatedValueFromMap(cell);
-                            if (updatedValue !== null) {
-                                cellElement.textContent = updatedValue;
-                            }
-                        }
-                        if (rowIndex > 0 && sheetName !== "ADDONS" && sheetName !== "TRUCKING" && !isNaN(cell) && colIndex == 2) { // Only update numerical values
-                            const updatedValue = getUpdatedServiceModeFromMap(cell);
-                            if (updatedValue !== null) {
-                                cellElement.textContent = updatedValue;
+                        if (rowIndex > 0 && sheetName !== "ADDONS" && sheetName !== "TRUCKING") {
+                            if (colIndex === 1 || colIndex === 0) { // Update values in the first and second columns
+                                const updatedValue = getUpdatedValueFromMap(cell);
+                                if (updatedValue !== null) {
+                                    cellElement.textContent = updatedValue;
+                                }
+                            } else if (colIndex === 2) { // Update service mode in the third column
+                                const updatedValue = getUpdatedServiceModeFromMap(cell);
+                                if (updatedValue !== null) {
+                                    cellElement.textContent = updatedValue;
+                                }
                             }
                         }
                     });
@@ -287,13 +289,13 @@
 
             function getNumericalPart(cellValue) {
                 console.log("Extracting numerical part from:", cellValue);
-    const numericalPart = parseInt(cellValue.toString().split('-')[0]);
-    console.log("Extracted numerical part:", numericalPart);
-    return isNaN(numericalPart) ? null : numericalPart;
+                const numericalPart = parseInt(cellValue.toString().split('-')[0], 10);
+                console.log("Extracted numerical part:", numericalPart);
+                return isNaN(numericalPart) ? null : numericalPart;
             }
 
             function getUpdatedValueFromMap(cellValue) {
-                const numericalPart = getNumericalPart(cellValue);             
+                const numericalPart = getNumericalPart(cellValue);
                 return idToCityMap[numericalPart] || null;
             }
 
@@ -302,30 +304,30 @@
             }
 
             function fetchDataFromDatabase() {
-    fetch(`http://localhost/playgroundcode/apiprototype2.php`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            data.tbl_locations.forEach(entry => {
-                idToCityMap[entry.tbl_locations.id] = entry.tbl_locations.city;
-            });
+                fetch(`http://localhost/playgroundcode101/playgroundcode-1/apiprototype2.php`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.tbl_locations.forEach(entry => {
+                            idToCityMap[entry.tbl_locations.id] = entry.tbl_locations.city;
+                        });
 
-            // Loop through tbl_service_mode and populate servicemode object
-            data.tbl_service_mode.forEach(entry => {
-                // Check if the id is 5, if yes then skip
-                if(entry.tbl_service_mode.id !== "5") {
-                    servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data from database:', error);
-        });
-}
+                        // Loop through tbl_service_mode and populate servicemode object
+                        data.tbl_service_mode.forEach(entry => {
+                            // Check if the id is 5, if yes then skip
+                            if (entry.tbl_service_mode.id !== "5") {
+                                servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data from database:', error);
+                    });
+            }
 
             function clearPreview() {
                 const previewContainer = document.getElementById('previewContainer');
