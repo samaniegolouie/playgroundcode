@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Excel File Preview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <style>
+        .border-line {
+            border: 1.5px dashed rgb(0, 0, 0);
+        }
+
+        .choose-file-button {
+            flex-shrink: 0;
+            background-color: rgb(0, 0, 0);
+            border: 1px solid rgb(0, 0, 0);
+            color: white;
+            border-radius: 3px;
+            padding: 8px 15px;
+            margin-right: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .file-message {
+            font-size: small;
+            font-weight: 300;
+            line-height: 1.4;
+            white-space: nowrap;
+            color: rgb(0, 0, 0);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .mt-100 {
+            margin-top: 100px;
+        }
+
+        .preview {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            min-width: 100px;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .tabButton {
+            padding: 10px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .tabButton.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tab {
+            display: none;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        hr {
+            margin-top: 0rem;
+            margin-bottom: 0rem;
+            border: 0;
+            border-top: 0px solid rgba(0, 0, 0, .1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 border-line p-5">
+                <h1>Test 66</h1>
+                <span class="choose-file-button">Choose files</span>
+                <span class="file-message text-black">or drag and drop files here</span>
+                <input class="file-input" type="file" multiple accept=".xls,.xlsx,.xlsm,.xlsb">
+            </div>
+        </div>
+        <div id="previewContainer" class="previewContainer"></div>
+        <button id="submit-button" class="submit-button btn btn-primary">Submit</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var workbook;
+            var existingData = {};
+            var idToCityMap = {};
+            var servicemode = {};
+
+            // Fetch the data from the database on page load
+            fetchDataFromDatabase();
+
+            $('.border-line').on('dragover', function (e) {
+                e.preventDefault();
+                $(this).addClass('border-primary');
+            });
+
+            $('.border-line').on('dragleave', function () {
+                $(this).removeClass('border-primary');
+            });
+
+            $('.border-line').on('drop', function (e) {
+                e.preventDefault();
+                $(this).removeClass('border-primary');
+                var files = e.originalEvent.dataTransfer.files;
+                handleFiles(files);
+            });
+
+            $(document).on('change', '.file-input', function () {
+                var files = $(this)[0].files;
+                handleFiles(files);
+            });
+
+            function handleFiles(files) {
+                var fileNames = [];
+                var validFiles = [];
+                if (files.length > 1) {
+                    $('.file-message').text('Please drop only one file.');
+                    clearPreview();
+                    return;
+                }
+                for (var i = 0; i < files.length; i++) {
+                    if (validateFile(files[i])) {
+                        validFiles.push(files[i]);
+                        fileNames.push(files[i].name);
+                    }
+                }
+                if (fileNames.length > 0) {
+                    $('.file-message').text(fileNames.join(', '));
+                    if (validFiles.length > 0) {
+                        readFile(validFiles[0]);
+                    }
+                } else {
+                    $('.file-message').text('Please drop a valid Excel file.');
+                    clearPreview();
+                }
+            }
+
+            function validateFile(file) {
+                const validTypes = [
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "application/vnd.ms-excel",
+                    "application/vnd.ms-excel.sheet.macroEnabled.12",
+                    "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+                ];
+                return validTypes.includes(file.type);
+            }
+
+            function readFile(file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const data = new Uint8Array(event.target.result);
+                    workbook = XLSX.read(data, { type: 'array', cellStyles: true });
+                    processSheets(workbook.SheetNames);
+                };
+                reader.readAsArrayBuffer(file);
+            }
+
+            function processSheets(sheetNames) {
+                sheetNames.forEach(sheetName => {
+                    if (sheetName === "ADDONS") {
+                        const newSheet = workbook.Sheets[sheetName];
+                        mergeAddonsSheet(newSheet);
+                    } else if (!existingData[sheetName]) {
+                        existingData[sheetName] = workbook.Sheets[sheetName];
+                    }
+                });
+                displayTabs(Object.keys(existingData));
+                hideTabs(["FunctionCall"]); // Call hideTabs with the sheets you want to hide
+            }
+
+            function mergeAddonsSheet(newSheet) {
+                const newSheetJson = XLSX.utils.sheet_to_json(newSheet, { header: 1 });
+                const addonsData = existingData["ADDONS"] ? XLSX.utils.sheet_to_json(existingData["ADDONS"], { header: 1 }) : [];
+
+                newSheetJson.forEach((row, rowIndex) => {
+                    if (rowIndex > 0) { // Skip header row
+                        addonsData.push(row);
+                    }
+                });
+
+                const mergedSheet = XLSX.utils.json_to_sheet(addonsData, { skipHeader: true });
+                existingData["ADDONS"] = mergedSheet;
+            }
+
+            function displayTabs(sheetNames) {
+                const previewContainer = document.getElementById('previewContainer');
+                previewContainer.innerHTML = '';
+
+                sheetNames.forEach((sheetName, index) => {
+                    const tabButton = document.createElement('button');
+                    tabButton.classList.add('tabButton');
+                    tabButton.textContent = sheetName;
+                    tabButton.addEventListener('click', () => {
+                        setActiveTab(index);
+                    });
+                    previewContainer.appendChild(tabButton);
+                });
+
+                sheetNames.forEach((sheetName, index) => {
+                    const tabContent = document.createElement('div');
+                    tabContent.classList.add('tab', 'table-responsive');
+                    tabContent.setAttribute('id', `tab-${index}`);
+                    tabContent.style.display = 'none';
+                    previewContainer.appendChild(tabContent);
+                    displaySheet(existingData[sheetName], tabContent, sheetName);
+                });
+
+                setActiveTab(0);
+                $('#submit-button').show();
+            }
+
+            function hideTabs(hiddenSheetNames) {
+                const tabButtons = document.querySelectorAll('.tabButton');
+                tabButtons.forEach(button => {
+                    if (hiddenSheetNames.includes(button.textContent)) {
+                        button.style.display = 'none';
+                    }
+                });
+
+                const tabs = document.querySelectorAll('.tab');
+                tabs.forEach((tab, index) => {
+                    if (hiddenSheetNames.includes(tabButtons[index].textContent)) {
+                        tab.style.display = 'none';
+                    }
+                });
+            }
+
+            function setActiveTab(activeIndex) {
+                const tabButtons = document.querySelectorAll('.tabButton');
+                const tabs = document.querySelectorAll('.tab');
+
+                tabButtons.forEach((button, index) => {
+                    button.classList.toggle('active', index === activeIndex);
+                });
+
+                tabs.forEach((tab, index) => {
+                    tab.style.display = index === activeIndex ? 'block' : 'none';
+                });
+            }
+
+            function displaySheet(sheet, tabContent, sheetName) {
+                const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+                // Create a container for both tables
+                const tableContainer = document.createElement('div');
+                tableContainer.classList.add('table-container');
+
+                // Create the original table
+                const originalTable = document.createElement('table');
+                originalTable.classList.add('table', 'table-bordered', 'original-table');
+
+                // Create the modified table
+                const modifiedTable = document.createElement('table');
+                modifiedTable.classList.add('table', 'table-bordered', 'modified-table');
+
+                jsonData.forEach((row, rowIndex) => {
+                    const originalRow = document.createElement('tr');
+                    const modifiedRow = document.createElement('tr');
+
+                    row.forEach((cell, colIndex) => {
+                        const originalCell = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        originalCell.textContent = cell;
+                        originalRow.appendChild(originalCell);
+
+                        const modifiedCell = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        modifiedCell.textContent = cell;
+
+                        if (rowIndex >= 2 && sheetName !== "ADDONS" && sheetName !== "TRUCKING") { // Start updates from row 3 (index 2)
+                            if (colIndex === 1 || colIndex === 0) { // Update values in the first and second columns
+                                const updatedValue = getUpdatedValueFromMap(cell);
+                                if (updatedValue !== null) {
+                                    modifiedCell.textContent = updatedValue;
+                                }
+                            } else if (colIndex === 2) { // Update service mode in the third column
+                                const updatedValue = getUpdatedServiceModeFromMap(cell);
+                                if (updatedValue !== null) {
+                                    modifiedCell.textContent = updatedValue;
+                                }
+                            }
+                        }
+
+                        modifiedRow.appendChild(modifiedCell);
+                    });
+
+                    originalTable.appendChild(originalRow);
+                    modifiedTable.appendChild(modifiedRow);
+                });
+
+                // Append both tables to the container
+                tableContainer.appendChild(originalTable);
+                tableContainer.appendChild(modifiedTable);
+
+                // Append the container to the tab content
+                tabContent.appendChild(tableContainer);
+            }
+
+            function getNumericalPart(cellValue) {
+                console.log("Extracting numerical part from:", cellValue);
+                const numericalPart = parseInt(cellValue.toString().split('-')[0], 10);
+                console.log("Extracted numerical part:", numericalPart);
+                return isNaN(numericalPart) ? null : numericalPart;
+            }
+
+            function getUpdatedValueFromMap(cellValue) {
+                const numericalPart = getNumericalPart(cellValue);
+                return idToCityMap[numericalPart] || null;
+            }
+
+            function getUpdatedServiceModeFromMap(cellValue) {
+                const numericalPart = getNumericalPart(cellValue);
+                return servicemode[numericalPart] || null;
+            }
+
+            function fetchDataFromDatabase() {
+                fetch(`http://localhost/playgroundcode/apiprototype2.php`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        data.tbl_locations.forEach(entry => {
+                            idToCityMap[entry.tbl_locations.id] = entry.tbl_locations.city;
+                        });
+
+                        // Loop through tbl_service_mode and populate servicemode object
+                        data.tbl_service_mode.forEach(entry => {
+                            servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
+                        });
+                    })
+                    .catch(error => {a
+                        console.error('Error fetching data from database:', error);
+                    });
+            }
+
+            function clearPreview() {
+                const previewContainer = document.getElementById('previewContainer');
+                previewContainer.innerHTML = '';
+                $('.file-message').text('or drag and drop files here');
+                $('#submit-button').hide();
+            }
+
+            $('#submit-button').on('click', function () {
+                alert('Data submitted!');
+                // Add your form submission logic here
+            });
+
+            $('#submit-button').hide();
+        });
+    </script>
+</body>
+
+</html>
