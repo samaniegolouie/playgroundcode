@@ -98,6 +98,11 @@
             border: 0;
             border-top: 0px solid rgba(0, 0, 0, .1);
         }
+
+        .loading-spinner {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -113,6 +118,11 @@
         </div>
         <div id="previewContainer" class="previewContainer"></div>
         <button id="submit-button" class="submit-button btn btn-primary">Submit</button>
+        <div class="loading-spinner">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -121,6 +131,7 @@
             var existingData = {};
             var idToCityMap = {};
             var servicemode = {};
+            var debounceTimer;
 
             // Fetch the data from the database on page load
             fetchDataFromDatabase();
@@ -143,33 +154,37 @@
 
             $(document).on('change', '.file-input', function () {
                 var files = $(this)[0].files;
-                clearPreview();
                 handleFiles(files);
             });
 
             function handleFiles(files) {
-                var fileNames = [];
-                var validFiles = [];
-                if (files.length > 1) {
-                    $('.file-message').text('Please drop only one file.');
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
                     clearPreview();
-                    return;
-                }
-                for (var i = 0; i < files.length; i++) {
-                    if (validateFile(files[i])) {
-                        validFiles.push(files[i]);
-                        fileNames.push(files[i].name);
+                    $('.loading-spinner').show();
+                    var fileNames = [];
+                    var validFiles = [];
+                    if (files.length > 1) {
+                        $('.file-message').text('Please drop only one file.');
+                        clearPreview();
+                        return;
                     }
-                }
-                if (fileNames.length > 0) {
-                    $('.file-message').text(fileNames.join(', '));
-                    if (validFiles.length > 0) {
-                        readFile(validFiles[0]);
+                    for (var i = 0; i < files.length; i++) {
+                        if (validateFile(files[i])) {
+                            validFiles.push(files[i]);
+                            fileNames.push(files[i].name);
+                        }
                     }
-                } else {
-                    $('.file-message').text('Please drop a valid Excel file.');
-                    clearPreview();
-                }
+                    if (fileNames.length > 0) {
+                        $('.file-message').text(fileNames.join(', '));
+                        if (validFiles.length > 0) {
+                            readFile(validFiles[0]);
+                        }
+                    } else {
+                        $('.file-message').text('Please drop a valid Excel file.');
+                        clearPreview();
+                    }
+                }, 300);
             }
 
             function validateFile(file) {
@@ -184,23 +199,26 @@
 
             function readFile(file) {
                 const reader = new FileReader();
-                reader.onload = function (event) {
+                reader.onload = async function (event) {
                     const data = new Uint8Array(event.target.result);
                     workbook = XLSX.read(data, { type: 'array', cellStyles: true });
-                    processSheets(workbook.SheetNames);
+                    existingData = {}; // Clear existing data
+                    await processSheets(workbook.SheetNames);
+                    $('.loading-spinner').hide();
                 };
                 reader.readAsArrayBuffer(file);
+                $('.file-input').val(''); // Reset file input
             }
 
-            function processSheets(sheetNames) {
-                sheetNames.forEach(sheetName => {
+            async function processSheets(sheetNames) {
+                for (const sheetName of sheetNames) {
                     if (sheetName === "ADDONS") {
                         const newSheet = workbook.Sheets[sheetName];
                         mergeAddonsSheet(newSheet);
                     } else if (!existingData[sheetName]) {
                         existingData[sheetName] = workbook.Sheets[sheetName];
                     }
-                });
+                }
                 displayTabs(Object.keys(existingData));
             }
 
@@ -289,9 +307,7 @@
             }
 
             function getNumericalPart(cellValue) {
-                console.log("Extracting numerical part from:", cellValue);
                 const numericalPart = parseInt(cellValue.toString().split('-')[0], 10);
-                console.log("Extracted numerical part:", numericalPart);
                 return isNaN(numericalPart) ? null : numericalPart;
             }
 
@@ -318,7 +334,6 @@
                             idToCityMap[entry.tbl_locations.id] = entry.tbl_locations.city;
                         });
 
-                        // Loop through tbl_service_mode and populate servicemode object
                         data.tbl_service_mode.forEach(entry => {
                             servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
                         });
