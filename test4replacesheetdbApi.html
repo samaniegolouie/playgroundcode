@@ -143,6 +143,7 @@
 
             $(document).on('change', '.file-input', function () {
                 var files = $(this)[0].files;
+                clearPreview();
                 handleFiles(files);
             });
 
