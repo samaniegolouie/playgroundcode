@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataTable with Column Toggle and Dropdown</title>
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <!-- ColReorder CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.5/css/colReorder.dataTables.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      padding: 12px;
+    }
+    .dropdown-content label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .dropdown-content input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .dropdown button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h2>DataTable with Column Reordering and Dropdown Toggle</h2>
+
+<!-- Dropdown for column toggle -->
+<div class="dropdown">
+  <button>Toggle Columns</button>
+  <div class="dropdown-content">
+    <label><input type="checkbox" class="col-toggle" data-column="0" checked disabled> Name</label>
+    <label><input type="checkbox" class="col-toggle" data-column="1" checked> Age</label>
+    <label><input type="checkbox" class="col-toggle" data-column="2" checked> Email</label>
+    <label><input type="checkbox" class="col-toggle" data-column="3" checked> Address</label>
+    <label><input type="checkbox" class="col-toggle" data-column="4" checked> Phone</label>
+  </div>
+</div>
+
+<!-- Table to display data -->
+<table id="example" class="display" style="width:100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+</table>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<!-- ColReorder JS -->
+<script src="https://cdn.datatables.net/colreorder/1.5.5/js/dataTables.colReorder.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Dummy JSON data
+    const data = [
+      { name: "John Doe", age: 25, email: "john@example.com", address: "123 Main St", phone: "555-1234" },
+      { name: "Jane Smith", age: 30, email: "jane@example.com", address: "456 Oak St", phone: "555-5678" },
+      { name: "Mike Johnson", age: 35, email: "mike@example.com", address: "789 Pine St", phone: "555-9101" },
+      { name: "Emily Davis", age: 28, email: "emily@example.com", address: "123 Cedar St", phone: "555-1122" }
+    ];
+
+    // Initialize DataTable
+    const table = $('#example').DataTable({
+      data: data.map(item => [item.name, item.age, item.email, item.address, item.phone]),
+      columns: [
+        { title: "Name" },
+        { title: "Age" },
+        { title: "Email" },
+        { title: "Address" },
+        { title: "Phone" }
+      ],
+      colReorder: true,  // Enable column reordering
+      stateSave: true    // Enable state saving (remembers column order and visibility)
+    });
+
+    // Handle checkbox interaction for column visibility
+    $('input.col-toggle').on('change', function() {
+      const column = table.column($(this).attr('data-column'));
+      const isVisible = column.visible();
+      column.visible(!isVisible);  // Toggle visibility based on checkbox state
+    });
+  });
+</script>
+
+</body>
+</html>

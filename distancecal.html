@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distance Calculation Using </title>
+    <title>Distance Calculation Using</title>
 </head>
 <body>
     <h1>Distance Calculation latitude and longitude Pure DB</h1>
     <div>
         <label for="startLocation">Select start location:</label>
-        <select id="startLocation"></select>
+        <select id="startLocation" onchange="updateLname()"></select>
         <label for="endLocation">Select end location:</label>
         <select id="endLocation"></select>
+
+        <input type="text" id="lname" name="lname"><br><br>
+
         <button onclick="calculateDistance()">Calculate Distance</button>
     </div>
     <div id="results"></div>
@@ -68,6 +71,13 @@
 
         function deg2rad(deg) {
             return deg * (Math.PI / 180);
+        }
+
+        function updateLname() {
+            const startLocationSelect = document.getElementById("startLocation");
+            const lnameInput = document.getElementById("lname");
+            const selectedOption = startLocationSelect.options[startLocationSelect.selectedIndex];
+            lnameInput.value = selectedOption.text;
         }
 
         // Populate dropdowns with locations when the page loads
