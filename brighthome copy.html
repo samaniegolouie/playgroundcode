@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Solutions - Senior Living Technology</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #F9F9F9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Introduction styling */
+        .intro {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Accordion styles */
+        .accordion {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+        }
+
+        .accordion-label {
+            display: block;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .accordion-label:hover {
+            background-color: #45a049;
+        }
+
+        /* Accordion checkbox for toggle */
+        .accordion-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 10px;
+            background-color: white;
+            border-radius: 5px;
+            color: transparent;
+        }
+
+        /* Change color to black when expanded */
+        .accordion-item input[type="checkbox"]:checked ~ .accordion-content {
+            max-height: 1000px; /* Adjusted for expanded content */
+            padding: 10px;
+            color: black;
+        }
+
+        /* Core services styling */
+        .core-services {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .service {
+            background-color: #e0f7fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        /* Call to action styling */
+        .cta {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta button:hover {
+            background-color: #0056b3;
+        }
+
+        .cta a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Empowering Senior Living Communities to Unlock the Full Potential of Their Technology</h1>
+
+    <div class="intro">
+        <p>At Bright Solutions, we help senior living organizations transform their technology investments into meaningful results. Whether you’re looking to optimize your current systems, build a sustainable innovation engine, or ensure seamless technology adoption, our team provides strategic guidance to make it happen—without overwhelming your teams. Let’s work together to drive operational efficiency, improve resident satisfaction, and create a culture of sustainable innovation.</p>
+    </div>
+
+    <h2>What’s Holding You Back?</h2>
+    <div class="accordion">
+        <div class="accordion-item">
+            <input type="checkbox" id="question-1">
+            <label for="question-1" class="accordion-label">We’ve invested heavily in technology but aren’t sure we’re getting the results or making the right decisions.</label>
+            <div class="accordion-content">
+                <h3>Optimize and Integrate Your Technology for Maximum Results</h3>
+                <p>Most organizations aren’t fully utilizing the technology they already have. Bright Solutions helps assess your current platforms, optimize their usage, and finally get your systems fully integrated for seamless operations.</p>
+                <ul>
+                    <li>Maximize Your ROI: Stop spending on new tools until you've fully optimized your current platforms.</li>
+                    <li>Reduce Manual Processes: Streamline operations so your team can focus on meaningful work.</li>
+                    <li>System Integration: Get all your systems working together for improved data flow and efficiency.</li>
+                </ul>
+                <div class="cta">
+                    <button onclick="window.location.href='technology-audit.html';">Schedule a Technology Audit</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <input type="checkbox" id="question-2">
+            <label for="question-2" class="accordion-label">We need to build a sustainable innovation engine.</label>
+            <div class="accordion-content">
+                <h3>Build a Sustainable Innovation Engine that Drives Long-Term Success</h3>
+                <p>At Bright Solutions, we help you build a long-term, iterative innovation process that keeps you ahead without burning out your workforce.</p>
+                <ul>
+                    <li>Avoid Costly Mistakes: Align innovation efforts with your business goals to ensure the right investments are made.</li>
+                    <li>Keep Teams Engaged: Our process ensures that your staff is part of the solution, not overwhelmed by constant change.</li>
+                    <li>Create a Culture of Innovation: Innovate continually without pushing your teams over the edge.</li>
+                </ul>
+                <div class="cta">
+                    <button onclick="window.location.href='innovation-consultation.html';">Schedule a Consultation</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <input type="checkbox" id="question-3">
+            <label for="question-3" class="accordion-label">Our teams are struggling with new technology—it feels like just another tool without clear benefits or relief.</label>
+            <div class="accordion-content">
+                <h3>Transform Technology Adoption to Engage and Empower Your Teams</h3>
+                <p>We ensure technology adoption success by building comprehensive strategies that align tech with best practices and empower teams.</p>
+                <ul>
+                    <li>Engaged and Supported Teams: Change happens for your teams, not to them.</li>
+                    <li>Optimize Your Processes: Align technology with best practices for success.</li>
+                    <li>Achieve Expected Results: Deliver results, not just training on how to push buttons.</li>
+                </ul>
+                <div class="cta">
+                    <button onclick="window.location.href='adoption-strategy.html';">Build a Winning Adoption Strategy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Core Services</h2>
+    <div class="core-services">
+        <div class="service">
+            <strong>Strategic Innovation Planning:</strong> Build a long-term plan that aligns innovation with your organization’s goals.
+        </div>
+        <div class="service">
+            <strong>Technology Optimization:</strong> Maximize the value of your current technology investments and unlock their full potential.
+        </div>
+        <div class="service">
+            <strong>Change Management & Adoption Strategy:</strong> Ensure your teams are empowered to integrate new technology with seamless adoption strategies.
+        </div>
+        <div class="service">
+            <strong>Vendor Evaluation & Management:</strong> Make unbiased, confident vendor decisions that align with your vision.
+        </div>
+        <div class="service">
+            <strong>vCIO Services:</strong> Access ongoing IT leadership without the need to hire a full-time CIO, gaining flexibility and an entire team of expertise.
+        </div>
+    </div>
+
+    <div class="cta">
+        <button onclick="window.location.href='contact.html';">Contact Us</button>
+    </div>
+
+</body>
+</html>
+
