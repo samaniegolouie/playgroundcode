@@ -28,7 +28,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            /* max-width: 1200px; */
+            width: 100%;
         }
 
         .card {
@@ -48,22 +48,22 @@
         }
 
         .overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: calc(100% - 40px); /* Adjust width for centered margin */
-        height: calc(100% - 40px); /* Adjust height for centered margin */
-        background-color: rgba(0, 0, 0, 0.7);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: .85; /* Keep the overlay visible */
-        padding: 20px;
-        color: white;
-        border-radius: 8px; /* Optional: Add rounded corners */
-}
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 40px); /* Adjust width for centered margin */
+            height: calc(100% - 40px); /* Adjust height for centered margin */
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.85; /* Keep the overlay visible */
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+        }
 
         .accordion {
             width: 100%;
@@ -79,10 +79,7 @@
             font-weight: bold;
             cursor: pointer;
             padding: 10px;
-            /* background-color: #333; */
-            border-radius: 5px;
             text-align: center;
-            /* transition: background 0.3s; */
             color: white; /* Default color for labels */
         }
 
@@ -94,8 +91,6 @@
             max-height: 0;
             overflow: hidden;
             padding: 0 10px;
-            /* background-color: white; */
-            border-radius: 5px;
             color: rgb(255, 255, 255);
             text-align: center;
             transition: max-height 0.3s ease, padding 0.3s ease;
@@ -107,80 +102,71 @@
             padding: 10px;
         }
 
-        .circle-dot-bg{
-            width:20%;position: relative;
+        .circle-dot-bg {
+            width: 20%;
+            position: relative;
             top: -157px;
-
         }
-
-
-
-
-
-
     </style>
 </head>
 <body>
 
     <h2>What’s Holding You Back?</h2>
     <div class="card-container">
-        <div class="card">
-            <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/1592243889593-OV4HA054T47Q1UDYF32W/AdobeStock_238385550_Preview.jpeg?format=1000w" alt="Technology">
-            <div class="overlay">
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <label class="accordion-label">We've invested heavily in technology but aren't sure we're getting the best results or making the right decisions.</label>
-                        <div class="accordion-content">
-                            Click here to learn how we can help you optimize your existing technology investments and make sure you're getting real returns.
+        <!-- Card 1 -->
+        <a href="https://example.com/page1" target="_blank">
+            <div class="card">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/1592243889593-OV4HA054T47Q1UDYF32W/AdobeStock_238385550_Preview.jpeg?format=1000w" alt="Technology">
+                <div class="overlay">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <label class="accordion-label">We've invested heavily in technology but aren't sure we're getting the best results or making the right decisions.</label>
+                            <div class="accordion-content">
+                                Click here to learn how we can help you optimize your existing technology investments and make sure you're getting real returns.
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> 
-        </div>
+                </div> 
+            </div>
+        </a>
 
-        <div class="card">
-            <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/1731056790522-Q1A6RI0CA9E85LZLSNNA/image-asset.jpeg?format=1000w" alt="Innovation">
-            <div class="overlay">
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <label class="accordion-label">We want to build a steady stream of new  ideas that benefit our residents and staff.</label>
-                        <div class="accordion-content">
-                            Click here to discover how to stay at the forefront of innovation while ensuring your residents and staff remain engaged and inspired.
+        <!-- Card 2 -->
+        <a href="https://example.com/page2" target="_blank">
+            <div class="card">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/1731056790522-Q1A6RI0CA9E85LZLSNNA/image-asset.jpeg?format=1000w" alt="Innovation">
+                <div class="overlay">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <label class="accordion-label">We want to build a steady stream of new ideas that benefit our residents and staff.</label>
+                            <div class="accordion-content">
+                                Click here to discover how to stay at the forefront of innovation while ensuring your residents and staff remain engaged and inspired.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
 
-        <div class="card">
-            <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/1731056790522-Q1A6RI0CA9E85LZLSNNA/image-asset.jpeg?format=1000w" alt="Team Struggles">
-            <div class="overlay">
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <label class="accordion-label">Our teams are struggling with new technology—it feels like just another tool without clear benefits or relief.</label>
-                        <div class="accordion-content">
-                            Click here to learn how we ensure technology is adopted effectively, engaging your teams and delivering the expected results.
+        <!-- Card 3 -->
+        <a href="https://example.com/page3" target="_blank">
+            <div class="card">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/1731056790522-Q1A6RI0CA9E85LZLSNNA/image-asset.jpeg?format=1000w" alt="Team Struggles">
+                <div class="overlay">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <label class="accordion-label">Our teams are struggling with new technology—it feels like just another tool without clear benefits or relief.</label>
+                            <div class="accordion-content">
+                                Click here to learn how we ensure technology is adopted effectively, engaging your teams and delivering the expected results.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
-    
 
-        
-        <!-- //////////********************************************************************* -->
-
-        <img class="circle-dot-bg" src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/bd8895c0-420c-4112-8393-42d2ebc21264/circle.png?format=300w" alt="Norway">
-
-
-
-
-
-        <!-- //////////********************************************************************* -->
-
-
-
+    <!-- Background Image -->
+    <img class="circle-dot-bg" src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/bd8895c0-420c-4112-8393-42d2ebc21264/circle.png?format=300w" alt="Norway">
 
 </body>
 </html>
