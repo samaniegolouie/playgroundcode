@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataTable with Column Toggle and Dynamic Data</title>
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.4/css/colReorder.dataTables.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      padding: 12px;
+    }
+    .dropdown-content label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .dropdown-content input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .dropdown button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h2>DataTable with Column Toggle and Dynamic Data</h2>
+
+<!-- Dropdown for column toggle -->
+<div class="dropdown">
+  <button>Toggle Columns</button>
+  <div class="dropdown-content">
+    <label><input type="checkbox" class="col-toggle" data-column="0" checked> Name</label>
+    <label><input type="checkbox" class="col-toggle" data-column="1" checked> Position</label>
+    <label><input type="checkbox" class="col-toggle" data-column="2" checked> Office</label>
+    <label><input type="checkbox" class="col-toggle" data-column="3" checked> Age</label>
+    <label><input type="checkbox" class="col-toggle" data-column="4" checked> Start Date</label>
+    <label><input type="checkbox" class="col-toggle" data-column="5" checked> Salary</label>
+  </div>
+</div>
+
+<table id="example" class="display nowrap" style="width:100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Office</th>
+      <th>Age</th>
+      <th>Start Date</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    <!-- Dynamic content will be injected here -->
+  </tbody>
+</table>
+
+<!-- DataTables and jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
+
+<script>
+    // Example JSON data
+    const jsonData = [
+        { "name": "Tiger Nixon", "position": "System Architect", "office": "Edinburgh", "age": 61, "startDate": "2011-04-25", "salary": "$320,800" },
+        { "name": "Garrett Winters", "position": "Accountant", "office": "Tokyo", "age": 63, "startDate": "2011-07-25", "salary": "$170,750" },
+        { "name": "Ashton Cox", "position": "Junior Technical Author", "office": "San Francisco", "age": 66, "startDate": "2009-01-12", "salary": "$86,000" },
+        { "name": "Cedric Kelly", "position": "Senior Javascript Developer", "office": "Edinburgh", "age": 22, "startDate": "2012-03-29", "salary": "$433,060" },
+        { "name": "Airi Satou", "position": "Accountant", "office": "Tokyo", "age": 33, "startDate": "2008-11-28", "salary": "$162,700" }
+    ];
+
+    // Function to dynamically populate the table
+    function populateTable(data) {
+        const tableBody = document.getElementById('tableBody');
+        data.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.name}</td>
+                <td>${row.position}</td>
+                <td>${row.office}</td>
+                <td>${row.age}</td>
+                <td>${row.startDate}</td>
+                <td>${row.salary}</td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    }
+
+    // Populate the table with JSON data
+    populateTable(jsonData);
+
+    $(document).ready(function () {
+        // Initialize DataTable with ColReorder and responsive features enabled
+        var table = $('#example').DataTable({
+            colReorder: true, // Enables column reordering
+            responsive: true // Makes the table responsive
+        });
+
+        // Save column order when it changes
+        table.on('column-reorder', function () {
+            var columnOrder = table.colReorder.order(); // Get the current column order
+            localStorage.setItem('columnOrder', JSON.stringify(columnOrder)); // Save order to localStorage
+        });
+
+        // Load and apply saved column order on page load
+        var savedColumnOrder = localStorage.getItem('columnOrder');
+        if (savedColumnOrder) {
+            table.colReorder.order(JSON.parse(savedColumnOrder), true); // Apply saved order
+        }
+
+        // Handle column toggle
+        $('.col-toggle').on('change', function () {
+            var column = table.column($(this).attr('data-column'));
+            column.visible(!column.visible());
+            
+            // Capture the state of checkboxes
+            const columnStates = Array.from(document.querySelectorAll('.col-toggle')).map(checkbox => ({
+                column: checkbox.getAttribute('data-column'),
+                visible: checkbox.checked
+            }));
+
+            // Save the state to localStorage
+            localStorage.setItem('columnStates', JSON.stringify(columnStates));
+
+            // Optionally, send the state to the backend
+            saveColumnStatesToServer(columnStates);
+        });
+    });
+
+    // Function to save column states to the server
+    function saveColumnStatesToServer(columnStates) {
+        fetch('saveColumnStates.php', {  // Path to your PHP script
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ columnStates: columnStates }), // Send columnStates as JSON
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Column states saved:', data);
+        })
+        .catch(error => {
+            console.error('Error saving column states:', error);
+        });
+    }
+</script>
+
+</body>
+</html>

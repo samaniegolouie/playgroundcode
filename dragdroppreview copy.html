@@ -110,7 +110,7 @@
                 <input class="file-input" type="file" multiple accept=".xls,.xlsx,.xlsm,.xlsb">
             </div>
         </div>
-        <div id="previewContainer" class="previewContainer"></div>
+        <div id="previewContainer1" class="previewContainer1"></div>
         <button id="submit-button" class="submit-button btn btn-primary">Submit</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
@@ -185,8 +185,8 @@
             }
 
             function displayTabs(sheetNames) {
-                const previewContainer = document.getElementById('previewContainer');
-                previewContainer.innerHTML = '';
+                const previewContainer1 = document.getElementById('previewContainer1');
+                previewContainer1.innerHTML = '';
 
                 const tabButtons = []; // Array to store tab button elements
 
@@ -197,7 +197,7 @@
                     tabButton.addEventListener('click', () => {
                         setActiveTab(index); // Pass the index
                     });
-                    previewContainer.appendChild(tabButton);
+                    previewContainer1.appendChild(tabButton);
                     tabButtons.push(tabButton); // Store tab button element
                 });
 
@@ -206,7 +206,7 @@
                     tabContent.classList.add('tab', 'table-responsive');
                     tabContent.setAttribute('id', `tab-${index}`);
                     tabContent.style.display = 'none'; // Initially hide all tabs
-                    previewContainer.appendChild(tabContent);
+                    previewContainer1.appendChild(tabContent);
                     displaySheet(workbook.Sheets[sheetName], tabContent); // Display sheet content
                 });
 
@@ -244,8 +244,8 @@
             }
 
             function clearPreview() {
-                const previewContainer = document.getElementById('previewContainer');
-                previewContainer.innerHTML = '';
+                const previewContainer1 = document.getElementById('previewContainer1');
+                previewContainer1.innerHTML = '';
                 $('#submit-button').hide(); // Hide the submit button if no valid file is present
             }
 

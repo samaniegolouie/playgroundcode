@@ -105,7 +105,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 border-line p-5">
-                <h1>Test 55 split the value in Column 1,2,3 Data Retriev to API</h1>
+                <h1>Test 66</h1>
                 <span class="choose-file-button">Choose files</span>
                 <span class="file-message text-black">or drag and drop files here</span>
                 <input class="file-input" type="file" multiple accept=".xls,.xlsx,.xlsm,.xlsb">
@@ -276,35 +276,58 @@
 
             function displaySheet(sheet, tabContent, sheetName) {
                 const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-                const table = document.createElement('table');
-                table.classList.add('table', 'table-bordered');
+
+                // Create a container for both tables
+                const tableContainer = document.createElement('div');
+                tableContainer.classList.add('table-container');
+
+                // Create the original table
+                const originalTable = document.createElement('table');
+                originalTable.classList.add('table', 'table-bordered', 'original-table');
+
+                // Create the modified table
+                const modifiedTable = document.createElement('table');
+                modifiedTable.classList.add('table', 'table-bordered', 'modified-table');
+
                 jsonData.forEach((row, rowIndex) => {
-                    const tr = document.createElement('tr');
+                    const originalRow = document.createElement('tr');
+                    const modifiedRow = document.createElement('tr');
+
                     row.forEach((cell, colIndex) => {
-                        const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
-                        cellElement.textContent = cell;
-                        if (cell === "FunctionCall") { // Hide cells with "FunctionCall"
-                            cellElement.style.display = 'none';
-                        }
-                        tr.appendChild(cellElement);
+                        const originalCell = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        originalCell.textContent = cell;
+                        originalRow.appendChild(originalCell);
+
+                        const modifiedCell = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        modifiedCell.textContent = cell;
 
                         if (rowIndex >= 2 && sheetName !== "ADDONS" && sheetName !== "TRUCKING") { // Start updates from row 3 (index 2)
                             if (colIndex === 1 || colIndex === 0) { // Update values in the first and second columns
                                 const updatedValue = getUpdatedValueFromMap(cell);
                                 if (updatedValue !== null) {
-                                    cellElement.textContent = updatedValue;
+                                    modifiedCell.textContent = updatedValue;
                                 }
                             } else if (colIndex === 2) { // Update service mode in the third column
                                 const updatedValue = getUpdatedServiceModeFromMap(cell);
                                 if (updatedValue !== null) {
-                                    cellElement.textContent = updatedValue;
+                                    modifiedCell.textContent = updatedValue;
                                 }
                             }
                         }
+
+                        modifiedRow.appendChild(modifiedCell);
                     });
-                    table.appendChild(tr);
+
+                    originalTable.appendChild(originalRow);
+                    modifiedTable.appendChild(modifiedRow);
                 });
-                tabContent.appendChild(table);
+
+                // Append both tables to the container
+                tableContainer.appendChild(originalTable);
+                tableContainer.appendChild(modifiedTable);
+
+                // Append the container to the tab content
+                tabContent.appendChild(tableContainer);
             }
 
             function getNumericalPart(cellValue) {
@@ -342,7 +365,7 @@
                             servicemode[entry.tbl_service_mode.id] = entry.tbl_service_mode.name;
                         });
                     })
-                    .catch(error => {
+                    .catch(error => {a
                         console.error('Error fetching data from database:', error);
                     });
             }
@@ -361,8 +384,7 @@
 
             $('#submit-button').hide();
         });
-    </script>           
+    </script>
 </body>
 
 </html>
-                                    
