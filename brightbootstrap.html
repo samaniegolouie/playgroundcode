@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container-cta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: #EAEAEA;
+            width: 100%;
+        }
+
+        .image-column {
+            flex: 1 1 100%;
+        }
+
+        .image-column img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .text-column {
+            flex: 1 1 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .text-column h3 {
+            margin: 30px 0;
+            font-size: 1.5rem;
+        }
+
+        .custom-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-weight: 400;
+            font-size: 15px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border: 2px solid #1d1d1d;
+            border-radius: 0px;
+            background-color: transparent;
+            color: #1d1d1d;
+            text-decoration: none;
+            transition: background-color 0.1s linear, color 0.1s linear;
+            cursor: pointer;
+        }
+
+        .custom-button:hover {
+            background-color: #1d1d1d;
+            color: #fff;
+        }
+
+        .bg-red {
+            background-color: red;
+            text-align: center;
+            padding: 20px 0; /* Add vertical padding */
+        }
+
+        .bg-red h3 {
+            margin: 0;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (min-width: 768px) {
+            .container-cta {
+                flex-wrap: nowrap;
+            }
+
+            .image-column {
+                flex: 0 0 40%;
+            }
+
+            .text-column {
+                flex: 0 0 60%;
+                padding: 40px;
+            }
+
+            .text-column h3 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-cta">
+        <!-- 1st Column with Image -->
+        <div class="image-column">
+            <img src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/40b0e1c2-3a36-4dd8-8402-e38703d57eb7/Group+75.png?format=750w"
+                alt="Placeholder Image">
+        </div>
+
+        <!-- 2nd Column with Title and Button -->
+        <div class="text-column">
+            <h3>Need IT leadership? Our vCIO services can help.</h3>
+            <!-- Button now links to the section with ID 'contact-us' -->
+            <a href="#contact-us" class="custom-button">Schedule a Call Today!</a>
+        </div>
+    </div>
+
+    <!-- Spacer -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <!-- Full-width red background section with an ID 'contact-us' -->
+    <div class="bg-red" id="contact-us">
+        <h3>Contact Us</h3>
+        <a href="#" class="custom-button">Schedule a Call Today!</a>
+    </div>
+</body>
+
+</html>
