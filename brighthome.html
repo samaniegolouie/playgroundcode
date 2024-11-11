@@ -179,6 +179,50 @@
 
 
         <!-- //////////********************************************************************* -->
+
+
+
+
+        <style>
+            .column {
+                position: relative;
+                width: auto;  /* Ensure the column takes up the full width */
+                height: 650px; /* Adjust the height as needed */
+            }
+            
+            .img-rounded{
+                position: relative;
+                left: 78px;  /* Align the image to the right of the column */
+                top: 300px;   /* Vertically center the image */
+                transform: translateY(-50%);  /* Correct the centering by adjusting the image's position */
+                width: auto;  /* Maintain the image's original width */
+                height: 100%;  /* Adjust the height to fill the container */
+            }
+            
+            /* For laptops and desktops (min-width: 1024px) */
+            @media (min-width: 1280px) {
+                .img-rounded {
+                    height: 70%;  /* Set a max-width for larger screens */
+                }
+            }
+            
+            /* For tablets (min-width: 768px and max-width: 1023px) */
+            @media (min-width: 768px) and (max-width: 1023px) {
+                .img-rounded {       
+                    height: 70%; /* Set a max-width for tablets */
+                }
+            }
+            
+            
+            </style>
+            
+            <div class="column">
+                <img class="img-rounded" src="https://images.squarespace-cdn.com/content/v1/5ed6bd4afece4d77a1115c7a/caae70f2-9384-42cb-b0b3-92e5c01c9ed2/Group+63.png?format=2500w">
+            </div>
+
+
+
+        <!-- //////////********************************************************************* -->
     </div>
 
 </body>
