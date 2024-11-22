@@ -103,4 +103,40 @@
     </div>
 </body>
 
+<!-- /// old code -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Select the anchor tag with href="/services-dropdown"
+      const menuLink = document.querySelector('a[href="/services-dropdown"]');
+      
+      // Check if the link exists before changing its href attribute
+      if (menuLink) {
+        menuLink.setAttribute('href', '/services');
+      }
+    });
+    </script>
+
+    
+<!-- /// new  code -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Select the anchor tag with href="/services-dropdown"
+      const menuLink = document.querySelector('a[href="/services-dropdown"]');
+      
+      // Check if the link exists
+      if (menuLink) {
+        // Prevent the link from doing anything when clicked
+        menuLink.addEventListener("click", function(event) {
+          event.preventDefault();
+        });
+        
+        // Optionally add a CSS class to visually indicate it's not clickable
+        menuLink.classList.add("non-clickable");
+      }
+    });
+    </script>
+    
+
 </html>
