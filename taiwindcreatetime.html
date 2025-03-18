@@ -11,20 +11,24 @@
 </head>
 <body class="bg-gray-100 p-8">
 
-<label for="numberField" class="block">Number (Hours):</label>
+<label for="numberField" class="block font-bold">Number (Hours):</label>
 <input type="number" id="numberField" onchange="computeTimeEnds()" class="block border border-gray-300 rounded px-4 py-2 mb-4">
 
-<table id="timeTable" class="w-full mb-8">
+<table id="timeTable" class="w-full mb-8 border border-gray-300">
   <thead>
-    <tr>
-      <th class="px-4 py-2">Time Start</th>
-      <th class="px-4 py-2">Time End</th>
-      <th class="px-4 py-2">Action</th> <!-- New column for remove button -->
+    <tr class="bg-gray-200">
+      <th class="text-left px-4 py-2">Day 1</th>
+      <th class="text-left px-4 py-2">Start date & time</th>
+      <th class="text-left px-4 py-2">Day 2</th>
+      <th class="text-left px-4 py-2">End date & time</th>
+      <th class="text-left px-4 py-2">Action</th> <!-- New column for remove button -->
     </tr>
   </thead>
   <tbody id="tableBody">
     <tr>
-      <td><input type="time" class="timeStartField px-4 py-2 border border-gray-300 rounded" onchange="computeTimeEnds()"></td>
+      <td class="dayStart px-4 py-2 font-bold">-</td>
+      <td><input type="datetime-local" class="timeStartField px-4 py-2 border border-gray-300 rounded" onchange="computeTimeEnds()"></td>
+      <td class="dayEnd px-4 py-2 font-bold">-</td>
       <td><input type="text" class="timeEndField px-4 py-2 border border-gray-300 rounded" readonly></td>
       <td><button onclick="removeTimeStartRow(this)" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button></td>
     </tr>
@@ -39,19 +43,29 @@ function computeTimeEnds() {
     var numberHours = parseInt(document.getElementById("numberField").value, 10);
     var timeStartFields = document.querySelectorAll(".timeStartField");
     var timeEndFields = document.querySelectorAll(".timeEndField");
+    var dayStartFields = document.querySelectorAll(".dayStart");
+    var dayEndFields = document.querySelectorAll(".dayEnd");
 
     timeStartFields.forEach(function(timeStartField, index) {
         var timeStart = timeStartField.value;
+        if (!timeStart) return; // Skip if no time selected
 
-        // Use moment.js to handle time calculations
-        var startTime = moment(timeStart, "HH:mm");
+        // Use moment.js to handle date-time calculations
+        var startTime = moment(timeStart);
         var endTime = startTime.clone().add(numberHours, 'hours');
 
-        // Format the end time to 12-hour format with AM/PM designation
-        var formattedEndTime = endTime.format("h:mm A");
+        // Format start time
+        var formattedStartTime = startTime.format("MMMM D, YYYY h:mm A");
+        var formattedEndTime = endTime.format("MMMM D, YYYY h:mm A");
 
-        // Display the time end
+        // Get days of the week
+        var startDay = startTime.format("dddd"); // Monday, Tuesday, etc.
+        var endDay = endTime.format("dddd");
+
+        // Display results
         timeEndFields[index].value = formattedEndTime;
+        dayStartFields[index].textContent = startDay;
+        dayEndFields[index].textContent = endDay;
     });
 }
 
@@ -60,7 +74,9 @@ function addTimeStartRow() {
 
     var newRow = document.createElement("tr");
     newRow.innerHTML = `
-      <td><input type="time" class="timeStartField px-4 py-2 border border-gray-300 rounded" onchange="computeTimeEnds()"></td>
+      <td class="dayStart px-4 py-2 font-bold">-</td>
+      <td><input type="datetime-local" class="timeStartField px-4 py-2 border border-gray-300 rounded" onchange="computeTimeEnds()"></td>
+      <td class="dayEnd px-4 py-2 font-bold">-</td>
       <td><input type="text" class="timeEndField px-4 py-2 border border-gray-300 rounded" readonly></td>
       <td><button onclick="removeTimeStartRow(this)" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button></td>
     `;
