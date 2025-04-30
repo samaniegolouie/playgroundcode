@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Talent Finder</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    select, button { padding: 8px; margin-top: 10px; display: block; width: 100%; }
+    .result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+  <h2>Talent Finder</h2>
+  <form id="match-form">
+    <label>Select a Required Skill:</label>
+    <select id="requiredSkill">
+      <option value="">-- Choose Skill --</option>
+    </select>
+
+    <label>Select Minimum Years of Experience:</label>
+    <select id="minExperience">
+      <option value="1">1+ years</option>
+      <option value="2">2+ years</option>
+      <option value="3">3+ years</option>
+      <option value="5">5+ years</option>
+      <option value="10">10+ years</option>
+      <option value="15">15+ years</option>
+      <option value="20">20+ years</option>
+    </select>
+
+    <button type="submit">Find Match</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    const talents = [
+      {
+        name: "Ashley",
+        experiences: [
+          { title: "Business Operations & Virtual Assistance", years: 5 },
+          { title: "Administrative Support & Office Management", years: 20 },
+          { title: "Customer Service & Sales", years: 2 }
+        ],
+        skills: [
+          "Accounts payable and financial management",
+          "Appointment and calendar management",
+          "Business process improvement",
+          "Client relationship management",
+          "CRM and scheduling software proficiency",
+          "Data entry and records management",
+          "Drafting and preparing correspondence",
+          "Event planning and coordination",
+          "Expense tracking and reimbursement processing",
+          "Financial auditing and compliance",
+          "IT troubleshooting and technical support",
+          "Merchandising and inventory management",
+          "Microsoft Office Suite (Excel, Word, Outlook, PowerPoint)",
+          "Multitasking and time management",
+          "Office organization and task prioritization",
+          "Problem-solving and conflict resolution",
+          "Sales consulting, support, and upselling",
+          "Strong verbal and written communication",
+          "Supporting executive-level leadership",
+          "Training and coaching employees"
+        ]
+      },
+      {
+        name: "Tori",
+        experiences: [
+          { title: "Entrepreneurship & Business Management", years: 4 },
+          { title: "Customer Service & Sales", years: 5 },
+          { title: "Cleaning & Facility Maintenance", years: 4 },
+          { title: "Finance & Cash Handling", years: 2 },
+          { title: "Executive Assistance & Administrative Support", years: 2 },
+          { title: "Project Management & Coordination", years: 2 },
+          { title: "Coaching & Human Resources", years: 2 }
+        ],
+        skills: [
+          "Artistic Design & Product Development",
+          "Auditing, Financial Management & Bookkeeping",
+          "Business Operations & Self-Employment",
+          "Cash Handling, Transaction Processing & Sales",
+          "Cleaning, Facility Maintenance & Organization",
+          "Creative Problem-Solving & Critical Thinking",
+          "Customer Service & Relationship Building",
+          "Data Entry, Record-Keeping & Scheduling",
+          "Leadership, Team Management & Mentoring",
+          "Marketing, Branding & Social Media Strategy",
+          "Microsoft Office & Digital Tools Proficiency",
+          "Multitasking, Time Management & Efficiency"
+        ]
+      },
+      {
+        name: "Mae",
+        experiences: [
+          { title: "Training & Development", years: 4 },
+          { title: "Customer Service", years: 4 },
+          { title: "Administrative and Executive Support", years: 3 },
+          { title: "Sales & Account Management", years: 2 },
+          { title: "Remote Video Podcast Production", years: 2 },
+          { title: "Supervision and Curriculum Design", years: 2 }
+        ],
+        skills: [
+          "Claims Processing & Dispute Resolution",
+          "Coaching, Mentoring & Leadership",
+          "Content Creation, Copywriting & Podcast Production",
+          "Curriculum Design & Training Facilitation",
+          "Customer Service & Support",
+          "Data Entry & Management",
+          "Facebook Ads & Social Media Marketing",
+          "General Technical Support & Troubleshooting",
+          "Onboarding & Training Facilitation",
+          "Process Documentation & Record Keeping",
+          "Sales, Upselling & Customer Retention",
+          "Social Media Engagement & Community Management",
+          "Social Media Management & Strategy",
+          "Teaching & Development Programs",
+          "Workflow Optimization & Efficiency"
+        ]
+      },
+      {
+        name: "Angela",
+        experiences: [
+          { title: "Teaching & Curriculum Development", years: 20 },
+          { title: "Educational Leadership & Mentorship", years: 10 },
+          { title: "Curriculum Design & Program Development", years: 15 },
+          { title: "Administration & Event Planning", years: 10 }
+        ],
+        skills: [
+          "Adaptability & Problem-Solving",
+          "Attention to Detail",
+          "Collaboration & Relationship Building",
+          "Communication & Public Speaking",
+          "Compassion & Emotional Intelligence",
+          "Conflict Resolution & Mediation",
+          "Curriculum Development",
+          "Data Management & Organization",
+          "Decision-Making & Leadership",
+          "Educational Program Development",
+          "Event Planning & Coordination",
+          "Instructional Design & Teaching",
+          "Logistics & Operational Planning",
+          "Mentorship & Training",
+          "Office Administration",
+          "Project & Volunteer Management",
+          "Research & Analysis",
+          "Technology Proficiency",
+          "Time Management & Prioritization",
+          "Trauma-Informed & Inclusive Education"
+        ]
+      },
+      {
+        name: "Jessica",
+        experiences: [
+          { title: "Administrative and Executive Support", years: 7 },
+          { title: "Virtual Assistance and Task Management", years: 3 },
+          { title: "Human Resources and Recruitment Support", years: 3 },
+          { title: "Business Program and Project Management", years: 3 },
+          { title: "Office and Database Management", years: 2 },
+          { title: "Website Support", years: 3 }
+        ],
+        skills: [
+          "Administrative Support & Office Organization",
+          "Appointment, Calendar & Task Management",
+          "Budget Reconciliation & Invoice Processing",
+          "Client Communication & Customer Service",
+          "Data Collection, Analysis & Reporting",
+          "Database & Records Management",
+          "Document Preparation & Filing",
+          "Event Coordination & Scheduling",
+          "Human Resources Assistance",
+          "Interview Facilitation & Hiring Support",
+          "Job Posting, Applicant Tracking & Onboarding",
+          "Process Improvement & Workflow Optimization",
+          "Project Coordination & Management",
+          "Reception, Phone & Email Handling",
+          "Team Collaboration & Time Management"
+        ]
+      }
+    ];
+
+    // Extract unique skills
+    const skillSet = new Set();
+    talents.forEach(t => t.skills.forEach(skill => skillSet.add(skill)));
+    const allSkills = Array.from(skillSet).sort();
+
+    // Populate skill dropdown
+    const skillSelect = document.getElementById('requiredSkill');
+    allSkills.forEach(skill => {
+      const opt = document.createElement('option');
+      opt.value = skill.toLowerCase();
+      opt.textContent = skill;
+      skillSelect.appendChild(opt);
+    });
+
+    // Handle form
+    document.getElementById('match-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const selectedSkill = document.getElementById('requiredSkill').value.toLowerCase();
+      const minExperience = parseInt(document.getElementById('minExperience').value);
+      const matched = [];
+
+      for (const person of talents) {
+        const hasSkill = person.skills.some(skill => skill.toLowerCase().includes(selectedSkill));
+        const hasExperience = person.experiences.some(exp => exp.years >= minExperience);
+
+        if (hasSkill && hasExperience) {
+          matched.push(person);
+        }
+      }
+
+      const resultDiv = document.getElementById('results');
+      if (matched.length > 0) {
+        resultDiv.innerHTML = matched.map(p =>
+          `<div class="result"><strong>${p.name}</strong><br/>Skills: ${p.skills.join(', ')}</div>`
+        ).join('');
+      } else {
+        resultDiv.innerHTML = "<p>No matching talents found.</p>";
+      }
+    });
+  </script>
+
+</body>
+</html>
