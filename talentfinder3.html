@@ -5,58 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Talent Finder</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .filters, .results {
-      margin-bottom: 30px;
-    }
-    .checkbox-group {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .checkbox-group label {
-      display: flex;
-      align-items: center;
-    }
-    .va-card {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
-    }
-    .va-card h3 {
-      margin-top: 0;
-    }
-    form {
-      margin-top: 30px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    form label {
-      display: block;
-      margin-bottom: 10px;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .filters, .results { margin-bottom: 30px; }
+    .checkbox-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+    .checkbox-group label { display: flex; align-items: center; }
+    .va-card { border: 1px solid #ccc; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+    .va-card h3 { margin-top: 0; }
+    form { margin-top: 30px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+    form label { display: block; margin-bottom: 10px; }
+    form input, form textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
     form button {
       margin-top: 10px;
       padding: 10px 20px;
+      cursor: pointer;
+    }
+    form button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   </style>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- AlertifyJS CSS -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <!-- AlertifyJS JS -->
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-    })();
+    emailjs.init('dg0On3YROtJY-u4fQ'); // Your public key
   </script>
 </head>
 <body>
@@ -79,72 +54,69 @@
 
   <form id="userForm">
     <h3>Send Results</h3>
-    <label>
-      Your Email:
+    <label>Your Email:
       <input type="email" id="userEmail" required />
     </label>
-    <label>
-      Additional Remarks:
+    <label>Additional Remarks:
       <textarea id="userRemarks" rows="4"></textarea>
     </label>
-    <button type="submit">Send VA Results</button>
+    <button type="submit" id="submitBtn">Send VA Results</button>
   </form>
 
   <script>
     const categories = [
-      "Accounting & Finance", "Advocacy & Social Services", "Bilingual Spanish (Moderate Fluency)",
-      "Business Strategy & Planning", "Calendar Management", "Content & Copywriting",
-      "Content Management Systems", "CRM Tools", "Customer Service", "Data Entry & Management",
-      "Digital Marketing", "Education & Academic Support", "Email Management", "Event Planning",
-      "Executive & Administrative Support", "Finance & ERP Tools", "Google Workspace", "Graphic Design",
-      "Grand Writing", "HR & Payroll Support", "HR Support", "Inventory & Procurement",
-      "Marketing Communications", "Microsoft Office", "Operations & Facility Support",
-      "Performance & Metrics Tracking", "Podcast Production", "Presentation & Slide Design",
-      "Process Improvement & Workflow Optimization", "Project Management", "Real Estate Agent Support",
-      "Real Estate Investor Support", "Research & Data Analysis", "Specialized Software",
-      "Stakeholder Engagement", "Survey & Form Management", "Team Communication Tools",
-      "Training & Development Support", "Travel Coordination", "Web & Content Management"
+      "Accounting & Finance","Advocacy & Social Services","Bilingual Spanish (Moderate Fluency)",
+      "Business Strategy & Planning","Calendar Management","Content & Copywriting",
+      "Content Management Systems","CRM Tools","Customer Service","Data Entry & Management",
+      "Digital Marketing","Education & Academic Support","Email Management","Event Planning",
+      "Executive & Administrative Support","Finance & ERP Tools","Google Workspace","Graphic Design",
+      "Grand Writing","HR & Payroll Support","HR Support","Inventory & Procurement",
+      "Marketing Communications","Microsoft Office","Operations & Facility Support",
+      "Performance & Metrics Tracking","Podcast Production","Presentation & Slide Design",
+      "Process Improvement & Workflow Optimization","Project Management","Real Estate Agent Support",
+      "Real Estate Investor Support","Research & Data Analysis","Specialized Software",
+      "Stakeholder Engagement","Survey & Form Management","Team Communication Tools",
+      "Training & Development Support","Travel Coordination","Web & Content Management"
     ];
-
     const vaList = [
       {
         name: "Amber",
         experience: "5+ years",
         hours: "11-20 hours",
-        standardizedSkills: ["Business Strategy & Planning", "Content & Copywriting", "Data Entry & Management", "Digital Marketing", "Email Management", "Event Planning", "Graphic Design", "Podcast Production", "Project Management", "Real Estate Agent Support", "Real Estate Investor Support", "Travel Coordination"],
-        tools: ["ADP", "Asana", "Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "Harvest", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft Word", "Paylocity", "ServiceNow", "Slack", "Trello", "Workday", "Zenefits"],
+        standardizedSkills: ["Business Strategy & Planning","Content & Copywriting","Data Entry & Management","Digital Marketing","Email Management","Event Planning","Graphic Design","Podcast Production","Project Management","Real Estate Agent Support","Real Estate Investor Support","Travel Coordination"],
+        tools: ["ADP","Asana","Google Calendar","Google Docs","Google Sheets","Google Slides","Harvest","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Paylocity","ServiceNow","Slack","Trello","Workday","Zenefits"],
         remarks: "test remarks"
       },
       {
         name: "Angela",
         experience: "5+ years",
         hours: "0-10 hours",
-        standardizedSkills: ["Event Planning", "Google Workspace", "Microsoft Office", "Project Management", "Research & Data Analysis", "Team Communication Tools", "Training & Development Support", "Travel Coordination"],
-        tools: ["Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft Word"],
+        standardizedSkills: ["Event Planning","Google Workspace","Microsoft Office","Project Management","Research & Data Analysis","Team Communication Tools","Training & Development Support","Travel Coordination"],
+        tools: ["Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
         remarks: "test remarks"
       },
       {
         name: "Angelica",
         experience: "5+ years",
         hours: "31-40 hours",
-        standardizedSkills: ["Calendar Management", "Customer Service", "Data Entry & Management", "Email Management", "Google Workspace", "Microsoft Office", "Research & Data Analysis", "Survey & Form Management", "Training & Development Support"],
-        tools: ["Adobe Photoshop", "Canva", "CapCut", "ChatGPT", "Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft Word", "Notion", "Slack", "SurveyMonkey", "Talkpush", "Teams", "Trello", "WebEx", "Zoom"],
+        standardizedSkills: ["Calendar Management","Customer Service","Data Entry & Management","Email Management","Google Workspace","Microsoft Office","Research & Data Analysis","Survey & Form Management","Training & Development Support"],
+        tools: ["Adobe Photoshop","Canva","CapCut","ChatGPT","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Notion","Slack","SurveyMonkey","Talkpush","Teams","Trello","WebEx","Zoom"],
         remarks: "test remarks"
       },
       {
         name: "Ann",
         experience: "5+ years",
         hours: "31-40 hours",
-        standardizedSkills: ["Accounting & Finance", "CRM Tools", "Finance & ERP Tools", "Google Workspace", "Microsoft Office", "Project Management", "Real Estate Agent Support", "Real Estate Investor Support", "Specialized Software", "Survey & Form Management", "Team Communication Tools"],
-        tools: ["Asana", "Board Vantage Software", "DealCloud", "Expensify", "Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "LinkSquares Software", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft SharePoint", "Microsoft Word", "QuickBooks", "Salesforce", "SurveyMonkey", "Trello"],
+        standardizedSkills: ["Accounting & Finance","CRM Tools","Finance & ERP Tools","Google Workspace","Microsoft Office","Project Management","Real Estate Agent Support","Real Estate Investor Support","Specialized Software","Survey & Form Management","Team Communication Tools"],
+        tools: ["Asana","Board Vantage Software","DealCloud","Expensify","Google Calendar","Google Docs","Google Sheets","Google Slides","LinkSquares Software","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft SharePoint","Microsoft Word","QuickBooks","Salesforce","SurveyMonkey","Trello"],
         remarks: "test remarks"
       },
       {
         name: "April",
         experience: "5+ years",
         hours: "0-10 hours",
-        standardizedSkills: ["Calendar Management", "Content & Copywriting", "Customer Service", "Data Entry & Management", "Research & Data Analysis", "Team Communication Tools"],
-        tools: ["Canva", "CapCut", "Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft Word"],
+        standardizedSkills: ["Calendar Management","Content & Copywriting","Customer Service","Data Entry & Management","Research & Data Analysis","Team Communication Tools"],
+        tools: ["Canva","CapCut","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
         remarks: "test remarks"
       }
     ];
@@ -156,75 +128,84 @@
     });
 
     const checkboxes = document.querySelectorAll('input[name="category"]');
-    checkboxes.forEach(cb => {
-      cb.addEventListener('change', () => {
-        const checked = document.querySelectorAll('input[name="category"]:checked');
-        if (checked.length >= 5) {
-          checkboxes.forEach(box => {
-            if (!box.checked) box.disabled = true;
-          });
-        } else {
-          checkboxes.forEach(box => box.disabled = false);
-        }
-        filterVAs();
-      });
-    });
+    checkboxes.forEach(cb => cb.addEventListener('change', () => {
+      const checked = document.querySelectorAll('input[name="category"]:checked');
+      if (checked.length >= 5) checkboxes.forEach(box => { if (!box.checked) box.disabled = true; });
+      else checkboxes.forEach(box => box.disabled = false);
+      filterVAs();
+    }));
 
     document.getElementById('experience').addEventListener('change', filterVAs);
     categoryContainer.addEventListener('change', filterVAs);
 
     function filterVAs() {
-      const experience = document.getElementById('experience').value;
-      const selectedCategories = [...document.querySelectorAll('input[name="category"]:checked')].map(cb => cb.value);
-
-      const filtered = vaList.filter(va => {
-        if (experience && va.experience !== experience) return false;
-        return selectedCategories.every(cat => va.standardizedSkills.includes(cat));
-      });
-
-      displayResults(filtered.slice(0, 5));
+      const exp = document.getElementById('experience').value;
+      const selected = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+      const filtered = vaList.filter(va => !exp || va.experience === exp)
+                             .filter(va => selected.every(cat => va.standardizedSkills.includes(cat)));
+      displayResults(filtered.slice(0,5));
     }
 
     function displayResults(vAs) {
-      const results = document.getElementById('results');
-      results.innerHTML = '';
-      if (vAs.length === 0) {
-        results.innerHTML = '<p>No matching VAs found.</p>';
-        return;
-      }
-
+      const results = document.getElementById('results'); results.innerHTML = '';
+      if (!vAs.length) { results.innerHTML = '<p>No matching VAs found.</p>'; return; }
       vAs.forEach(va => {
         results.innerHTML += `
           <div class="va-card">
             <h3>${va.name}</h3>
-            <p><strong>Years Experience:</strong> ${va.experience}</p>
-            <p><strong>Hours Available/Week:</strong> ${va.hours}</p>
-            <p><strong>Tools Known:</strong> ${va.tools.join(', ')}</p>
+            <p><strong>Years:</strong> ${va.experience}</p>
+            <p><strong>Hours/week:</strong> ${va.hours}</p>
+            <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
             <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
             <p><strong>Remarks:</strong> ${va.remarks}</p>
-          </div>
-        `;
+          </div>`;
       });
     }
 
+    // Handle form submission
     document.getElementById('userForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
 
-      const email = document.getElementById('userEmail').value;
-      const remarks = document.getElementById('userRemarks').value;
+      // Prevent sending if no results
+      if (document.querySelectorAll('.va-card').length === 0) {
+        alertify.error('No matching VAs found — cannot send email.');
+        return;
+      }
+
+      // Disable button and show loading text
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+
+      const userEmail = this.userEmail.value;
+      const userRemarks = this.userRemarks.value;
       const resultsHtml = document.getElementById('results').innerHTML;
+      const vaSummaryText = resultsHtml
+        .replace(/<\/div>/g, '\n')
+        .replace(/<h3>(.*?)<\/h3>/g, '$1\n')
+        .replace(/<p><strong>(.*?):<\/strong>\s*(.*?)<\/p>/g, '$1: $2\n')
+        .replace(/<[^>]+>/g, '')
+        .trim();
 
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-        user_email: email,
-        user_remarks: remarks,
-        va_summary: resultsHtml
+      emailjs.send('service_jyovi0n','template_4tbqns1',{
+        user_email: userEmail,
+        user_remarks: userRemarks,
+        va_summary: vaSummaryText,
+        subject: 'TalentFinder Inquiry'
       })
       .then(() => {
-        alert("VA Results sent successfully!");
-        document.getElementById('userForm').reset();
+        alertify.success('VA Results sent successfully!');
       })
-      .catch(error => {
-        alert("Error sending email: " + error.text);
+      .catch(err => {
+        console.error(err);
+        alertify.error('Error sending email: ' + err.text);
+      })
+      .finally(() => {
+        // Re-enable button and restore text
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        this.reset();
       });
     });
   </script>
