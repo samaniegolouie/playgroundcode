@@ -85,7 +85,8 @@
         hours: "11-20 hours",
         standardizedSkills: ["Business Strategy & Planning","Content & Copywriting","Data Entry & Management","Digital Marketing","Email Management","Event Planning","Graphic Design","Podcast Production","Project Management","Real Estate Agent Support","Real Estate Investor Support","Travel Coordination"],
         tools: ["ADP","Asana","Google Calendar","Google Docs","Google Sheets","Google Slides","Harvest","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Paylocity","ServiceNow","Slack","Trello","Workday","Zenefits"],
-        remarks: "test remarks"
+        remarks: "test remarks",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
       },
       {
         name: "Angela",
@@ -93,7 +94,8 @@
         hours: "0-10 hours",
         standardizedSkills: ["Event Planning","Google Workspace","Microsoft Office","Project Management","Research & Data Analysis","Team Communication Tools","Training & Development Support","Travel Coordination"],
         tools: ["Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
-        remarks: "test remarks"
+         remarks: "test remarks",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
       },
       {
         name: "Angelica",
@@ -101,7 +103,8 @@
         hours: "31-40 hours",
         standardizedSkills: ["Calendar Management","Customer Service","Data Entry & Management","Email Management","Google Workspace","Microsoft Office","Research & Data Analysis","Survey & Form Management","Training & Development Support"],
         tools: ["Adobe Photoshop","Canva","CapCut","ChatGPT","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Notion","Slack","SurveyMonkey","Talkpush","Teams","Trello","WebEx","Zoom"],
-        remarks: "test remarks"
+         remarks: "test remarks",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
       },
       {
         name: "Ann",
@@ -109,7 +112,8 @@
         hours: "31-40 hours",
         standardizedSkills: ["Accounting & Finance","CRM Tools","Finance & ERP Tools","Google Workspace","Microsoft Office","Project Management","Real Estate Agent Support","Real Estate Investor Support","Specialized Software","Survey & Form Management","Team Communication Tools"],
         tools: ["Asana","Board Vantage Software","DealCloud","Expensify","Google Calendar","Google Docs","Google Sheets","Google Slides","LinkSquares Software","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft SharePoint","Microsoft Word","QuickBooks","Salesforce","SurveyMonkey","Trello"],
-        remarks: "test remarks"
+         remarks: "test remarks",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
       },
       {
         name: "April",
@@ -117,7 +121,8 @@
         hours: "0-10 hours",
         standardizedSkills: ["Calendar Management","Content & Copywriting","Customer Service","Data Entry & Management","Research & Data Analysis","Team Communication Tools"],
         tools: ["Canva","CapCut","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
-        remarks: "test remarks"
+         remarks: "test remarks",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
       }
     ];
 
@@ -158,6 +163,7 @@
             <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
             <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
             <p><strong>Remarks:</strong> ${va.remarks}</p>
+             ${va.link ? `<a href="${va.link}" target="_blank">See More</a>` : ''}
           </div>`;
       });
     }
