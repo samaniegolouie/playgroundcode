@@ -83,6 +83,7 @@
         name: "Amber",
         experience: "5+ years",
         hours: "11-20 hours",
+        originalSkills: ["Administrative Support & Data Entry", "Audio", "Video & Multimedia Production", "Camera Operation", "Videography & Photography", "Canva & Design Tools","Content Creation & Strategy (Instagram, LinkedIn, TikTok)", "Copywriting", "Creative Writing & Editing", "Digital Marketing (Email, Social, Organic & Paid Ads)", "Email & Social Media Campaign Management", "Event Planning & Coordination", "Graphic & Web Design", "Marketing & Brand Strategy", "Presentation & Slideshow Design", "Project & Team Management (Asana, Trello, Notion)", "Real Estate Photo Editing (Photoshop, Lightroom)", "Talent Management", "Training & Onboarding", "Workflow & Process Optimization"],
         standardizedSkills: ["Business Strategy & Planning","Content & Copywriting","Data Entry & Management","Digital Marketing","Email Management","Event Planning","Graphic Design","Podcast Production","Project Management","Real Estate Agent Support","Real Estate Investor Support","Travel Coordination"],
         tools: ["ADP","Asana","Google Calendar","Google Docs","Google Sheets","Google Slides","Harvest","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Paylocity","ServiceNow","Slack","Trello","Workday","Zenefits"],
         remarks: "test remarks",
@@ -92,6 +93,7 @@
         name: "Angela",
         experience: "5+ years",
         hours: "0-10 hours",
+        originalSkills: ["Adaptability & Problem-Solving", "Attention to Detail, Collaboration & Relationship Building", "Communication & Public Speaking", "Compassion & Emotional Intelligence", "Conflict Resolution & Mediation", "Curriculum Development", "Data Management & Organization", "Decision-Making & Leadership", "Educational Program Development","Event Planning & Coordination", "Instructional Design & Teaching", "Logistics & Operational Planning, Mentorship & Training", "Office Administration", "Project & Volunteer Management", "Research & Analysis", "Technology Proficiency", "Time Management & Prioritization", "Trauma-Informed & Inclusive Education"],
         standardizedSkills: ["Event Planning","Google Workspace","Microsoft Office","Project Management","Research & Data Analysis","Team Communication Tools","Training & Development Support","Travel Coordination"],
         tools: ["Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
          remarks: "test remarks",
@@ -101,6 +103,7 @@
         name: "Angelica",
         experience: "5+ years",
         hours: "31-40 hours",
+        originalSkills: ["Administrative Support", "Basic Graphic Design (Canva, Adobe Photoshop)", "Calendar & Meeting Management", "Coaching and Mentoring", "Customer Support & Communication", "Data Collection & Research", "Data Entry & Organization", "Email Handling & Inbox Optimization", "Email & Calendar Management", "Google Suite (Docs, Drive, Forms, Sheets, Slides)", "Microsoft Office (Excel, Outlook, PowerPoint, Word)", "Post Scheduling & Social Media Management", "SurveyMonkey"],
         standardizedSkills: ["Calendar Management","Customer Service","Data Entry & Management","Email Management","Google Workspace","Microsoft Office","Research & Data Analysis","Survey & Form Management","Training & Development Support"],
         tools: ["Adobe Photoshop","Canva","CapCut","ChatGPT","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Notion","Slack","SurveyMonkey","Talkpush","Teams","Trello","WebEx","Zoom"],
          remarks: "test remarks",
@@ -110,6 +113,7 @@
         name: "Ann",
         experience: "5+ years",
         hours: "31-40 hours",
+        originalSkills: ["sana & Trello", "Board Vantage Software", "Box & Dropbox", "Concur & Expensify", "DealCloud", "G Suite Applications (Drive, Docs, Sheets, etc.)" ,"GoToMeeting & WebEx", "LinkSquares Software", "Microsoft Office 365 (Word, Excel, PowerPoint, Outlook, Teams)", "QuickBooks", "Salesforce & Zoho CRM", "SharePoint", "Slack & Team Communication Tools (Zoom, Teams, WebEx, Slack)", "SurveyMonkey", "Windows 11"],
         standardizedSkills: ["Accounting & Finance","CRM Tools","Finance & ERP Tools","Google Workspace","Microsoft Office","Project Management","Real Estate Agent Support","Real Estate Investor Support","Specialized Software","Survey & Form Management","Team Communication Tools"],
         tools: ["Asana","Board Vantage Software","DealCloud","Expensify","Google Calendar","Google Docs","Google Sheets","Google Slides","LinkSquares Software","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft SharePoint","Microsoft Word","QuickBooks","Salesforce","SurveyMonkey","Trello"],
          remarks: "test remarks",
@@ -119,6 +123,7 @@
         name: "April",
         experience: "5+ years",
         hours: "0-10 hours",
+        originalSkills: ["Audience Research & Market Analysis", "Blog & eBook Writing", "Brand Marketing & Community Management", "Calendar Scheduling & Task Management","Communication", "Coordination & Customer Support", "Compliance & Quality Control", "Content Research & Copywriting", "Cost Reduction & Process Optimization","Creative Storytelling & Topic Outlining", "Data Analysis & Research Documentation", "Data Entry & File Organization", "Email Management & Technical Assistance","Facebook & Instagram Management", "Graphic, Layout & Cover Design", "Infographic & Poster Creation", "Manufacturing Process Improvement & Automation", "Podcast Graphics Creation & Design", "Podcast Setup", "Problem-Solving & Workflow Organization", "Process Analysis & Yield Improvement", "Social Media Content Creation & Engagement", "Social Media Strategy & Brand Development"],
         standardizedSkills: ["Calendar Management","Content & Copywriting","Customer Service","Data Entry & Management","Research & Data Analysis","Team Communication Tools"],
         tools: ["Canva","CapCut","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
          remarks: "test remarks",
@@ -161,7 +166,8 @@
             <p><strong>Years:</strong> ${va.experience}</p>
             <p><strong>Hours/week:</strong> ${va.hours}</p>
             <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
-            <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
+            <p><strong>Original Skills:</strong> ${va.originalSkills.join(', ')}</p>
+            <p><strong>Standardized Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
             <p><strong>Remarks:</strong> ${va.remarks}</p>
              ${va.link ? `<a href="${va.link}" target="_blank">See More</a>` : ''}
           </div>`;
