@@ -93,7 +93,61 @@
       cursor: pointer;
       font-weight: bold;
     }
+    .hidden {
+  display: none;
+}
+/* Basic styling for the checkbox group */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* Each label (checkbox option) */
+.checkbox-group label {
+   flex: 1 1 calc(25% - 12px); /* 4 columns on desktop */
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Improve checkbox visibility */
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 600px) {
+  .checkbox-group label {
+    flex: 1 1 100%; /* Stack vertically on small screens */
+    font-size: 16px;
+  }
+}
+#toolSuggestions {
+  list-style-type: none; /* Remove bullets */
+  padding-left: 0;        /* Remove default left padding */
+  margin-top: 0.5rem;
+}
+
+#toolSuggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+#toolSuggestions li:hover {
+  background-color: #f1f1f1;
+}
+
   </style>
+  <!-- Include Bootstrap CSS (if not already included) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -102,55 +156,91 @@
   </script>
 </head>
 <body>
-  <h1>Talent Finder</h1>
+  <div class="container my-5">
 
-  <div class="filters">
-    <label for="experience">Years of Experience:</label>
-    <select id="experience">
-      <option value="">-- Select --</option>
-      <option value="5+ years">5+ years</option>
-      <option value="3-4 years">3-4 years</option>
-      <option value="1-2 years">1-2 years</option>
-    </select>
+  <h1 class="mb-4">Talent Finder</h1>
 
-    <label for="availability">Hours Available:</label>
-    <select id="availability">
-      <option value="">-- Select --</option>
-      <option value="0-10 hours">0-10 hours</option>
-      <option value="11-20 hours">11-20 hours</option>
-      <option value="21-30 hours">21-30 hours</option>
-      <option value="31-40 hours">31-40 hours</option>
-    </select>
+  <!-- Filters Section -->
+  <div class="filters row g-4">
 
-    <p>With certificate:</p>
-    <input type="radio" id="certYes" name="certificate" value="Yes">
-    <label for="certYes">Yes</label>
-    <input type="radio" id="certNone" name="certificate" value="None">
-    <label for="certNone">None</label>
+    <!-- Experience -->
+    <div class="col-md-4">
+      <label for="experience" class="form-label">Years of Experience:</label>
+      <select id="experience" class="form-select">
+        <option value="">-- Select --</option>
+        <option value="5+ years">5+ years</option>
+        <option value="3-4 years">3-4 years</option>
+        <option value="1-2 years">1-2 years</option>
+      </select>
+    </div>
 
-    <h3>Select up to 5 Categories:</h3>
-    <div class="checkbox-group" id="categoryCheckboxes"></div>
-    
-    <div class="tool-search-container">
-      <label for="toolInput">Filter by Tools:</label>
-      <input type="text" id="toolInput" placeholder="Type to search tools..." autocomplete="off" />
-      <ul id="toolSuggestions" class="tool-suggestions"></ul>
-      <div id="selectedTools" class="selected-tags"></div>
+    <!-- Availability -->
+    <div class="col-md-4">
+      <label for="availability" class="form-label">Hours Available:</label>
+      <select id="availability" class="form-select">
+        <option value="">-- Select --</option>
+        <option value="0-10 hours">0-10 hours</option>
+        <option value="11-20 hours">11-20 hours</option>
+        <option value="21-30 hours">21-30 hours</option>
+        <option value="31-40 hours">31-40 hours</option>
+      </select>
+    </div>
+
+    <!-- Certificate -->
+    <div class="col-md-4">
+      <label class="form-label d-block">With certificate:</label>
+      <div class="form-check form-check-inline">
+        <input type="radio" id="certYes" name="certificate" value="Yes" class="form-check-input">
+        <label for="certYes" class="form-check-label">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="radio" id="certNone" name="certificate" value="None" class="form-check-input">
+        <label for="certNone" class="form-check-label">None</label>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="col-12">
+      <h4>Select up to 5 Categories:</h4>
+      <div class="checkbox-group row g-2" id="categoryCheckboxes">
+        <!-- Dynamically inserted checkboxes go here -->
+      </div>
+    </div>
+
+    <!-- Tool Search -->
+    <div class="col-12">
+      <div class="tool-search-container mb-3">
+        <label for="toolInput" class="form-label">Filter by Tools:</label>
+        <input type="text" id="toolInput" class="form-control" placeholder="Type to search tools..." autocomplete="off">
+        <ul id="toolSuggestions" class="list-group mt-2"></ul>
+        <div id="selectedTools" class="selected-tags mt-2"></div>
+      </div>
     </div>
   </div>
 
-  <div class="results" id="results"></div>
+  <!-- Results Display -->
+  <div class="results mt-4" id="results">
+    <!-- Search results will appear here -->
+  </div>
 
-  <form id="userForm">
-    <h3>Send Results</h3>
-    <label>Your Email:
-      <input type="email" id="userEmail" required />
-    </label>
-    <label>Additional Remarks:
-      <textarea id="userRemarks" rows="4"></textarea>
-    </label>
-    <button type="submit" id="submitBtn">Send VA Results</button>
+  <!-- Email Form -->
+  <form id="userForm" class="mt-5">
+    <h4>Send Results</h4>
+
+    <div class="mb-3">
+      <label for="userEmail" class="form-label">Your Email:</label>
+      <input type="email" id="userEmail" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="userRemarks" class="form-label">Additional Remarks:</label>
+      <textarea id="userRemarks" class="form-control" rows="4"></textarea>
+    </div>
+
+    <button type="submit" id="submitBtn" class="btn btn-primary">Send VA Results</button>
   </form>
+
+</div>
 
   <script>
     const categories = [
@@ -525,7 +615,11 @@
     // Build a temporary container with selected VA cards' HTML to extract summary text
     const tempDiv = document.createElement('div');
     selectedVAs.forEach(({ va, priority }) => {
-      const certInfo = va.certificate !== "None" && va.certificationInfo ? `<p><strong>Certification:</strong> ${va.certificationInfo}</p>` : '';
+      const certInfo = `
+  <p class="${va.certificate === "None" ? 'hidden' : ''}">
+    <strong>Certification:</strong> ${va.certificationInfo || ''}
+  </p>
+`;
       tempDiv.innerHTML += `
         <div class="va-card">
           <h3>${va.name} (${priority})</h3>
