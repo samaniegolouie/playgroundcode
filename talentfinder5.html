@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talent Finder</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .filters, .results { margin-bottom: 30px; }
+    .checkbox-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+    .checkbox-group label { display: flex; align-items: center; }
+    .va-card { border: 1px solid #ccc; border-radius: 8px; padding: 15px; margin-bottom: 15px; position: relative; }
+    .va-card h3 { margin-top: 0; }
+    .va-card.highlighted { background-color: #f0f8ff; border-color: #4CAF50; border-width: 2px; }
+    .selection-controls { 
+      position: absolute; 
+      top: 10px; 
+      right: 10px; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 5px; 
+    }
+    .selection-controls label { 
+      display: flex; 
+      align-items: center; 
+      font-size: 0.9em; 
+      cursor: pointer;
+    }
+    .selection-controls input[type="radio"] { 
+      margin-right: 5px; 
+    }
+    form { margin-top: 30px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+    form label { display: block; margin-bottom: 10px; }
+    form input, form textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+    form button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    form button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .tool-search-container {
+      margin-top: 20px;
+      position: relative;
+    }
+    .tool-search-container input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .tool-suggestions {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      width: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 150px;
+      overflow-y: auto;
+      z-index: 10;
+      display: none;
+    }
+    .tool-suggestions li {
+      padding: 8px;
+      cursor: pointer;
+    }
+    .tool-suggestions li:hover {
+      background-color: #f0f0f0;
+    }
+    .selected-tags {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .selected-tags span {
+      background-color: #e0e0e0;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .selected-tags span .remove {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init('dg0On3YROtJY-u4fQ'); // Replace with your actual public key
+  </script>
+</head>
+<body>
+  <h1>Talent Finder</h1>
+
+  <div class="filters">
+    <label for="experience">Years of Experience:</label>
+    <select id="experience">
+      <option value="">-- Select --</option>
+      <option value="5+ years">5+ years</option>
+      <option value="3-4 years">3-4 years</option>
+      <option value="1-2 years">1-2 years</option>
+    </select>
+
+    <label for="availability">Hours Available:</label>
+    <select id="availability">
+      <option value="">-- Select --</option>
+      <option value="0-10 hours">0-10 hours</option>
+      <option value="11-20 hours">11-20 hours</option>
+      <option value="21-30 hours">21-30 hours</option>
+      <option value="31-40 hours">31-40 hours</option>
+    </select>
+
+    <p>With certificate:</p>
+    <input type="radio" id="certYes" name="certificate" value="Yes">
+    <label for="certYes">Yes</label>
+    <input type="radio" id="certNone" name="certificate" value="None">
+    <label for="certNone">None</label>
+
+    <h3>Select up to 5 Categories:</h3>
+    <div class="checkbox-group" id="categoryCheckboxes"></div>
+    
+    <div class="tool-search-container">
+      <label for="toolInput">Filter by Tools:</label>
+      <input type="text" id="toolInput" placeholder="Type to search tools..." autocomplete="off" />
+      <ul id="toolSuggestions" class="tool-suggestions"></ul>
+      <div id="selectedTools" class="selected-tags"></div>
+    </div>
+  </div>
+
+  <div class="results" id="results"></div>
+
+  <form id="userForm">
+    <h3>Send Results</h3>
+    <label>Your Email:
+      <input type="email" id="userEmail" required />
+    </label>
+    <label>Additional Remarks:
+      <textarea id="userRemarks" rows="4"></textarea>
+    </label>
+    <button type="submit" id="submitBtn">Send VA Results</button>
+  </form>
+
+  <script>
+    const categories = [
+    "Accounting & Finance","Advocacy & Social Services","Bilingual Spanish (Moderate Fluency)",
+      "Business Strategy & Planning","Calendar Management","Content & Copywriting",
+      "Content Management Systems","CRM Tools","Customer Service","Data Entry & Management",
+      "Digital Marketing","Education & Academic Support","Email Management","Event Planning",
+      "Executive & Administrative Support","Finance & ERP Tools","Google Workspace","Graphic Design",
+      "Grand Writing","HR & Payroll Support","HR Support","Inventory & Procurement",
+      "Marketing Communications","Microsoft Office","Operations & Facility Support",
+      "Performance & Metrics Tracking","Podcast Production","Presentation & Slide Design",
+      "Process Improvement & Workflow Optimization","Project Management","Real Estate Agent Support",
+      "Real Estate Investor Support","Research & Data Analysis","Specialized Software",
+      "Stakeholder Engagement","Survey & Form Management","Team Communication Tools",
+      "Training & Development Support","Travel Coordination","Web & Content Management"
+    ];
+    const tools = [
+      "Microsoft", "Google", "Excel", "Outlook", "PowerPoint", "Word", "Docs", "Sheets", "Calendar", "Slides",
+      "Canva", "Slack", "Adobe", "Zoom", "Asana", "Trello", "QuickBooks", "Photoshop", "ADP", "CapCut",
+      "Pro", "Teams", "CRM", "ChatGPT", "ClickUp", "Descript", "HubSpot", "Platforms", "Suite", "WordPress"
+    ];
+    
+
+    const vaList = [
+    {
+        name: "Amber",
+        experience: "5+ years",
+        hours: "11-20 hours",
+        certificate: "None",
+        certificationInfo: "",
+        originalSkills: ["Administrative Support & Data Entry", "Audio", "Video & Multimedia Production", "Camera Operation", "Videography & Photography", "Canva & Design Tools","Content Creation & Strategy (Instagram, LinkedIn, TikTok)", "Copywriting", "Creative Writing & Editing", "Digital Marketing (Email, Social, Organic & Paid Ads)", "Email & Social Media Campaign Management", "Event Planning & Coordination", "Graphic & Web Design", "Marketing & Brand Strategy", "Presentation & Slideshow Design", "Project & Team Management (Asana, Trello, Notion)", "Real Estate Photo Editing (Photoshop, Lightroom)", "Talent Management", "Training & Onboarding", "Workflow & Process Optimization"],
+        standardizedSkills: ["Business Strategy & Planning","Content & Copywriting","Data Entry & Management","Digital Marketing","Email Management","Event Planning","Graphic Design","Podcast Production","Project Management","Real Estate Agent Support","Real Estate Investor Support","Travel Coordination"],
+        tools: ["ADP","Asana","Google Calendar","Google Docs","Google Sheets","Google Slides","Harvest","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Paylocity","ServiceNow","Slack","Trello","Workday","Zenefits"],
+        otherNeedsReview:["Talent Management, Training & Onboarding","Workflow & Process Optimization"],        
+        remarks: "I have not used Paylocity, ServiceNow, Workday, or Zenefits before in my work, and ADP I just started using with EHN for billing my own work I have not set it up before for other employees; I have used property finder before to update listings for real estate work in another country but I don't know what website would be the US equivalent. I haven't supported real estate investors before either-- just marketing and social media needs for real estate agents/ company. Also for the top of my resume I have 12 years of work experience.  I have some business management experience but it's not my strongest suit.--- the skills you mentioned in the first bio ( Amber) you created for me are more along my background experience (unless you are adjusting it specifically for real estate clients) = ALL GOOD",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
+      },
+      {
+        name: "Angela",
+        experience: "5+ years",
+        hours: "0-10 hours",
+        certificate: "None",
+        certificationInfo: "",
+        originalSkills: ["Adaptability & Problem-Solving", "Attention to Detail, Collaboration & Relationship Building", "Communication & Public Speaking", "Compassion & Emotional Intelligence", "Conflict Resolution & Mediation", "Curriculum Development", "Data Management & Organization", "Decision-Making & Leadership", "Educational Program Development","Event Planning & Coordination", "Instructional Design & Teaching", "Logistics & Operational Planning, Mentorship & Training", "Office Administration", "Project & Volunteer Management", "Research & Analysis", "Technology Proficiency", "Time Management & Prioritization", "Trauma-Informed & Inclusive Education"],
+        standardizedSkills: ["Event Planning","Google Workspace","Microsoft Office","Project Management","Research & Data Analysis","Team Communication Tools","Training & Development Support","Travel Coordination"],
+        tools: ["Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
+        otherNeedsReview:["Adaptability & Problem-Solving","Attention to Detail","Compassion & Emotional Intelligence","Conflict Resolution & Mediation","Data Management & Organization","Decision-Making & Leadership","Technology Proficiency","Time Management & Prioritization","Trauma-Informed & Inclusive Education"],  
+        remarks: "I also have 20 years of experience in curriculum design and program development I am NOT a graphic designer and would need that removed from my competencies - ALL GOOD",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
+      },
+      {
+        name: "Angelica",
+        experience: "5+ years",
+        hours: "31-40 hours",
+        certificate: "Yes",
+        certificationInfo: "VA Training Philippines VA/SMM Training ProVA Philippines General Virtual Assistance Training ProVA Philippines Executive Assistant Training ProVA Philippines Lead Generation and Email Marketing Training",
+        originalSkills: ["Administrative Support", "Basic Graphic Design (Canva, Adobe Photoshop)", "Calendar & Meeting Management", "Coaching and Mentoring", "Customer Support & Communication", "Data Collection & Research", "Data Entry & Organization", "Email Handling & Inbox Optimization", "Email & Calendar Management", "Google Suite (Docs, Drive, Forms, Sheets, Slides)", "Microsoft Office (Excel, Outlook, PowerPoint, Word)", "Post Scheduling & Social Media Management", "SurveyMonkey"],
+        standardizedSkills: ["Calendar Management","Customer Service","Data Entry & Management","Email Management","Google Workspace","Microsoft Office","Research & Data Analysis","Survey & Form Management","Training & Development Support"],
+        tools: ["Adobe Photoshop","Canva","CapCut","ChatGPT","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word","Notion","Slack","SurveyMonkey","Talkpush","Teams","Trello","WebEx","Zoom"],
+        otherNeedsReview:["Administrative Support","Graphic Design"],  
+        remarks: "all good",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
+      },
+      {
+        name: "Ann",
+        experience: "5+ years",
+        hours: "31-40 hours",
+        certificate: "None",
+        certificationInfo: "",
+        originalSkills: ["Asana & Trello", "Board Vantage Software", "Box & Dropbox", "Concur & Expensify", "DealCloud", "G Suite Applications (Drive, Docs, Sheets, etc.)" ,"GoToMeeting & WebEx", "LinkSquares Software", "Microsoft Office 365 (Word, Excel, PowerPoint, Outlook, Teams)", "QuickBooks", "Salesforce & Zoho CRM", "SharePoint", "Slack & Team Communication Tools (Zoom, Teams, WebEx, Slack)", "SurveyMonkey", "Windows 11"],
+        standardizedSkills: ["Accounting & Finance","CRM Tools","Finance & ERP Tools","Google Workspace","Microsoft Office","Project Management","Real Estate Agent Support","Real Estate Investor Support","Specialized Software","Survey & Form Management","Team Communication Tools"],
+        tools: ["Asana","Board Vantage Software","DealCloud","Expensify","Google Calendar","Google Docs","Google Sheets","Google Slides","LinkSquares Software","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft SharePoint","Microsoft Word","QuickBooks","Salesforce","SurveyMonkey","Trello"],
+        otherNeedsReview:["Board Vantage Software","Box & Dropbox","GoToMeeting & WebEx","SharePoint","Windows 11"],  
+        remarks: "all good",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
+      },
+      {
+        name: "April",
+        experience: "5+ years",
+        hours: "0-10 hours",
+        certificate: "None",
+        certificationInfo: "",
+        originalSkills: ["Audience Research & Market Analysis", "Blog & eBook Writing", "Brand Marketing & Community Management", "Calendar Scheduling & Task Management","Communication", "Coordination & Customer Support", "Compliance & Quality Control", "Content Research & Copywriting", "Cost Reduction & Process Optimization","Creative Storytelling & Topic Outlining", "Data Analysis & Research Documentation", "Data Entry & File Organization", "Email Management & Technical Assistance","Facebook & Instagram Management", "Graphic, Layout & Cover Design", "Infographic & Poster Creation", "Manufacturing Process Improvement & Automation", "Podcast Graphics Creation & Design", "Podcast Setup", "Problem-Solving & Workflow Organization", "Process Analysis & Yield Improvement", "Social Media Content Creation & Engagement", "Social Media Strategy & Brand Development"],
+        standardizedSkills: ["Calendar Management","Content & Copywriting","Customer Service","Data Entry & Management","Research & Data Analysis","Team Communication Tools"],
+        tools: ["Canva","CapCut","Google Calendar","Google Docs","Google Sheets","Google Slides","Microsoft Excel","Microsoft Outlook","Microsoft Powerpoint","Microsoft Word"],
+        otherNeedsReview:["Brand Marketing & Community Management","Cost Reduction & Process Optimization","Facebook & Instagram Management","Infographic & Poster Creation","Manufacturing Process Improvement & Automation","Problem-Solving & Workflow Organization"],  
+        remarks: "",
+        link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
+      }
+    ];
+
+    const categoryCheckboxes = document.getElementById('categoryCheckboxes');
+    const resultsContainer = document.getElementById('results');
+    const experienceSelect = document.getElementById('experience');
+    const availabilitySelect = document.getElementById('availability');
+    const toolInput = document.getElementById('toolInput');
+    const toolSuggestions = document.getElementById('toolSuggestions');
+    const selectedToolsContainer = document.getElementById('selectedTools');
+    const certificateRadios = document.getElementsByName('certificate');
+
+    let selectedCategories = [];
+    let selectedTools = [];
+    let filteredResults = [];
+
+    // Initialize category checkboxes
+    categories.forEach(category => {
+      const label = document.createElement('label');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = category;
+      label.appendChild(checkbox);
+      label.append(category);
+      categoryCheckboxes.appendChild(label);
+    });
+
+    // Category selection with 5-item limit
+    categoryCheckboxes.addEventListener('change', () => {
+      const checked = Array.from(categoryCheckboxes.querySelectorAll('input:checked')).map(cb => cb.value);
+      if (checked.length > 5) {
+        alertify.error("Select up to 5 categories only.");
+        categoryCheckboxes.querySelectorAll('input:checked')[5].checked = false;
+        return;
+      }
+      selectedCategories = checked;
+      filterResults();
+    });
+
+    // Tool search with suggestions and tag selection
+    toolInput.addEventListener('input', () => {
+      const query = toolInput.value.toLowerCase();
+      toolSuggestions.innerHTML = '';
+
+      if (query) {
+        const matches = tools.filter(
+          tool => tool.toLowerCase().includes(query) && !selectedTools.includes(tool)
+        );
+        matches.forEach(tool => {
+          const li = document.createElement('li');
+          li.textContent = tool;
+          li.addEventListener('click', () => {
+            selectTool(tool);
+            toolInput.value = '';
+            toolSuggestions.style.display = 'none';
+            filterResults();
+          });
+          toolSuggestions.appendChild(li);
+        });
+        toolSuggestions.style.display = matches.length ? 'block' : 'none';
+      } else {
+        toolSuggestions.style.display = 'none';
+      }
+    });
+
+    function selectTool(tool) {
+      if (!selectedTools.includes(tool)) {
+        selectedTools.push(tool);
+
+        const tag = document.createElement('span');
+        tag.textContent = tool;
+
+        const remove = document.createElement('span');
+        remove.textContent = '×';
+        remove.classList.add('remove');
+        remove.addEventListener('click', () => {
+          selectedTools = selectedTools.filter(t => t !== tool);
+          selectedToolsContainer.removeChild(tag);
+          filterResults();
+        });
+
+        tag.appendChild(remove);
+        selectedToolsContainer.appendChild(tag);
+      }
+    }
+
+    // Other event listeners
+    experienceSelect.addEventListener('change', filterResults);
+    availabilitySelect.addEventListener('change', filterResults);
+    certificateRadios.forEach(radio => radio.addEventListener('change', filterResults));
+
+    function filterResults() {
+      const experience = experienceSelect.value;
+      const availability = availabilitySelect.value;
+      const certificate = Array.from(certificateRadios).find(r => r.checked)?.value;
+      resultsContainer.innerHTML = '';
+
+      const filtered = vaList.filter(va => {
+        const matchExperience = !experience || va.experience === experience;
+        const matchCertificate = !certificate || va.certificate === certificate;
+        const matchSkills = selectedCategories.length === 0 || selectedCategories.some(cat => va.standardizedSkills.includes(cat));
+        const matchTools = selectedTools.length === 0 || selectedTools.every(selectedTool => 
+          va.tools.some(t => t.toLowerCase().includes(selectedTool.toLowerCase()))
+        );
+        
+        // Hours availability filtering logic
+        let matchAvailability = true;
+        if (availability) {
+          const getHourValue = (hourStr) => {
+            if (hourStr.includes('0-10')) return 10;
+            if (hourStr.includes('11-20')) return 20;
+            if (hourStr.includes('21-30')) return 30;
+            if (hourStr.includes('31-40')) return 40;
+            return 0;
+          };
+          
+          const selectedHourValue = getHourValue(availability);
+          const vaHourValue = getHourValue(va.hours);
+          matchAvailability = vaHourValue >= selectedHourValue;
+        }
+        
+        return matchExperience && matchCertificate && matchSkills && matchTools && matchAvailability;
+      });
+
+      filteredResults = filtered;
+
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = "<p>No matching virtual assistants found.</p>";
+        return;
+      }
+
+      filtered.forEach((va, index) => {
+        const card = document.createElement('div');
+        card.className = 'va-card';
+        card.id = `va-card-${index}`;
+        const certificationHTML = va.certificate !== "None" && va.certificationInfo ? `<p><strong>Certification:</strong> ${va.certificationInfo}</p>` : '';
+        
+        let selectionControls = '';
+        if (filtered.length > 2) {
+          selectionControls = `
+            <div class="selection-controls">
+              <label><input type="radio" name="selection-${index}" value="primary" onchange="handleSelection(${index}, 'primary')"> Primary</label>
+              <label><input type="radio" name="selection-${index}" value="secondary" onchange="handleSelection(${index}, 'secondary')"> Secondary</label>
+            </div>
+          `;
+        } else if (filtered.length === 2) {
+          selectionControls = `
+            <div class="selection-controls">
+              <label><input type="radio" name="priority" value="${index}-primary" onchange="handleTwoSelection(${index}, 'primary')"> Primary</label>
+              <label><input type="radio" name="priority" value="${index}-secondary" onchange="handleTwoSelection(${index}, 'secondary')"> Secondary</label>
+            </div>
+          `;          
+        }
+        
+        card.innerHTML = `
+          ${selectionControls}
+          <h3>${va.name}</h3>
+          <p><strong>Experience:</strong> ${va.experience}</p>
+          <p><strong>Hours Available:</strong> ${va.hours}</p>
+          <p><strong>Certificate:</strong> ${va.certificate}</p>
+          ${certificationHTML}
+          <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
+          <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
+          <p><strong>Remarks:</strong> ${va.remarks}</p>
+          <a href="${va.link}" target="_blank">View Profile</a>
+        `;
+        resultsContainer.appendChild(card);
+      });
+    }
+
+    function handleSelection(index, type) {
+      const card = document.getElementById(`va-card-${index}`);
+      if (type === 'primary' || type === 'secondary') {
+        card.classList.add('highlighted');
+      }
+      
+      // Remove highlights from other cards of the same type
+      filteredResults.forEach((_, i) => {
+        if (i !== index) {
+          const otherCard = document.getElementById(`va-card-${i}`);
+          const otherRadios = otherCard.querySelectorAll(`input[value="${type}"]`);
+          otherRadios.forEach(radio => {
+            if (radio.checked) {
+              radio.checked = false;
+              otherCard.classList.remove('highlighted');
+            }
+          });
+        }
+      });
+    }
+
+    function handleTwoSelection(index, type) {
+      const card = document.getElementById(`va-card-${index}`);
+      card.classList.add('highlighted');
+      
+      // Remove highlight from the other card
+      filteredResults.forEach((_, i) => {
+        if (i !== index) {
+          const otherCard = document.getElementById(`va-card-${i}`);
+          otherCard.classList.remove('highlighted');
+        }
+      });
+    }
+
+    // Email form submission - FIXED VERSION
+    document.getElementById('userForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById('submitBtn');
+  const originalText = submitBtn.textContent;
+  const userEmail = document.getElementById('userEmail').value.trim();
+  const userRemarks = document.getElementById('userRemarks').value.trim();
+
+  if (!userEmail) {
+    alertify.error("Please enter your email address.");
+    return;
+  }
+
+  if (filteredResults.length === 0) {
+    alertify.error("No VA results to send.");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  let selectedVAs = [];
+
+  try {
+    if (filteredResults.length === 1) {
+      selectedVAs.push({
+        va: filteredResults[0],
+        priority: 'Primary'
+      });
+    } else if (filteredResults.length === 2) {
+      const primaryRadio = document.querySelector('input[name="priority"]:checked');
+      if (!primaryRadio) {
+        alertify.error("Please select Primary and Secondary preferences.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        return;
+      }
+
+      const [selectedIndex, priority] = primaryRadio.value.split('-');
+      const otherIndex = selectedIndex === '0' ? 1 : 0;
+      const otherPriority = priority === 'primary' ? 'Secondary' : 'Primary';
+
+      selectedVAs.push({
+        va: filteredResults[parseInt(selectedIndex)],
+        priority: priority.charAt(0).toUpperCase() + priority.slice(1)
+      });
+      selectedVAs.push({
+        va: filteredResults[otherIndex],
+        priority: otherPriority
+      });
+    } else {
+      const primaryRadio = document.querySelector('input[value="primary"]:checked');
+      const secondaryRadio = document.querySelector('input[value="secondary"]:checked');
+
+      if (!primaryRadio && !secondaryRadio) {
+        alertify.error("Please select at least one VA as Primary or Secondary.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        return;
+      }
+
+      if (primaryRadio) {
+        const primaryIndex = parseInt(primaryRadio.name.split('-')[1]);
+        selectedVAs.push({
+          va: filteredResults[primaryIndex],
+          priority: 'Primary'
+        });
+      }
+
+      if (secondaryRadio) {
+        const secondaryIndex = parseInt(secondaryRadio.name.split('-')[1]);
+        selectedVAs.push({
+          va: filteredResults[secondaryIndex],
+          priority: 'Secondary'
+        });
+      }
+    }
+
+    // Build a temporary container with selected VA cards' HTML to extract summary text
+    const tempDiv = document.createElement('div');
+    selectedVAs.forEach(({ va, priority }) => {
+      const certInfo = va.certificate !== "None" && va.certificationInfo ? `<p><strong>Certification:</strong> ${va.certificationInfo}</p>` : '';
+      tempDiv.innerHTML += `
+        <div class="va-card">
+          <h3>${va.name} (${priority})</h3>
+          <p><strong>Experience:</strong> ${va.experience}</p>
+          <p><strong>Hours Available:</strong> ${va.hours}</p>
+          <p><strong>Certificate:</strong> ${va.certificate}</p>
+          ${certInfo}
+          <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
+          <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
+          <p><strong>Remarks:</strong> ${va.remarks}</p>
+          <a href="${va.link}" target="_blank">View Profile</a>
+        </div>
+      `;
+    });
+
+    // Convert HTML to plain text summary
+    const resultsHtml = tempDiv.innerHTML;
+    const vaSummaryText = resultsHtml
+      .replace(/<\/div>/g, '\n')
+      .replace(/<h3>(.*?)<\/h3>/g, '$1\n')
+      .replace(/<p><strong>(.*?):<\/strong>\s*(.*?)<\/p>/g, '$1: $2\n')
+      .replace(/<a href="(.*?)".*?>(.*?)<\/a>/g, 'Profile Link: $1\n')
+      .replace(/<[^>]+>/g, '')
+      .trim();
+
+    // Send email via EmailJS
+    emailjs.send('service_jyovi0n', 'template_4tbqns1', {
+      user_email: userEmail,
+      user_remarks: userRemarks || 'No additional remarks',
+      va_summary: vaSummaryText,
+      subject: 'TalentFinder Inquiry'
+    })
+    .then(() => {
+      alertify.success('VA Results sent successfully!');
+      this.reset();
+    })
+    .catch(err => {
+      console.error(err);
+      alertify.error('Error sending email: ' + (err.text || err));
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    });
+
+  } catch (error) {
+    console.error('Error processing email:', error);
+    alertify.error("An error occurred. Please try again.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
+
+    // Initial load
+    filterResults();
+  </script>
+</body>
+</html>
