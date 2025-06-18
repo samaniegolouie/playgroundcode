@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VA Matching Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding-top: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        h1, h2 {
+            color: #0056b3;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-select, .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px 15px;
+        }
+        .filter-section {
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fcfcfc;
+        }
+        .filter-section h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        #categoryCheckboxes label,
+        #editSkillsCheckboxes label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+        #categoryCheckboxes input[type="checkbox"],
+        #editSkillsCheckboxes input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.1);
+        }
+        .va-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .va-card.highlighted {
+            border-color: #007bff;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+            background-color: #e6f7ff;
+        }
+        .va-card h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .va-card p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .va-card strong {
+            color: #0056b3;
+        }
+        .va-card a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .va-card a:hover {
+            text-decoration: underline;
+        }
+        .selection-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 15px;
+            font-weight: 600;
+        }
+        .selection-controls label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .selection-controls input[type="radio"] {
+            margin-right: 5px;
+            transform: scale(1.2);
+        }
+        #toolSuggestions {
+            border: 1px solid #ced4da;
+            border-top: none;
+            max-height: 150px;
+            overflow-y: auto;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+            position: absolute;
+            width: calc(100% - 30px); /* Adjust width to match input field */
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 0 0 5px 5px;
+            display: none; /* Hidden by default */
+        }
+        #toolSuggestions li {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        #toolSuggestions li:hover {
+            background-color: #e9ecef;
+        }
+        #selectedTools {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        #selectedTools span {
+            background-color: #007bff;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        #selectedTools span .remove {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            line-height: 1;
+        }
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: none;
+        }
+        .modal-header .btn-close {
+            filter: invert(1);
+        }
+        .modal-footer {
+            border-top: none;
+        }
+        .hidden {
+            display: none;
+        }
+        .alertify-notifier .ajs-message {
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 15px;
+        }
+        .alertify-notifier .ajs-message.ajs-success {
+            background-color: #28a745;
+        }
+        .alertify-notifier .ajs-message.ajs-error {
+            background-color: #dc3545;
+        }
+        .badge {
+            font-size: 0.8em;
+            padding: 0.4em 0.6em;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">VA Matching Tool</h1>
+
+        <div class="filter-section">
+            <h3 class="mb-4">Filter Virtual Assistants</h3>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <label for="experience" class="form-label">Experience:</label>
+                    <select id="experience" class="form-select">
+                        <option value="">Any</option>
+                        <option value="0-1 years">0-1 years</option>
+                        <option value="1-2 years">1-2 years</option>
+                        <option value="2-3 years">2-3 years</option>
+                        <option value="3-5 years">3-5 years</option>
+                        <option value="5+ years">5+ years</option>
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <label for="availability" class="form-label">Weekly Availability (Hours):</label>
+                    <select id="availability" class="form-select">
+                        <option value="">Any</option>
+                        <option value="0-10 hours">0-10 hours</option>
+                        <option value="11-20 hours">11-20 hours</option>
+                        <option value="21-30 hours">21-30 hours</option>
+                        <option value="31-40 hours">31-40 hours</option>
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <label class="form-label">Has Certificate:</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="certificate" id="certAny" value="" checked>
+                            <label class="form-check-label" for="certAny">Any</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="certificate" id="certYes" value="Yes">
+                            <label class="form-check-label" for="certYes">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="certificate" id="certNone" value="None">
+                            <label class="form-check-label" for="certNone">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <label class="form-label">Has Education Level:</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="educationLevel" id="eduAny" value="" checked>
+                            <label class="form-check-label" for="eduAny">Any</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="educationLevel" id="eduYes" value="Yes">
+                            <label class="form-check-label" for="eduYes">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="educationLevel" id="eduNone" value="None">
+                            <label class="form-check-label" for="eduNone">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5 class="mb-3">Skills (Select up to 40):</h5>
+                    <div id="categoryCheckboxes" class="form-check-group" style="max-height: 250px; overflow-y: auto; border: 1px solid #eee; padding: 10px; border-radius: 5px;">
+                        </div>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="mb-3">Tools:</h5>
+                    <div class="mb-3 position-relative">
+                        <input type="text" id="toolInput" class="form-control" placeholder="Search and add tools (e.g., Microsoft, Slack)">
+                        <ul id="toolSuggestions" class="list-group position-absolute w-100 mt-1 shadow-sm" style="z-index: 1050; display: none;"></ul>
+                    </div>
+                    <div id="selectedTools" class="mb-3">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-section mt-4">
+            <h3 class="mb-4">Matching Virtual Assistants</h3>
+            <div id="results" class="row">
+                </div>
+        </div>
+
+        <div class="filter-section mt-4">
+            <h3 class="mb-4">Send VA Selections</h3>
+            <form id="userForm">
+                <div class="mb-3">
+                    <label for="userEmail" class="form-label">Your Email:</label>
+                    <input type="email" class="form-control" id="userEmail" required placeholder="Enter your email address">
+                </div>
+                <div class="mb-3">
+                    <label for="userRemarks" class="form-label">Additional Remarks (Optional):</label>
+                    <textarea class="form-control" id="userRemarks" rows="3" placeholder="Any specific notes or questions?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">Send VA Results</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editSkillsModal" tabindex="-1" aria-labelledby="editSkillsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editSkillsModalLabel">Update Skills for <span id="vaNameForEdit"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editSkillsForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="editVaIndex">
+                        <div id="editSkillsCheckboxes" style="max-height: 400px; overflow-y: auto; border: 1px solid #eee; padding: 15px; border-radius: 5px;">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Replace with your actual EmailJS Public Key
+            emailjs.init({
+                publicKey: "YOUR_EMAILJS_PUBLIC_KEY", // !!! IMPORTANT: REPLACE THIS !!!
+            });
+        })();
+    </script>
+
+    <script>
+        const categories = [
+            "Advocacy & Social Services", "Artificial Intelligence", "Bookkeeping", "Bilingual", "Business Operations",
+            "Business Strategy & Planning", "Calendar Management", "Content & Copywriting",
+            "CRM Tools", "Customer Service", "Data Entry & Management",
+            "Digital Marketing", "Education & Academic Support", "Email Management", "Event Planning",
+            "Executive and Administrative Support", "Google Workspace", "Graphic Design",
+            "Grant Writing", "HR & Payroll Support", "Inventory & Procurement",
+            "Marketing Communications", "Microsoft Office", "Operations & Facility Support",
+            "Performance & Metrics Tracking", "Podcast Production", "Presentation & Slide Design",
+            "Process Improvement & Workflow Optimization", "Project Management", "Real Estate Agent Support",
+            "Real Estate Investor Support", "Research & Data Analysis", "Specialized Software",
+            "Stakeholder Engagement", "Survey & Form Management", "Team Communication Tools",
+            "Training & Development Support", "Travel Coordination", "Vendor Management", "Web & Content Management"
+        ];
+        const tools = [
+            "Microsoft", "Google", "Excel", "Outlook", "PowerPoint", "Word", "Docs", "Sheets", "Calendar", "Slides",
+            "Canva", "Slack", "Adobe", "Zoom", "Asana", "Trello", "QuickBooks", "Photoshop", "ADP", "CapCut",
+            "Pro", "Teams", "CRM", "ChatGPT", "ClickUp", "Descript", "HubSpot", "Platforms", "Suite", "WordPress"
+        ];
+
+        // Function to generate the badge HTML based on level
+        const getBadge = (level) => {
+            const levels = {
+                "Growth Starter": "bg-success bg-opacity-50",
+                "Momentum Builder": "bg-success",
+                "Elite Growth": "bg-primary"
+            };
+            const badgeClass = levels[level] || "bg-secondary"; // Default to secondary if level not found
+
+            return `
+                <span class="badge ${badgeClass}">
+                    ${level}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-award ms-1" viewBox="0 0 16 16">
+                        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 
+                            1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 
+                            1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68z"/>
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 
+                            13.126l-1.982-.926L4 11.794z"/>
+                    </svg>
+                </span>
+            `;
+        };
+
+        // Your VA data (simplified for example, maintain your full data)
+        const vaList = [
+            {
+                name: "Amber",
+                experience: "5+ years",
+                hours: "11-20 hours",
+                certificate: "Yes",
+                certificationInfo: `Certification in Art Direction, Certification in Media Production ${getBadge("Growth Starter")}`,
+                educationLevel: "Yes",
+                educationInfo: "Bachelor’s Degree: Radio, Television and Digital Media",
+                originalSkills: ["Administrative Support & Data Entry", "Audio", "Video & Multimedia Production", "Camera Operation", "Videography & Photography", "Canva & Design Tools", "Content Creation & Strategy (Instagram, LinkedIn, TikTok)", "Copywriting", "Creative Writing & Editing", "Digital Marketing (Email, Social, Organic & Paid Ads)", "Email & Social Media Campaign Management", "Event Planning & Coordination", "Graphic & Web Design", "Marketing & Brand Strategy", "Presentation & Slideshow Design", "Project & Team Management (Asana, Trello, Notion)", "Real Estate Photo Editing (Photoshop, Lightroom)", "Talent Management", "Training & Onboarding", "Workflow & Process Optimization"],
+                standardizedSkills: [ // This array will be updated
+                    "Advocacy & Social Services", "Artificial Intelligence", "Business Operations", "Business Strategy & Planning",
+                    "Calendar Management", "Content & Copywriting", "CRM Tools", "Customer Service",
+                    "Data Entry & Management", "Digital Marketing", "Education & Academic Support", "Email Management",
+                    "Event Planning", "Executive and Administrative Support", "Google Workspace", "Grant Writing",
+                    "Graphic Design", "Inventory & Procurement", "Microsoft Office", "Operations & Facility Support",
+                    "Performance & Metrics Tracking", "Podcast Production", "Presentation & Slide Design",
+                    "Project Management", "Real Estate Agent Support", "Real Estate Investor Support",
+                    "Research & Data Analysis", "Specialized Software", "Survey & Form Management",
+                    "Team Communication Tools", "Training & Development Support", "Travel Coordination", "Web & Content Management"
+                ],
+                tools: ["ADP", "Asana", "Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "Harvest", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft Word", "Paylocity", "ServiceNow", "Slack", "Trello", "Workday", "Zenefits"],
+                otherNeedsReview: ["Talent Management, Training & Onboarding", "Workflow & Process Optimization"],
+                remarks: "I have not used Paylocity, ServiceNow, Workday, or Zenefits before in my work, and ADP I just started using with EHN for billing my own work I have not set it up before for other employees; I have used property finder before to update listings for real estate work in another country but I don't know what website would be the US equivalent. I haven't supported real estate investors before either-- just marketing and social media needs for real estate agents/ company. Also for the top of my resume I have 12 years of work experience.  I have some business management experience but it's not my strongest suit.--- the skills you mentioned in the first bio ( Amber) you created for me are more along my background experience (unless you are adjusting it specifically for real estate clients) = ALL GOOD",
+                link: "https://executivehelpnow.org/team-members#423d4fb6-9d88-4cda-b89b-ea331c9ce766"
+            },
+            {
+                name: "Angela",
+                experience: "5+ years",
+                hours: "0-10 hours",
+                certificate: "None",
+                certificationInfo: "",
+                educationLevel: "Yes",
+                educationInfo: "Bachelor’s Degree: Education Major: Elementary Education (Grades 1-8) Minor: English",
+                originalSkills: ["Adaptability & Problem-Solving", "Attention to Detail, Collaboration & Relationship Building", "Communication & Public Speaking", "Compassion & Emotional Intelligence", "Conflict Resolution & Mediation", "Curriculum Development", "Data Management & Organization", "Decision-Making & Leadership", "Educational Program Development", "Event Planning & Coordination", "Instructional Design & Teaching", "Logistics & Operational Planning, Mentorship & Training", "Office Administration", "Project & Volunteer Management", "Research & Analysis", "Technology Proficiency", "Time Management & Prioritization", "Trauma-Informed & Inclusive Education"],
+                standardizedSkills: [ // This array will be updated
+                    "Artificial Intelligence", "Business Operations", "Calendar Management", "Customer Service",
+                    "Data Entry & Management", "Education & Academic Support", "Email Management", "Event Planning",
+                    "Executive and Administrative Support", "Google Workspace", "Microsoft Office",
+                    "Presentation & Slide Design", "Research & Data Analysis", "Survey & Form Management", "Travel Coordination"
+                ],
+                tools: ["Google Calendar", "Google Docs", "Google Sheets", "Google Slides", "Microsoft Excel", "Microsoft Outlook", "Microsoft Powerpoint", "Microsoft Word"],
+                otherNeedsReview: ["Adaptability & Problem-Solving", "Attention to Detail", "Compassion & Emotional Intelligence", "Conflict Resolution & Mediation", "Data Management & Organization", "Decision-Making & Leadership", "Technology Proficiency", "Time Management & Prioritization", "Trauma-Informed & Inclusive Education"],
+                remarks: "I also have 20 years of experience in curriculum design and program development I am NOT a graphic designer and would need that removed from my competencies - ALL GOOD",
+                link: "https://executivehelpnow.org/team-members#c67c219c-bb12-45d3-b426-a485e4ef49ca"
+            }
+            // Add more VA objects here following the same structure
+        ];
+
+        // --- DOM Elements ---
+        const categoryCheckboxes = document.getElementById('categoryCheckboxes');
+        const resultsContainer = document.getElementById('results');
+        const experienceSelect = document.getElementById('experience');
+        const availabilitySelect = document.getElementById('availability');
+        const toolInput = document.getElementById('toolInput');
+        const toolSuggestions = document.getElementById('toolSuggestions');
+        const selectedToolsContainer = document.getElementById('selectedTools');
+        const certificateRadios = document.getElementsByName('certificate');
+        const educationRadios = document.getElementsByName('educationLevel');
+
+        // Edit Skills Modal elements
+        const editSkillsModal = new bootstrap.Modal(document.getElementById('editSkillsModal'));
+        const vaNameForEdit = document.getElementById('vaNameForEdit');
+        const editSkillsCheckboxesContainer = document.getElementById('editSkillsCheckboxes');
+        const editVaIndexInput = document.getElementById('editVaIndex'); // Hidden input to store index
+        const editSkillsForm = document.getElementById('editSkillsForm');
+
+        // --- Global State ---
+        let selectedCategories = [];
+        let selectedTools = [];
+        let filteredResults = []; // This will hold references to objects in vaList that match current filters
+
+        // --- Event Listeners and Functions ---
+
+        /**
+         * Initializes the category checkboxes for the main filter section.
+         */
+        categories.forEach(category => {
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = category;
+            label.appendChild(checkbox);
+            label.append(category);
+            categoryCheckboxes.appendChild(label);
+        });
+
+        /**
+         * Handles category checkbox changes, enforcing a 40-item limit.
+         */
+        categoryCheckboxes.addEventListener('change', () => {
+            const checked = Array.from(categoryCheckboxes.querySelectorAll('input:checked')).map(cb => cb.value);
+            if (checked.length > 40) {
+                alertify.error("Select up to 40 categories only.");
+                // Uncheck the last item that was just checked to enforce the limit
+                const lastCheckedValue = checked[checked.length - 1];
+                const lastCheckedCheckbox = categoryCheckboxes.querySelector(`input[value="${lastCheckedValue}"]`);
+                if (lastCheckedCheckbox) {
+                    lastCheckedCheckbox.checked = false;
+                }
+                return;
+            }
+            selectedCategories = Array.from(categoryCheckboxes.querySelectorAll('input:checked')).map(cb => cb.value);
+            filterResults();
+        });
+
+        /**
+         * Handles tool input, providing suggestions and managing selected tools.
+         */
+        toolInput.addEventListener('input', () => {
+            const query = toolInput.value.toLowerCase();
+            toolSuggestions.innerHTML = '';
+
+            if (query) {
+                const matches = tools.filter(
+                    tool => tool.toLowerCase().includes(query) && !selectedTools.includes(tool)
+                ).slice(0, 5); // Limit suggestions to 5
+
+                if (matches.length > 0) {
+                    matches.forEach(tool => {
+                        const li = document.createElement('li');
+                        li.textContent = tool;
+                        li.classList.add('list-group-item'); // Bootstrap class for list items
+                        li.addEventListener('click', () => {
+                            selectTool(tool);
+                            toolInput.value = ''; // Clear input after selection
+                            toolSuggestions.style.display = 'none';
+                            filterResults();
+                        });
+                        toolSuggestions.appendChild(li);
+                    });
+                    toolSuggestions.style.display = 'block';
+                } else {
+                    toolSuggestions.style.display = 'none';
+                }
+            } else {
+                toolSuggestions.style.display = 'none';
+            }
+        });
+
+        /**
+         * Adds a selected tool to the `selectedTools` array and updates the UI.
+         * @param {string} tool - The tool to be selected.
+         */
+        function selectTool(tool) {
+            if (!selectedTools.includes(tool)) {
+                selectedTools.push(tool);
+
+                const tag = document.createElement('span');
+                tag.classList.add('badge', 'bg-primary'); // Bootstrap badge styling
+                tag.textContent = tool;
+
+                const remove = document.createElement('span');
+                remove.textContent = '×';
+                remove.classList.add('remove', 'ms-2'); // Margin-start for spacing
+                remove.addEventListener('click', () => {
+                    selectedTools = selectedTools.filter(t => t !== tool);
+                    selectedToolsContainer.removeChild(tag);
+                    filterResults();
+                });
+
+                tag.appendChild(remove);
+                selectedToolsContainer.appendChild(tag);
+            }
+        }
+
+        // Add event listeners for other filter elements
+        experienceSelect.addEventListener('change', filterResults);
+        availabilitySelect.addEventListener('change', filterResults);
+        certificateRadios.forEach(radio => radio.addEventListener('change', filterResults));
+        educationRadios.forEach(radio => radio.addEventListener('change', filterResults));
+
+        /**
+         * Main function to filter and display VA results based on current selections.
+         */
+        function filterResults() {
+            const experience = experienceSelect.value;
+            const availability = availabilitySelect.value;
+            const certificate = Array.from(certificateRadios).find(r => r.checked)?.value;
+            const educationLevel = Array.from(educationRadios).find(r => r.checked)?.value;
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            // Filter the *original* vaList to ensure all data is considered
+            const filtered = vaList.filter(va => {
+                const matchExperience = !experience || va.experience === experience;
+                const matchCertificate = !certificate || va.certificate === certificate;
+                const matchEducationLevel = !educationLevel || va.educationLevel === educationLevel;
+
+                // Check if any of the VA's standardizedSkills are in selectedCategories
+                const matchSkills = selectedCategories.length === 0 ||
+                                    selectedCategories.some(cat => va.standardizedSkills.includes(cat));
+
+                // Check if all selectedTools are present in the VA's tools (case-insensitive)
+                const matchTools = selectedTools.length === 0 ||
+                                   selectedTools.every(selectedTool =>
+                                       va.tools.some(vaTool => vaTool.toLowerCase().includes(selectedTool.toLowerCase()))
+                                   );
+
+                // Hours availability filtering logic
+                let matchAvailability = true;
+                if (availability) {
+                    const getHourValue = (hourStr) => {
+                        if (hourStr.includes('0-10')) return 10;
+                        if (hourStr.includes('11-20')) return 20;
+                        if (hourStr.includes('21-30')) return 30;
+                        if (hourStr.includes('31-40')) return 40;
+                        return 0; // Should not happen with valid inputs
+                    };
+
+                    const selectedHourValue = getHourValue(availability);
+                    const vaHourValue = getHourValue(va.hours);
+                    // Match if VA's max hours is greater than or equal to the selected max hours
+                    matchAvailability = vaHourValue >= selectedHourValue;
+                }
+
+                return matchExperience && matchCertificate && matchEducationLevel && matchSkills && matchTools && matchAvailability;
+            });
+
+            // Sort alphabetically by name
+            filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+            // Update `filteredResults` to reflect the currently displayed VAs
+            filteredResults = filtered;
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = "<p class='text-center text-muted'>No matching virtual assistants found.</p>";
+                return;
+            }
+
+            // Render VA cards
+            filtered.forEach((va, index) => {
+                const card = document.createElement('div');
+                card.className = 'col-md-6 col-lg-4 mb-4'; // Bootstrap grid columns
+                card.innerHTML = `
+                    <div class="va-card" id="va-card-${index}">
+                        <div class="selection-controls">
+                            ${filteredResults.length > 2 ? `
+                                <label><input type="radio" name="selection-${index}" value="primary" onchange="handleSelection(${index}, 'primary')"> Primary</label>
+                                <label><input type="radio" name="selection-${index}" value="secondary" onchange="handleSelection(${index}, 'secondary')"> Secondary</label>
+                            ` : filteredResults.length === 2 ? `
+                                <label><input type="radio" name="priority" value="${index}-primary" onchange="handleTwoSelection(${index}, 'primary')"> Primary</label>
+                                <label><input type="radio" name="priority" value="${index}-secondary" onchange="handleTwoSelection(${index}, 'secondary')"> Secondary</label>
+                            ` : ''}
+                        </div>
+                        <h3>${va.name}</h3>
+                        <p><strong>Experience:</strong> ${va.experience}</p>
+                        <p><strong>Weekly Availability:</strong> ${va.hours}</p>
+                        <p><strong>Certificate:</strong> ${va.certificate}</p>
+                        ${va.certificate !== "None" && va.certificationInfo ? `<p><strong>List of Certificates:</strong> ${va.certificationInfo}</p>` : ''}
+                        <p><strong>Education Level:</strong> ${va.educationLevel}</p>
+                        ${va.educationLevel !== "None" && va.educationInfo ? `<p><strong>List of Education:</strong> ${va.educationInfo}</p>` : ''}
+                        <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
+                        <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
+                        <a href="${va.link}" target="_blank" class="btn btn-sm btn-outline-info">View Profile</a>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-2 ms-2" onclick="openEditSkillsModal(${index})">Update Skills</button>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        /**
+         * Handles the selection of a VA as primary/secondary when more than 2 VAs are present.
+         * Ensures only one primary and one secondary are highlighted.
+         * @param {number} index - The index of the VA in `filteredResults`.
+         * @param {string} type - 'primary' or 'secondary'.
+         */
+        function handleSelection(index, type) {
+            const card = document.getElementById(`va-card-${index}`);
+            // Remove highlighting for all other cards of the same type
+            filteredResults.forEach((_, i) => {
+                const otherCard = document.getElementById(`va-card-${i}`);
+                if (otherCard && i !== index) {
+                    const otherRadio = otherCard.querySelector(`input[name="selection-${i}"][value="${type}"]`);
+                    if (otherRadio && otherRadio.checked) {
+                        otherRadio.checked = false;
+                        otherCard.parentElement.classList.remove('highlighted'); // Remove from parent col-md-6
+                    }
+                }
+            });
+
+            // Add highlight to the currently selected card
+            if (card) {
+                card.parentElement.classList.add('highlighted'); // Add to parent col-md-6
+            }
+        }
+
+        /**
+         * Handles the selection of a VA as primary/secondary when exactly 2 VAs are present.
+         * Ensures only one card is highlighted at a time based on overall primary/secondary.
+         * @param {number} index - The index of the VA in `filteredResults`.
+         * @param {string} type - 'primary' or 'secondary'. (Note: the radio name "priority" is shared)
+         */
+        function handleTwoSelection(index, type) {
+            // Remove highlight from all cards first
+            filteredResults.forEach((_, i) => {
+                const card = document.getElementById(`va-card-${i}`);
+                if (card) {
+                    card.parentElement.classList.remove('highlighted');
+                }
+            });
+
+            // Add highlight to the selected card
+            const selectedCard = document.getElementById(`va-card-${index}`);
+            if (selectedCard) {
+                selectedCard.parentElement.classList.add('highlighted');
+            }
+        }
+
+
+        /**
+         * Opens the edit skills modal and populates it with the VA's current skills.
+         * @param {number} index - The index of the VA in the `filteredResults` array.
+         */
+        function openEditSkillsModal(index) {
+            const va = filteredResults[index];
+            vaNameForEdit.textContent = va.name;
+            editVaIndexInput.value = index; // Store the index of the VA in `filteredResults`
+
+            // Clear previous checkboxes
+            editSkillsCheckboxesContainer.innerHTML = '';
+
+            // Populate checkboxes with all available categories and pre-check VA's current skills
+            categories.forEach(category => {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = category;
+                checkbox.name = 'editSkill'; // Common name for all checkboxes in the form
+                if (va.standardizedSkills.includes(category)) {
+                    checkbox.checked = true;
+                }
+                label.appendChild(checkbox);
+                label.append(category);
+                editSkillsCheckboxesContainer.appendChild(label);
+            });
+
+            editSkillsModal.show();
+        }
+
+        /**
+         * Handles the submission of the edit skills form.
+         * IMPORTANT: This updates the `standardizedSkills` in the *original* `vaList` array.
+         */
+        editSkillsForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const vaIndexInFilteredResults = parseInt(editVaIndexInput.value);
+            const vaFromFiltered = filteredResults[vaIndexInFilteredResults]; // The VA object from the currently filtered list
+
+            const selectedEditSkills = Array.from(editSkillsCheckboxesContainer.querySelectorAll('input[name="editSkill"]:checked'))
+                                         .map(cb => cb.value);
+
+            // Find the actual VA object in the original vaList array using a unique identifier (like 'name')
+            const originalVa = vaList.find(va => va.name === vaFromFiltered.name);
+
+            if (originalVa) {
+                originalVa.standardizedSkills = selectedEditSkills; // Update the skills in the ORIGINAL vaList
+                alertify.success(`Skills for ${originalVa.name} updated successfully!`);
+            } else {
+                alertify.error(`Error: Could not find ${vaFromFiltered.name} in the main VA list to update.`);
+            }
+
+            editSkillsModal.hide(); // Close the modal
+            filterResults(); // Re-render the results to reflect the changes from the updated vaList
+        });
+
+        /**
+         * Handles the submission of the user email form, sending VA selections via EmailJS.
+         */
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const userRemarks = document.getElementById('userRemarks').value.trim();
+
+            if (!userEmail) {
+                alertify.error("Please enter your email address.");
+                return;
+            }
+
+            if (filteredResults.length === 0) {
+                alertify.error("No VA results to send. Please apply filters to see VAs.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            let selectedVAs = []; // Array to hold {va: object, priority: string}
+
+            try {
+                if (filteredResults.length === 1) {
+                    selectedVAs.push({
+                        va: filteredResults[0],
+                        priority: 'Primary' // If only one VA, it's implicitly primary
+                    });
+                } else if (filteredResults.length === 2) {
+                    const primaryRadio = document.querySelector('input[name="priority"]:checked');
+                    if (!primaryRadio) {
+                        alertify.error("Please select a Primary and Secondary preference.");
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        return;
+                    }
+
+                    // Extract index and priority from the value (e.g., "0-primary" or "1-secondary")
+                    const [selectedIndexStr, priorityType] = primaryRadio.value.split('-');
+                    const selectedIndex = parseInt(selectedIndexStr);
+                    const otherIndex = selectedIndex === 0 ? 1 : 0; // The other VA's index
+
+                    // Determine the priority for the selected one and the other one
+                    const selectedPriority = priorityType.charAt(0).toUpperCase() + priorityType.slice(1);
+                    const otherPriority = (selectedPriority === 'Primary') ? 'Secondary' : 'Primary';
+
+
+                    selectedVAs.push({
+                        va: filteredResults[selectedIndex],
+                        priority: selectedPriority
+                    });
+                    selectedVAs.push({
+                        va: filteredResults[otherIndex],
+                        priority: otherPriority
+                    });
+
+                    // Sort to ensure Primary is first in the list for email
+                    selectedVAs.sort((a, b) => {
+                        if (a.priority === 'Primary' && b.priority === 'Secondary') return -1;
+                        if (a.priority === 'Secondary' && b.priority === 'Primary') return 1;
+                        return 0;
+                    });
+
+
+                } else { // filteredResults.length > 2
+                    const primaryRadio = document.querySelector('input[name^="selection-"][value="primary"]:checked');
+                    const secondaryRadio = document.querySelector('input[name^="selection-"][value="secondary"]:checked');
+
+                    if (!primaryRadio && !secondaryRadio) {
+                        alertify.error("Please select at least one VA as Primary or Secondary.");
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        return;
+                    }
+
+                    if (primaryRadio) {
+                        const primaryIndex = parseInt(primaryRadio.name.split('-')[1]); // Extract index from 'selection-INDEX'
+                        selectedVAs.push({
+                            va: filteredResults[primaryIndex],
+                            priority: 'Primary'
+                        });
+                    }
+
+                    if (secondaryRadio) {
+                        const secondaryIndex = parseInt(secondaryRadio.name.split('-')[1]);
+                        selectedVAs.push({
+                            va: filteredResults[secondaryIndex],
+                            priority: 'Secondary'
+                        });
+                    }
+                     // Sort to ensure Primary is first in the list for email
+                    selectedVAs.sort((a, b) => {
+                        if (a.priority === 'Primary' && b.priority === 'Secondary') return -1;
+                        if (a.priority === 'Secondary' && b.priority === 'Primary') return 1;
+                        return 0;
+                    });
+                }
+
+                // Build a temporary container with selected VA cards' HTML for email content
+                const tempDiv = document.createElement('div');
+                selectedVAs.forEach(({ va, priority }) => {
+                    // Hide empty certification/education info
+                    const certInfoHtml = va.certificate !== "None" && va.certificationInfo ? `<p><strong>Certification Info:</strong> ${va.certificationInfo}</p>` : '';
+                    const educationInfoHtml = va.educationLevel !== "None" && va.educationInfo ? `<p><strong>Education Info:</strong> ${va.educationInfo}</p>` : '';
+
+                    tempDiv.innerHTML += `
+                        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+                            <h3 style="color: #007bff;">${va.name} (${priority} Selection)</h3>
+                            <p><strong>Experience:</strong> ${va.experience}</p>
+                            <p><strong>Weekly Availability:</strong> ${va.hours}</p>
+                            <p><strong>Certificate:</strong> ${va.certificate}</p>
+                            ${certInfoHtml}
+                            <p><strong>Education Level:</strong> ${va.educationLevel}</p>
+                            ${educationInfoHtml}
+                            <p><strong>Skills:</strong> ${va.standardizedSkills.join(', ')}</p>
+                            <p><strong>Tools:</strong> ${va.tools.join(', ')}</p>
+                            <p><strong>Remarks:</strong> ${va.remarks || 'N/A'}</p>
+                            <p><a href="${va.link}" target="_blank" style="color: #007bff; text-decoration: none;">View Profile</a></p>
+                        </div>
+                    `;
+                });
+
+                // Prepare parameters for EmailJS
+                const templateParams = {
+                    user_email: userEmail,
+                    user_remarks: userRemarks || 'No additional remarks provided.',
+                    // The HTML content you want to send in the email
+                    va_summary_html: tempDiv.innerHTML,
+                    subject: 'TalentFinder VA Inquiry'
+                };
+
+                // Send email via EmailJS
+                emailjs.send('service_jyovi0n', 'template_4tbqns1', templateParams) // Replace with your Service ID and Template ID
+                    .then(() => {
+                        alertify.success('VA Results sent successfully!');
+                        document.getElementById('userForm').reset(); // Clear the form
+                        // Deselect any radio buttons that were checked after sending
+                        document.querySelectorAll('input[type="radio"][name^="selection-"]:checked').forEach(radio => radio.checked = false);
+                        document.querySelectorAll('input[type="radio"][name="priority"]:checked').forEach(radio => radio.checked = false);
+                        // Remove highlight from cards
+                        document.querySelectorAll('.va-card.highlighted').forEach(card => card.classList.remove('highlighted'));
+                    })
+                    .catch(err => {
+                        console.error('Email sending error:', err);
+                        alertify.error('Error sending email. Please try again later.');
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    });
+
+            } catch (error) {
+                console.error('Error during email preparation:', error);
+                alertify.error("An internal error occurred. Please check console for details.");
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+
+        // Initial load of results when the page loads
+        filterResults();
+    </script>
+</body>
+</html>
