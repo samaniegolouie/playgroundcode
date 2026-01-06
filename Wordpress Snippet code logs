@@ -1,0 +1,218 @@
+Post categories  ( UI UX)
+<?php
+function dynamic_category_list_with_count() {
+    $cats = get_categories([
+        'hide_empty' => true,
+        'exclude' => get_cat_ID('Uncategorized')
+    ]);
+
+    if (!$cats) return '';
+
+    // Add the CSS Styles
+    $out = '<style>
+        .cat-job-container { background-color: white; max-width: 600px; margin: 20px auto; padding: 0 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-family: sans-serif; }
+        .role-row { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid #f0f0f0; }
+        .role-row:last-child { border-bottom: none; }
+        .role-label { color: #1a2b4b; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        .role-name { color: #000; font-size: 22px; font-weight: 700; }
+        .btn-view { 
+            display: inline-block; text-decoration: none; text-align: center;
+            padding: 8px 0; width: 100px; border-radius: 4px; font-weight: 600; 
+            font-size: 14px; transition: all 0.3s ease; 
+            background: transparent; border: 1px solid #28a99e; color: #28a99e; 
+        }
+        .btn-view:hover { background: #009688; border: 1px solid #009688; color: white; }
+        
+        @media (max-width: 480px) {
+            .role-row { flex-direction: column; align-items: flex-start; }
+            .btn-view { width: 100%; margin-top: 15px; }
+        }
+    </style>';
+
+    $out .= '<div class="cat-job-container">';
+
+    foreach ($cats as $cat) {
+        $out .= '<div class="role-row">';
+        
+        // Left Side: Text Info
+        $out .= '  <div>';
+        $out .= '    <div class="role-label">Open Roles &nbsp;<span style="opacity: 0.9;">(' . esc_html($cat->count) . ')</span></div>';
+        $out .= '    <div class="role-name">' . esc_html($cat->name) . '</div>';
+        $out .= '  </div>';
+        
+        // Right Side: Action Button
+        $out .= '  <a href="' . esc_url(get_category_link($cat->term_id)) . '" class="btn-view">View</a>';
+        
+        $out .= '</div>';
+    }
+
+    $out .= '</div>';
+
+    return $out;
+}
+add_shortcode('cat_count', 'dynamic_category_list_with_count');
+
+?>
+
+====================================================================================
+Post url end point
+<?php
+/**
+ * 1️⃣ Category dropdown with post count
+ * Redirects to /category/{slug}/
+ */
+function category_dropdown_with_count() {
+  $cats = get_categories([
+    'hide_empty' => true,
+    'exclude' => get_cat_ID('Uncategorized')
+  ]);
+
+  $out = '<select id="categorySelect">';
+  $out .= '<option value="">Select category</option>';
+
+  foreach ($cats as $cat) {
+    $out .= '<option value="' . esc_url(get_category_link($cat)) . '">';
+    $out .= esc_html($cat->name) . ' (' . esc_html($cat->count) . ')';
+    $out .= '</option>';
+  }
+
+  $out .= '</select>';
+
+  $out .= "
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const select = document.getElementById('categorySelect');
+      if (select) {
+        select.addEventListener('change', function () {
+          if (this.value) window.location.href = this.value;
+        });
+      }
+    });
+  </script>";
+
+  return $out;
+}
+add_shortcode('category_dropdown', 'category_dropdown_with_count');
+
+
+/**
+ * 2️⃣ Elementor Custom Query
+ * Filters posts by TITLE using ?post_title=
+ */
+add_action('elementor/query/filter_by_title', function ($query) {
+  if (!empty($_GET['post_title'])) {
+    $query->set('s', sanitize_text_field($_GET['post_title']));
+  }
+});
+
+?>
+====================================================================================
+Category Archive
+<?php
+function dynamic_title_dropdown_shortcode() {
+
+  if (!is_category()) return '';
+
+  $category = get_queried_object();
+
+  $posts = get_posts([
+    'post_type'      => 'post',
+    'posts_per_page' => -1,
+    'cat'            => $category->term_id,
+    'orderby'        => 'title',
+    'order'          => 'ASC',
+    'post_status'    => 'publish',
+  ]);
+
+  if (!$posts) return '';
+
+  ob_start();
+  ?>
+  <select id="titleFilter">
+    <option value="">Select job title</option>
+
+    <?php foreach ($posts as $post): ?>
+      <option value="<?php echo esc_url(get_permalink($post->ID)); ?>">
+        <?php echo esc_html($post->post_title); ?>
+      </option>
+    <?php endforeach; ?>
+
+  </select>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const select = document.getElementById('titleFilter');
+    if (!select) return;
+
+    select.addEventListener('change', function () {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  });
+  </script>
+  <?php
+
+  return ob_get_clean();
+}
+add_shortcode('dynamic_title_dropdown', 'dynamic_title_dropdown_shortcode');
+
+?>
+====================================================================================
+Post Type content Accounting
+<?php
+add_shortcode('job_accordion', function() {
+    // 1. Get the current category slug automatically from the URL
+    // This detects if you are on /category/operations/ or /category/accounting/
+    $current_cat = get_query_var('category_name');
+
+    // 2. Check for the specific post title search parameter
+    $url_title = isset($_GET['post_title']) ? sanitize_text_field($_GET['post_title']) : '';
+
+    $args = [
+        'post_type'      => 'post',
+        'category_name'  => $current_cat, // Dynamic Category Detection
+        'posts_per_page' => -1,
+        'post_status'    => 'publish'
+    ];
+
+    // 3. Filter by title if the URL has ?post_title=...
+    if ( !empty($url_title) ) {
+        $args['title'] = $url_title;
+    }
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) {
+        return '<p>No job postings found in this section.</p>';
+    }
+
+    $output = '<div class="job-listing-wrapper">';
+    while ($query->have_posts()) {
+        $query->the_post();
+        
+        $trimmed_content = wp_trim_words(get_the_content(), 20, '...'); 
+        
+        $output .= '
+        <details class="job-item" ' . (!empty($url_title) ? 'open' : '') . '>
+            <summary class="job-header">
+                <div class="info">
+                    <h2 class="job-title">' . get_the_title() . '</h2>
+                </div>
+                <div class="actions">
+                    <div class="arrow-circle"></div>
+                    <a href="' . get_permalink() . '" class="btn-view">View Details</a>
+                </div>
+            </summary>
+            <div class="description">
+                ' . $trimmed_content . '
+            </div>
+        </details>';
+    }
+    $output .= '</div>';
+    
+    wp_reset_postdata();
+    return $output;
+});
+?>
+====================================================================================
