@@ -1,6 +1,6 @@
 # playgroundcode.github.io
 playgroundcode
-
+https://samaniegolouie.github.io/playgroundcode/
 
 
 How to check your Git configuration:
