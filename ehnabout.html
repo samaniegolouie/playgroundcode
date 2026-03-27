@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Executive Help Now</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+:root {
+  --primary:#277170;
+  --primary-dark:#1d5453;
+  --primary-light:#3a9290;
+  --neutral:#404040;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Noto Sans',sans-serif;
+  color:#171717;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* ===== HERO ===== */
+.hero{
+  padding:80px 0;
+  background:linear-gradient(135deg,#f8fafa,#fff);
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.badge{
+  background:var(--primary);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:30px;
+  font-size:12px;
+  margin-bottom:20px;
+  display:inline-block;
+}
+
+h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:18px;
+  color:var(--neutral);
+  margin-bottom:30px;
+}
+
+.btn{
+  padding:14px 28px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  margin-right:10px;
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+
+.btn-secondary{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+
+/* ===== VISUAL ===== */
+.visual{
+  height:400px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  padding:80px 0;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:40px;
+  color:var(--primary);
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  gap:20px;
+}
+
+.grid-3{
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.card{
+  padding:20px;
+  border:1px solid #eee;
+  border-radius:10px;
+  text-align:center;
+  background:#fff;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:var(--primary);
+}
+
+/* ===== SERVICES ===== */
+.service{
+  background:#fafafa;
+  padding:20px;
+  border-left:4px solid var(--primary);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:0.3s;
+}
+
+.service:hover{
+  transform:translateX(6px);
+}
+
+.icon{
+  font-size:22px;
+}
+
+/* ===== ABOUT ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+
+ul{list-style:none;}
+
+li{
+  margin-bottom:10px;
+}
+
+/* ===== CTA ===== */
+.cta{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  color:#fff;
+  text-align:center;
+  padding:80px 20px;
+}
+
+.cta h2{
+  margin-bottom:20px;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.delay-1{transition-delay:0.2s;}
+.delay-2{transition-delay:0.4s;}
+.delay-3{transition-delay:0.6s;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ===== BUTTON BASE IMPROVEMENT ===== */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== PRIMARY BUTTON ===== */
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(39, 113, 112, 0.4);
+}
+
+/* subtle shine effect */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.btn-primary:hover::before {
+  left: 130%;
+  transition: 0.6s;
+}
+
+/* ===== SECONDARY BUTTON ===== */
+.btn-secondary:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(39, 113, 112, 0.3);
+}
+
+/* ===== CLICK FEEDBACK ===== */
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* ===== SERVICE BASE ===== */
+.service {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+/* lift + scale */
+.service:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+/* left border glow expand */
+.service::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.service:hover::before {
+  width: 100%;
+  opacity: 0.08;
+}
+
+/* icon animation */
+.service .icon {
+  transition: all 0.3s ease;
+}
+
+/* icon bounce + rotate konti */
+.service:hover .icon {
+  transform: translateY(-4px) scale(1.15) rotate(-5deg);
+}
+
+/* text highlight */
+.service:hover {
+  color: var(--primary);
+}
+
+/* subtle shine */
+.service::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.service:hover::after {
+  left: 120%;
+  transition: 0.6s;
+}
+.about-section{
+  background:#f5f5f5;
+}
+
+.about-title{
+  font-size:28px;
+  margin-bottom:20px;
+  position:relative;
+}
+
+.about-title::after{
+  content:"";
+  width:50px;
+  height:3px;
+  background:var(--primary);
+  display:block;
+  margin-top:10px;
+}
+
+.about-list li{
+  padding:16px 0;
+  border-bottom:1px solid #ddd;
+  position:relative;
+  padding-left:30px;
+  color:#404040;
+}
+
+/* check icon */
+.about-list li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:var(--primary);
+  font-weight:bold;
+}
+.cta-section{
+  position:relative;
+  background:linear-gradient(135deg,#1d5453,#277170);
+  padding:100px 20px;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* background circles */
+.cta-section::before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  top:-150px;
+  right:-100px;
+}
+
+.cta-section::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  bottom:-150px;
+  left:-100px;
+}
+
+.cta-container{
+  position:relative;
+  z-index:2;
+  max-width:800px;
+  margin:auto;
+}
+
+.cta-title{
+  font-size:40px;
+  margin-bottom:20px;
+}
+
+.cta-sub{
+  font-size:18px;
+  margin-bottom:40px;
+  opacity:0.9;
+}
+
+/* button style */
+.cta-btn{
+  background:#fff;
+  color:var(--primary);
+  padding:16px 40px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  transition:0.3s;
+}
+
+.cta-btn:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* container allow overflow */
+.visual{
+  position:relative;
+  border-radius:20px;
+  overflow:visible; /* IMPORTANT */
+}
+
+/* image */
+.hero-img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:20px;
+  display:block;
+}
+
+/* FLOATING CARD (LUMALABAS NA) */
+.visual-card{
+  position:absolute;
+  bottom:-30px; /* 🔥 lumalabas na sa image */
+  left:30px;
+
+  background:#fff;
+  padding:18px 22px;
+  border-radius:16px;
+
+  display:flex;
+  gap:12px;
+  align-items:center;
+
+  /* 🔥 depth shadow */
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.15),
+    0 8px 20px rgba(0,0,0,0.08);
+
+  animation:floatCard 3s ease-in-out infinite;
+  z-index:5;
+}
+
+/* icon */
+.card-icon{
+  font-size:26px;
+}
+
+/* text */
+.card-title{
+  font-weight:600;
+  font-size:16px;
+  color:#666;
+}
+
+.card-sub{
+  font-size:14px;
+  color:#666;
+}
+
+/* float animation */
+@keyframes floatCard{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-grid">
+
+<div>
+<div class="badge fade-up">Embedded. Elite. Proven. Scalable.</div>
+
+<h1 class="fade-up delay-1">
+Executive Virtual Support That Drives Results
+</h1>
+
+<p class="fade-up delay-2">
+At Executive Help Now, we embed elite virtual teams directly into portfolio company operations, 
+bringing order, focus, and scalability where it's needed most. Our proprietary systems and proven 
+methodologies eliminate inefficiencies, align execution with strategy, and create a foundation investors can trust.
+</p>
+
+<div class="fade-up delay-3">
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSekv-h6T2b5PQJQeIXb5NUwr8JSR_DQXQf2NDsqLcSPETl_Vw/viewform" class="btn btn-primary">Schedule a Consultation</a>
+<a href="https://executivehelpnow.org/case-studies" class="btn btn-secondary">Learn More</a>
+</div>
+</div>
+
+<div class="visual fade-up delay-2">
+   <div class="visual-card">
+    <div class="card-icon">🏆</div>
+    <div>
+      <div class="card-title">Proven Excellence</div>
+      <div class="card-sub">Trusted by Portfolio Companies</div>
+    </div>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="Team working" class="hero-img">
+
+ 
+
+</div>
+
+</div>
+</section>
+
+<!-- SUPPORT -->
+<section class="section">
+<div class="container fade-up">
+<p style="text-align:center;font-size:18px;">
+We don’t just fill operational gaps <strong style="color:#277170;">we build infrastructure</strong> 
+that accelerates growth and drives returns. By combining deep industry expertise with cutting-edge tools,
+ we help portfolio companies scale efficiently, exceed investor expectations, and achieve successful exits.
+</p>
+</div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section" style="background:#fafafa;">
+<div class="container">
+<h2 class="title fade-up">THE INDUSTRIES WE SERVE</h2>
+
+<div class="grid grid-3">
+<div class="card fade-up">Founders and Funders</div>
+<div class="card fade-up delay-1">Solo Entrepreneurs</div>
+<div class="card fade-up delay-2">Insurance Agencies</div>
+<div class="card fade-up">Non-Profit Organizations</div>
+<div class="card fade-up delay-1">Consultants</div>
+<div class="card fade-up delay-2">Coaches and Mentors</div>
+<div class="card fade-up delay-2">Authors and Speakers</div>
+<div class="card fade-up delay-2">Marketing Agencies</div>
+<div class="card fade-up delay-2">Attorneys</div>
+<div class="card fade-up delay-2">Real Estate Agencies</div>
+<div class="card fade-up delay-2">Podcasters and Livestreamers</div>
+<div class="card fade-up delay-2">Content Creators and Podcast Producers</div>
+<div class="card fade-up delay-2">Other Organizations</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+<div class="container">
+<h2 class="title fade-up">THE SERVICES WE OFFER</h2>
+
+<div class="grid grid-3">
+    <div class="service fade-up"><span class="icon">📊</span> Dealflow Coordination</div>
+    <div class="service fade-up"><span class="icon">📁</span> Document Organization</div>
+    <div class="service fade-up"><span class="icon">📅</span> Calendar Management</div>
+    <div class="service fade-up"><span class="icon">📱</span> Social Media Management</div>
+    <div class="service fade-up"><span class="icon">🖥️</span> G-Suite & MS Office 365 Suite</div>
+    <div class="service fade-up"><span class="icon">📋</span> Project Management</div>
+    <div class="service fade-up"><span class="icon">💼</span> CRM Database Mgmt</div>
+    <div class="service fade-up delay-1"><span class="icon">🤝</span> Client Coordination</div>
+    <div class="service fade-up"><span class="icon">💰</span> Client Invoicing</div>
+    <div class="service fade-up"><span class="icon">🎯</span> Special Projects Coordination</div>
+    <div class="service fade-up"><span class="icon">🔍</span> Deal Sourcing</div>
+    <div class="service fade-up"><span class="icon">✉️</span> Email Management</div>
+    <div class="service fade-up"><span class="icon">✍️</span> Content Creation</div>
+
+    <div class="service fade-up delay-1"><span class="icon">⚙️</span> Administrative Support</div>
+    <div class="service fade-up delay-2"><span class="icon">🎬</span> Video/Podcast Production and Support</div>
+</div>
+</div>
+
+<div class="container fade-up" style="text-align: center;">
+<p style="text-align:center;font-size:18px; padding-top: 50px; padding-bottom: 50px;">
+...not seeing <strong style="color:#277170;">what you're</strong> looking for?
+</p>
+<a href="https://calendly.com/ehn2021/30min" class="btn btn-secondary">Call Us</a>
+</div>
+
+
+
+</section>
+
+<!-- ABOUT -->
+<section class="section about-section">
+<div class="container about-grid">
+
+<div class="fade-up">
+<h3 class="about-title">About Us</h3>
+<ul class="about-list">
+<li>Respective experience average is about 10 years per VA</li>
+<li>Bi-weekly team meetings to share best practices, tips, support, and the latest technology</li>
+<li>Clients are supported by a dedicated VA</li>
+<li>Clients are matched with VAs based on skillset, personality, and style</li>
+</ul>
+</div>
+
+<div class="fade-up delay-1">
+<h3 class="about-title">Why Choose Us?</h3>
+<ul class="about-list">
+<li>VAs are responsive, dependable, intelligent, and collaborative</li>
+<li>Highly self-motivated and enthusiastic team members</li>
+<li>Skilled in project management, client care, and administrative support</li>
+<li>Expertise in podcast production, event planning, and customer service</li>
+<li>Proficient in operational reporting and business consultation</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-up">
+
+<div class="cta-container">
+<h2 class="cta-title">
+Let's build the operational support your business needs to scale.
+</h2>
+
+<p class="cta-sub">
+Ready to embed elite virtual support into your operations? Let's talk about how we can help you achieve your goals.
+</p>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSekv-h6T2b5PQJQeIXb5NUwr8JSR_DQXQf2NDsqLcSPETl_Vw/viewform" class="cta-btn">Schedule a Consultation</a>
+</div>
+
+</section>
+
+<!-- JS (SAFE) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".fade-up");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
